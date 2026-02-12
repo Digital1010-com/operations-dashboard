@@ -1,0 +1,105 @@
+{
+  "projects": [
+    {
+      "id": "D1010-TRX-001",
+      "name": "Transformation Blueprint / Revenue Attribution Engine",
+      "status": "complete-claimed",
+      "priority": "P0",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "yellow",
+      "lastUpdated": "2026-02-12T16:00:10.633Z",
+      "deliverables": [
+        {
+          "id": "del-1770912338291-0",
+          "name": "Revenue Attribution Engine One-Pager",
+          "url": "file:///Volumes/AI_Drive/AI_WORKING/D1010-TRX-001/Revenue_Attribution_Engine_One_Pager.md",
+          "type": "document",
+          "timestamp": "2026-02-12T16:05:38.291Z"
+        },
+        {
+          "id": "del-1770912338291-1",
+          "name": "Case Study: SaVida Health (PE Avatar)",
+          "url": "file:///Volumes/AI_Drive/AI_WORKING/D1010-TRX-001/Case_Study_SaVida_PE_Avatar.md",
+          "type": "document",
+          "timestamp": "2026-02-12T16:05:38.291Z"
+        },
+        {
+          "id": "del-1770912338291-2",
+          "name": "Case Study: RNA Diagnostics (PE Avatar)",
+          "url": "file:///Volumes/AI_Drive/AI_WORKING/D1010-TRX-001/Case_Study_RNA_PE_Avatar.md",
+          "type": "document",
+          "timestamp": "2026-02-12T16:05:38.291Z"
+        },
+        {
+          "id": "del-1770912338291-3",
+          "name": "Deliverables README",
+          "url": "file:///Volumes/AI_Drive/AI_WORKING/D1010-TRX-001/DELIVERABLES_README.md",
+          "type": "document",
+          "timestamp": "2026-02-12T16:05:38.291Z"
+        }
+      ],
+      "comments": [
+        {
+          "id": "cmt-1770912010633",
+          "author": "Michael",
+          "timestamp": "2026-02-12T16:00:10.633Z",
+          "type": "update",
+          "text": "test",
+          "status": "open",
+          "responses": []
+        }
+      ],
+      "category": "Marketing",
+      "notes": "Complete transformation blueprint with revenue attribution engine, case studies, and one-pager ready for client delivery",
+      "rationale": "Client demand for measurable ROI on digital transformation. PE firms need concrete attribution data to justify portfolio company investments.",
+      "risks": [
+        {
+          "severity": "low",
+          "description": "Client may need customization for specific PE firm reporting requirements",
+          "mitigation": "Built flexible framework that can adapt to different reporting formats"
+        }
+      ],
+      "nextActions": [
+        "Present to Michael for GO/NO-GO decision",
+        "Schedule client pilot if approved"
+      ],
+      "dependencies": [],
+      "metrics": {
+        "clientsTargeted": 10,
+        "estimatedRevenue": "$50K-100K",
+        "timeToValue": "30-60 days"
+      }
+    }
+  ],
+  "agents": [
+    {
+      "id": "otto",
+      "name": "Otto",
+      "emoji": "⚙️",
+      "status": "active",
+      "currentTask": "Operations dashboard deployed",
+      "tasksAssigned": 15,
+      "tasksCompleted": 8
+    },
+    {
+      "id": "joan",
+      "name": "Joan",
+      "emoji": "📰",
+      "status": "not-deployed",
+      "currentTask": null,
+      "tasksAssigned": 1,
+      "tasksCompleted": 0
+    }
+  ],
+  "activityFeed": [
+    {
+      "id": "act-1770912355716",
+      "timestamp": "2026-02-12T16:05:55.716Z",
+      "agent": "Otto",
+      "action": "added deliverables and context to",
+      "target": "21 projects (25 total deliverables)",
+      "type": "update"
+    }
+  ]
+}
