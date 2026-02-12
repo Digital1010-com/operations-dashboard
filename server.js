@@ -28,6 +28,51 @@ app.get('/api/data', (req, res) => {
   res.json(getData());
 });
 
+// API: Create new project (for Joan integration)
+app.post('/api/projects', (req, res) => {
+  const data = getData();
+  
+  const project = {
+    id: req.body.id || `JOB-${Date.now()}`,
+    name: req.body.name,
+    category: req.body.category || 'Operations',
+    status: req.body.status || 'in-progress',
+    priority: req.body.priority || 'P1',
+    owner: req.body.owner || 'Unassigned',
+    progress: req.body.progress || 0,
+    statusColor: req.body.statusColor || 'blue',
+    lastUpdated: new Date().toISOString(),
+    notes: req.body.notes || '',
+    blockers: req.body.blockers || [],
+    deliverables: req.body.deliverables || [],
+    comments: req.body.comments || [],
+    rationale: req.body.rationale || '',
+    risks: req.body.risks || [],
+    dependencies: req.body.dependencies || [],
+    nextActions: req.body.nextActions || [],
+    metrics: req.body.metrics || {},
+    sortOrder: (Math.max(...data.projects.map(p => p.sortOrder || 0), 0) + 10),
+    clientName: req.body.clientName || '',
+    clientEmail: req.body.clientEmail || '',
+    originalRequest: req.body.originalRequest || ''
+  };
+  
+  data.projects.push(project);
+  
+  // Add to activity feed
+  data.activityFeed.unshift({
+    id: `act-${Date.now()}`,
+    timestamp: new Date().toISOString(),
+    agent: req.body.createdBy || 'Joan',
+    action: 'created',
+    target: project.name,
+    type: 'start'
+  });
+  
+  saveData(data);
+  res.json(project);
+});
+
 // API: Add comment
 app.post('/api/projects/:id/comments', (req, res) => {
   const data = getData();
@@ -107,6 +152,39 @@ app.patch('/api/projects/:id', (req, res) => {
 
   saveData(data);
   res.json(project);
+});
+
+// API: Reorder project (move up/down in priority)
+app.post('/api/projects/:id/reorder', (req, res) => {
+  const data = getData();
+  const { direction } = req.body; // 'up' or 'down'
+  const project = data.projects.find(p => p.id === req.params.id);
+  
+  if (!project) {
+    return res.status(404).json({ error: 'Project not found' });
+  }
+
+  // Find projects in same category
+  const categoryProjects = data.projects
+    .filter(p => p.category === project.category)
+    .sort((a, b) => (a.sortOrder || 0) - (b.sortOrder || 0));
+
+  const currentIndex = categoryProjects.findIndex(p => p.id === project.id);
+  
+  if (direction === 'up' && currentIndex > 0) {
+    // Swap with previous
+    const temp = categoryProjects[currentIndex - 1].sortOrder;
+    categoryProjects[currentIndex - 1].sortOrder = project.sortOrder;
+    project.sortOrder = temp;
+  } else if (direction === 'down' && currentIndex < categoryProjects.length - 1) {
+    // Swap with next
+    const temp = categoryProjects[currentIndex + 1].sortOrder;
+    categoryProjects[currentIndex + 1].sortOrder = project.sortOrder;
+    project.sortOrder = temp;
+  }
+
+  saveData(data);
+  res.json({ success: true });
 });
 
 // API: Get daily logs
@@ -229,6 +307,92 @@ app.post('/api/projects/:id/deliverables', (req, res) => {
 
   saveData(data);
   res.json(deliverable);
+});
+
+// API: Add client
+app.post('/api/clients', (req, res) => {
+  const data = getData();
+  
+  if (!data.clients) {
+    data.clients = [];
+  }
+  
+  const clientName = req.body.name;
+  
+  if (!clientName) {
+    return res.status(400).json({ error: 'Client name required' });
+  }
+  
+  if (data.clients.includes(clientName)) {
+    return res.status(400).json({ error: 'Client already exists' });
+  }
+  
+  data.clients.push(clientName);
+  data.clients.sort();
+  
+  saveData(data);
+  res.json({ success: true, client: clientName });
+});
+
+// API: Remove client
+app.delete('/api/clients/:name', (req, res) => {
+  const data = getData();
+  
+  if (!data.clients) {
+    data.clients = [];
+  }
+  
+  const clientName = decodeURIComponent(req.params.name);
+  
+  data.clients = data.clients.filter(c => c !== clientName);
+  
+  saveData(data);
+  res.json({ success: true });
+});
+
+// API: Add category
+app.post('/api/categories', (req, res) => {
+  const data = getData();
+  
+  if (!data.categories) {
+    data.categories = [
+      { name: 'Marketing', emoji: '📢' },
+      { name: 'Creative', emoji: '🎨' },
+      { name: 'Operations', emoji: '⚙️' },
+      { name: 'Development', emoji: '💻' }
+    ];
+  }
+  
+  const { name, emoji } = req.body;
+  
+  if (!name || !emoji) {
+    return res.status(400).json({ error: 'Name and emoji required' });
+  }
+  
+  if (data.categories.find(c => c.name === name)) {
+    return res.status(400).json({ error: 'Category already exists' });
+  }
+  
+  data.categories.push({ name, emoji });
+  
+  saveData(data);
+  res.json({ success: true, category: { name, emoji } });
+});
+
+// API: Remove category
+app.delete('/api/categories/:name', (req, res) => {
+  const data = getData();
+  
+  if (!data.categories) {
+    data.categories = [];
+  }
+  
+  const categoryName = decodeURIComponent(req.params.name);
+  
+  data.categories = data.categories.filter(c => c.name !== categoryName);
+  
+  saveData(data);
+  res.json({ success: true });
 });
 
 // WebSocket for real-time updates
