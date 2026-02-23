@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D1010 Operations</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='%2310b981'/></svg>">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #334155;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #f1f5f9;
+        }
+
+        .header-status {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+            color: #94a3b8;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #10b981;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .status-dot.error {
+            background: #ef4444;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Critical Alerts */
+        .critical-alerts {
+            background: #1e293b;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 24px;
+            border-left: 4px solid #10b981;
+        }
+
+        .critical-alerts.has-alerts {
+            border-left-color: #ef4444;
+        }
+
+        .critical-alerts h2 {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #94a3b8;
+            margin-bottom: 16px;
+        }
+
+        .alert-item {
+            background: #0f172a;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 12px;
+            border-left: 3px solid #ef4444;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .alert-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .alert-message {
+            flex: 1;
+            color: #f1f5f9;
+            font-size: 14px;
+        }
+
+        .alert-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn {
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #2563eb;
+        }
+
+        .btn-secondary {
+            background: #475569;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #334155;
+        }
+
+        .no-alerts {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #10b981;
+            font-size: 14px;
+        }
+
+        .no-alerts::before {
+            content: '✓';
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* Agent Sessions */
+        .agent-sessions {
+            margin-bottom: 24px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .section-header h2 {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #94a3b8;
+        }
+
+        .session-count {
+            font-size: 14px;
+            color: #64748b;
+        }
+
+        .sessions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 16px;
+        }
+
+        .session-card {
+            background: #1e293b;
+            border-radius: 12px;
+            padding: 16px;
+            border-left: 3px solid transparent;
+        }
+
+        .session-card.running {
+            border-left-color: #10b981;
+        }
+
+        .session-card.idle {
+            border-left-color: #f59e0b;
+        }
+
+        .session-card.stale {
+            border-left-color: #64748b;
+        }
+
+        .session-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 12px;
+        }
+
+        .session-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #f1f5f9;
+        }
+
+        .session-status {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+        }
+
+        .status-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .status-indicator.running {
+            background: #10b981;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .status-indicator.idle {
+            background: #f59e0b;
+        }
+
+        .status-indicator.stale {
+            background: #64748b;
+        }
+
+        .session-meta {
+            display: flex;
+            gap: 16px;
+            font-size: 13px;
+            color: #94a3b8;
+            margin-top: 8px;
+        }
+
+        .session-meta span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Today's Activity */
+        .today-activity {
+            background: #1e293b;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+
+        .activity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .activity-item {
+            background: #0f172a;
+            border-radius: 8px;
+            padding: 16px;
+        }
+
+        .activity-label {
+            font-size: 12px;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+        }
+
+        .activity-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: #f1f5f9;
+        }
+
+        .activity-context {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-top: 4px;
+        }
+
+        /* Needs Attention */
+        .needs-attention {
+            background: #1e293b;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+
+        .attention-item {
+            background: #0f172a;
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            border-left: 3px solid #f59e0b;
+        }
+
+        .attention-item.high {
+            border-left-color: #ef4444;
+        }
+
+        .attention-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .attention-message {
+            flex: 1;
+            color: #f1f5f9;
+            font-size: 14px;
+        }
+
+        .attention-source {
+            font-size: 11px;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 4px;
+        }
+
+        /* System Health */
+        .system-health {
+            background: #1e293b;
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .health-grid {
+            display: flex;
+            gap: 24px;
+            margin-top: 16px;
+        }
+
+        .health-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+
+        .health-icon {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .health-icon.healthy {
+            background: #10b981;
+        }
+
+        .health-icon.unhealthy {
+            background: #ef4444;
+        }
+
+        /* Loading State */
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+            color: #64748b;
+        }
+
+        .loading::after {
+            content: '';
+            width: 20px;
+            height: 20px;
+            border: 2px solid #334155;
+            border-top-color: #3b82f6;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 12px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sessions-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .activity-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .health-grid {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>D1010 Operations</h1>
+            <div class="header-status">
+                <span class="status-dot" id="statusDot"></span>
+                <span id="lastUpdate">Loading...</span>
+            </div>
+        </div>
+
+        <!-- Critical Alerts -->
+        <div class="critical-alerts" id="criticalAlerts">
+            <h2>⚠️ Critical Alerts</h2>
+            <div class="loading">Loading alerts...</div>
+        </div>
+
+        <!-- Agent Sessions -->
+        <div class="agent-sessions">
+            <div class="section-header">
+                <h2>🤖 Agent Status</h2>
+                <span class="session-count" id="sessionCount">-</span>
+            </div>
+            <div class="sessions-grid" id="sessionsGrid">
+                <div class="loading">Loading sessions...</div>
+            </div>
+        </div>
+
+        <!-- Today's Activity -->
+        <div class="today-activity">
+            <h2>📊 Today's Activity</h2>
+            <div class="activity-grid" id="activityGrid">
+                <div class="loading">Loading activity...</div>
+            </div>
+        </div>
+
+        <!-- Needs Attention -->
+        <div class="needs-attention">
+            <h2>🔔 Needs Attention</h2>
+            <div id="needsAttentionList">
+                <div class="loading">Loading items...</div>
+            </div>
+        </div>
+
+        <!-- System Health -->
+        <div class="system-health">
+            <h2>🏥 System Health</h2>
+            <div class="health-grid" id="healthGrid">
+                <div class="loading">Checking health...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let lastFetch = 0;
+        let refreshInterval = null;
+
+        // Fetch operations data
+        async function fetchData() {
+            try {
+                const response = await fetch('/api/operations');
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                const data = await response.json();
+                console.log('Dashboard data loaded:', {
+                    sessions: data.agentSessions.length,
+                    alerts: data.criticalAlerts.length,
+                    attention: data.needsAttention.length
+                });
+                lastFetch = Date.now();
+                renderDashboard(data);
+                updateFavicon(data);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                showError();
+            }
+        }
+
+        // Render entire dashboard
+        function renderDashboard(data) {
+            renderCriticalAlerts(data.criticalAlerts);
+            renderAgentSessions(data.agentSessions);
+            renderTodayActivity(data.todayActivity);
+            renderNeedsAttention(data.needsAttention);
+            renderSystemHealth(data.systemHealth);
+            updateLastUpdate(data.cached, data.age);
+        }
+
+        // Render critical alerts
+        function renderCriticalAlerts(alerts) {
+            const container = document.getElementById('criticalAlerts');
+            
+            if (alerts.length === 0) {
+                container.classList.remove('has-alerts');
+                container.innerHTML = `
+                    <h2>⚠️ Critical Alerts</h2>
+                    <div class="no-alerts">No critical issues</div>
+                `;
+            } else {
+                container.classList.add('has-alerts');
+                container.innerHTML = `
+                    <h2>⚠️ Critical Alerts (${alerts.length})</h2>
+                    ${alerts.map((alert, index) => `
+                        <div class="alert-item" data-alert-index="${index}">
+                            <div>
+                                <div class="alert-message">${escapeHtml(alert.message)}</div>
+                                <div class="attention-source">${alert.source}</div>
+                            </div>
+                            <div class="alert-actions">
+                                <button class="btn btn-primary" onclick="viewAlert(${index})">View</button>
+                                <button class="btn btn-secondary" onclick="resolveAlert(${index})">Resolve</button>
+                            </div>
+                        </div>
+                    `).join('')}
+                `;
+            }
+        }
+
+        // Render agent sessions
+        function renderAgentSessions(sessions) {
+            document.getElementById('sessionCount').textContent = `${sessions.length} active`;
+            
+            const grid = document.getElementById('sessionsGrid');
+            
+            if (sessions.length === 0) {
+                grid.innerHTML = '<div class="no-alerts">No active sessions in last 7 days</div>';
+                return;
+            }
+            
+            grid.innerHTML = sessions.map(session => `
+                <div class="session-card ${session.status}">
+                    <div class="session-header">
+                        <div class="session-name">${escapeHtml(session.displayName)}</div>
+                        <div class="session-status">
+                            <span class="status-indicator ${session.status}"></span>
+                            <span>${session.status}</span>
+                        </div>
+                    </div>
+                    <div class="session-meta">
+                        <span>⏱ ${session.ageDisplay}</span>
+                        <span>🔢 ${formatNumber(session.tokens)} tokens</span>
+                        <span>🕐 ${session.lastActivity}</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Render today's activity
+        function renderTodayActivity(activity) {
+            const grid = document.getElementById('activityGrid');
+            
+            grid.innerHTML = `
+                <div class="activity-item">
+                    <div class="activity-label">Deliverables Shipped</div>
+                    <div class="activity-value">${activity.deliverables.shipped}</div>
+                    <div class="activity-context">${activity.deliverables.inProgress} in progress</div>
+                </div>
+                <div class="activity-item">
+                    <div class="activity-label">Client Touches</div>
+                    <div class="activity-value">${activity.clientTouches}</div>
+                    <div class="activity-context">Interactions today</div>
+                </div>
+                <div class="activity-item">
+                    <div class="activity-label">Token Usage</div>
+                    <div class="activity-value">${activity.tokenUsage.formatted}</div>
+                    <div class="activity-context">API usage today</div>
+                </div>
+            `;
+        }
+
+        // Render needs attention
+        function renderNeedsAttention(items) {
+            const container = document.getElementById('needsAttentionList');
+            
+            if (items.length === 0) {
+                container.innerHTML = '<div class="no-alerts">Nothing needs attention</div>';
+                return;
+            }
+            
+            container.innerHTML = items.map((item, index) => `
+                <div class="attention-item ${item.priority}">
+                    <div class="attention-header">
+                        <div>
+                            <div class="attention-message">${escapeHtml(item.message)}</div>
+                            <div class="attention-source">${item.source}</div>
+                        </div>
+                        <div class="alert-actions">
+                            <button class="btn btn-primary" onclick="viewItem(${index})">View</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Render system health
+        function renderSystemHealth(health) {
+            const grid = document.getElementById('healthGrid');
+            
+            grid.innerHTML = `
+                <div class="health-item">
+                    <span class="health-icon ${health.openclaw ? 'healthy' : 'unhealthy'}"></span>
+                    <span>OpenClaw Gateway</span>
+                </div>
+                <div class="health-item">
+                    <span class="health-icon ${health.chromadb ? 'healthy' : 'unhealthy'}"></span>
+                    <span>ChromaDB</span>
+                </div>
+                <div class="health-item">
+                    <span class="health-icon ${health.drives ? 'healthy' : 'unhealthy'}"></span>
+                    <span>External Drives</span>
+                </div>
+            `;
+        }
+
+        // Update last update timestamp
+        function updateLastUpdate(cached, age) {
+            const text = cached ? `Updated ${age}s ago` : 'Just updated';
+            document.getElementById('lastUpdate').textContent = text;
+        }
+
+        // Update favicon based on system status
+        function updateFavicon(data) {
+            const dot = document.getElementById('statusDot');
+            
+            if (data.criticalAlerts.length > 0 || !data.systemHealth.openclaw) {
+                dot.classList.add('error');
+                setFavicon('red');
+            } else {
+                dot.classList.remove('error');
+                setFavicon('green');
+            }
+        }
+
+        // Set favicon color
+        function setFavicon(color) {
+            const colorMap = { green: '%2310b981', red: '%23ef4444' };
+            const svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='${colorMap[color]}'/></svg>`;
+            document.querySelector('link[rel="icon"]').href = `data:image/svg+xml,${svg}`;
+        }
+
+        // Show error state
+        function showError() {
+            document.getElementById('criticalAlerts').innerHTML = `
+                <h2>⚠️ Critical Alerts</h2>
+                <div class="alert-item">
+                    <div class="alert-message">Failed to fetch dashboard data</div>
+                </div>
+            `;
+        }
+
+        // Action handlers
+        function viewAlert(index) {
+            alert('Alert viewing functionality coming in Phase 2.\n\nFor now, check:\n- AI_WORKING/CRITICAL_ALERTS.md\n- Mission_Control/memory/daily/critical.md');
+        }
+
+        function resolveAlert(index) {
+            if (confirm('Mark this alert as resolved?\n\nThis will remove it from the dashboard.\nYou\'ll need to manually update CRITICAL_ALERTS.md')) {
+                alert('Alert resolution functionality coming in Phase 2.\n\nFor now, manually edit:\nAI_WORKING/CRITICAL_ALERTS.md');
+            }
+        }
+
+        function viewItem(index) {
+            alert('Item viewing functionality coming in Phase 2.\n\nFor now, check:\n- AI_WORKING/tasks/\n- Client directories');
+        }
+
+        // Utility functions
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function formatNumber(num) {
+            if (num < 1000) return num.toString();
+            if (num < 1000000) return `${(num / 1000).toFixed(1)}k`;
+            return `${(num / 1000000).toFixed(1)}M`;
+        }
+
+        // Initialize
+        fetchData();
+        
+        // Auto-refresh every 15 seconds
+        refreshInterval = setInterval(fetchData, 15000);
+        
+        // Pause refresh when tab is hidden (save API calls)
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                clearInterval(refreshInterval);
+            } else {
+                fetchData();
+                refreshInterval = setInterval(fetchData, 15000);
+            }
+        });
+    </script>
+</body>
+</html>

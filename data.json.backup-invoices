@@ -1,0 +1,5446 @@
+{
+  "projects": [
+    {
+      "id": "D1010-TRX-001",
+      "name": "Transformation Blueprint / Revenue Attribution Engine",
+      "status": "complete-claimed",
+      "priority": "P0",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "yellow",
+      "lastUpdated": "2026-02-12T16:00:10.633Z",
+      "deliverables": [
+        {
+          "id": "del-1770912338291-0",
+          "name": "Revenue Attribution Engine One-Pager",
+          "url": "file:///Volumes/AI_Drive/AI_WORKING/D1010-TRX-001/Revenue_Attribution_Engine_One_Pager.md",
+          "type": "document",
+          "timestamp": "2026-02-12T16:05:38.291Z"
+        },
+        {
+          "id": "del-1770912338291-1",
+          "name": "Case Study: SaVida Health (PE Avatar)",
+          "url": "file:///Volumes/AI_Drive/AI_WORKING/D1010-TRX-001/Case_Study_SaVida_PE_Avatar.md",
+          "type": "document",
+          "timestamp": "2026-02-12T16:05:38.291Z"
+        },
+        {
+          "id": "del-1770912338291-2",
+          "name": "Case Study: RNA Diagnostics (PE Avatar)",
+          "url": "file:///Volumes/AI_Drive/AI_WORKING/D1010-TRX-001/Case_Study_RNA_PE_Avatar.md",
+          "type": "document",
+          "timestamp": "2026-02-12T16:05:38.291Z"
+        },
+        {
+          "id": "del-1770912338291-3",
+          "name": "Deliverables README",
+          "url": "file:///Volumes/AI_Drive/AI_WORKING/D1010-TRX-001/DELIVERABLES_README.md",
+          "type": "document",
+          "timestamp": "2026-02-12T16:05:38.291Z"
+        }
+      ],
+      "comments": [
+        {
+          "id": "cmt-1770912010633",
+          "author": "Michael",
+          "timestamp": "2026-02-12T16:00:10.633Z",
+          "type": "update",
+          "text": "test",
+          "status": "open",
+          "responses": []
+        }
+      ],
+      "category": "Marketing",
+      "notes": "Complete transformation blueprint with revenue attribution engine, case studies, and one-pager ready for client delivery",
+      "rationale": "Client demand for measurable ROI on digital transformation. PE firms need concrete attribution data to justify portfolio company investments.",
+      "risks": [
+        {
+          "severity": "low",
+          "description": "Client may need customization for specific PE firm reporting requirements",
+          "mitigation": "Built flexible framework that can adapt to different reporting formats"
+        }
+      ],
+      "nextActions": [
+        "Present to Michael for GO/NO-GO decision",
+        "Schedule client pilot if approved"
+      ],
+      "dependencies": [],
+      "metrics": {
+        "clientsTargeted": 10,
+        "estimatedRevenue": "$50K-100K",
+        "timeToValue": "30-60 days"
+      },
+      "sortOrder": 0
+    },
+    {
+      "id": "D1010-TRX-001-A",
+      "name": "Transformation Collateral (one-pager + case studies)",
+      "status": "complete-claimed",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "yellow",
+      "parentId": "D1010-TRX-001",
+      "lastUpdated": "2026-02-12T10:28:00-05:00",
+      "deliverables": [
+        {
+          "id": "del-1770912338291-0",
+          "name": "One-Pager (Revenue Attribution)",
+          "url": "file:///Volumes/AI_Drive/AI_WORKING/D1010-TRX-001/Revenue_Attribution_Engine_One_Pager.md",
+          "type": "document",
+          "timestamp": "2026-02-12T16:05:38.291Z"
+        },
+        {
+          "id": "del-1770912338291-1",
+          "name": "Case Studies Package",
+          "url": "file:///Volumes/AI_Drive/AI_WORKING/D1010-TRX-001/",
+          "type": "document",
+          "timestamp": "2026-02-12T16:05:38.291Z"
+        }
+      ],
+      "comments": [],
+      "category": "Marketing",
+      "notes": "Collateral package includes one-pager (1000 words) and two detailed case studies showcasing PE transformation results",
+      "sortOrder": 10
+    },
+    {
+      "id": "D1010-APO-001",
+      "name": "Apollo Lead Gen (PE Healthcare)",
+      "status": "complete-claimed",
+      "priority": "P0",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "yellow",
+      "lastUpdated": "2026-02-12T10:28:00-05:00",
+      "deliverables": [
+        {
+          "id": "del-1770912338291-0",
+          "name": "Campaign Ready Guide",
+          "url": "file:///Volumes/AI_Drive/AI_WORKING/D1010-APO-001/CAMPAIGN_READY.md",
+          "type": "document",
+          "timestamp": "2026-02-12T16:05:38.291Z"
+        },
+        {
+          "id": "del-1770912338291-1",
+          "name": "Executive Summary",
+          "url": "file:///Volumes/AI_Drive/AI_WORKING/D1010-APO-001/EXECUTIVE-SUMMARY.md",
+          "type": "document",
+          "timestamp": "2026-02-12T16:05:38.291Z"
+        },
+        {
+          "id": "del-1770912338291-2",
+          "name": "PE Healthcare Target List",
+          "url": "file:///Volumes/AI_Drive/AI_WORKING/D1010-APO-001/PE-Healthcare-Target-List.md",
+          "type": "document",
+          "timestamp": "2026-02-12T16:05:38.291Z"
+        },
+        {
+          "id": "del-1770912338291-3",
+          "name": "Top 50 Priority Targets (CSV)",
+          "url": "file:///Volumes/AI_Drive/AI_WORKING/D1010-APO-001/Top-50-Priority-Targets.csv",
+          "type": "spreadsheet",
+          "timestamp": "2026-02-12T16:05:38.291Z"
+        }
+      ],
+      "comments": [],
+      "category": "Marketing",
+      "notes": "Complete Apollo lead gen campaign targeting PE-backed healthcare companies. 54 priority targets identified with detailed research.",
+      "rationale": "PE-backed healthcare companies are high-value targets with budget authority. Apollo enables precise targeting of decision-makers.",
+      "risks": [
+        {
+          "severity": "moderate",
+          "description": "Cold outreach may have low response rate",
+          "mitigation": "Crafted personalized messaging, leveraging PE firm affinity"
+        }
+      ],
+      "nextActions": [
+        "Launch initial campaign (10 contacts)",
+        "Track response rates",
+        "Iterate messaging based on feedback"
+      ],
+      "dependencies": [],
+      "metrics": {
+        "targetsIdentified": 54,
+        "topPriority": 50,
+        "estimatedCampaignLength": "4-6 weeks"
+      },
+      "sortOrder": 20
+    },
+    {
+      "id": "D1010-APO-001-A",
+      "name": "Apollo Target List (54 companies)",
+      "status": "complete-claimed",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "yellow",
+      "parentId": "D1010-APO-001",
+      "lastUpdated": "2026-02-12T10:28:00-05:00",
+      "deliverables": [
+        {
+          "id": "del-1770912338291-0",
+          "name": "Target Company List (D3)",
+          "url": "file:///Volumes/AI_Drive/AI_WORKING/D1010-APO-001/D3_Target_Company_List.md",
+          "type": "document",
+          "timestamp": "2026-02-12T16:05:38.291Z"
+        },
+        {
+          "id": "del-1770912338291-1",
+          "name": "Apollo Search Criteria (D2)",
+          "url": "file:///Volumes/AI_Drive/AI_WORKING/D1010-APO-001/D2_Apollo_Search_Criteria.md",
+          "type": "document",
+          "timestamp": "2026-02-12T16:05:38.291Z"
+        },
+        {
+          "id": "del-1770912338291-2",
+          "name": "Top 50 CSV",
+          "url": "file:///Volumes/AI_Drive/AI_WORKING/D1010-APO-001/Top-50-Priority-Targets.csv",
+          "type": "spreadsheet",
+          "timestamp": "2026-02-12T16:05:38.291Z"
+        }
+      ],
+      "comments": [],
+      "category": "Marketing",
+      "notes": "54 target companies identified across PE firms (KKR, Blackstone, TPG, etc.) with decision-maker contacts ready for outreach",
+      "sortOrder": 30
+    },
+    {
+      "id": "D1010-YT-001",
+      "name": "Drift & Dream YouTube Channel",
+      "status": "in-progress",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 45,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-12T10:28:00-05:00",
+      "deliverables": [],
+      "comments": [],
+      "category": "Creative",
+      "notes": "YouTube channel \"Drift & Dream\" in production phase. Channel setup complete, first videos in pipeline.",
+      "sortOrder": 40
+    },
+    {
+      "id": "D1010-YT-001-A",
+      "name": "YouTube Channel Setup / Pipeline",
+      "status": "complete-claimed",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "yellow",
+      "parentId": "D1010-YT-001",
+      "lastUpdated": "2026-02-12T10:28:00-05:00",
+      "deliverables": [],
+      "comments": [],
+      "category": "Creative",
+      "notes": "Channel infrastructure deployed: branding, descriptions, playlists, upload pipeline configured",
+      "sortOrder": 50
+    },
+    {
+      "id": "D1010-TL-001",
+      "name": "Thought Leadership Content",
+      "status": "drafts-ready",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 70,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T10:28:00-05:00",
+      "deliverables": [],
+      "comments": [],
+      "category": "Marketing",
+      "notes": "Thought leadership content drafts ready for review and publication across LinkedIn, Medium, and company blog",
+      "sortOrder": 60
+    },
+    {
+      "id": "D1010-INT-001",
+      "name": "Intel System",
+      "status": "active",
+      "priority": "P0",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T10:28:00-05:00",
+      "deliverables": [
+        {
+          "id": "del-1770912338291-0",
+          "name": "Intel System Spec",
+          "url": "file:///Volumes/AI_Drive/AI_WORKING/INTEL_SYSTEM_SPEC.md",
+          "type": "document",
+          "timestamp": "2026-02-12T16:05:38.291Z"
+        }
+      ],
+      "comments": [],
+      "category": "Operations",
+      "notes": "Intel system active with 3 daily cron jobs (7am, 12pm, 6pm) monitoring news, competitors, and industry trends",
+      "rationale": "Competitive intelligence and industry trends inform strategy. Automated monitoring saves manual research time.",
+      "risks": [],
+      "nextActions": [
+        "Monitor digest quality over next week",
+        "Add more data sources if needed"
+      ],
+      "dependencies": [],
+      "metrics": {
+        "scansPerDay": 3,
+        "sourcesMonitored": "News, competitors, industry trends"
+      },
+      "sortOrder": 70
+    },
+    {
+      "id": "D1010-MC-001",
+      "name": "Mission Control Deployment",
+      "status": "partial",
+      "priority": "P0",
+      "owner": "Otto",
+      "progress": 50,
+      "statusColor": "yellow",
+      "lastUpdated": "2026-02-12T10:28:00-05:00",
+      "notes": "Mission Control partially deployed. Otto operational, Joan deployed but Console/Peg integration pending.",
+      "deliverables": [],
+      "comments": [],
+      "category": "Operations",
+      "rationale": "Vegas trip (Feb 13-17) requires unattended system operation. Mission Control ensures stability.",
+      "risks": [
+        {
+          "severity": "moderate",
+          "description": "Only Otto deployed, Joan/Peg/Console integration incomplete",
+          "mitigation": "Prioritized critical systems (Otto, Intel). Full deployment post-Vegas."
+        }
+      ],
+      "nextActions": [
+        "Complete Joan/Peg/Console integration",
+        "Deploy remaining agents",
+        "Full stress test"
+      ],
+      "dependencies": [
+        "D1010-JOAN-001",
+        "GML-2026-02-11-02"
+      ],
+      "metrics": {
+        "agentsDeployed": "1/4",
+        "systemUptime": "100%",
+        "cronJobsActive": 6
+      },
+      "sortOrder": 80
+    },
+    {
+      "id": "D1010-BRD-001",
+      "name": "Boardroom Skill",
+      "status": "built-needs-test",
+      "priority": "P2",
+      "owner": "Otto",
+      "progress": 90,
+      "statusColor": "yellow",
+      "lastUpdated": "2026-02-12T10:28:00-05:00",
+      "deliverables": [
+        {
+          "id": "del-1770912338291-0",
+          "name": "Boardroom Skill",
+          "url": "file:///Users/ottomac/.openclaw/skills/boardroom/SKILL.md",
+          "type": "code",
+          "timestamp": "2026-02-12T16:05:38.291Z"
+        }
+      ],
+      "comments": [],
+      "category": "Development",
+      "notes": "Boardroom skill built and installed. Simulates advisory board debates with multiple AI personas. Needs production test.",
+      "rationale": "Strategic decisions benefit from multiple perspectives. Boardroom simulates advisory board debates with AI personas.",
+      "risks": [
+        {
+          "severity": "moderate",
+          "description": "Untested in production, may produce low-quality advice",
+          "mitigation": "Run test with real business decision before relying on output"
+        }
+      ],
+      "nextActions": [
+        "Test with real decision (YouTube niche choice?)",
+        "Evaluate output quality",
+        "Document best use cases"
+      ],
+      "dependencies": [],
+      "metrics": {
+        "advisorsSimulated": 5,
+        "roundsOfDebate": 2
+      },
+      "sortOrder": 90
+    },
+    {
+      "id": "D1010-HARO-001",
+      "name": "HARO Strategy / Monitoring",
+      "status": "not-working",
+      "priority": "P2",
+      "owner": "Joan",
+      "progress": 0,
+      "statusColor": "red",
+      "lastUpdated": "2026-02-12T16:32:50.867Z",
+      "blockers": [
+        "Joan not deployed"
+      ],
+      "deliverables": [],
+      "comments": [
+        {
+          "id": "cmt-1770913970867",
+          "author": "Michael",
+          "timestamp": "2026-02-12T16:32:50.867Z",
+          "type": "update",
+          "text": "Please deploy Joan and have her monitor and send Otto her choice for production, these requests are generally time sensitive. Please be sure to review Michaels writing style it should be in the AI drive.",
+          "status": "open",
+          "responses": []
+        }
+      ],
+      "category": "Marketing",
+      "notes": "HARO monitoring strategy designed but blocked - requires Joan email monitoring which is now operational",
+      "sortOrder": 100
+    },
+    {
+      "id": "D1010-JOAN-001",
+      "name": "Joan Agent Deployment",
+      "status": "incomplete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 30,
+      "statusColor": "red",
+      "lastUpdated": "2026-02-12T10:28:00-05:00",
+      "notes": "Joan agent deployed with Gmail API integration. Monitors 23 client domains every 30 minutes. Peg and Console scripts ready but not integrated.",
+      "deliverables": [
+        {
+          "id": "del-1770912338291-0",
+          "name": "Joan Email Monitor Script",
+          "url": "file:///Volumes/AI_Drive/AI_WORKING/scripts/joan.js",
+          "type": "code",
+          "timestamp": "2026-02-12T16:05:38.291Z"
+        },
+        {
+          "id": "del-1770912338291-1",
+          "name": "Peg Intake Script",
+          "url": "file:///Volumes/AI_Drive/AI_WORKING/scripts/peg.js",
+          "type": "code",
+          "timestamp": "2026-02-12T16:05:38.291Z"
+        },
+        {
+          "id": "del-1770912338291-2",
+          "name": "Console Approval Script",
+          "url": "file:///Volumes/AI_Drive/AI_WORKING/scripts/console.js",
+          "type": "code",
+          "timestamp": "2026-02-12T16:05:38.291Z"
+        }
+      ],
+      "comments": [],
+      "category": "Development",
+      "rationale": "Email monitoring is critical for client retention. Manual monitoring doesn't scale with 23 clients.",
+      "risks": [
+        {
+          "severity": "high",
+          "description": "Gmail token expires frequently, requires manual refresh",
+          "mitigation": "Investigating OAuth refresh flow, may need service account"
+        }
+      ],
+      "nextActions": [
+        "Fix Gmail token expiration issue",
+        "Integrate Peg intake handler",
+        "Deploy Console approval workflow"
+      ],
+      "dependencies": [
+        "GML-2026-02-11-02"
+      ],
+      "metrics": {
+        "clientsMonitored": 23,
+        "checkFrequency": "30 min",
+        "avgEmailsPerDay": "~15"
+      },
+      "sortOrder": 160
+    },
+    {
+      "id": "DOC-2026-02-11-05",
+      "name": "Documentation Review",
+      "status": "complete-claimed",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "yellow",
+      "lastUpdated": "2026-02-12T10:28:00-05:00",
+      "completedDate": "2026-02-12",
+      "deliverables": [
+        {
+          "id": "del-1770912338291-0",
+          "name": "Vegas Recovery Procedures",
+          "url": "file:///Volumes/AI_Drive/AI_WORKING/VEGAS_REMOTE_RECOVERY.md",
+          "type": "document",
+          "timestamp": "2026-02-12T16:05:38.291Z"
+        },
+        {
+          "id": "del-1770912338291-1",
+          "name": "Pre-Departure Checklist",
+          "url": "file:///Volumes/AI_Drive/AI_WORKING/VEGAS_PRE_DEPARTURE_CHECKLIST.md",
+          "type": "document",
+          "timestamp": "2026-02-12T16:05:38.291Z"
+        }
+      ],
+      "comments": [],
+      "category": "Operations",
+      "notes": "Comprehensive documentation review completed. All Vegas prep docs, recovery procedures, and runbooks up to date.",
+      "sortOrder": 120
+    },
+    {
+      "id": "CRN-2026-02-11-06",
+      "name": "Cron Job Management",
+      "status": "complete-claimed",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "yellow",
+      "lastUpdated": "2026-02-12T10:28:00-05:00",
+      "completedDate": "2026-02-12",
+      "deliverables": [],
+      "comments": [],
+      "category": "Operations",
+      "notes": "All cron jobs rebuilt and verified. 6 active jobs running (Joan, Intel 3x, Health Checks 2x). All within runbook limits.",
+      "sortOrder": 130
+    },
+    {
+      "id": "CON-2026-02-11-07",
+      "name": "Environment & Models Confirmation",
+      "status": "complete-claimed",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "yellow",
+      "lastUpdated": "2026-02-12T10:28:00-05:00",
+      "completedDate": "2026-02-12",
+      "deliverables": [],
+      "comments": [],
+      "category": "Operations",
+      "notes": "Environment confirmed: macOS 26.3, Anthropic primary provider, all channels operational (Slack, BlueBubbles)",
+      "sortOrder": 140
+    },
+    {
+      "id": "OAI-SKL-001",
+      "name": "OpenAI Skills Implementation",
+      "status": "not-started",
+      "priority": "P2",
+      "owner": "Unassigned",
+      "progress": 0,
+      "statusColor": "gray",
+      "lastUpdated": "2026-02-12T10:28:00-05:00",
+      "deliverables": [],
+      "comments": [],
+      "category": "Development",
+      "notes": "OpenAI-powered skills implementation project. Not started - awaiting requirements definition.",
+      "sortOrder": 110
+    },
+    {
+      "id": "GML-2026-02-11-02",
+      "name": "Gmail Access Refresh",
+      "status": "complete-unstable",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "yellow",
+      "lastUpdated": "2026-02-12T10:28:00-05:00",
+      "notes": "Gmail API token refreshed but continues to expire every few days. OAuth flow working but requires manual refresh.",
+      "deliverables": [
+        {
+          "id": "del-1770912338291-0",
+          "name": "Gmail Token (expires frequently)",
+          "url": "file:///Volumes/AI_Drive/01-Infrastructure/Config/google/token_gmail.json",
+          "type": "code",
+          "timestamp": "2026-02-12T16:05:38.291Z"
+        }
+      ],
+      "comments": [],
+      "category": "Development",
+      "rationale": "Gmail API access required for Joan email monitoring. Token-based auth needed for automation.",
+      "risks": [
+        {
+          "severity": "high",
+          "description": "Token expires every few days, breaks Joan monitoring",
+          "mitigation": "Manual refresh as temporary fix. Need permanent OAuth solution."
+        }
+      ],
+      "nextActions": [
+        "Research OAuth refresh flow",
+        "Consider service account approach",
+        "Document token refresh procedure"
+      ],
+      "dependencies": [],
+      "metrics": {
+        "tokenLifespan": "3-5 days",
+        "manualRefreshesPerWeek": "~2"
+      },
+      "sortOrder": 150
+    },
+    {
+      "id": "ANT-2026-02-11-03",
+      "name": "Antfarm Workflow for YouTube",
+      "status": "unknown",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 50,
+      "statusColor": "gray",
+      "lastUpdated": "2026-02-12T10:28:00-05:00",
+      "notes": "Antfarm workflow for YouTube automation created but status unknown after system outage. Needs verification.",
+      "deliverables": [
+        {
+          "id": "del-1770912338291-0",
+          "name": "Antfarm Workflow (YouTube)",
+          "url": "file:///Users/ottomac/.openclaw/antfarm/workflows/youtube/workflow.yaml",
+          "type": "code",
+          "timestamp": "2026-02-12T16:05:38.291Z"
+        }
+      ],
+      "comments": [],
+      "category": "Creative",
+      "sortOrder": 170
+    },
+    {
+      "id": "INT-2026-02-11-04",
+      "name": "Intel System Overhaul",
+      "status": "complete",
+      "priority": "P0",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T10:28:00-05:00",
+      "notes": "Intel system completely overhauled with new spec, rebuilt cron jobs, and improved monitoring. Operational since Feb 11.",
+      "deliverables": [
+        {
+          "id": "del-1770912338291-0",
+          "name": "Intel System Spec V2",
+          "url": "file:///Volumes/AI_Drive/AI_WORKING/INTEL_SYSTEM_SPEC.md",
+          "type": "document",
+          "timestamp": "2026-02-12T16:05:38.291Z"
+        }
+      ],
+      "comments": [],
+      "category": "Operations",
+      "sortOrder": 180
+    },
+    {
+      "id": "OPS-DASH-001",
+      "name": "Operations Dashboard",
+      "status": "complete",
+      "priority": "P0",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T10:30:00-05:00",
+      "notes": "Unified operations dashboard with Apple Glass design, category organization, status grouping, real-time updates, and comment system",
+      "deliverables": [
+        {
+          "id": "del-1770912338291-0",
+          "name": "Operations Dashboard",
+          "url": "http://127.0.0.1:3200",
+          "type": "web-app",
+          "timestamp": "2026-02-12T16:05:38.291Z"
+        },
+        {
+          "id": "del-1770912338291-1",
+          "name": "Dashboard README",
+          "url": "file:///Volumes/AI_Drive/AI_WORKING/projects/operations-dashboard/README.md",
+          "type": "document",
+          "timestamp": "2026-02-12T16:05:38.291Z"
+        }
+      ],
+      "comments": [],
+      "category": "Operations",
+      "sortOrder": 190
+    },
+    {
+      "id": "2026-02-10-tfg-summit-landing-page",
+      "name": "Summit Service Group Landing Page",
+      "category": "Development",
+      "status": "complete",
+      "priority": "P2",
+      "owner": "Saad",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:39:58.526Z",
+      "notes": "Brand integration landing page for Summit Service Group + TFC acquisition. Style to match EBM merger page.",
+      "blockers": [],
+      "deliverables": [
+        {
+          "name": "Landing Page Copy",
+          "url": "file:///Volumes/D1010 Archives/D1010/Clients/Active/TFG/Projects/Summit-Integration-2026-02/Summit Integration with TFC.docx",
+          "type": "document"
+        },
+        {
+          "name": "Reference Page (EBM Merger)",
+          "url": "https://thefacilitiesgroup.com/ebm-csi-merger/",
+          "type": "web-app"
+        },
+        {
+          "name": "Project Folder",
+          "url": "file:///Volumes/D1010 Archives/D1010/Clients/Active/TFG/Projects/Summit-Integration-2026-02/",
+          "type": "document"
+        },
+        {
+          "id": "del-1770914221019",
+          "name": "Completed Landing Page",
+          "url": "https://thefacilitiesgroup.com/summit-tfc-integration/",
+          "type": "web-app",
+          "timestamp": "2026-02-12T16:37:01.019Z"
+        },
+        {
+          "id": "del-1770914384984",
+          "name": "Job Start Email to Saad",
+          "url": "file:///Volumes/AI_Drive/AI_WORKING/agents/joan/send_saad_formatted.js",
+          "type": "document",
+          "timestamp": "2026-02-12T16:39:44.984Z"
+        }
+      ],
+      "comments": [
+        {
+          "id": "cmt-1770914215169",
+          "author": "Saad",
+          "timestamp": "2026-02-12T16:36:55.169Z",
+          "type": "completion",
+          "text": "Landing page complete. Domain redirect configured, old page deleted, Our Brands updated.",
+          "status": "resolved",
+          "responses": []
+        }
+      ],
+      "rationale": "TFG acquired Summit Service Group and TFC. Need consolidated brand presence with landing page, domain redirect, and cleanup of old pages.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Build landing page matching EBM merger style",
+        "Configure summitservicegroup.com redirect",
+        "Delete old Summit location page",
+        "Remove Summit from Our Brands page and map",
+        "Submit to Michael for final review"
+      ],
+      "metrics": {
+        "clientRelationship": "Active, stable",
+        "recentWin": "71% CPL reduction (Feb 2026)",
+        "assignedDate": "Feb 10, 2026"
+      },
+      "sortOrder": 220,
+      "clientName": "The Facilities Group",
+      "clientEmail": "jareskog@thefacilitiesgroup.com",
+      "originalRequest": "From: Janice Areskog\nDate: Tue, 10 Feb 2026 16:09:20 +0000\n\nHi Michael, we have another brand integration, can you please build a landing page similar to this one: EBM & CSI Merger for Summit and TFC? Copy is attached.\n\nOnce approved we need summitservicegroup.com to redirect to the landing page.\n\nAlso, please delete this page Summit Service Group and remove Summit from Our Brands page and the map."
+    },
+    {
+      "id": "2026-02-11-tfg-arnel-account-security",
+      "name": "Arnel Account Security Issue",
+      "category": "Operations",
+      "status": "complete",
+      "priority": "P0",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:40:28.667Z",
+      "notes": "Arnel TFG tenant account flagged for suspicious login activity. Security alert triggered - proxy/datacenter IP, unusual geolocation, recent abuse activity detected.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [
+        {
+          "id": "cmt-1770914428667",
+          "author": "Otto",
+          "timestamp": "2026-02-12T16:40:28.667Z",
+          "type": "resolution",
+          "text": "Resolved: Contacted Arnel, coordinated with TFG helpdesk, account unlocked and password reset completed.",
+          "status": "resolved",
+          "responses": []
+        }
+      ],
+      "rationale": "Critical security response. Account compromised or accessed from unauthorized location. Requires immediate password reset and helpdesk unlock.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Contact Arnel about security alert",
+        "Coordinate with TFG Helpdesk (1-833-483-4435)",
+        "Get account unlocked and password reset",
+        "Verify Arnels access is legitimate"
+      ],
+      "metrics": {
+        "severity": "High - Security Alert",
+        "responseTime": "Immediate",
+        "resolvedDate": "Feb 11, 2026"
+      },
+      "sortOrder": 230,
+      "clientName": "The Facilities Group",
+      "clientEmail": "wjones@thefacilitiesgroup.com",
+      "originalRequest": "From: William Jones (Sr. Director, Cyber Security)\nDate: Wed, 11 Feb 2026 19:14:10 +0000\n\nWe got an alert that Arnel's account for our tenant was used today and has triggered an alert for the following:\n\nThe source IP is associated with proxy and data center infrastructure, and both the user agent and geolocation are inconsistent with historical activity. Furthermore, the login originated from a country and user agent not previously observed, and the source IP has been linked to recent abuse activity.\n\nPlease have the user call into the TFG Helpdesk and get their account unlocked and Password reset.\n1-833-483-4435"
+    },
+    {
+      "id": "2026-02-11-blocking-d1010-user-account-for-arnel",
+      "name": "Blocking D1010 User account for Arnel",
+      "category": "Operations",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:47.400Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 2,
+        "duration": "0 days"
+      },
+      "sortOrder": 240,
+      "clientName": "The Facilities Group",
+      "clientEmail": "William Jones <wjones@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-10-re-brand-landing-page",
+      "name": "Brand landing page",
+      "category": "Development",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:47.546Z",
+      "notes": "Completed project. 1 revision during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 1,
+        "emails": 7,
+        "duration": "1 days"
+      },
+      "sortOrder": 250,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-10-gravity-forms-to-pipedrive-debug-message",
+      "name": "Gravity Forms Debug Alert",
+      "category": "Development",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:47.667Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 1,
+        "duration": "0 days"
+      },
+      "sortOrder": 260,
+      "clientName": "The Facilities Group",
+      "clientEmail": "\"No Reply | The Facilites Group\" <noreply@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-10--purple-heart-pools-some-plugins-were-au",
+      "name": "[Purple Heart Pools] Some plugins were automatically updated",
+      "category": "Operations",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:47.793Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 1,
+        "duration": "0 days"
+      },
+      "sortOrder": 270,
+      "clientName": "Purple Heart Pools",
+      "clientEmail": "WordPress <wordpress@purpleheartpools.com>",
+      "originalRequest": "Howdy! Some plugins have automatically updated to their latest versions on your site at https://purpleheartpools.com. No further action is needed on your part.\r\n\r\n\r\nThese plugins are now up to date:\r\n- Site Kit by Google (from version 1.171.0 to 1.172.0) : https://wordpress.org/plugins/google-site-kit/\r\n\r\n\r\nIf you experience any issues or need support, the volunteers in the WordPress.org support forums may be able to help.\r\nhttps://wordpress.org/support/forums/\r\n\r\nThe WordPress Team\r\n\r\n"
+    },
+    {
+      "id": "2026-02-09-gravity-forms-to-pipedrive-debug-message",
+      "name": "Gravity Forms Debug Alert",
+      "category": "Development",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:47.886Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 1,
+        "duration": "0 days"
+      },
+      "sortOrder": 280,
+      "clientName": "The Facilities Group",
+      "clientEmail": "\"No Reply | The Facilites Group\" <noreply@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-07--purpleheartpools-com-login-authenticati",
+      "name": "[purpleheartpools.com] Login Authentication Code",
+      "category": "Operations",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:47.996Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 1,
+        "duration": "0 days"
+      },
+      "sortOrder": 290,
+      "clientName": "Purple Heart Pools",
+      "clientEmail": "WordPress <wordpress@purpleheartpools.com>",
+      "originalRequest": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\r\n<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" lang=\"en-US\">\r\n<head>\r\n\t<meta charset=\"UTF-8\">\r\n\t<meta content=\"width=device-width, initial-scale=1\" name=\"viewport\">\r\n\t<meta name=\"x-apple-disable-message-reformatting\">\r\n\t<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" charset=UTF-8>\r\n\t<meta content=\"telephone=no\" name=\"format-detection\">\r\n\t<title>Continue Logging On</title><!--[if (mso 16)]>\r\n\t<style type=\"text/css\">\r\n\t\ta {\r\n\t\t\ttext-decoration: none;\r\n\t\t}\r\n\t</style>\r\n\t<![endif]--><!--[if gte mso 9]>\r\n\t<style>sup {\r\n\t\tfont-size: 100% !important;\r\n\t}</style><![endif]--><!--[if gte mso 9]>\r\n\t<xml>\r\n\t\t<o:OfficeDocumentSettings>\r\n\t\t\t<o:AllowPNG></o:AllowPNG>\r\n\t\t\t<o:PixelsPerInch>96</o:PixelsPerInch>\r\n\t\t</o:OfficeDocumentSettings>\r\n\t</xml>\r\n\t<![endif]-->\r\n\t<style type=\"text/css\">\r\n\t\t#outlook a {\r\n\t\t\tpadding: 0;\r\n\t\t}\r\n\r\n\t\t"
+    },
+    {
+      "id": "2026-02-05-re-rna-web-form-update",
+      "name": "RNA web form update",
+      "category": "Development",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:48.130Z",
+      "notes": "Completed project. 2 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 2,
+        "emails": 5,
+        "duration": "1 days"
+      },
+      "sortOrder": 300,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-06-re-invoice-from-digital1010-invoice-inv-",
+      "name": "Invoice from Digital1010 (Invoice#: INV-002484)",
+      "category": "Operations",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:48.263Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 2,
+        "duration": "0 days"
+      },
+      "sortOrder": 310,
+      "clientName": "904 Family Law",
+      "clientEmail": "Ian Hurley <ian@904familylaw.com>",
+      "originalRequest": "The link is still not letting me in. \r\n\r\n \r\n\r\n \r\nThanks for your business. \r\n\r\nThe invoice INV-002484 is attached with this email. You can pay online for this invoice  just click the link and follow the instructions.\r\n\r\nHere's an overview of the invoice for your reference. \r\n\r\nInvoice Overview: \r\nInvoice # : INV-002484 \r\nDate : 02.01.2026 \r\nAmount : $470.00 \r\n\r\nThanks Again,\r\n\r\nDigital1010\r\n\r\n\r\n\r\n\r\nRegards\r\nDigital1010\r\n\r\nFrom: Billing & Information <message-service@sender.zohobooks.com>\r\nReply-To: <info@digital1010.com>\r\nDate: Sunday, February 1, 2026 at 6:02 AM\r\nTo: <ian@904familylaw.com>, <lana@904familylaw.com>\r\nCc: <msaad@digital1010.com>\r\nSubject: Invoice from Digital1010 (Invoice#: INV-002484)\r\n\r\n \r\n\r\n\r\n"
+    },
+    {
+      "id": "2026-02-04-re-tfg-sites-wordpress-core-version-6-9-",
+      "name": "TFG Sites WordPress core version (6.9.1) Update",
+      "category": "Development",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:48.367Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 2,
+        "duration": "0 days"
+      },
+      "sortOrder": 320,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Chris Harbach <charbach@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-02-fw-pipedrive-access",
+      "name": "Pipedrive access",
+      "category": "Operations",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:48.703Z",
+      "notes": "Completed project. 3 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 3,
+        "emails": 6,
+        "duration": "2 days"
+      },
+      "sortOrder": 330,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-03-fw-website-update",
+      "name": "Website Update",
+      "category": "Development",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:48.839Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 4,
+        "duration": "0 days"
+      },
+      "sortOrder": 340,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-02-re-tse-vanity-link-request",
+      "name": "TSE \"Vanity Link\" Request",
+      "category": "Development",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:49.000Z",
+      "notes": "Completed project. 2 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 2,
+        "emails": 5,
+        "duration": "1 days"
+      },
+      "sortOrder": 350,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Chris Harbach <charbach@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-02-re-vicki-sanetra-lead-shea-barret-united",
+      "name": "Vicki Sanetra Lead - Shea Barret - UnitedHQ",
+      "category": "Marketing",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:49.131Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 4,
+        "duration": "0 days"
+      },
+      "sortOrder": 360,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-01-23-re-campaign-results",
+      "name": "Campaign results",
+      "category": "Marketing",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:49.295Z",
+      "notes": "Completed project. 2 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 2,
+        "emails": 7,
+        "duration": "5 days"
+      },
+      "sortOrder": 370,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-01-27-gravity-forms-to-pipedrive-debug-message",
+      "name": "Gravity Forms Debug Alert",
+      "category": "Development",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:49.433Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 1,
+        "duration": "0 days"
+      },
+      "sortOrder": 380,
+      "clientName": "The Facilities Group",
+      "clientEmail": "\"No Reply | The Facilites Group\" <noreply@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-01-26-gravity-forms-to-pipedrive-debug-message",
+      "name": "Gravity Forms Debug Alert",
+      "category": "Development",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:49.532Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 1,
+        "duration": "0 days"
+      },
+      "sortOrder": 390,
+      "clientName": "The Facilities Group",
+      "clientEmail": "\"No Reply | The Facilites Group\" <noreply@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-01-23-re-folder-shared-with-you-univision-comp",
+      "name": "Folder shared with you: \"Univision Computers\"",
+      "category": "Operations",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:49.657Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 1,
+        "duration": "0 days"
+      },
+      "sortOrder": 400,
+      "clientName": "Univision Computers",
+      "clientEmail": "Christopher Sumner <christophers@univisioncomputers.com>",
+      "originalRequest": "Thanks!!\r\n\r\n\r\n\r\n\r\nChristopher Sumner | Owner\r\nchristophers@univisioncomputers.com<mailto:christophers@univisioncomputers.com>\r\nOffice: 386-492-8876<tel:386-492-8876> | Direct: 386-368-8232<tel:386-492-8876>\r\n118 1/2 N Woodland Blvd Ste 1 | Deland, FL 32720\r\nwww.univisioncomputers.com<http://www.univisioncomputers.com>\r\n        [cid:2024_crn_msp_500_vertical53x100_ec326969-4e77-41a8-9079-0627b3562d9a.jpg] <https://univisioncomputers.com/#award>\r\n\r\n[cid:emailsigfinal589x106tm_4215de32-1f5a-4fbb-ac66-316d9d2b17e9.png]\r\n\r\nCONFIDENTIALITY: The information contained in this e-mail message may be privileged and confidential information intended only for the use of the individual or entity named above. If the reader of this message is not the intended recipient, you are hereby notified that any dissemination, distribution, or copying of this information is strictly prohibited. If you have received this communication in error, please notify us immediately by e-mail or telephone and permanently "
+    },
+    {
+      "id": "2026-01-23-gravity-forms-to-pipedrive-debug-message",
+      "name": "Gravity Forms Debug Alert",
+      "category": "Development",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:49.787Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 1,
+        "duration": "0 days"
+      },
+      "sortOrder": 410,
+      "clientName": "The Facilities Group",
+      "clientEmail": "\"No Reply | The Facilites Group\" <noreply@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-01-21-gravity-forms-to-pipedrive-debug-message",
+      "name": "Gravity Forms Debug Alert",
+      "category": "Development",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:49.897Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 1,
+        "duration": "0 days"
+      },
+      "sortOrder": 420,
+      "clientName": "The Facilities Group",
+      "clientEmail": "\"No Reply | The Facilites Group\" <noreply@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-01-20-gravity-forms-to-pipedrive-debug-message",
+      "name": "Gravity Forms Debug Alert",
+      "category": "Development",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:50.009Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 1,
+        "duration": "0 days"
+      },
+      "sortOrder": 430,
+      "clientName": "The Facilities Group",
+      "clientEmail": "\"No Reply | The Facilites Group\" <noreply@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-01-20-gravity-forms-to-pipedrive-debug-message",
+      "name": "Gravity Forms Debug Alert",
+      "category": "Development",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:50.110Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 1,
+        "duration": "0 days"
+      },
+      "sortOrder": 440,
+      "clientName": "The Facilities Group",
+      "clientEmail": "\"No Reply | The Facilites Group\" <noreply@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-01-15-re-fw-victoria-arinze-mentioned-you-in-a",
+      "name": "FW: Victoria Arinze mentioned you in a Pipedrive note",
+      "category": "Operations",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:50.244Z",
+      "notes": "Completed project. 1 revision during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 1,
+        "emails": 6,
+        "duration": "6 days"
+      },
+      "sortOrder": 450,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-01-15-re-summit-service-group-website-contact-",
+      "name": "Summit Service Group Website Contact Updates",
+      "category": "Development",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:50.374Z",
+      "notes": "Completed project. 1 revision during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 1,
+        "emails": 6,
+        "duration": "2 days"
+      },
+      "sortOrder": 460,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Chris Harbach <charbach@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-01-15-gravity-forms-to-pipedrive-debug-message",
+      "name": "Gravity Forms Debug Alert",
+      "category": "Development",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:50.842Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 1,
+        "duration": "0 days"
+      },
+      "sortOrder": 470,
+      "clientName": "The Facilities Group",
+      "clientEmail": "\"No Reply | The Facilites Group\" <noreply@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-01-15-fw-csi-s-business-address-update",
+      "name": "CSI's Business Address Update",
+      "category": "Marketing",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:50.976Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 4,
+        "duration": "0 days"
+      },
+      "sortOrder": 480,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-01-15-declined-d1010-tfg-catch-up-call",
+      "name": "Declined: D1010/TFG - Catch Up Call",
+      "category": "Operations",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:51.067Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 1,
+        "duration": "0 days"
+      },
+      "sortOrder": 490,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-01-15-re-child-theme-and-editing",
+      "name": "Child Theme and Editing",
+      "category": "Operations",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:51.248Z",
+      "notes": "Completed project. 3 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 3,
+        "emails": 9,
+        "duration": "1 days"
+      },
+      "sortOrder": 500,
+      "clientName": "Univision Computers",
+      "clientEmail": "Jared Jordan <jaredj@univisioncomputers.com>",
+      "originalRequest": "https://youtu.be/A9k809WMfVk\r\n\r\nKinda how they have it setup. Its annoying but I doubt we will be able to get around the child theme.\r\n\r\n\r\nJared Jordan | Marketing Coordinator\r\nBook an Appointment<https://univisioncomputers.com/discoverycall/>\r\njaredj@univisioncomputers.com<mailto:jaredj@univisioncomputers.com>  |  +14067218876\r\n118 1/2 N Woodland Blvd Ste 1 | Deland, FL 32720\r\nwww.univisioncomputers.com<http://www.univisioncomputers.com>\r\n        [cid:2024_crn_msp_500_vertical53x100_f82c48e8-e2e9-4f1a-a65f-7da78a00ab15.jpg] <https://univisioncomputers.com/#award>\r\n\r\n[cid:emailsigfinal589x106tm_53b84ffb-989f-48d0-a0de-b45f90f3e5f6.png]\r\n\r\nCONFIDENTIALITY: The information contained in this e-mail message may be privileged and confidential information intended only for the use of the individual or entity named above. If the reader of this message is not the intended recipient, you are hereby notified that any dissemination, distribution, or copying of this information is strictly prohibi"
+    },
+    {
+      "id": "2026-01-14-fw-janitech-about-us",
+      "name": "Janitech About Us",
+      "category": "Operations",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:51.372Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 4,
+        "duration": "0 days"
+      },
+      "sortOrder": 510,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-01-14-re-lawsuit",
+      "name": "Lawsuit",
+      "category": "Operations",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:51.520Z",
+      "notes": "Completed project. 2 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 2,
+        "emails": 4,
+        "duration": "1 days"
+      },
+      "sortOrder": 520,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Paul Gargagliano <pgargagliano@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-01-13-re-invoice-from-digital1010-invoice-inv-",
+      "name": "Invoice from Digital1010 (Invoice#: INV-002478)",
+      "category": "Operations",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:51.817Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 2,
+        "duration": "0 days"
+      },
+      "sortOrder": 530,
+      "clientName": "Univision Computers",
+      "clientEmail": "Jared Jordan <jaredj@univisioncomputers.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-01-07-re-blog-removal-summit-service-group-web",
+      "name": "Blog removal - Summit Service Group website",
+      "category": "Development",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:51.982Z",
+      "notes": "Completed project. 3 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 3,
+        "emails": 8,
+        "duration": "6 days"
+      },
+      "sortOrder": 540,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-01-12-call-from-someone-in-miami",
+      "name": "Call from someone in Miami",
+      "category": "Operations",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:52.092Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 2,
+        "duration": "0 days"
+      },
+      "sortOrder": 550,
+      "clientName": "EBS Maintenance",
+      "clientEmail": "Mohammad Issa <missa@ebsmaintenance.com>",
+      "originalRequest": "Hi Michael,\r\n\r\nI got a call from someone stating that our business was showing up in the\r\nMiami area. He was calling about services in that area. Please advise\r\n\r\n\r\nBest Regards,\r\n\r\n*Mohammad Issa*\r\nPresident/CEO\r\n\r\n 23322 Peralta Dr. #1\r\n Laguna Hills, CA 92653\r\n O: 949.375.3305\r\n M: 949.275.2179\r\n missa@ebsmaintenance.com\r\n www.ebsmaintenance.com\r\n"
+    },
+    {
+      "id": "2026-01-12-fw-oss-website-change-needed",
+      "name": "OSS Website Change needed",
+      "category": "Development",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:52.217Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 3,
+        "duration": "0 days"
+      },
+      "sortOrder": 560,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-01-12-signing",
+      "name": "Signing",
+      "category": "Operations",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:52.326Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 4,
+        "duration": "0 days"
+      },
+      "sortOrder": 570,
+      "clientName": "Univision Computers",
+      "clientEmail": "Jared Jordan <jaredj@univisioncomputers.com>",
+      "originalRequest": "Do you have a online version to sign this contract lol\r\n\r\n\r\nJared Jordan | Marketing Coordinator\r\nBook an Appointment<https://univisioncomputers.com/discoverycall/>\r\njaredj@univisioncomputers.com<mailto:jaredj@univisioncomputers.com>  |  +14067218876\r\n118 1/2 N Woodland Blvd Ste 1 | Deland, FL 32720\r\nwww.univisioncomputers.com<http://www.univisioncomputers.com>\r\n        [cid:2024_crn_msp_500_vertical53x100_f82c48e8-e2e9-4f1a-a65f-7da78a00ab15.jpg] <https://univisioncomputers.com/#award>\r\n\r\n[cid:emailsigfinal589x106tm_53b84ffb-989f-48d0-a0de-b45f90f3e5f6.png]\r\n\r\nCONFIDENTIALITY: The information contained in this e-mail message may be privileged and confidential information intended only for the use of the individual or entity named above. If the reader of this message is not the intended recipient, you are hereby notified that any dissemination, distribution, or copying of this information is strictly prohibited. If you have received this communication in error, please notify us immedia"
+    },
+    {
+      "id": "2026-01-08-fw-seo-proposal-univisioncomputers-com",
+      "name": "SEO Proposal | univisioncomputers.com",
+      "category": "Marketing",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:52.784Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 1,
+        "duration": "0 days"
+      },
+      "sortOrder": 580,
+      "clientName": "Univision Computers",
+      "clientEmail": "Jared Jordan <jaredj@univisioncomputers.com>",
+      "originalRequest": "\r\n\r\n\r\n\r\nJared Jordan | Marketing Coordinator\r\nBook an Appointment<https://univisioncomputers.com/discoverycall/>\r\njaredj@univisioncomputers.com<mailto:jaredj@univisioncomputers.com>  |  +14067218876\r\n118 1/2 N Woodland Blvd Ste 1 | Deland, FL 32720\r\nwww.univisioncomputers.com<http://www.univisioncomputers.com>\r\n        [cid:2024_crn_msp_500_vertical53x100_f82c48e8-e2e9-4f1a-a65f-7da78a00ab15.jpg] <https://univisioncomputers.com/#award>\r\n\r\n[cid:emailsigfinal589x106tm_53b84ffb-989f-48d0-a0de-b45f90f3e5f6.png]\r\n\r\nCONFIDENTIALITY: The information contained in this e-mail message may be privileged and confidential information intended only for the use of the individual or entity named above. If the reader of this message is not the intended recipient, you are hereby notified that any dissemination, distribution, or copying of this information is strictly prohibited. If you have received this communication in error, please notify us immediately by e-mail or telephone and permanently delete t"
+    },
+    {
+      "id": "2026-01-06-re-web-adjustment",
+      "name": "Web adjustment",
+      "category": "Marketing",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:52.922Z",
+      "notes": "Completed project. 2 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 2,
+        "emails": 9,
+        "duration": "1 days"
+      },
+      "sortOrder": 590,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Victoria Arinze <varinze@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-01-07-re-google-business-logins",
+      "name": "Google business logins",
+      "category": "Operations",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:53.080Z",
+      "notes": "Completed project. 1 revision during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 1,
+        "emails": 5,
+        "duration": "1 days"
+      },
+      "sortOrder": 600,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-01-07-gravity-forms-to-pipedrive-debug-message",
+      "name": "Gravity Forms Debug Alert",
+      "category": "Development",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:53.187Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 1,
+        "duration": "0 days"
+      },
+      "sortOrder": 610,
+      "clientName": "The Facilities Group",
+      "clientEmail": "\"No Reply | The Facilites Group\" <noreply@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-01-07-gravity-forms-to-pipedrive-debug-message",
+      "name": "Gravity Forms Debug Alert",
+      "category": "Development",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:53.282Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 1,
+        "duration": "0 days"
+      },
+      "sortOrder": 620,
+      "clientName": "The Facilities Group",
+      "clientEmail": "\"No Reply | The Facilites Group\" <noreply@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-01-06-gravity-forms-to-pipedrive-debug-message",
+      "name": "Gravity Forms Debug Alert",
+      "category": "Development",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:53.418Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 1,
+        "duration": "0 days"
+      },
+      "sortOrder": 630,
+      "clientName": "The Facilities Group",
+      "clientEmail": "\"No Reply | The Facilites Group\" <noreply@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-01-05-gravity-forms-to-pipedrive-debug-message",
+      "name": "Gravity Forms Debug Alert",
+      "category": "Development",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:53.529Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 1,
+        "duration": "0 days"
+      },
+      "sortOrder": 640,
+      "clientName": "The Facilities Group",
+      "clientEmail": "\"No Reply | The Facilites Group\" <noreply@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2025-12-30-gravity-forms-to-pipedrive-debug-message",
+      "name": "Gravity Forms Debug Alert",
+      "category": "Development",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:53.623Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 1,
+        "duration": "0 days"
+      },
+      "sortOrder": 650,
+      "clientName": "The Facilities Group",
+      "clientEmail": "\"No Reply | The Facilites Group\" <noreply@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2025-12-30-usc-hotel-form",
+      "name": "USC hotel form",
+      "category": "Development",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:53.731Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 5,
+        "duration": "0 days"
+      },
+      "sortOrder": 660,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2025-12-24-digital-1010-seo-meeting",
+      "name": "Digital 1010 - SEO Meeting",
+      "category": "Marketing",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:53.830Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 1,
+        "duration": "0 days"
+      },
+      "sortOrder": 670,
+      "clientName": "Univision Computers",
+      "clientEmail": "Jared Jordan <jaredj@univisioncomputers.com>",
+      "originalRequest": "SEO services from Digital 1010 - Jax\r\n\r\n________________________________________________________________________________\r\nMicrosoft Teams Need help?<https://aka.ms/JoinTeamsMeeting?omkt=en-US>\r\nJoin the meeting now<https://teams.microsoft.com/l/meetup-join/19%3ameeting_OTUzZjAyZTUtZjI5Ny00OTE2LWE5YmMtMTU4NDE3MDQzNjI4%40thread.v2/0?context=%7b%22Tid%22%3a%22970acdb1-da52-4608-bda1-fd8021b08bf9%22%2c%22Oid%22%3a%226a2d6324-c0a6-4522-b7fd-dfb32f52cbc4%22%7d>\r\nMeeting ID: 294 812 102 881 68\r\nPasscode: XH6Ce6yq\r\n________________________________\r\nFor organizers: Meeting options<https://teams.microsoft.com/meetingOptions/?organizerId=6a2d6324-c0a6-4522-b7fd-dfb32f52cbc4&tenantId=970acdb1-da52-4608-bda1-fd8021b08bf9&threadId=19_meeting_OTUzZjAyZTUtZjI5Ny00OTE2LWE5YmMtMTU4NDE3MDQzNjI4@thread.v2&messageId=0&language=en-US>\r\n[https://univisioncomputers.com/wp-content/uploads/2018/12/logo.png]\r\n________________________________________________________________________________\r\n"
+    },
+    {
+      "id": "2025-12-19-re-for-review",
+      "name": "For review",
+      "category": "Operations",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:54.042Z",
+      "notes": "Completed project. 6 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 6,
+        "emails": 17,
+        "duration": "5 days"
+      },
+      "sortOrder": 680,
+      "clientName": "Univision Computers",
+      "clientEmail": "Jared Jordan <jaredj@univisioncomputers.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2025-12-23-re-new-service-request-forms-implementat",
+      "name": "New Service Request Forms - Implementation Plan for IT Team",
+      "category": "Development",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:54.383Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 31,
+        "duration": "0 days"
+      },
+      "sortOrder": 690,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Keaton Krumreich <kkrumreich@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2025-12-22-re-website-nhs",
+      "name": "Website- NHS",
+      "category": "Development",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:54.547Z",
+      "notes": "Completed project. 5 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 5,
+        "emails": 15,
+        "duration": "1 days"
+      },
+      "sortOrder": 700,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Victoria Arinze <varinze@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2025-12-22--purple-heart-pools-some-plugins-were-au",
+      "name": "[Purple Heart Pools] Some plugins were automatically updated",
+      "category": "Operations",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:54.719Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 1,
+        "duration": "0 days"
+      },
+      "sortOrder": 710,
+      "clientName": "Purple Heart Pools",
+      "clientEmail": "WordPress <wordpress@purpleheartpools.com>",
+      "originalRequest": "Howdy! Some plugins have automatically updated to their latest versions on your site at https://purpleheartpools.com. No further action is needed on your part.\r\n\r\n\r\nThese plugins are now up to date:\r\n- WooCommerce (from version 10.4.2 to 10.4.3) : https://wordpress.org/plugins/woocommerce/\r\n\r\n\r\nIf you experience any issues or need support, the volunteers in the WordPress.org support forums may be able to help.\r\nhttps://wordpress.org/support/forums/\r\n\r\nThe WordPress Team\r\n\r\n"
+    },
+    {
+      "id": "2025-12-21-gravity-forms-to-pipedrive-debug-message",
+      "name": "Gravity Forms Debug Alert",
+      "category": "Development",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:54.813Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 1,
+        "duration": "0 days"
+      },
+      "sortOrder": 720,
+      "clientName": "The Facilities Group",
+      "clientEmail": "\"No Reply | The Facilites Group\" <noreply@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2025-12-20-gravity-forms-to-pipedrive-debug-message",
+      "name": "Gravity Forms Debug Alert",
+      "category": "Development",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:54.936Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 1,
+        "duration": "0 days"
+      },
+      "sortOrder": 730,
+      "clientName": "The Facilities Group",
+      "clientEmail": "\"No Reply | The Facilites Group\" <noreply@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2025-12-20-gravity-forms-to-pipedrive-debug-message",
+      "name": "Gravity Forms Debug Alert",
+      "category": "Development",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:55.046Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 1,
+        "duration": "0 days"
+      },
+      "sortOrder": 740,
+      "clientName": "The Facilities Group",
+      "clientEmail": "\"No Reply | The Facilites Group\" <noreply@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2025-12-19-re-commercial-page-updates",
+      "name": "Commercial page updates",
+      "category": "Development",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:55.198Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 6,
+        "duration": "0 days"
+      },
+      "sortOrder": 750,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2025-12-19-gravity-forms-to-pipedrive-debug-message",
+      "name": "Gravity Forms Debug Alert",
+      "category": "Development",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:55.316Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 1,
+        "duration": "0 days"
+      },
+      "sortOrder": 760,
+      "clientName": "The Facilities Group",
+      "clientEmail": "\"No Reply | The Facilites Group\" <noreply@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-12-gravity-forms-to-pipedrive-debug-message",
+      "name": "Gravity Forms Debug Alert",
+      "category": "Development",
+      "status": "in-progress",
+      "priority": "P2",
+      "owner": "Saad",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-12T16:49:55.323Z",
+      "notes": "Client request: Gravity Forms to Pipedrive debug message: 2026-01-05 19:02:25 on https://thefacilitiesgroup.com",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770914995320-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/The-Facilities-Group/2026-02-12-gravity-forms-to-pipedrive-debug-message",
+          "type": "document",
+          "timestamp": "2026-02-12T16:49:55.320Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from \"No Reply | The Facilites Group\" <noreply@thefacilitiesgroup.com>. Work type: Website Development. Urgency: 2/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "2/5",
+        "workType": "Website Development"
+      },
+      "sortOrder": 770,
+      "clientName": "The Facilities Group",
+      "clientEmail": "\"No Reply | The Facilites Group\" <noreply@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-12-re-december-seo-and-analytics-reports",
+      "name": "December SEO and analytics reports",
+      "category": "Development",
+      "status": "in-progress",
+      "priority": "P0",
+      "owner": "Saad",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-12T16:49:55.327Z",
+      "notes": "Client request: Re: December SEO and analytics reports",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770914995326-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/EBS-Maintenance/2026-02-12-re-december-seo-and-analytics-reports",
+          "type": "document",
+          "timestamp": "2026-02-12T16:49:55.327Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Fatima Quraishi <fatima@ebsmaintenance.com>. Work type: Website Development. Urgency: 4/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "4/5",
+        "workType": "Website Development"
+      },
+      "sortOrder": 780,
+      "clientName": "EBS Maintenance",
+      "clientEmail": "Fatima Quraishi <fatima@ebsmaintenance.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-12-gravity-forms-to-pipedrive-debug-message",
+      "name": "Gravity Forms Debug Alert",
+      "category": "Development",
+      "status": "in-progress",
+      "priority": "P2",
+      "owner": "Saad",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-12T16:49:55.330Z",
+      "notes": "Client request: Gravity Forms to Pipedrive debug message: 2026-01-06 17:21:43 on https://thefacilitiesgroup.com",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770914995330-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/The-Facilities-Group/2026-02-12-gravity-forms-to-pipedrive-debug-message",
+          "type": "document",
+          "timestamp": "2026-02-12T16:49:55.330Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from \"No Reply | The Facilites Group\" <noreply@thefacilitiesgroup.com>. Work type: Website Development. Urgency: 2/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "2/5",
+        "workType": "Website Development"
+      },
+      "sortOrder": 790,
+      "clientName": "The Facilities Group",
+      "clientEmail": "\"No Reply | The Facilites Group\" <noreply@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-12-re-web-adjustment",
+      "name": "Web adjustment",
+      "category": "Marketing",
+      "status": "in-progress",
+      "priority": "P0",
+      "owner": "Otto",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-12T16:49:55.333Z",
+      "notes": "Client request: Re: Web adjustment",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770914995332-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/The-Facilities-Group/2026-02-12-re-web-adjustment",
+          "type": "document",
+          "timestamp": "2026-02-12T16:49:55.332Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Victoria Arinze <varinze@thefacilitiesgroup.com>. Work type: Ads. Urgency: 4/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "4/5",
+        "workType": "Ads"
+      },
+      "sortOrder": 800,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Victoria Arinze <varinze@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-12-gravity-forms-to-pipedrive-debug-message",
+      "name": "Gravity Forms Debug Alert",
+      "category": "Development",
+      "status": "in-progress",
+      "priority": "P2",
+      "owner": "Saad",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-12T16:49:55.336Z",
+      "notes": "Client request: Gravity Forms to Pipedrive debug message: 2026-01-07 16:30:02 on https://thefacilitiesgroup.com",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770914995335-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/The-Facilities-Group/2026-02-12-gravity-forms-to-pipedrive-debug-message",
+          "type": "document",
+          "timestamp": "2026-02-12T16:49:55.335Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from \"No Reply | The Facilites Group\" <noreply@thefacilitiesgroup.com>. Work type: Website Development. Urgency: 2/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "2/5",
+        "workType": "Website Development"
+      },
+      "sortOrder": 810,
+      "clientName": "The Facilities Group",
+      "clientEmail": "\"No Reply | The Facilites Group\" <noreply@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-12-re-blog-removal-summit-service-group-web",
+      "name": "Blog removal - Summit Service Group website",
+      "category": "Development",
+      "status": "in-progress",
+      "priority": "P0",
+      "owner": "Saad",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-12T16:49:55.338Z",
+      "notes": "Client request: RE: Blog removal - Summit Service Group website",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770914995338-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/The-Facilities-Group/2026-02-12-re-blog-removal-summit-service-group-web",
+          "type": "document",
+          "timestamp": "2026-02-12T16:49:55.338Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Janice Areskog <jareskog@thefacilitiesgroup.com>. Work type: Website Development. Urgency: 4/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "4/5",
+        "workType": "Website Development"
+      },
+      "sortOrder": 820,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-12-re-google-business-logins",
+      "name": "Google business logins",
+      "category": "Operations",
+      "status": "in-progress",
+      "priority": "P1",
+      "owner": "Mo",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-12T16:49:55.342Z",
+      "notes": "Client request: RE: Google business logins",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770914995341-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/The-Facilities-Group/2026-02-12-re-google-business-logins",
+          "type": "document",
+          "timestamp": "2026-02-12T16:49:55.341Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Janice Areskog <jareskog@thefacilitiesgroup.com>. Work type: Support. Urgency: 3/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "3/5",
+        "workType": "Support"
+      },
+      "sortOrder": 830,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-12-fw-seo-proposal-univisioncomputers-com",
+      "name": "SEO Proposal | univisioncomputers.com",
+      "category": "Development",
+      "status": "in-progress",
+      "priority": "P2",
+      "owner": "Saad",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-12T16:49:55.345Z",
+      "notes": "Client request: FW: SEO Proposal | univisioncomputers.com",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770914995344-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/Univision-Computers/2026-02-12-fw-seo-proposal-univisioncomputers-com",
+          "type": "document",
+          "timestamp": "2026-02-12T16:49:55.344Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Jared Jordan <jaredj@univisioncomputers.com>. Work type: Website Development. Urgency: 2/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "2/5",
+        "workType": "Website Development"
+      },
+      "sortOrder": 840,
+      "clientName": "Univision Computers",
+      "clientEmail": "Jared Jordan <jaredj@univisioncomputers.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-12-fw-seo-proposal-univisioncomputers-com",
+      "name": "SEO Proposal | univisioncomputers.com",
+      "category": "Development",
+      "status": "in-progress",
+      "priority": "P2",
+      "owner": "Saad",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-12T16:50:34.311Z",
+      "notes": "Client request: FW: SEO Proposal | univisioncomputers.com",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034308-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/Univision-Computers/2026-02-12-fw-seo-proposal-univisioncomputers-com",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.308Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Jared Jordan <jaredj@univisioncomputers.com>. Work type: Website Development. Urgency: 2/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "2/5",
+        "workType": "Website Development"
+      },
+      "sortOrder": 850,
+      "clientName": "Univision Computers",
+      "clientEmail": "Jared Jordan <jaredj@univisioncomputers.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-12-re-invoice-from-digital1010-invoice-inv-",
+      "name": "Invoice from Digital1010 (Invoice#: INV-002467)",
+      "category": "Development",
+      "status": "in-progress",
+      "priority": "P1",
+      "owner": "Saad",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-12T16:50:34.315Z",
+      "notes": "Client request: Re: Invoice from Digital1010 (Invoice#: INV-002467)",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034314-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/904-Family-Law/2026-02-12-re-invoice-from-digital1010-invoice-inv-",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.314Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Ian Hurley <ian@904familylaw.com>. Work type: Website Development. Urgency: 3/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "3/5",
+        "workType": "Website Development"
+      },
+      "sortOrder": 860,
+      "clientName": "904 Family Law",
+      "clientEmail": "Ian Hurley <ian@904familylaw.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-12-call-from-someone-in-miami",
+      "name": "Call from someone in Miami",
+      "category": "Marketing",
+      "status": "in-progress",
+      "priority": "P2",
+      "owner": "Otto",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-12T16:50:34.318Z",
+      "notes": "Client request: Call from someone in Miami",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034318-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/EBS-Maintenance/2026-02-12-call-from-someone-in-miami",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.318Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Mohammad Issa <missa@ebsmaintenance.com>. Work type: Ads. Urgency: 2/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "2/5",
+        "workType": "Ads"
+      },
+      "sortOrder": 870,
+      "clientName": "EBS Maintenance",
+      "clientEmail": "Mohammad Issa <missa@ebsmaintenance.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-12-fw-oss-website-change-needed",
+      "name": "OSS Website Change needed",
+      "category": "Development",
+      "status": "in-progress",
+      "priority": "P2",
+      "owner": "Saad",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-12T16:50:34.321Z",
+      "notes": "Client request: FW: OSS Website Change needed",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034321-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/The-Facilities-Group/2026-02-12-fw-oss-website-change-needed",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.321Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Janice Areskog <jareskog@thefacilitiesgroup.com>. Work type: Website Development. Urgency: 2/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "2/5",
+        "workType": "Website Development"
+      },
+      "sortOrder": 880,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-12-signing",
+      "name": "Signing",
+      "category": "Development",
+      "status": "in-progress",
+      "priority": "P1",
+      "owner": "Saad",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-12T16:50:34.324Z",
+      "notes": "Client request: Signing",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034324-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/Univision-Computers/2026-02-12-signing",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.324Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Jared Jordan <jaredj@univisioncomputers.com>. Work type: Website Development. Urgency: 3/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "3/5",
+        "workType": "Website Development"
+      },
+      "sortOrder": 890,
+      "clientName": "Univision Computers",
+      "clientEmail": "Jared Jordan <jaredj@univisioncomputers.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-12-re-invoice-from-digital1010-invoice-inv-",
+      "name": "Invoice from Digital1010 (Invoice#: INV-002478)",
+      "category": "Operations",
+      "status": "in-progress",
+      "priority": "P2",
+      "owner": "Mo",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-12T16:50:34.328Z",
+      "notes": "Client request: RE: Invoice from Digital1010 (Invoice#: INV-002478)",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034327-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/Univision-Computers/2026-02-12-re-invoice-from-digital1010-invoice-inv-",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.327Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Jared Jordan <jaredj@univisioncomputers.com>. Work type: Support. Urgency: 2/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "2/5",
+        "workType": "Support"
+      },
+      "sortOrder": 900,
+      "clientName": "Univision Computers",
+      "clientEmail": "Jared Jordan <jaredj@univisioncomputers.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-12-fw-janitech-about-us",
+      "name": "Janitech About Us",
+      "category": "Operations",
+      "status": "in-progress",
+      "priority": "P1",
+      "owner": "Mo",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-12T16:50:34.332Z",
+      "notes": "Client request: FW: Janitech About Us",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034331-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/The-Facilities-Group/2026-02-12-fw-janitech-about-us",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.331Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Janice Areskog <jareskog@thefacilitiesgroup.com>. Work type: Support. Urgency: 3/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "3/5",
+        "workType": "Support"
+      },
+      "sortOrder": 910,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-12-notice-to-discontinue-seo-services",
+      "name": "Notice to Discontinue SEO Services",
+      "category": "Marketing",
+      "status": "in-progress",
+      "priority": "P2",
+      "owner": "Otto",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-12T16:50:34.335Z",
+      "notes": "Client request: Notice to Discontinue SEO Services",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034334-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/EBS-Maintenance/2026-02-12-notice-to-discontinue-seo-services",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.334Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Mohammad Issa <missa@ebsmaintenance.com>. Work type: SEO. Urgency: 2/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "2/5",
+        "workType": "SEO"
+      },
+      "sortOrder": 920,
+      "clientName": "EBS Maintenance",
+      "clientEmail": "Mohammad Issa <missa@ebsmaintenance.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-12-re-lawsuit",
+      "name": "Lawsuit",
+      "category": "Operations",
+      "status": "in-progress",
+      "priority": "P1",
+      "owner": "Mo",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-12T16:50:34.338Z",
+      "notes": "Client request: RE: Lawsuit",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034337-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/The-Facilities-Group/2026-02-12-re-lawsuit",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.337Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Paul Gargagliano <pgargagliano@thefacilitiesgroup.com>. Work type: Support. Urgency: 3/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "3/5",
+        "workType": "Support"
+      },
+      "sortOrder": 930,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Paul Gargagliano <pgargagliano@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-12-declined-d1010-tfg-catch-up-call",
+      "name": "Declined: D1010/TFG - Catch Up Call",
+      "category": "Operations",
+      "status": "in-progress",
+      "priority": "P2",
+      "owner": "Mo",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-12T16:50:34.341Z",
+      "notes": "Client request: Declined: D1010/TFG - Catch Up Call",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034340-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/The-Facilities-Group/2026-02-12-declined-d1010-tfg-catch-up-call",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.340Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Janice Areskog <jareskog@thefacilitiesgroup.com>. Work type: Support. Urgency: 2/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "2/5",
+        "workType": "Support"
+      },
+      "sortOrder": 940,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-12-fw-csi-s-business-address-update",
+      "name": "CSI's Business Address Update",
+      "category": "Marketing",
+      "status": "in-progress",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-12T16:50:34.345Z",
+      "notes": "Client request: FW: CSI's Business Address Update",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034343-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/The-Facilities-Group/2026-02-12-fw-csi-s-business-address-update",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.343Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Janice Areskog <jareskog@thefacilitiesgroup.com>. Work type: Ads. Urgency: 3/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "3/5",
+        "workType": "Ads"
+      },
+      "sortOrder": 950,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-12-gravity-forms-to-pipedrive-debug-message",
+      "name": "Gravity Forms Debug Alert",
+      "category": "Development",
+      "status": "in-progress",
+      "priority": "P2",
+      "owner": "Saad",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-12T16:50:34.348Z",
+      "notes": "Client request: Gravity Forms to Pipedrive debug message: 2026-01-15 19:34:00 on https://thefacilitiesgroup.com",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034347-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/The-Facilities-Group/2026-02-12-gravity-forms-to-pipedrive-debug-message",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.347Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from \"No Reply | The Facilites Group\" <noreply@thefacilitiesgroup.com>. Work type: Website Development. Urgency: 2/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "2/5",
+        "workType": "Website Development"
+      },
+      "sortOrder": 960,
+      "clientName": "The Facilities Group",
+      "clientEmail": "\"No Reply | The Facilites Group\" <noreply@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-12-re-child-theme-and-editing",
+      "name": "Child Theme and Editing",
+      "category": "Development",
+      "status": "in-progress",
+      "priority": "P0",
+      "owner": "Saad",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-12T16:50:34.351Z",
+      "notes": "Client request: RE: Child Theme and Editing",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034350-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/Univision-Computers/2026-02-12-re-child-theme-and-editing",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.350Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Jared Jordan <jaredj@univisioncomputers.com>. Work type: Website Development. Urgency: 4/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "4/5",
+        "workType": "Website Development"
+      },
+      "sortOrder": 970,
+      "clientName": "Univision Computers",
+      "clientEmail": "Jared Jordan <jaredj@univisioncomputers.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-12-re-fw-victoria-arinze-mentioned-you-in-a",
+      "name": "FW: Victoria Arinze mentioned you in a Pipedrive note",
+      "category": "Operations",
+      "status": "in-progress",
+      "priority": "P1",
+      "owner": "Mo",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-12T16:50:34.354Z",
+      "notes": "Client request: RE: FW: Victoria Arinze mentioned you in a Pipedrive note",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034353-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/The-Facilities-Group/2026-02-12-re-fw-victoria-arinze-mentioned-you-in-a",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.353Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Janice Areskog <jareskog@thefacilitiesgroup.com>. Work type: Support. Urgency: 3/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "3/5",
+        "workType": "Support"
+      },
+      "sortOrder": 980,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-12-re-summit-service-group-website-contact-",
+      "name": "Summit Service Group Website Contact Updates",
+      "category": "Development",
+      "status": "in-progress",
+      "priority": "P1",
+      "owner": "Saad",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-12T16:50:34.357Z",
+      "notes": "Client request: RE: Summit Service Group Website Contact Updates",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034356-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/The-Facilities-Group/2026-02-12-re-summit-service-group-website-contact-",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.356Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Chris Harbach <charbach@thefacilitiesgroup.com>. Work type: Website Development. Urgency: 3/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "3/5",
+        "workType": "Website Development"
+      },
+      "sortOrder": 990,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Chris Harbach <charbach@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-12-fw-mail-delivery-failed-returning-messag",
+      "name": "Mail delivery failed: returning message to sender",
+      "category": "Development",
+      "status": "in-progress",
+      "priority": "P2",
+      "owner": "Saad",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-12T16:50:34.360Z",
+      "notes": "Client request: FW: Mail delivery failed: returning message to sender",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034360-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/904-Family-Law/2026-02-12-fw-mail-delivery-failed-returning-messag",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.360Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Ian Hurley <ian@904familylaw.com>. Work type: Website Development. Urgency: 2/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "2/5",
+        "workType": "Website Development"
+      },
+      "sortOrder": 1000,
+      "clientName": "904 Family Law",
+      "clientEmail": "Ian Hurley <ian@904familylaw.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-12-re-invoice-from-digital1010-invoice-inv-",
+      "name": "Invoice from Digital1010 (Invoice#: INV-002480)",
+      "category": "Development",
+      "status": "in-progress",
+      "priority": "P1",
+      "owner": "Saad",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-12T16:50:34.364Z",
+      "notes": "Client request: Re: Invoice from Digital1010 (Invoice#: INV-002480)",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034364-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/904-Family-Law/2026-02-12-re-invoice-from-digital1010-invoice-inv-",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.364Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Ian Hurley <ian@904familylaw.com>. Work type: Website Development. Urgency: 3/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "3/5",
+        "workType": "Website Development"
+      },
+      "sortOrder": 1010,
+      "clientName": "904 Family Law",
+      "clientEmail": "Ian Hurley <ian@904familylaw.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-12-gravity-forms-to-pipedrive-debug-message",
+      "name": "Gravity Forms Debug Alert",
+      "category": "Development",
+      "status": "in-progress",
+      "priority": "P2",
+      "owner": "Saad",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-12T16:50:34.368Z",
+      "notes": "Client request: Gravity Forms to Pipedrive debug message: 2026-01-20 22:07:43 on https://thefacilitiesgroup.com",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034367-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/The-Facilities-Group/2026-02-12-gravity-forms-to-pipedrive-debug-message",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.367Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from \"No Reply | The Facilites Group\" <noreply@thefacilitiesgroup.com>. Work type: Website Development. Urgency: 2/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "2/5",
+        "workType": "Website Development"
+      },
+      "sortOrder": 1020,
+      "clientName": "The Facilities Group",
+      "clientEmail": "\"No Reply | The Facilites Group\" <noreply@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-12-gravity-forms-to-pipedrive-debug-message",
+      "name": "Gravity Forms Debug Alert",
+      "category": "Development",
+      "status": "in-progress",
+      "priority": "P2",
+      "owner": "Saad",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-12T16:50:34.372Z",
+      "notes": "Client request: Gravity Forms to Pipedrive debug message: 2026-01-21 02:25:06 on https://thefacilitiesgroup.com",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034371-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/The-Facilities-Group/2026-02-12-gravity-forms-to-pipedrive-debug-message",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.371Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from \"No Reply | The Facilites Group\" <noreply@thefacilitiesgroup.com>. Work type: Website Development. Urgency: 2/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "2/5",
+        "workType": "Website Development"
+      },
+      "sortOrder": 1030,
+      "clientName": "The Facilities Group",
+      "clientEmail": "\"No Reply | The Facilites Group\" <noreply@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-12-gravity-forms-to-pipedrive-debug-message",
+      "name": "Gravity Forms Debug Alert",
+      "category": "Development",
+      "status": "in-progress",
+      "priority": "P2",
+      "owner": "Saad",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-12T16:50:34.375Z",
+      "notes": "Client request: Gravity Forms to Pipedrive debug message: 2026-01-23 14:12:23 on https://thefacilitiesgroup.com",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034374-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/The-Facilities-Group/2026-02-12-gravity-forms-to-pipedrive-debug-message",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.374Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from \"No Reply | The Facilites Group\" <noreply@thefacilitiesgroup.com>. Work type: Website Development. Urgency: 2/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "2/5",
+        "workType": "Website Development"
+      },
+      "sortOrder": 1040,
+      "clientName": "The Facilities Group",
+      "clientEmail": "\"No Reply | The Facilites Group\" <noreply@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-12-re-campaign-results",
+      "name": "Campaign results",
+      "category": "Marketing",
+      "status": "in-progress",
+      "priority": "P0",
+      "owner": "Otto",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-12T16:50:34.379Z",
+      "notes": "Client request: RE: Campaign results",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034378-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/The-Facilities-Group/2026-02-12-re-campaign-results",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.378Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Janice Areskog <jareskog@thefacilitiesgroup.com>. Work type: Ads. Urgency: 4/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "4/5",
+        "workType": "Ads"
+      },
+      "sortOrder": 1050,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-12-re-folder-shared-with-you-univision-comp",
+      "name": "Folder shared with you: \"Univision Computers\"",
+      "category": "Development",
+      "status": "in-progress",
+      "priority": "P2",
+      "owner": "Saad",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-12T16:50:34.383Z",
+      "notes": "Client request: Re: Folder shared with you: \"Univision Computers\"",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034382-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/Univision-Computers/2026-02-12-re-folder-shared-with-you-univision-comp",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.382Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Christopher Sumner <christophers@univisioncomputers.com>. Work type: Website Development. Urgency: 2/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "2/5",
+        "workType": "Website Development"
+      },
+      "sortOrder": 1060,
+      "clientName": "Univision Computers",
+      "clientEmail": "Christopher Sumner <christophers@univisioncomputers.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-12-gravity-forms-to-pipedrive-debug-message",
+      "name": "Gravity Forms Debug Alert",
+      "category": "Development",
+      "status": "in-progress",
+      "priority": "P2",
+      "owner": "Saad",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-12T16:50:34.386Z",
+      "notes": "Client request: Gravity Forms to Pipedrive debug message: 2026-01-26 19:57:11 on https://thefacilitiesgroup.com",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034386-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/The-Facilities-Group/2026-02-12-gravity-forms-to-pipedrive-debug-message",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.386Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from \"No Reply | The Facilites Group\" <noreply@thefacilitiesgroup.com>. Work type: Website Development. Urgency: 2/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "2/5",
+        "workType": "Website Development"
+      },
+      "sortOrder": 1070,
+      "clientName": "The Facilities Group",
+      "clientEmail": "\"No Reply | The Facilites Group\" <noreply@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-12-re-invoice-from-digital1010-invoice-inv-",
+      "name": "Invoice from Digital1010 (Invoice#: INV-002482)",
+      "category": "Development",
+      "status": "in-progress",
+      "priority": "P2",
+      "owner": "Saad",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-12T16:50:34.389Z",
+      "notes": "Client request: Re: Invoice from Digital1010 (Invoice#: INV-002482)",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034388-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/Univision-Computers/2026-02-12-re-invoice-from-digital1010-invoice-inv-",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.388Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Christopher Sumner <christophers@univisioncomputers.com>. Work type: Website Development. Urgency: 2/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "2/5",
+        "workType": "Website Development"
+      },
+      "sortOrder": 1080,
+      "clientName": "Univision Computers",
+      "clientEmail": "Christopher Sumner <christophers@univisioncomputers.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-12-gravity-forms-to-pipedrive-debug-message",
+      "name": "Gravity Forms Debug Alert",
+      "category": "Development",
+      "status": "in-progress",
+      "priority": "P2",
+      "owner": "Saad",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-12T16:50:34.393Z",
+      "notes": "Client request: Gravity Forms to Pipedrive debug message: 2026-01-27 17:15:02 on https://thefacilitiesgroup.com",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034392-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/The-Facilities-Group/2026-02-12-gravity-forms-to-pipedrive-debug-message",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.392Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from \"No Reply | The Facilites Group\" <noreply@thefacilitiesgroup.com>. Work type: Website Development. Urgency: 2/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "2/5",
+        "workType": "Website Development"
+      },
+      "sortOrder": 1090,
+      "clientName": "The Facilities Group",
+      "clientEmail": "\"No Reply | The Facilites Group\" <noreply@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-12-fw-pipedrive-access",
+      "name": "Pipedrive access",
+      "category": "Operations",
+      "status": "in-progress",
+      "priority": "P1",
+      "owner": "Mo",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-12T16:50:34.400Z",
+      "notes": "Client request: FW: Pipedrive access",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034399-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/The-Facilities-Group/2026-02-12-fw-pipedrive-access",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.399Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Janice Areskog <jareskog@thefacilitiesgroup.com>. Work type: Support. Urgency: 3/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "3/5",
+        "workType": "Support"
+      },
+      "sortOrder": 1100,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-12-re-tse-vanity-link-request",
+      "name": "TSE \"Vanity Link\" Request",
+      "category": "Development",
+      "status": "in-progress",
+      "priority": "P1",
+      "owner": "Saad",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-12T16:50:34.406Z",
+      "notes": "Client request: Re: TSE \"Vanity Link\" Request",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034405-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/The-Facilities-Group/2026-02-12-re-tse-vanity-link-request",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.405Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Chris Harbach <charbach@thefacilitiesgroup.com>. Work type: Website Development. Urgency: 3/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "3/5",
+        "workType": "Website Development"
+      },
+      "sortOrder": 1110,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Chris Harbach <charbach@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-12-re-vicki-sanetra-lead-shea-barret-united",
+      "name": "Vicki Sanetra Lead - Shea Barret - UnitedHQ",
+      "category": "Operations",
+      "status": "in-progress",
+      "priority": "P1",
+      "owner": "Mo",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-12T16:50:34.410Z",
+      "notes": "Client request: RE: Vicki Sanetra Lead - Shea Barret - UnitedHQ",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034409-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/The-Facilities-Group/2026-02-12-re-vicki-sanetra-lead-shea-barret-united",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.409Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Janice Areskog <jareskog@thefacilitiesgroup.com>. Work type: Support. Urgency: 3/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "3/5",
+        "workType": "Support"
+      },
+      "sortOrder": 1120,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-12-fw-website-update",
+      "name": "Website Update",
+      "category": "Development",
+      "status": "in-progress",
+      "priority": "P1",
+      "owner": "Saad",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-12T16:50:34.415Z",
+      "notes": "Client request: FW: Website Update",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034414-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/The-Facilities-Group/2026-02-12-fw-website-update",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.414Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Janice Areskog <jareskog@thefacilitiesgroup.com>. Work type: Website Development. Urgency: 3/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "3/5",
+        "workType": "Website Development"
+      },
+      "sortOrder": 1130,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-12-re-tfg-sites-wordpress-core-version-6-9-",
+      "name": "TFG Sites WordPress core version (6.9.1) Update",
+      "category": "Development",
+      "status": "in-progress",
+      "priority": "P2",
+      "owner": "Saad",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-12T16:50:34.420Z",
+      "notes": "Client request: RE: TFG Sites WordPress core version (6.9.1) Update",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034418-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/The-Facilities-Group/2026-02-12-re-tfg-sites-wordpress-core-version-6-9-",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.418Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Chris Harbach <charbach@thefacilitiesgroup.com>. Work type: Website Development. Urgency: 2/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "2/5",
+        "workType": "Website Development"
+      },
+      "sortOrder": 1140,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Chris Harbach <charbach@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-12-re-rna-web-form-update",
+      "name": "RNA web form update",
+      "category": "Development",
+      "status": "in-progress",
+      "priority": "P1",
+      "owner": "Saad",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-12T16:50:34.424Z",
+      "notes": "Client request: RE: RNA web form update",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034423-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/The-Facilities-Group/2026-02-12-re-rna-web-form-update",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.423Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Janice Areskog <jareskog@thefacilitiesgroup.com>. Work type: Website Development. Urgency: 3/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "3/5",
+        "workType": "Website Development"
+      },
+      "sortOrder": 1150,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-12-re-invoice-from-digital1010-invoice-inv-",
+      "name": "Invoice from Digital1010 (Invoice#: INV-002484)",
+      "category": "Development",
+      "status": "in-progress",
+      "priority": "P2",
+      "owner": "Saad",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-12T16:50:34.429Z",
+      "notes": "Client request: Re: Invoice from Digital1010 (Invoice#: INV-002484)",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034428-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/904-Family-Law/2026-02-12-re-invoice-from-digital1010-invoice-inv-",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.428Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Ian Hurley <ian@904familylaw.com>. Work type: Website Development. Urgency: 2/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "2/5",
+        "workType": "Website Development"
+      },
+      "sortOrder": 1160,
+      "clientName": "904 Family Law",
+      "clientEmail": "Ian Hurley <ian@904familylaw.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-12-purpleheartpools-com-login-authenticatio",
+      "name": "[purpleheartpools.com] Login Authentication Code",
+      "category": "Development",
+      "status": "in-progress",
+      "priority": "P2",
+      "owner": "Saad",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-12T16:50:34.433Z",
+      "notes": "Client request: [purpleheartpools.com] Login Authentication Code",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034432-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/Purple-Heart-Pools/2026-02-12-purpleheartpools-com-login-authenticatio",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.432Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from WordPress <wordpress@purpleheartpools.com>. Work type: Website Development. Urgency: 2/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "2/5",
+        "workType": "Website Development"
+      },
+      "sortOrder": 1170,
+      "clientName": "Purple Heart Pools",
+      "clientEmail": "WordPress <wordpress@purpleheartpools.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-12-gravity-forms-to-pipedrive-debug-message",
+      "name": "Gravity Forms Debug Alert",
+      "category": "Development",
+      "status": "in-progress",
+      "priority": "P2",
+      "owner": "Saad",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-12T16:50:34.437Z",
+      "notes": "Client request: Gravity Forms to Pipedrive debug message: 2026-02-09 21:06:42 on https://thefacilitiesgroup.com",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034436-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/The-Facilities-Group/2026-02-12-gravity-forms-to-pipedrive-debug-message",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.436Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from \"No Reply | The Facilites Group\" <noreply@thefacilitiesgroup.com>. Work type: Website Development. Urgency: 2/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "2/5",
+        "workType": "Website Development"
+      },
+      "sortOrder": 1180,
+      "clientName": "The Facilities Group",
+      "clientEmail": "\"No Reply | The Facilites Group\" <noreply@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-12-gravity-forms-to-pipedrive-debug-message",
+      "name": "Gravity Forms Debug Alert",
+      "category": "Development",
+      "status": "in-progress",
+      "priority": "P2",
+      "owner": "Saad",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-12T16:50:34.441Z",
+      "notes": "Client request: Gravity Forms to Pipedrive debug message: 2026-02-10 14:10:04 on https://thefacilitiesgroup.com",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034440-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/The-Facilities-Group/2026-02-12-gravity-forms-to-pipedrive-debug-message",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.440Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from \"No Reply | The Facilites Group\" <noreply@thefacilitiesgroup.com>. Work type: Website Development. Urgency: 2/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "2/5",
+        "workType": "Website Development"
+      },
+      "sortOrder": 1190,
+      "clientName": "The Facilities Group",
+      "clientEmail": "\"No Reply | The Facilites Group\" <noreply@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-12-purple-heart-pools-some-plugins-were-aut",
+      "name": "[Purple Heart Pools] Some plugins were automatically updated",
+      "category": "Development",
+      "status": "in-progress",
+      "priority": "P2",
+      "owner": "Saad",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-12T16:50:34.446Z",
+      "notes": "Client request: [Purple Heart Pools] Some plugins were automatically updated",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034445-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/Purple-Heart-Pools/2026-02-12-purple-heart-pools-some-plugins-were-aut",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.445Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from WordPress <wordpress@purpleheartpools.com>. Work type: Website Development. Urgency: 2/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "2/5",
+        "workType": "Website Development"
+      },
+      "sortOrder": 1200,
+      "clientName": "Purple Heart Pools",
+      "clientEmail": "WordPress <wordpress@purpleheartpools.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-12-re-brand-landing-page",
+      "name": "Brand landing page",
+      "category": "Development",
+      "status": "in-progress",
+      "priority": "P0",
+      "owner": "Saad",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-12T16:50:34.450Z",
+      "notes": "Client request: RE: Brand landing page",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034449-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/The-Facilities-Group/2026-02-12-re-brand-landing-page",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.449Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Janice Areskog <jareskog@thefacilitiesgroup.com>. Work type: Website Development. Urgency: 4/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "4/5",
+        "workType": "Website Development"
+      },
+      "sortOrder": 1210,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-12-blocking-d1010-user-account-for-arnel",
+      "name": "Blocking D1010 User account for Arnel",
+      "category": "Operations",
+      "status": "in-progress",
+      "priority": "P2",
+      "owner": "Mo",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-12T16:50:34.455Z",
+      "notes": "Client request: Blocking D1010 User account for Arnel",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034454-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/The-Facilities-Group/2026-02-12-blocking-d1010-user-account-for-arnel",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.454Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from William Jones <wjones@thefacilitiesgroup.com>. Work type: Support. Urgency: 2/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "2/5",
+        "workType": "Support"
+      },
+      "sortOrder": 1220,
+      "clientName": "The Facilities Group",
+      "clientEmail": "William Jones <wjones@thefacilitiesgroup.com>",
+      "originalRequest": ""
+    },
+    {
+      "id": "2026-02-12-update-contact-form-on-rna-website",
+      "name": "Update contact form on RNA website",
+      "category": "Development",
+      "status": "in-progress",
+      "priority": "P0",
+      "owner": "Saad",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-12T16:50:34.458Z",
+      "notes": "Contact form on RNA Facilities Management website needs to be updated to include new service options dropdown and remove outdated phone number field.",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034458-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/The-Facilities-Group/2026-02-12-update-contact-form-on-rna-website",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.458Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from janice@thefacilitiesgroup.com. Work type: Website Development. Urgency: 4/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "4/5",
+        "workType": "Website Development"
+      },
+      "sortOrder": 1230,
+      "clientName": "The Facilities Group",
+      "clientEmail": "janice@thefacilitiesgroup.com",
+      "originalRequest": "\n\nHi team,\n\nWe need to make a quick update to the contact form on the RNA website (rnafacilitiesmanagement.com). \n\nChanges needed:\n- Add dropdown for \"Service Needed\" with options: Cleaning, Maintenance, Emergency Repair\n- Remove the \"Alternate Phone\" field (we don't use it anymore)\n- Update submit button text to \"Request Service\"\n\nThis is fairly urgent as we're getting questions from potential clients about what services we offer.\n\nThanks,\nJanice Areskog\nThe Facilities Group\n"
+    },
+    {
+      "id": "2026-02-12-need-google-ads-campaign-update",
+      "name": "Need Google Ads campaign update",
+      "category": "Marketing",
+      "status": "in-progress",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-12T16:50:34.464Z",
+      "notes": "Client needs Google Ads campaign updated with new keywords and budget adjustments. Campaign performance has decreased and they want to test new targeting.",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034463-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/Univision-Computers/2026-02-12-need-google-ads-campaign-update",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.463Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from jsmith@univisioncomputers.com. Work type: Ads. Urgency: 3/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "3/5",
+        "workType": "Ads"
+      },
+      "sortOrder": 1240,
+      "clientName": "Univision Computers",
+      "clientEmail": "jsmith@univisioncomputers.com",
+      "originalRequest": "\n\nHi Digital1010,\n\nWe've noticed our Google Ads performance has dropped in the last two weeks. Can you take a look at the campaigns and make some updates?\n\nWe'd like to:\n1. Add new keywords around \"computer repair near me\"\n2. Increase daily budget from $50 to $75\n3. Test a new ad copy focused on same-day service\n\nPlease let us know timeline and cost.\n\nThanks,\nJohn Smith\nUnivision Computers\n"
+    }
+  ],
+  "agents": [
+    {
+      "id": "otto",
+      "name": "Otto",
+      "emoji": "⚙️",
+      "status": "active",
+      "currentTask": "Operations dashboard deployed",
+      "tasksAssigned": 15,
+      "tasksCompleted": 8
+    },
+    {
+      "id": "joan",
+      "name": "Joan",
+      "emoji": "📰",
+      "status": "not-deployed",
+      "currentTask": null,
+      "tasksAssigned": 1,
+      "tasksCompleted": 0
+    }
+  ],
+  "activityFeed": [
+    {
+      "id": "act-1770915034464",
+      "timestamp": "2026-02-12T16:50:34.464Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "Univision Computers - Need Google Ads campaign update",
+      "type": "start"
+    },
+    {
+      "id": "act-1770915034458",
+      "timestamp": "2026-02-12T16:50:34.458Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - Update contact form on RNA website",
+      "type": "start"
+    },
+    {
+      "id": "act-1770915034455",
+      "timestamp": "2026-02-12T16:50:34.455Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - Blocking D1010 User account for Arnel",
+      "type": "start"
+    },
+    {
+      "id": "act-1770915034450",
+      "timestamp": "2026-02-12T16:50:34.450Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - RE: Brand landing page",
+      "type": "start"
+    },
+    {
+      "id": "act-1770915034446",
+      "timestamp": "2026-02-12T16:50:34.446Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "Purple Heart Pools - [Purple Heart Pools] Some plugins were automatically updated",
+      "type": "start"
+    },
+    {
+      "id": "act-1770915034441",
+      "timestamp": "2026-02-12T16:50:34.441Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - Gravity Forms to Pipedrive debug message: 2026-02-10 14:10:04 on https://thefacilitiesgroup.com",
+      "type": "start"
+    },
+    {
+      "id": "act-1770915034437",
+      "timestamp": "2026-02-12T16:50:34.437Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - Gravity Forms to Pipedrive debug message: 2026-02-09 21:06:42 on https://thefacilitiesgroup.com",
+      "type": "start"
+    },
+    {
+      "id": "act-1770915034433",
+      "timestamp": "2026-02-12T16:50:34.433Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "Purple Heart Pools - [purpleheartpools.com] Login Authentication Code",
+      "type": "start"
+    },
+    {
+      "id": "act-1770915034429",
+      "timestamp": "2026-02-12T16:50:34.429Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "904 Family Law - Re: Invoice from Digital1010 (Invoice#: INV-002484)",
+      "type": "start"
+    },
+    {
+      "id": "act-1770915034424",
+      "timestamp": "2026-02-12T16:50:34.424Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - RE: RNA web form update",
+      "type": "start"
+    },
+    {
+      "id": "act-1770915034420",
+      "timestamp": "2026-02-12T16:50:34.420Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - RE: TFG Sites WordPress core version (6.9.1) Update",
+      "type": "start"
+    },
+    {
+      "id": "act-1770915034415",
+      "timestamp": "2026-02-12T16:50:34.415Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - FW: Website Update",
+      "type": "start"
+    },
+    {
+      "id": "act-1770915034410",
+      "timestamp": "2026-02-12T16:50:34.410Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - RE: Vicki Sanetra Lead - Shea Barret - UnitedHQ",
+      "type": "start"
+    },
+    {
+      "id": "act-1770915034406",
+      "timestamp": "2026-02-12T16:50:34.406Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - Re: TSE \"Vanity Link\" Request",
+      "type": "start"
+    },
+    {
+      "id": "act-1770915034400",
+      "timestamp": "2026-02-12T16:50:34.400Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - FW: Pipedrive access",
+      "type": "start"
+    },
+    {
+      "id": "act-1770915034393",
+      "timestamp": "2026-02-12T16:50:34.393Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - Gravity Forms to Pipedrive debug message: 2026-01-27 17:15:02 on https://thefacilitiesgroup.com",
+      "type": "start"
+    },
+    {
+      "id": "act-1770915034389",
+      "timestamp": "2026-02-12T16:50:34.389Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "Univision Computers - Re: Invoice from Digital1010 (Invoice#: INV-002482)",
+      "type": "start"
+    },
+    {
+      "id": "act-1770915034386",
+      "timestamp": "2026-02-12T16:50:34.386Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - Gravity Forms to Pipedrive debug message: 2026-01-26 19:57:11 on https://thefacilitiesgroup.com",
+      "type": "start"
+    },
+    {
+      "id": "act-1770915034383",
+      "timestamp": "2026-02-12T16:50:34.383Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "Univision Computers - Re: Folder shared with you: \"Univision Computers\"",
+      "type": "start"
+    },
+    {
+      "id": "act-1770915034379",
+      "timestamp": "2026-02-12T16:50:34.379Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - RE: Campaign results",
+      "type": "start"
+    },
+    {
+      "id": "act-1770915034375",
+      "timestamp": "2026-02-12T16:50:34.375Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - Gravity Forms to Pipedrive debug message: 2026-01-23 14:12:23 on https://thefacilitiesgroup.com",
+      "type": "start"
+    },
+    {
+      "id": "act-1770915034372",
+      "timestamp": "2026-02-12T16:50:34.372Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - Gravity Forms to Pipedrive debug message: 2026-01-21 02:25:06 on https://thefacilitiesgroup.com",
+      "type": "start"
+    },
+    {
+      "id": "act-1770915034368",
+      "timestamp": "2026-02-12T16:50:34.368Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - Gravity Forms to Pipedrive debug message: 2026-01-20 22:07:43 on https://thefacilitiesgroup.com",
+      "type": "start"
+    },
+    {
+      "id": "act-1770915034364",
+      "timestamp": "2026-02-12T16:50:34.364Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "904 Family Law - Re: Invoice from Digital1010 (Invoice#: INV-002480)",
+      "type": "start"
+    },
+    {
+      "id": "act-1770915034360",
+      "timestamp": "2026-02-12T16:50:34.360Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "904 Family Law - FW: Mail delivery failed: returning message to sender",
+      "type": "start"
+    },
+    {
+      "id": "act-1770915034357",
+      "timestamp": "2026-02-12T16:50:34.357Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - RE: Summit Service Group Website Contact Updates",
+      "type": "start"
+    },
+    {
+      "id": "act-1770915034354",
+      "timestamp": "2026-02-12T16:50:34.354Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - RE: FW: Victoria Arinze mentioned you in a Pipedrive note",
+      "type": "start"
+    },
+    {
+      "id": "act-1770915034351",
+      "timestamp": "2026-02-12T16:50:34.351Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "Univision Computers - RE: Child Theme and Editing",
+      "type": "start"
+    },
+    {
+      "id": "act-1770915034348",
+      "timestamp": "2026-02-12T16:50:34.348Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - Gravity Forms to Pipedrive debug message: 2026-01-15 19:34:00 on https://thefacilitiesgroup.com",
+      "type": "start"
+    },
+    {
+      "id": "act-1770915034345",
+      "timestamp": "2026-02-12T16:50:34.345Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - FW: CSI's Business Address Update",
+      "type": "start"
+    },
+    {
+      "id": "act-1770915034341",
+      "timestamp": "2026-02-12T16:50:34.341Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - Declined: D1010/TFG - Catch Up Call",
+      "type": "start"
+    },
+    {
+      "id": "act-1770915034338",
+      "timestamp": "2026-02-12T16:50:34.338Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - RE: Lawsuit",
+      "type": "start"
+    },
+    {
+      "id": "act-1770915034335",
+      "timestamp": "2026-02-12T16:50:34.335Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "EBS Maintenance - Notice to Discontinue SEO Services",
+      "type": "start"
+    },
+    {
+      "id": "act-1770915034332",
+      "timestamp": "2026-02-12T16:50:34.332Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - FW: Janitech About Us",
+      "type": "start"
+    },
+    {
+      "id": "act-1770915034328",
+      "timestamp": "2026-02-12T16:50:34.328Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "Univision Computers - RE: Invoice from Digital1010 (Invoice#: INV-002478)",
+      "type": "start"
+    },
+    {
+      "id": "act-1770915034324",
+      "timestamp": "2026-02-12T16:50:34.324Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "Univision Computers - Signing",
+      "type": "start"
+    },
+    {
+      "id": "act-1770915034321",
+      "timestamp": "2026-02-12T16:50:34.321Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - FW: OSS Website Change needed",
+      "type": "start"
+    },
+    {
+      "id": "act-1770915034318",
+      "timestamp": "2026-02-12T16:50:34.318Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "EBS Maintenance - Call from someone in Miami",
+      "type": "start"
+    },
+    {
+      "id": "act-1770915034315",
+      "timestamp": "2026-02-12T16:50:34.315Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "904 Family Law - Re: Invoice from Digital1010 (Invoice#: INV-002467)",
+      "type": "start"
+    },
+    {
+      "id": "act-1770915034311",
+      "timestamp": "2026-02-12T16:50:34.311Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "Univision Computers - FW: SEO Proposal | univisioncomputers.com",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914995345",
+      "timestamp": "2026-02-12T16:49:55.345Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "Univision Computers - FW: SEO Proposal | univisioncomputers.com",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914995342",
+      "timestamp": "2026-02-12T16:49:55.342Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - RE: Google business logins",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914995338",
+      "timestamp": "2026-02-12T16:49:55.338Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - RE: Blog removal - Summit Service Group website",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914995336",
+      "timestamp": "2026-02-12T16:49:55.336Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - Gravity Forms to Pipedrive debug message: 2026-01-07 16:30:02 on https://thefacilitiesgroup.com",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914995333",
+      "timestamp": "2026-02-12T16:49:55.333Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - Re: Web adjustment",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914995330",
+      "timestamp": "2026-02-12T16:49:55.330Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - Gravity Forms to Pipedrive debug message: 2026-01-06 17:21:43 on https://thefacilitiesgroup.com",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914995327",
+      "timestamp": "2026-02-12T16:49:55.327Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "EBS Maintenance - Re: December SEO and analytics reports",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914995323",
+      "timestamp": "2026-02-12T16:49:55.323Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - Gravity Forms to Pipedrive debug message: 2026-01-05 19:02:25 on https://thefacilitiesgroup.com",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914887544",
+      "timestamp": "2026-02-12T16:48:07.544Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - Blocking D1010 User account for Arnel",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914887533",
+      "timestamp": "2026-02-12T16:48:07.533Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - RE: Brand landing page",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914887522",
+      "timestamp": "2026-02-12T16:48:07.522Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "Purple Heart Pools - [Purple Heart Pools] Some plugins were automatically updated",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914887509",
+      "timestamp": "2026-02-12T16:48:07.509Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - Gravity Forms to Pipedrive debug message: 2026-02-10 14:10:04 on https://thefacilitiesgroup.com",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914887495",
+      "timestamp": "2026-02-12T16:48:07.495Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - Gravity Forms to Pipedrive debug message: 2026-02-09 21:06:42 on https://thefacilitiesgroup.com",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914887484",
+      "timestamp": "2026-02-12T16:48:07.484Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "Purple Heart Pools - [purpleheartpools.com] Login Authentication Code",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914887475",
+      "timestamp": "2026-02-12T16:48:07.475Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "904 Family Law - Re: Invoice from Digital1010 (Invoice#: INV-002484)",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914887462",
+      "timestamp": "2026-02-12T16:48:07.462Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - RE: RNA web form update",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914887449",
+      "timestamp": "2026-02-12T16:48:07.449Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - RE: TFG Sites WordPress core version (6.9.1) Update",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914887433",
+      "timestamp": "2026-02-12T16:48:07.433Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - FW: Website Update",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914887420",
+      "timestamp": "2026-02-12T16:48:07.420Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - RE: Vicki Sanetra Lead - Shea Barret - UnitedHQ",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914887410",
+      "timestamp": "2026-02-12T16:48:07.410Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - Re: TSE \"Vanity Link\" Request",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914887400",
+      "timestamp": "2026-02-12T16:48:07.400Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - FW: Pipedrive access",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914887391",
+      "timestamp": "2026-02-12T16:48:07.391Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - Gravity Forms to Pipedrive debug message: 2026-01-27 17:15:02 on https://thefacilitiesgroup.com",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914887378",
+      "timestamp": "2026-02-12T16:48:07.378Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "Univision Computers - Re: Invoice from Digital1010 (Invoice#: INV-002482)",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914887362",
+      "timestamp": "2026-02-12T16:48:07.362Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - Gravity Forms to Pipedrive debug message: 2026-01-26 19:57:11 on https://thefacilitiesgroup.com",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914887353",
+      "timestamp": "2026-02-12T16:48:07.353Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "Univision Computers - Re: Folder shared with you: \"Univision Computers\"",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914887343",
+      "timestamp": "2026-02-12T16:48:07.343Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - RE: Campaign results",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914887332",
+      "timestamp": "2026-02-12T16:48:07.332Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - Gravity Forms to Pipedrive debug message: 2026-01-23 14:12:23 on https://thefacilitiesgroup.com",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914887321",
+      "timestamp": "2026-02-12T16:48:07.321Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - Gravity Forms to Pipedrive debug message: 2026-01-21 02:25:06 on https://thefacilitiesgroup.com",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914887309",
+      "timestamp": "2026-02-12T16:48:07.309Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - Gravity Forms to Pipedrive debug message: 2026-01-20 22:07:43 on https://thefacilitiesgroup.com",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914887302",
+      "timestamp": "2026-02-12T16:48:07.302Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "904 Family Law - Re: Invoice from Digital1010 (Invoice#: INV-002480)",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914887293",
+      "timestamp": "2026-02-12T16:48:07.293Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "904 Family Law - FW: Mail delivery failed: returning message to sender",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914887280",
+      "timestamp": "2026-02-12T16:48:07.280Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - RE: Summit Service Group Website Contact Updates",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914887271",
+      "timestamp": "2026-02-12T16:48:07.271Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - RE: FW: Victoria Arinze mentioned you in a Pipedrive note",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914887264",
+      "timestamp": "2026-02-12T16:48:07.264Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "Univision Computers - RE: Child Theme and Editing",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914887254",
+      "timestamp": "2026-02-12T16:48:07.254Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - Gravity Forms to Pipedrive debug message: 2026-01-15 19:34:00 on https://thefacilitiesgroup.com",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914887245",
+      "timestamp": "2026-02-12T16:48:07.245Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - FW: CSI's Business Address Update",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914887238",
+      "timestamp": "2026-02-12T16:48:07.238Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - Declined: D1010/TFG - Catch Up Call",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914887230",
+      "timestamp": "2026-02-12T16:48:07.230Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - RE: Lawsuit",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914887222",
+      "timestamp": "2026-02-12T16:48:07.222Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "EBS Maintenance - Notice to Discontinue SEO Services",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914887215",
+      "timestamp": "2026-02-12T16:48:07.215Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - FW: Janitech About Us",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914887207",
+      "timestamp": "2026-02-12T16:48:07.207Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "Univision Computers - RE: Invoice from Digital1010 (Invoice#: INV-002478)",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914887199",
+      "timestamp": "2026-02-12T16:48:07.199Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "Univision Computers - Signing",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914887192",
+      "timestamp": "2026-02-12T16:48:07.192Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - FW: OSS Website Change needed",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914887184",
+      "timestamp": "2026-02-12T16:48:07.184Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "EBS Maintenance - Call from someone in Miami",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914887177",
+      "timestamp": "2026-02-12T16:48:07.177Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "904 Family Law - Re: Invoice from Digital1010 (Invoice#: INV-002467)",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914887170",
+      "timestamp": "2026-02-12T16:48:07.170Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "Univision Computers - FW: SEO Proposal | univisioncomputers.com",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914887161",
+      "timestamp": "2026-02-12T16:48:07.161Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - RE: Google business logins",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914887152",
+      "timestamp": "2026-02-12T16:48:07.152Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - RE: Blog removal - Summit Service Group website",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914887141",
+      "timestamp": "2026-02-12T16:48:07.141Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - Gravity Forms to Pipedrive debug message: 2026-01-07 16:30:02 on https://thefacilitiesgroup.com",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914887134",
+      "timestamp": "2026-02-12T16:48:07.134Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - Re: Web adjustment",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914887130",
+      "timestamp": "2026-02-12T16:48:07.130Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - Gravity Forms to Pipedrive debug message: 2026-01-06 17:21:43 on https://thefacilitiesgroup.com",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914887126",
+      "timestamp": "2026-02-12T16:48:07.126Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "EBS Maintenance - Re: December SEO and analytics reports",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914887122",
+      "timestamp": "2026-02-12T16:48:07.122Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - Gravity Forms to Pipedrive debug message: 2026-01-05 19:02:25 on https://thefacilitiesgroup.com",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914515316",
+      "timestamp": "2026-02-12T16:41:55.316Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "The Facilities Group - Gravity Forms to Pipedrive debug message: 2025-12-19 07:56:38 on https://thefacilitiesgroup.com",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914515198",
+      "timestamp": "2026-02-12T16:41:55.198Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "The Facilities Group - RE: Commercial page updates",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914515046",
+      "timestamp": "2026-02-12T16:41:55.046Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "The Facilities Group - Gravity Forms to Pipedrive debug message: 2025-12-20 04:12:48 on https://thefacilitiesgroup.com",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914514936",
+      "timestamp": "2026-02-12T16:41:54.936Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "The Facilities Group - Gravity Forms to Pipedrive debug message: 2025-12-20 11:36:16 on https://thefacilitiesgroup.com",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914514813",
+      "timestamp": "2026-02-12T16:41:54.813Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "The Facilities Group - Gravity Forms to Pipedrive debug message: 2025-12-21 13:59:50 on https://thefacilitiesgroup.com",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914514719",
+      "timestamp": "2026-02-12T16:41:54.719Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "Purple Heart Pools - [Purple Heart Pools] Some plugins were automatically updated",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914514548",
+      "timestamp": "2026-02-12T16:41:54.548Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "The Facilities Group - Re: website- NHS",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914514383",
+      "timestamp": "2026-02-12T16:41:54.383Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "The Facilities Group - RE: New Service Request Forms - Implementation Plan for IT Team",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914514042",
+      "timestamp": "2026-02-12T16:41:54.042Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "Univision Computers - RE: For review",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914513830",
+      "timestamp": "2026-02-12T16:41:53.830Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "Univision Computers - Digital 1010 - SEO Meeting",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914513731",
+      "timestamp": "2026-02-12T16:41:53.731Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "The Facilities Group - USC hotel form",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914513623",
+      "timestamp": "2026-02-12T16:41:53.623Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "The Facilities Group - Gravity Forms to Pipedrive debug message: 2025-12-30 17:51:47 on https://thefacilitiesgroup.com",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914513529",
+      "timestamp": "2026-02-12T16:41:53.529Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "The Facilities Group - Gravity Forms to Pipedrive debug message: 2026-01-05 19:02:25 on https://thefacilitiesgroup.com",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914513418",
+      "timestamp": "2026-02-12T16:41:53.418Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "The Facilities Group - Gravity Forms to Pipedrive debug message: 2026-01-06 17:21:43 on https://thefacilitiesgroup.com",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914513282",
+      "timestamp": "2026-02-12T16:41:53.282Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "The Facilities Group - Gravity Forms to Pipedrive debug message: 2026-01-07 01:01:04 on https://thefacilitiesgroup.com",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914513187",
+      "timestamp": "2026-02-12T16:41:53.187Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "The Facilities Group - Gravity Forms to Pipedrive debug message: 2026-01-07 16:30:02 on https://thefacilitiesgroup.com",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914513080",
+      "timestamp": "2026-02-12T16:41:53.080Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "The Facilities Group - RE: Google business logins",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914512922",
+      "timestamp": "2026-02-12T16:41:52.922Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "The Facilities Group - Re: Web adjustment",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914512784",
+      "timestamp": "2026-02-12T16:41:52.784Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "Univision Computers - FW: SEO Proposal | univisioncomputers.com",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914512326",
+      "timestamp": "2026-02-12T16:41:52.326Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "Univision Computers - Signing",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914512217",
+      "timestamp": "2026-02-12T16:41:52.217Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "The Facilities Group - FW: OSS Website Change needed",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914512092",
+      "timestamp": "2026-02-12T16:41:52.092Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "EBS Maintenance - Call from someone in Miami",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914511982",
+      "timestamp": "2026-02-12T16:41:51.982Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "The Facilities Group - RE: Blog removal - Summit Service Group website",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914511817",
+      "timestamp": "2026-02-12T16:41:51.817Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "Univision Computers - RE: Invoice from Digital1010 (Invoice#: INV-002478)",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914511520",
+      "timestamp": "2026-02-12T16:41:51.520Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "The Facilities Group - RE: Lawsuit",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914511372",
+      "timestamp": "2026-02-12T16:41:51.372Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "The Facilities Group - FW: Janitech About Us",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914511248",
+      "timestamp": "2026-02-12T16:41:51.248Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "Univision Computers - RE: Child Theme and Editing",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914511067",
+      "timestamp": "2026-02-12T16:41:51.067Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "The Facilities Group - Declined: D1010/TFG - Catch Up Call",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914510976",
+      "timestamp": "2026-02-12T16:41:50.976Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "The Facilities Group - FW: CSI's Business Address Update",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914510842",
+      "timestamp": "2026-02-12T16:41:50.842Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "The Facilities Group - Gravity Forms to Pipedrive debug message: 2026-01-15 19:34:00 on https://thefacilitiesgroup.com",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914510374",
+      "timestamp": "2026-02-12T16:41:50.374Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "The Facilities Group - RE: Summit Service Group Website Contact Updates",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914510244",
+      "timestamp": "2026-02-12T16:41:50.244Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "The Facilities Group - RE: FW: Victoria Arinze mentioned you in a Pipedrive note",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914510110",
+      "timestamp": "2026-02-12T16:41:50.110Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "The Facilities Group - Gravity Forms to Pipedrive debug message: 2026-01-20 20:41:50 on https://thefacilitiesgroup.com",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914510009",
+      "timestamp": "2026-02-12T16:41:50.009Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "The Facilities Group - Gravity Forms to Pipedrive debug message: 2026-01-20 22:07:43 on https://thefacilitiesgroup.com",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914509897",
+      "timestamp": "2026-02-12T16:41:49.897Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "The Facilities Group - Gravity Forms to Pipedrive debug message: 2026-01-21 02:25:06 on https://thefacilitiesgroup.com",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914509787",
+      "timestamp": "2026-02-12T16:41:49.787Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "The Facilities Group - Gravity Forms to Pipedrive debug message: 2026-01-23 14:12:23 on https://thefacilitiesgroup.com",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914509657",
+      "timestamp": "2026-02-12T16:41:49.657Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "Univision Computers - Re: Folder shared with you: \"Univision Computers\"",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914509532",
+      "timestamp": "2026-02-12T16:41:49.532Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "The Facilities Group - Gravity Forms to Pipedrive debug message: 2026-01-26 19:57:11 on https://thefacilitiesgroup.com",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914509433",
+      "timestamp": "2026-02-12T16:41:49.433Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "The Facilities Group - Gravity Forms to Pipedrive debug message: 2026-01-27 17:15:02 on https://thefacilitiesgroup.com",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914509295",
+      "timestamp": "2026-02-12T16:41:49.295Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "The Facilities Group - RE: Campaign results",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914509131",
+      "timestamp": "2026-02-12T16:41:49.131Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "The Facilities Group - RE: Vicki Sanetra Lead - Shea Barret - UnitedHQ",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914509000",
+      "timestamp": "2026-02-12T16:41:49.000Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "The Facilities Group - Re: TSE \"Vanity Link\" Request",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914508839",
+      "timestamp": "2026-02-12T16:41:48.839Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "The Facilities Group - FW: Website Update",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914508703",
+      "timestamp": "2026-02-12T16:41:48.703Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "The Facilities Group - FW: Pipedrive access",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914508367",
+      "timestamp": "2026-02-12T16:41:48.367Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "The Facilities Group - RE: TFG Sites WordPress core version (6.9.1) Update",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914508263",
+      "timestamp": "2026-02-12T16:41:48.263Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "904 Family Law - Re: Invoice from Digital1010 (Invoice#: INV-002484)",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914508130",
+      "timestamp": "2026-02-12T16:41:48.130Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "The Facilities Group - RE: RNA web form update",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914507996",
+      "timestamp": "2026-02-12T16:41:47.996Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "Purple Heart Pools - [purpleheartpools.com] Login Authentication Code",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914507886",
+      "timestamp": "2026-02-12T16:41:47.886Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "The Facilities Group - Gravity Forms to Pipedrive debug message: 2026-02-09 21:06:42 on https://thefacilitiesgroup.com",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914507793",
+      "timestamp": "2026-02-12T16:41:47.793Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "Purple Heart Pools - [Purple Heart Pools] Some plugins were automatically updated",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914507667",
+      "timestamp": "2026-02-12T16:41:47.667Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "The Facilities Group - Gravity Forms to Pipedrive debug message: 2026-02-10 14:10:04 on https://thefacilitiesgroup.com",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914507546",
+      "timestamp": "2026-02-12T16:41:47.546Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "The Facilities Group - RE: Brand landing page",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914507400",
+      "timestamp": "2026-02-12T16:41:47.400Z",
+      "agent": "Backfill",
+      "action": "created",
+      "target": "The Facilities Group - Blocking D1010 User account for Arnel",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914428667",
+      "timestamp": "2026-02-12T16:40:28.667Z",
+      "agent": "Otto",
+      "action": "commented",
+      "target": "The Facilities Group - Arnel Account Security Issue",
+      "type": "comment"
+    },
+    {
+      "id": "act-1770914428640",
+      "timestamp": "2026-02-12T16:40:28.640Z",
+      "agent": "Manual Import",
+      "action": "created",
+      "target": "The Facilities Group - Arnel Account Security Issue",
+      "type": "start"
+    },
+    {
+      "id": "act-1770914215169",
+      "timestamp": "2026-02-12T16:36:55.169Z",
+      "agent": "Saad",
+      "action": "commented",
+      "target": "The Facilities Group - Summit Service Group Landing Page",
+      "type": "comment"
+    },
+    {
+      "id": "act-1770914190914",
+      "timestamp": "2026-02-12T16:36:30.914Z",
+      "agent": "Manual Import",
+      "action": "created",
+      "target": "The Facilities Group - Summit Service Group Landing Page",
+      "type": "start"
+    },
+    {
+      "id": "act-1770913970867",
+      "timestamp": "2026-02-12T16:32:50.867Z",
+      "agent": "Michael",
+      "action": "commented",
+      "target": "HARO Strategy / Monitoring",
+      "type": "comment"
+    },
+    {
+      "id": "act-1770913538519",
+      "timestamp": "2026-02-12T16:25:38.519Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "The Facilities Group - Update contact form on RNA website",
+      "type": "start"
+    },
+    {
+      "id": "act-1770913522129",
+      "timestamp": "2026-02-12T16:25:22.129Z",
+      "agent": "Joan",
+      "action": "created",
+      "target": "Univision Computers - Need Google Ads campaign update",
+      "type": "start"
+    },
+    {
+      "id": "act-1770912355716",
+      "timestamp": "2026-02-12T16:05:55.716Z",
+      "agent": "Otto",
+      "action": "added deliverables and context to",
+      "target": "21 projects (25 total deliverables)",
+      "type": "update"
+    },
+    {
+      "id": "act-1770912010633",
+      "timestamp": "2026-02-12T16:00:10.633Z",
+      "agent": "Michael",
+      "action": "commented",
+      "target": "Transformation Blueprint / Revenue Attribution Engine",
+      "type": "comment"
+    },
+    {
+      "id": "act-002",
+      "timestamp": "2026-02-12T10:30:00-05:00",
+      "agent": "Otto",
+      "action": "deployed",
+      "target": "Operations Dashboard v1.0",
+      "type": "build"
+    },
+    {
+      "id": "act-001",
+      "timestamp": "2026-02-12T10:28:00-05:00",
+      "agent": "Otto",
+      "action": "started",
+      "target": "Operations Dashboard",
+      "type": "build"
+    }
+  ]
+}

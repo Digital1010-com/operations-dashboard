@@ -581,10 +581,8 @@
     .comment-header {
       display: flex;
       justify-content: space-between;
-      align-items: center;
       margin-bottom: 6px;
       font-size: 11px;
-      gap: 8px;
     }
 
     .comment-author {
@@ -593,21 +591,6 @@
 
     .comment-time {
       color: var(--text-secondary);
-      flex: 1;
-    }
-
-    .btn-delete-comment {
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-size: 14px;
-      padding: 2px 6px;
-      opacity: 0.5;
-      transition: opacity 0.2s ease;
-    }
-
-    .btn-delete-comment:hover {
-      opacity: 1;
     }
 
     .comment-form {
@@ -849,121 +832,6 @@
         grid-template-columns: 1fr;
       }
     }
-
-    /* Status Bucket Layout (New) */
-    .status-bucket {
-      margin-bottom: 24px;
-    }
-
-    .status-bucket-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 18px;
-      background: var(--glass-bg);
-      backdrop-filter: blur(20px);
-      border: 1px solid var(--glass-border);
-      border-left: 4px solid var(--accent-blue);
-      border-radius: 12px;
-      margin-bottom: 12px;
-    }
-
-    .status-bucket-label {
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-    }
-
-    .status-bucket-count {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text-secondary);
-      background: rgba(0, 0, 0, 0.05);
-      padding: 4px 10px;
-      border-radius: 12px;
-    }
-
-    .status-bucket-content {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 16px;
-      min-height: 80px;
-      padding: 12px;
-      border-radius: 12px;
-      transition: background 0.2s ease;
-    }
-
-    .status-bucket-content.drag-over {
-      background: rgba(59, 130, 246, 0.1);
-      border: 2px dashed var(--accent-blue);
-    }
-
-    .empty-bucket {
-      grid-column: 1 / -1;
-      text-align: center;
-      padding: 32px;
-      color: var(--text-secondary);
-    }
-
-    .project-header-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 8px;
-    }
-
-    .project-category-badge {
-      font-size: 10px;
-      padding: 3px 8px;
-      background: rgba(0, 0, 0, 0.06);
-      border-radius: 6px;
-      font-weight: 600;
-      color: var(--text-secondary);
-    }
-
-    /* Drag and Drop States */
-    .project-card[draggable="true"] {
-      cursor: grab;
-    }
-
-    .project-card[draggable="true"]:active {
-      cursor: grabbing;
-    }
-
-    .project-card.dragging {
-      opacity: 0.4;
-    }
-
-    /* Status badge styles */
-    .status-badge {
-      display: inline-block;
-      padding: 4px 10px;
-      border-radius: 6px;
-      font-size: 11px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.3px;
-    }
-
-    .status-badge.status-complete {
-      background: rgba(52, 199, 89, 0.15);
-      color: var(--status-green);
-    }
-
-    .status-badge.status-in-progress {
-      background: rgba(255, 149, 0, 0.15);
-      color: var(--status-yellow);
-    }
-
-    .status-badge.status-blocked {
-      background: rgba(142, 142, 147, 0.15);
-      color: var(--status-gray);
-    }
-
-    .status-badge.status-other {
-      background: rgba(0, 122, 255, 0.15);
-      color: var(--accent-blue);
-    }
   </style>
 </head>
 <body>
@@ -1056,13 +924,6 @@
           <div class="sidebar-title">🤖 Agents</div>
           <div id="agentsGrid">
             <!-- Agents populated by JS -->
-          </div>
-        </div>
-
-        <div class="sidebar-section">
-          <div class="sidebar-title">📝 Daily Logs</div>
-          <div id="dailyLogs" style="font-size: 12px; max-height: 200px; overflow-y: auto;">
-            <!-- Daily logs populated by JS -->
           </div>
         </div>
       </div>

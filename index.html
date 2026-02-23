@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D1010 Operations</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #111827;
+            color: #f3f4f6;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        .nav {
+            background: #1f2937;
+            border-bottom: 1px solid #374151;
+            padding: 0 40px;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-item {
+            padding: 20px 0;
+            font-size: 16px;
+            font-weight: 500;
+            color: #9ca3af;
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .nav-item:hover {
+            color: #f3f4f6;
+        }
+
+        .nav-item.active {
+            color: #3b82f6;
+            border-bottom-color: #3b82f6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: #fff;
+        }
+
+        .section {
+            background: #1f2937;
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 32px;
+        }
+
+        .section h2 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .status-item {
+            text-align: center;
+            padding: 24px;
+            background: #111827;
+            border-radius: 8px;
+        }
+
+        .status-value {
+            font-size: 48px;
+            font-weight: 700;
+            margin: 12px 0;
+        }
+
+        .status-label {
+            font-size: 16px;
+            color: #9ca3af;
+        }
+
+        .session-list {
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .session-item {
+            padding: 16px;
+            background: #111827;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            font-size: 16px;
+            border-left: 4px solid #10b981;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .session-item:hover {
+            background: #1f2937;
+            transform: translateX(4px);
+        }
+
+        .session-item.idle {
+            border-left-color: #f59e0b;
+        }
+
+        .session-item.stale {
+            border-left-color: #6b7280;
+        }
+
+        .session-name {
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .session-meta {
+            font-size: 14px;
+            color: #9ca3af;
+        }
+
+        .infra-item {
+            padding: 12px 16px;
+            background: #111827;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .infra-label {
+            font-weight: 500;
+        }
+
+        .infra-value {
+            color: #9ca3af;
+            font-family: 'Monaco', 'Courier New', monospace;
+        }
+
+        .health-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+        }
+
+        .health-dot.ok {
+            background: #10b981;
+        }
+
+        .health-dot.error {
+            background: #ef4444;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: #1f2937;
+            border-radius: 12px;
+            padding: 32px;
+            max-width: 800px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .modal-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .modal-close {
+            font-size: 32px;
+            cursor: pointer;
+            color: #9ca3af;
+            background: none;
+            border: none;
+        }
+
+        .modal-close:hover {
+            color: #fff;
+        }
+
+        .message-item {
+            padding: 16px;
+            background: #111827;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+
+        .message-role {
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #9ca3af;
+            margin-bottom: 8px;
+        }
+
+        .message-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-danger {
+            background: #ef4444;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #dc2626;
+        }
+
+        .btn-secondary {
+            background: #6b7280;
+            color: white;
+            margin-left: 12px;
+        }
+
+        .btn-secondary:hover {
+            background: #4b5563;
+        }
+
+        .ok-message {
+            font-size: 20px;
+            color: #10b981;
+            padding: 24px;
+            text-align: center;
+        }
+
+        .last-update {
+            text-align: center;
+            color: #6b7280;
+            font-size: 14px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .status-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <div class="nav">
+        <div class="nav-container">
+            <a href="/" class="nav-item active">Operations</a>
+            <a href="/mission-control.html" class="nav-item">Mission Control</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>D1010 Operations</h1>
+
+        <!-- Critical Alerts -->
+        <div class="section" id="alertsSection">
+            <h2>Critical Alerts</h2>
+            <div id="alertsContent">
+                <div class="ok-message">Loading...</div>
+            </div>
+        </div>
+
+        <!-- Key Metrics -->
+        <div class="section">
+            <h2>Today</h2>
+            <div class="status-grid">
+                <div class="status-item">
+                    <div class="status-label">Active Sessions</div>
+                    <div class="status-value" id="sessionsCount" style="color: #10b981;">-</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-label">Deliverables</div>
+                    <div class="status-value" id="deliverablesCount" style="color: #3b82f6;">-</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-label">Token Usage</div>
+                    <div class="status-value" id="tokensCount" style="color: #8b5cf6;">-</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- All Sessions -->
+        <div class="section">
+            <h2>All Active Sessions (Click to View)</h2>
+            <div class="session-list" id="sessionsList">
+                <div class="ok-message">Loading...</div>
+            </div>
+        </div>
+
+        <!-- Infrastructure -->
+        <div class="section">
+            <h2>Infrastructure</h2>
+            <div id="infrastructureContent">
+                <div class="ok-message">Loading...</div>
+            </div>
+        </div>
+
+        <div class="last-update" id="lastUpdate">Loading...</div>
+    </div>
+
+    <!-- Session Detail Modal -->
+    <div class="modal" id="sessionModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title" id="modalTitle">Session Details</div>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div id="modalBody">
+                <div class="ok-message">Loading...</div>
+            </div>
+            <div style="margin-top: 24px;">
+                <button class="btn btn-danger" onclick="cancelSession()">Cancel Session</button>
+                <button class="btn btn-secondary" onclick="closeModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/dashboard.js"></script>
+</body>
+</html>

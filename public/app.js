@@ -31,6 +31,7 @@ async function loadData() {
     updateStats();
     renderActivityFeed();
     renderAgents();
+    renderDailyLogs();
   } catch (error) {
     console.error('Failed to load data:', error);
   }
@@ -117,11 +118,7 @@ function populateClientFilters() {
 
 // Update header stats
 function updateStats() {
-  const active = projects.filter(p => p.status === 'in-progress').length;
-  const team = [...new Set(projects.map(p => p.owner))].length;
-  
-  document.getElementById('activeCount').textContent = active;
-  document.getElementById('teamCount').textContent = team;
+  // Stats removed from UI - keeping function for compatibility
 }
 
 // Sort projects
@@ -187,72 +184,62 @@ function renderProjects() {
   // Sort projects
   filtered = sortProjects(filtered, currentSort);
   
-  // Group by category (build dynamically from data.categories, sorted alphabetically)
-  const categoryDefs = (data.categories || [
-    { name: 'Marketing', emoji: '📢' },
-    { name: 'Creative', emoji: '🎨' },
-    { name: 'Operations', emoji: '⚙️' },
-    { name: 'Development', emoji: '💻' }
-  ]).sort((a, b) => a.name.localeCompare(b.name));
-  
-  const categories = {};
-  categoryDefs.forEach(cat => {
-    categories[cat.name] = { icon: cat.emoji, projects: [] };
-  });
+  // Group by status first (new organization)
+  const statuses = {
+    'upcoming': { label: '📅 UPCOMING', emoji: '📅', projects: [], color: 'var(--accent-purple)' },
+    'new': { label: '🆕 NEW', emoji: '🆕', projects: [], color: 'var(--accent-blue)' },
+    'in-progress': { label: '⚙️ IN PROGRESS', emoji: '⚙️', projects: [], color: 'var(--status-yellow)' },
+    'blocked': { label: '🚫 BLOCKED', emoji: '🚫', projects: [], color: 'var(--status-gray)' },
+    'complete': { label: '✅ COMPLETE', emoji: '✅', projects: [], color: 'var(--status-green)' },
+    'urgent': { label: '🔴 URGENT', emoji: '🔴', projects: [], color: 'var(--status-red)' }
+  };
   
   filtered.forEach(project => {
-    if (categories[project.category]) {
-      categories[project.category].projects.push(project);
+    const status = project.status || 'new';
+    if (statuses[status]) {
+      statuses[status].projects.push(project);
+    } else {
+      statuses['new'].projects.push(project);
     }
   });
   
-  // Render
+  // Render by status buckets
   let html = '';
   
-  for (const [categoryName, category] of Object.entries(categories)) {
-    if (category.projects.length === 0) continue;
-    
-    // Group by status
-    const statuses = {
-      'complete': { label: 'Complete', projects: [] },
-      'in-progress': { label: 'In Progress', projects: [] },
-      'blocked': { label: 'Blocked', projects: [] },
-      'other': { label: 'Other', projects: [] }
-    };
-    
-    category.projects.forEach(project => {
-      const status = project.status || 'other';
-      if (statuses[status]) {
-        statuses[status].projects.push(project);
-      } else {
-        statuses['other'].projects.push(project);
-      }
-    });
-    
+  for (const [statusKey, statusGroup] of Object.entries(statuses)) {
     html += `
-      <div class="category-section">
-        <div class="category-header">
-          <div class="category-icon">${category.icon}</div>
-          <div class="category-title">${categoryName}</div>
-          <div class="category-count">${category.projects.length} project${category.projects.length !== 1 ? 's' : ''}</div>
+      <div class="status-bucket" data-status="${statusKey}">
+        <div class="status-bucket-header" style="border-left-color: ${statusGroup.color};">
+          <div class="status-bucket-label">${statusGroup.label}</div>
+          <div class="status-bucket-count">${statusGroup.projects.length}</div>
         </div>
+        <div class="status-bucket-content" data-status="${statusKey}">
     `;
     
-    for (const [statusKey, statusGroup] of Object.entries(statuses)) {
-      if (statusGroup.projects.length === 0) continue;
-      
+    if (statusGroup.projects.length === 0) {
       html += `
-        <div class="status-group">
-          <div class="status-header">${statusGroup.label}</div>
-          <div class="projects-grid">
+        <div class="empty-bucket">
+          <div style="font-size: 32px; margin-bottom: 8px; opacity: 0.3;">${statusGroup.emoji}</div>
+          <div style="font-size: 12px; color: var(--text-secondary);">No projects</div>
+        </div>
       `;
-      
+    } else {
       statusGroup.projects.forEach(project => {
         const isActive = project.id === selectedProjectId;
         const timeline = formatTimeline(project);
+        const categoryEmoji = getCategoryEmoji(project.category);
+        
         html += `
-          <div class="project-card ${isActive ? 'active' : ''}" onclick="selectProject('${project.id}')">
-            <div class="project-id">${project.id}</div>
+          <div class="project-card ${isActive ? 'active' : ''}" 
+               draggable="true"
+               data-project-id="${project.id}"
+               ondragstart="handleDragStart(event)"
+               ondragend="handleDragEnd(event)"
+               onclick="selectProject('${project.id}')">
+            <div class="project-header-row">
+              <div class="project-id">${project.id}</div>
+              ${project.category ? `<div class="project-category-badge">${categoryEmoji} ${project.category}</div>` : ''}
+            </div>
             <div class="project-name">${project.name}</div>
             ${timeline ? `<div class="project-timeline">${timeline}</div>` : ''}
             ${project.clientName ? `<div class="project-client">🏢 ${project.clientName}</div>` : ''}
@@ -274,25 +261,171 @@ function renderProjects() {
           </div>
         `;
       });
-      
-      html += `
-          </div>
-        </div>
-      `;
     }
     
-    html += `</div>`;
+    html += `
+        </div>
+      </div>
+    `;
   }
   
-  if (html === '') {
+  if (filtered.length === 0) {
     html = '<div style="padding: 40px; text-align: center; color: var(--text-secondary);">No projects found</div>';
   }
   
   container.innerHTML = html;
+  
+  // Setup drag-and-drop event listeners on status buckets
+  setupDropZones();
+}
+
+// Get category emoji helper
+function getCategoryEmoji(category) {
+  const categoryMap = {
+    'Marketing': '📢',
+    'Creative': '🎨',
+    'Operations': '⚙️',
+    'Development': '💻'
+  };
+  return categoryMap[category] || '📁';
+}
+
+// Drag and drop handlers
+let draggedProjectId = null;
+let isDragging = false;
+
+function handleDragStart(event) {
+  // Get the project card element (might be called on child)
+  const card = event.target.closest('.project-card');
+  if (!card) return;
+  
+  isDragging = true;
+  draggedProjectId = card.dataset.projectId;
+  card.style.opacity = '0.4';
+  event.dataTransfer.effectAllowed = 'move';
+  event.dataTransfer.setData('text/plain', draggedProjectId);
+}
+
+function handleDragEnd(event) {
+  const card = event.target.closest('.project-card');
+  if (card) {
+    card.style.opacity = '1';
+  }
+  
+  // Delay to prevent click from firing
+  setTimeout(() => {
+    isDragging = false;
+    draggedProjectId = null;
+  }, 100);
+  
+  // Clean up all drag-over classes
+  document.querySelectorAll('.drag-over').forEach(el => {
+    el.classList.remove('drag-over');
+  });
+}
+
+function setupDropZones() {
+  const dropZones = document.querySelectorAll('.status-bucket-content');
+  
+  dropZones.forEach(zone => {
+    // Remove old listeners to prevent duplicates
+    zone.removeEventListener('dragover', handleDragOver);
+    zone.removeEventListener('drop', handleDrop);
+    zone.removeEventListener('dragenter', handleDragEnter);
+    zone.removeEventListener('dragleave', handleDragLeave);
+    
+    // Add new listeners
+    zone.addEventListener('dragover', handleDragOver);
+    zone.addEventListener('drop', handleDrop);
+    zone.addEventListener('dragenter', handleDragEnter);
+    zone.addEventListener('dragleave', handleDragLeave);
+  });
+}
+
+function handleDragOver(event) {
+  event.preventDefault();
+  event.dataTransfer.dropEffect = 'move';
+  return false;
+}
+
+function handleDragEnter(event) {
+  const dropZone = event.target.closest('.status-bucket-content');
+  if (dropZone) {
+    dropZone.classList.add('drag-over');
+  }
+}
+
+function handleDragLeave(event) {
+  const dropZone = event.target.closest('.status-bucket-content');
+  if (dropZone && !dropZone.contains(event.relatedTarget)) {
+    dropZone.classList.remove('drag-over');
+  }
+}
+
+async function handleDrop(event) {
+  event.preventDefault();
+  event.stopPropagation();
+  
+  const dropZone = event.target.closest('.status-bucket-content');
+  if (!dropZone) return false;
+  
+  dropZone.classList.remove('drag-over');
+  
+  const newStatus = dropZone.dataset.status;
+  const project = projects.find(p => p.id === draggedProjectId);
+  
+  if (project && project.status !== newStatus) {
+    // Update project status
+    project.status = newStatus;
+    project.lastUpdated = new Date().toISOString();
+    
+    // Save to backend
+    try {
+      await fetch('/api/data', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      
+      // Add activity log
+      if (!data.activityFeed) data.activityFeed = [];
+      data.activityFeed.unshift({
+        id: `activity-${Date.now()}`,
+        emoji: '🔄',
+        text: `${project.name} moved to ${getStatusLabel(newStatus)}`,
+        timestamp: new Date().toISOString()
+      });
+      
+      // Re-render
+      renderProjects();
+      renderActivityFeed();
+      
+    } catch (error) {
+      console.error('Failed to update project status:', error);
+      alert('Failed to update project status');
+    }
+  }
+  
+  return false;
+}
+
+function getStatusLabel(status) {
+  const labels = {
+    'upcoming': 'UPCOMING',
+    'new': 'NEW',
+    'in-progress': 'IN PROGRESS',
+    'blocked': 'BLOCKED',
+    'complete': 'COMPLETE',
+    'urgent': 'URGENT'
+  };
+  return labels[status] || status;
 }
 
 // Select project and show detail
 function selectProject(projectId) {
+  // Don't select if we're dragging
+  if (isDragging) return;
+  
   selectedProjectId = projectId;
   const project = projects.find(p => p.id === projectId);
   
@@ -379,6 +512,7 @@ function selectProject(projectId) {
   
   // Comments
   const comments = project.comments || [];
+  const currentUser = getCurrentUser();
   html += `
     <div class="detail-section">
       <div class="detail-section-title">💬 Comments (${comments.length})</div>
@@ -387,6 +521,7 @@ function selectProject(projectId) {
           <div class="comment-header">
             <span class="comment-author">${comment.author || 'Unknown'}</span>
             <span class="comment-time">${formatTime(comment.timestamp)}</span>
+            ${comment.author === currentUser ? `<button class="btn-delete-comment" onclick="deleteComment('${project.id}', '${comment.id}')" title="Delete comment">🗑️</button>` : ''}
           </div>
           <div>${comment.text}</div>
         </div>
@@ -586,6 +721,53 @@ function formatTime(timestamp) {
   return `${days}d ago`;
 }
 
+// Get current user (detect from context or default to 'Otto')
+function getCurrentUser() {
+  // Check if user is set in localStorage
+  let user = localStorage.getItem('dashboardUser');
+  
+  if (!user) {
+    // Prompt user to set their name on first use
+    user = prompt('Enter your name for comments:', 'Michael');
+    if (user) {
+      localStorage.setItem('dashboardUser', user);
+    } else {
+      user = 'Otto'; // Fallback
+    }
+  }
+  
+  return user;
+}
+
+// Delete comment
+async function deleteComment(projectId, commentId) {
+  const currentUser = getCurrentUser();
+  
+  if (!confirm('Delete this comment?')) {
+    return;
+  }
+  
+  try {
+    const response = await fetch(`/api/projects/${projectId}/comments/${commentId}?author=${encodeURIComponent(currentUser)}`, {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ author: currentUser })
+    });
+    
+    if (!response.ok) {
+      const error = await response.json();
+      alert(error.error || 'Failed to delete comment');
+      return;
+    }
+    
+    await loadData();
+    selectProject(projectId); // Refresh detail view
+  } catch (error) {
+    console.error('Failed to delete comment:', error);
+    alert('Failed to delete comment');
+  }
+}
+
 // Add comment
 async function addComment() {
   const input = document.getElementById('commentInput');
@@ -594,7 +776,7 @@ async function addComment() {
   if (!text || !selectedProjectId) return;
   
   const comment = {
-    author: 'Otto',
+    author: getCurrentUser(),
     text,
     timestamp: new Date().toISOString()
   };
@@ -899,8 +1081,15 @@ document.addEventListener('click', (e) => {
 
 // Render activity feed
 function renderActivityFeed() {
+  console.log('renderActivityFeed called');
   const activities = (data.activityFeed || []).slice(0, 10);
   const container = document.getElementById('activityFeed');
+  console.log('Activity container found:', !!container, 'Activities count:', activities.length);
+  
+  if (!container) {
+    console.error('Activity feed container not found!');
+    return;
+  }
   
   if (activities.length === 0) {
     container.innerHTML = '<div style="padding: 8px; color: var(--text-secondary); font-size: 11px;">No recent activity</div>';
@@ -916,6 +1105,7 @@ function renderActivityFeed() {
       </div>
     </div>
   `).join('');
+  console.log('Activity feed rendered successfully');
 }
 
 // Get activity emoji
@@ -932,8 +1122,15 @@ function getActivityEmoji(type) {
 
 // Render agents
 function renderAgents() {
+  console.log('renderAgents called');
   const agents = data.agents || [];
   const container = document.getElementById('agentsGrid');
+  console.log('Agents container found:', !!container, 'Agents count:', agents.length);
+  
+  if (!container) {
+    console.error('Agents container not found!');
+    return;
+  }
   
   if (agents.length === 0) {
     container.innerHTML = '<div style="padding: 8px; color: var(--text-secondary); font-size: 11px;">No agents active</div>';
@@ -952,6 +1149,65 @@ function renderAgents() {
       </div>
     </div>
   `).join('');
+  console.log('Agents rendered successfully');
+}
+
+// Render daily logs
+async function renderDailyLogs() {
+  console.log('renderDailyLogs called');
+  const container = document.getElementById('dailyLogs');
+  console.log('Daily logs container found:', !!container);
+  
+  if (!container) {
+    console.error('Daily logs container not found!');
+    return;
+  }
+  
+  try {
+    const response = await fetch('/api/logs?days=7');
+    const data = await response.json();
+    const logs = data.logs || [];
+    console.log('Logs fetched:', logs.length);
+    
+    if (!logs || logs.length === 0) {
+      container.innerHTML = '<div style="padding: 8px; color: var(--text-secondary); font-size: 11px;">No recent logs</div>';
+      return;
+    }
+    
+    container.innerHTML = logs.map(log => `
+      <div class="activity-item" style="cursor: pointer;" onclick="openLog('${log.date}')">
+        <div class="activity-emoji">📅</div>
+        <div class="activity-content">
+          <div><strong>${log.date}</strong></div>
+          <div class="activity-time">${log.summary || (log.size ? Math.round(log.size / 100) + ' lines' : 'Empty')}</div>
+        </div>
+      </div>
+    `).join('');
+    console.log('Daily logs rendered successfully');
+  } catch (error) {
+    console.error('Failed to load logs:', error);
+    container.innerHTML = '<div style="padding: 8px; color: var(--text-secondary); font-size: 11px;">Failed to load logs</div>';
+  }
+}
+
+// Open log file
+async function openLog(date) {
+  const filePath = `/Volumes/AI_Drive/AI_WORKING/memory/${date}.md`;
+  
+  try {
+    const response = await fetch('/api/open-file', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ path: filePath })
+    });
+    
+    if (!response.ok) {
+      throw new Error('Failed to open file');
+    }
+  } catch (error) {
+    console.error('Failed to open log:', error);
+    alert('Failed to open log file');
+  }
 }
 
 // Truncate text helper

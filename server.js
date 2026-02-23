@@ -92,6 +92,11 @@ app.post('/api/projects/:id/comments', (req, res) => {
     responses: []
   };
 
+  // Initialize comments array if it doesn't exist
+  if (!project.comments) {
+    project.comments = [];
+  }
+  
   project.comments.push(comment);
   project.lastUpdated = new Date().toISOString();
   
@@ -107,6 +112,40 @@ app.post('/api/projects/:id/comments', (req, res) => {
 
   saveData(data);
   res.json(comment);
+});
+
+// API: Delete comment
+app.delete('/api/projects/:id/comments/:commentId', (req, res) => {
+  const data = getData();
+  const project = data.projects.find(p => p.id === req.params.id);
+  
+  if (!project) {
+    return res.status(404).json({ error: 'Project not found' });
+  }
+
+  if (!project.comments) {
+    return res.status(404).json({ error: 'No comments found' });
+  }
+
+  const commentIndex = project.comments.findIndex(c => c.id === req.params.commentId);
+  
+  if (commentIndex === -1) {
+    return res.status(404).json({ error: 'Comment not found' });
+  }
+
+  const comment = project.comments[commentIndex];
+  const requestingUser = req.body.author || req.query.author;
+
+  // Authorization: only comment author can delete
+  if (comment.author !== requestingUser) {
+    return res.status(403).json({ error: 'Only the comment author can delete this comment' });
+  }
+
+  project.comments.splice(commentIndex, 1);
+  project.lastUpdated = new Date().toISOString();
+
+  saveData(data);
+  res.json({ success: true, deletedCommentId: req.params.commentId });
 });
 
 // API: Add comment response
