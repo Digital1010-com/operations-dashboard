@@ -1857,10 +1857,7 @@ function runSqliteQuery(sql, params = {}) {
     args.push(`.parameter set @${key} ${sqliteParameterLiteral(value)}`);
   });
   args.push(sql);
-  // CLOUD FIX: sqlite3 binary not available in container
-  console.warn("SQLite idempotency temporarily disabled for cloud deployment");
-  return ""; // Skip sqlite operations for now
-  // return execFileSync("/usr/bin/sqlite3", args, { encoding: "utf8" });
+  return execFileSync('/usr/bin/sqlite3', args, { encoding: 'utf8' });
 }
 
 function initIdempotencyDb() {

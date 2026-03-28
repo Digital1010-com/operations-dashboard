@@ -1,0 +1,22 @@
+--- a/server.js
++++ b/server.js
+@@ -1857,7 +1857,12 @@ function sqliteParameterLiteral(value) {
+ }
+ 
+ function runSqliteQuery(sql, params = {}) {
+-  const args = [IDEMPOTENCY_DB_FILE, '.parameter init', '.parameter clear'];
++  // Quick fix for DO deployment: sqlite3 binary not available
++  // TODO: Replace with proper sqlite3 npm package implementation
++  console.warn('SQLite operations temporarily disabled for cloud deployment');
++  return '';
++  
++  /* Original code - requires sqlite3 binary
++  const args = [IDEMPOTENCY_DB_FILE, '. init', '.parameter clear'];
+   Object.entries(params || {}).forEach(([key, value]) => {
+     if (!/^[a-zA-Z0-9_]+$/.test(String(key || ''))) return;
+     args.push(`.parameter set @${key} ${sqliteParameterLiteral(value)}`);
+   });
+   args.push(sql);
+   return execFileSync('/usr/bin/sqlite3', args, { encoding: 'utf8' });
++  */
+ }
