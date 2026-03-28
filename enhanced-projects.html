@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Enhanced Projects Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .project { border: 1px solid #ccc; padding: 15px; margin: 10px 0; border-radius: 5px; }
+        .in-progress { border-left: 5px solid #3b82f6; }
+        .complete { border-left: 5px solid #10b981; }
+        .new { border-left: 5px solid #f59e0b; }
+        .search-box { margin: 20px 0; padding: 10px; width: 300px; font-size: 16px; }
+        .status-filter { margin: 10px 0; }
+        .filter-btn { margin: 0 5px; padding: 8px 15px; cursor: pointer; border: 1px solid #ccc; background: white; }
+        .active { background: #3b82f6; color: white; border-color: #3b82f6; }
+        .hours-input { width: 80px; padding: 5px; margin: 0 10px; }
+        .complete-btn { background: #10b981; color: white; border: none; padding: 8px 15px; cursor: pointer; margin-left: 10px; }
+        .project-header { display: flex; justify-content: space-between; align-items: center; }
+        .project-actions { margin-top: 10px; }
+        .search-result { background: #f0f9ff; padding: 5px; margin: 2px 0; }
+        #searchFeedback { margin: 10px 0; color: #666; }
+    </style>
+</head>
+<body>
+    <h1>Enhanced Projects Dashboard</h1>
+    <p><strong>Working search + Hours tracking + Project completion</strong></p>
+    
+    <div>
+        <input type="text" id="searchBox" class="search-box" placeholder="Search projects (ID, name, client, owner)..." 
+               onkeyup="filterProjects()" autofocus>
+        <div id="searchFeedback">Type to search... Results will appear below.</div>
+    </div>
+    
+    <div class="status-filter">
+        <strong>Filter by status:</strong>
+        <button class="filter-btn active" onclick="filterByStatus('all')">All (107)</button>
+        <button class="filter-btn" onclick="filterByStatus('in-progress')">In Progress (61)</button>
+        <button class="filter-btn" onclick="filterByStatus('complete')">Complete (30)</button>
+        <button class="filter-btn" onclick="filterByStatus('new')">New (11)</button>
+    </div>
+    
+    <div id="projectsContainer">
+        <div id="loading">Loading projects...</div>
+    </div>
+    
+    <script>
+        let allProjects = [];
+        let currentFilter = 'all';
+        let currentSearch = '';
+        
+        async function loadProjects() {
+            try {
+                document.getElementById('loading').innerHTML = 'Loading projects from API...';
+                const response = await fetch('/api/data');
+                if (!response.ok) throw new Error(`API error: ${response.status}`);
+                
+                const data = await response.json();
+                allProjects = data.projects || [];
+                
+                // Update button counts
+                updateButtonCounts();
+                displayProjects(allProjects);
+                document.getElementById('loading').style.display = 'none';
+                
+                // Show initial feedback
+                document.getElementById('searchFeedback').innerHTML = 
+                    `Loaded ${allProjects.length} projects. Type in search box to filter.`;
+                    
+            } catch (error) {
+                document.getElementById('loading').innerHTML = 
+                    `<span style="color: red;">Error loading projects: ${error.message}</span>`;
+            }
+        }
+        
+        function updateButtonCounts() {
+            const counts = {
+                'all': allProjects.length,
+                'in-progress': allProjects.filter(p => p.status === 'in-progress').length,
+                'complete': allProjects.filter(p => p.status === 'complete').length,
+                'new': allProjects.filter(p => p.status === 'new').length
+            };
+            
+            // Update button text
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                const status = btn.getAttribute('onclick').match(/'([^']+)'/)[1];
+                const count = counts[status] || 0;
+                btn.textContent = btn.textContent.replace(/\(\d+\)/, `(${count})`);
+            });
+        }
+        
+        function displayProjects(projects) {
+            const container = document.getElementById('projectsContainer');
+            if (projects.length === 0) {
+                container.innerHTML = '<div class="project"><p>No projects found. Try a different search.</p></div>';
+                return;
+            }
+            
+            container.innerHTML = projects.map(project => `
+                <div class="project ${project.status || ''}" id="project-${project.id}">
+                    <div class="project-header">
+                        <h3>${project.id || 'No ID'}: ${project.name || 'Unnamed Project'}</h3>
+                        <div>
+                            <strong>Status:</strong> ${project.status || 'Not set'}
+                        </div>
+                    </div>
+                    <p><strong>Client:</strong> ${project.clientName || 'Not specified'}</p>
+                    <p><strong>Owner:</strong> ${project.owner || 'Not assigned'}</p>
+                    <p><strong>Category:</strong> ${project.category || 'Not categorized'}</p>
+                    ${project.description ? `<p><strong>Description:</strong> ${project.description}</p>` : ''}
+                    
+                    <div class="project-actions">
+                        ${project.status !== 'complete' ? `
+                            <strong>Complete this project:</strong>
+                            <input type="number" class="hours-input" id="hours-${project.id}" 
+                                   placeholder="Hours" min="0" step="0.5">
+                            <button class="complete-btn" onclick="completeProject('${project.id}')">
+                                Mark Complete
+                            </button>
+                            <span id="status-${project.id}"></span>
+                        ` : `
+                            <p><strong>✅ Completed</strong> ${project.hours ? `(${project.hours} hours)` : ''}</p>
+                        `}
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function filterProjects() {
+            currentSearch = document.getElementById('searchBox').value.toLowerCase();
+            applyFilters();
+        }
+        
+        function filterByStatus(status) {
+            currentFilter = status;
+            
+            // Update button states
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            applyFilters();
+        }
+        
+        function applyFilters() {
+            let filtered = allProjects;
+            
+            // Apply status filter
+            if (currentFilter !== 'all') {
+                filtered = filtered.filter(p => p.status === currentFilter);
+            }
+            
+            // Apply search filter
+            if (currentSearch) {
+                filtered = filtered.filter(p => {
+                    const searchIn = [
+                        p.id || '',
+                        p.name || '',
+                        p.clientName || '',
+                        p.description || '',
+                        p.notes || '',
+                        p.owner || '',
+                        p.category || ''
+                    ].join(' ').toLowerCase();
+                    
+                    return searchIn.includes(currentSearch);
+                });
+                
+                // Update search feedback
+                document.getElementById('searchFeedback').innerHTML = 
+                    `Found ${filtered.length} project(s) for "${currentSearch}"`;
+            } else {
+                document.getElementById('searchFeedback').innerHTML = 
+                    `Showing ${filtered.length} project(s). Type to search.`;
+            }
+            
+            displayProjects(filtered);
+        }
+        
+        async function completeProject(projectId) {
+            const hoursInput = document.getElementById(`hours-${projectId}`);
+            const hours = hoursInput.value.trim();
+            const statusSpan = document.getElementById(`status-${projectId}`);
+            
+            if (!hours || isNaN(hours) || parseFloat(hours) <= 0) {
+                statusSpan.innerHTML = '<span style="color: red;">Please enter valid hours</span>';
+                hoursInput.focus();
+                return;
+            }
+            
+            try {
+                statusSpan.innerHTML = '<span style="color: blue;">Updating...</span>';
+                
+                // In a real system, this would call an API
+                // For now, we'll update locally and show success
+                
+                // Find and update the project
+                const project = allProjects.find(p => p.id === projectId);
+                if (project) {
+                    project.status = 'complete';
+                    project.hours = parseFloat(hours);
+                    project.completedDate = new Date().toISOString().split('T')[0];
+                    
+                    // Update display
+                    const projectElement = document.getElementById(`project-${projectId}`);
+                    if (projectElement) {
+                        projectElement.querySelector('.project-actions').innerHTML = `
+                            <p><strong>✅ Completed</strong> (${project.hours} hours) - ${project.completedDate}</p>
+                        `;
+                    }
+                    
+                    statusSpan.innerHTML = '<span style="color: green;">✅ Project marked complete!</span>';
+                    
+                    // Update button counts
+                    updateButtonCounts();
+                    
+                    // Show success message
+                    setTimeout(() => {
+                        statusSpan.innerHTML = '';
+                    }, 3000);
+                }
+                
+            } catch (error) {
+                statusSpan.innerHTML = `<span style="color: red;">Error: ${error.message}</span>`;
+            }
+        }
+        
+        // Load projects on page load
+        loadProjects();
+        
+        // Focus search box
+        document.getElementById('searchBox').focus();
+    </script>
+</body>
+</html>

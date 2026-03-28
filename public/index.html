@@ -12,21 +12,21 @@
     }
 
     :root {
-      --glass-bg: rgba(255, 255, 255, 0.7);
-      --glass-border: rgba(255, 255, 255, 0.3);
+      --glass-bg: rgba(250, 252, 255, 0.84);
+      --glass-border: rgba(98, 128, 161, 0.18);
       --shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
       --text-primary: #1d1d1f;
       --text-secondary: #6e6e73;
-      --accent-blue: #007aff;
-      --accent-blue-rgb: 0, 122, 255;
-      --accent-purple: #5856d6;
-      --accent-purple-rgb: 88, 86, 214;
+      --accent-blue: #3d74a8;
+      --accent-blue-rgb: 61, 116, 168;
+      --accent-purple: #60789a;
+      --accent-purple-rgb: 96, 120, 154;
       --status-green: #34c759;
       --status-yellow: #ff9500;
       --status-red: #ff3b30;
       --status-gray: #8e8e93;
-      --bg-gradient-start: #f5f7fa;
-      --bg-gradient-end: #e8eef5;
+      --bg-gradient-start: #f4f7fb;
+      --bg-gradient-end: #e9eff6;
     }
 
     [data-theme="dark"] {
@@ -55,38 +55,98 @@
       flex-direction: column;
     }
 
+    .app-footer {
+      height: 42px;
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(244, 248, 253, 0.94);
+      border-top: 1px solid rgba(95, 119, 149, 0.18);
+      flex-shrink: 0;
+    }
+
+    .footer-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 11px;
+      color: var(--text-secondary);
+      letter-spacing: 0.2px;
+    }
+
+    .footer-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .view-tabs {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 8px;
+      margin-bottom: 20px;
+      padding: 8px;
+      background: rgba(255, 255, 255, 0.58);
+      border: 1px solid rgba(98, 128, 161, 0.18);
+      border-radius: 14px;
+      backdrop-filter: blur(18px);
+    }
+
+    .view-tab {
+      width: 100%;
+      padding: 10px 12px;
+      background: transparent;
+      color: var(--text-secondary);
+      border: 1px solid transparent;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .view-tab:hover {
+      background: rgba(var(--accent-blue-rgb), 0.12);
+      color: var(--text-primary);
+      border-color: rgba(var(--accent-blue-rgb), 0.22);
+    }
+
+    .view-tab.active {
+      background: var(--accent-blue);
+      color: white;
+      border-color: rgba(var(--accent-blue-rgb), 0.36);
+      box-shadow: 0 6px 16px rgba(35, 84, 130, 0.24);
+    }
+
     /* Header */
     .header {
-      background: var(--glass-bg);
+      background: rgba(250, 252, 255, 0.92);
       backdrop-filter: blur(30px);
-      border-bottom: 1px solid var(--glass-border);
-      padding: 16px 24px;
+      border-bottom: 1px solid rgba(98, 128, 161, 0.16);
+      padding: 12px 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 20px;
       flex-shrink: 0;
     }
 
     .header-brand {
       display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 8px;
-    }
-
-    .logo-container {
-      display: flex;
       align-items: center;
+      min-width: 320px;
     }
 
-    .header-logo {
-      height: 120px;
-      width: auto;
-      display: block;
+    .header-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
     }
 
     .header-text h1 {
-      font-size: 18px;
+      font-size: 23px;
       font-weight: 700;
       letter-spacing: -0.02em;
       background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
@@ -96,10 +156,51 @@
       margin: 0;
     }
 
+    .header-subtitle {
+      font-size: 12px;
+      color: var(--text-secondary);
+      letter-spacing: 0.3px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .agency-indicator {
+      font-size: 12px;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .agency-pill {
+      background: var(--accent-blue);
+      color: white;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .header-center {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .header-logo-center {
+      width: 240px;
+      height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
     .header-actions {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 10px;
     }
 
     .datetime-display {
@@ -121,7 +222,7 @@
     }
 
     .datetime-time {
-      font-size: 20px;
+      font-size: 16px;
       font-weight: 700;
       color: var(--text-primary);
       font-family: 'SF Mono', 'Monaco', monospace;
@@ -147,6 +248,14 @@
       transform: scale(1.05);
     }
 
+    .partner-subtitle {
+      font-size: 14px;
+      line-height: 1.45;
+      letter-spacing: 0.18px;
+      font-weight: 500;
+      opacity: 0.93;
+    }
+
     /* Main 3-column layout */
     .main-content {
       display: flex;
@@ -156,10 +265,10 @@
 
     /* Left sidebar - Navigation */
     .left-sidebar {
-      width: 280px;
-      background: var(--glass-bg);
+      width: 282px;
+      background: rgba(246, 250, 255, 0.88);
       backdrop-filter: blur(20px);
-      border-right: 1px solid var(--glass-border);
+      border-right: 1px solid rgba(98, 128, 161, 0.18);
       display: flex;
       flex-direction: column;
       overflow-y: auto;
@@ -180,8 +289,8 @@
     }
 
     .sidebar-section {
-      padding: 20px;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      padding: 16px 18px;
+      border-bottom: 1px solid rgba(95, 119, 149, 0.12);
     }
 
     #clientsSection {
@@ -323,15 +432,15 @@
     }
 
     .filter-btn:hover, .filter-btn.active {
-      background: var(--accent-blue);
-      color: white;
-      border-color: var(--accent-blue);
+      background: rgba(var(--accent-blue-rgb), 0.14);
+      color: var(--text-primary);
+      border-color: rgba(var(--accent-blue-rgb), 0.34);
     }
 
     .new-task-btn {
       width: 100%;
       padding: 12px;
-      background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+      background: linear-gradient(135deg, #4f7faa, #6f86a3);
       color: white;
       border: none;
       border-radius: 10px;
@@ -349,8 +458,15 @@
     /* Center - Project tiles */
     .center-content {
       flex: 1;
-      overflow-y: auto;
+      overflow: hidden;
       padding: 24px;
+    }
+
+    .view-content {
+      height: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding-bottom: 72px;
     }
 
     .category-section {
@@ -471,20 +587,6 @@
       margin-top: 8px;
       margin-bottom: 4px;
       flex-wrap: wrap;
-    }
-
-    .progress-bar {
-      height: 4px;
-      background: rgba(0, 0, 0, 0.1);
-      border-radius: 2px;
-      margin-top: 10px;
-      overflow: hidden;
-    }
-
-    .progress-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
-      transition: width 0.3s ease;
     }
 
     /* Right sidebar - Detail view */
@@ -642,7 +744,7 @@
     }
 
     .btn-primary:hover {
-      background: #0051d5;
+      background: #325f88;
     }
 
     .action-buttons {
@@ -771,211 +873,1139 @@
     }
 
     .status-complete { background: var(--status-green); color: white; }
-    .status-in-progress { background: var(--accent-blue); color: white; }
+    .status-in-progress {
+      background: rgba(255, 149, 0, 0.15);
+      color: #7a4d00;
+      border: 1px solid rgba(255, 149, 0, 0.35);
+    }
     .status-blocked { background: var(--status-red); color: white; }
     .status-other { background: var(--status-gray); color: white; }
 
     /* Mobile responsive */
     @media (max-width: 1400px) {
-      .right-sidebar {
-        position: fixed;
-        right: -520px;
-        top: 0;
-        height: 100vh;
-        z-index: 100;
-        transition: right 0.3s ease;
-        box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
-      }
-
-      .right-sidebar.active {
-        right: 0;
+      .main-content.project-focus .right-sidebar {
+        width: clamp(320px, 50vw, 520px);
+        min-width: 320px;
+        max-width: calc(100% - 96px);
       }
     }
 
+    @media (max-width: 900px) {
+      .main-content.project-focus .right-sidebar {
+        width: min(520px, calc(100% - 64px));
+        min-width: 280px;
+        max-width: calc(100% - 64px);
+      }
+    }
+  
+
+    /* Apple-Level Polish Pass: Global Design System Override */
+    :root {
+      --text-primary: #11131a;
+      --text-secondary: #606b79;
+      --accent-blue: #2f6d96;
+      --accent-blue-rgb: 47, 109, 150;
+      --accent-purple: #6d7b8b;
+      --accent-purple-rgb: 109, 123, 139;
+      --status-green: #2f8f5b;
+      --status-yellow: #a7732b;
+      --status-red: #ad4d46;
+      --status-gray: #7a8593;
+      --bg-gradient-start: #f6f8fb;
+      --bg-gradient-end: #eef2f6;
+      --glass-bg: rgba(255, 255, 255, 0.82);
+      --glass-border: rgba(23, 33, 49, 0.09);
+      --shadow: 0 14px 36px rgba(16, 24, 40, 0.08);
+    }
+
+    [data-theme="dark"] {
+      --text-primary: #f3f6fb;
+      --text-secondary: #9aa7b7;
+      --accent-blue: #5ea8d6;
+      --accent-blue-rgb: 94, 168, 214;
+      --accent-purple: #8fa4bd;
+      --accent-purple-rgb: 143, 164, 189;
+      --status-green: #6dcf98;
+      --status-yellow: #e0b36c;
+      --status-red: #e78e89;
+      --status-gray: #a4afbd;
+      --bg-gradient-start: #10141d;
+      --bg-gradient-end: #171c27;
+      --glass-bg: rgba(23, 29, 40, 0.74);
+      --glass-border: rgba(255, 255, 255, 0.12);
+      --shadow: 0 20px 42px rgba(0, 0, 0, 0.35);
+    }
+
+    body {
+      line-height: 1.5;
+      letter-spacing: -0.005em;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    .partner-banner {
+      background: linear-gradient(180deg, #5f7992 0%, #6f859b 100%) !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.28) !important;
+      box-shadow: 0 6px 24px rgba(34, 49, 65, 0.18) !important;
+      padding: 16px 28px !important;
+    }
+
+    .header {
+      padding: 18px 30px;
+      border-bottom: 1px solid var(--glass-border);
+      backdrop-filter: blur(24px);
+      gap: 24px;
+    }
+
+    .header-text {
+      gap: 6px;
+    }
+
+    .header-text h1 {
+      font-size: 28px;
+      font-weight: 680;
+      letter-spacing: -0.03em;
+      background: none;
+      -webkit-text-fill-color: var(--text-primary);
+      color: var(--text-primary);
+    }
+
+    .header-subtitle {
+      font-size: 11px;
+      letter-spacing: 0.09em;
+      color: var(--text-secondary);
+    }
+
+    .agency-pill {
+      background: rgba(var(--accent-blue-rgb), 0.14);
+      color: var(--accent-blue);
+      border: 1px solid rgba(var(--accent-blue-rgb), 0.24);
+      font-weight: 650;
+      padding: 3px 10px;
+    }
+
+    .header-logo-center {
+      width: 264px;
+      height: 76px;
+    }
+
+    .datetime-display {
+      padding: 9px 14px;
+      border-radius: 12px;
+      border-color: var(--glass-border);
+    }
+
+    .datetime-date {
+      font-size: 10px;
+      letter-spacing: 0.07em;
+    }
+
+    .datetime-time {
+      font-size: 15px;
+      letter-spacing: -0.02em;
+      font-weight: 640;
+    }
+
+    .theme-toggle {
+      border-radius: 12px;
+      border-color: var(--glass-border);
+      font-size: 18px;
+      padding: 10px 13px;
+    }
+
+    .main-content {
+      gap: 0;
+    }
+
+    .left-sidebar {
+      width: 304px;
+      background: rgba(249, 251, 254, 0.9);
+      border-right: 1px solid var(--glass-border);
+    }
+
+    [data-theme="dark"] .left-sidebar {
+      background: rgba(20, 26, 36, 0.82);
+    }
+
+    .sidebar-section {
+      padding: 20px;
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    .sidebar-title {
+      font-size: 10.5px;
+      letter-spacing: 0.09em;
+      font-weight: 650;
+      margin-bottom: 14px;
+    }
+
+    .search-box,
+    .filter-btn,
+    .btn,
+    .form-input,
+    .form-select,
+    .form-textarea,
+    .comment-input {
+      border-radius: 12px;
+      border: 1px solid var(--glass-border);
+      font-size: 13px;
+    }
+
+    .search-box,
+    .form-input,
+    .form-select,
+    .form-textarea,
+    .comment-input {
+      padding: 11px 13px;
+      background: rgba(255, 255, 255, 0.84);
+    }
+
+    [data-theme="dark"] .search-box,
+    [data-theme="dark"] .form-input,
+    [data-theme="dark"] .form-select,
+    [data-theme="dark"] .form-textarea,
+    [data-theme="dark"] .comment-input {
+      background: rgba(28, 34, 46, 0.8);
+      border-color: rgba(255, 255, 255, 0.12);
+    }
+
+    .filter-btn {
+      padding: 11px 13px;
+      background: rgba(255, 255, 255, 0.72);
+      font-weight: 560;
+      margin-bottom: 8px;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: rgba(var(--accent-blue-rgb), 0.1);
+      border-color: rgba(var(--accent-blue-rgb), 0.22);
+    }
+
+    .activity-item,
+    .agent-card {
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.68);
+      border: 1px solid var(--glass-border);
+      padding: 10px;
+      margin-bottom: 8px;
+    }
+
+    .center-content {
+      padding: 30px;
+    }
+
+    .view-tabs {
+      padding: 9px;
+      border-radius: 16px;
+      margin-bottom: 24px;
+      gap: 9px;
+      border: 1px solid var(--glass-border);
+      background: rgba(255, 255, 255, 0.66);
+    }
+
+    [data-theme="dark"] .view-tabs {
+      background: rgba(27, 33, 44, 0.72);
+    }
+
+    .view-tab {
+      border-radius: 12px;
+      padding: 11px 14px;
+      font-size: 13px;
+      font-weight: 610;
+      color: var(--text-secondary);
+    }
+
+    .view-tab.active {
+      background: rgba(var(--accent-blue-rgb), 0.18);
+      color: var(--accent-blue);
+      border-color: rgba(var(--accent-blue-rgb), 0.26);
+      box-shadow: none;
+    }
+
+    .view-tab:hover {
+      background: rgba(var(--accent-blue-rgb), 0.12);
+      border-color: rgba(var(--accent-blue-rgb), 0.2);
+    }
+
+    .status-bucket {
+      margin-bottom: 28px;
+    }
+
+    .status-bucket-header {
+      padding: 16px 18px;
+      border-radius: 14px;
+      border-left-width: 3px;
+      margin-bottom: 14px;
+      background: rgba(255, 255, 255, 0.72);
+    }
+
+    .status-bucket-label {
+      font-size: 13px;
+      letter-spacing: 0.03em;
+    }
+
+    .status-bucket-content {
+      padding: 14px;
+      gap: 18px;
+      border-radius: 14px;
+    }
+
+    .projects-grid {
+      gap: 18px;
+    }
+
+    .project-card {
+      border-radius: 18px;
+      border: 1px solid var(--glass-border);
+      padding: 18px;
+      background: rgba(255, 255, 255, 0.76);
+      box-shadow: 0 4px 14px rgba(16, 24, 40, 0.04);
+    }
+
+    [data-theme="dark"] .project-card {
+      background: rgba(26, 33, 45, 0.78);
+    }
+
+    .project-card:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow);
+    }
+
+    .project-id,
+    .detail-id,
+    .work-col.id {
+      font-size: 10px;
+      letter-spacing: 0.04em;
+    }
+
+    .project-client {
+      font-size: 10px;
+      color: var(--accent-purple);
+      letter-spacing: 0.07em;
+    }
+
+    .project-name {
+      font-size: 15px;
+      font-weight: 620;
+      line-height: 1.45;
+      margin-bottom: 10px;
+    }
+
+    .project-timeline,
+    .project-meta,
+    .project-financial {
+      font-size: 12px;
+      line-height: 1.45;
+      gap: 10px;
+    }
+
+    .right-sidebar {
+      width: 544px;
+      padding: 30px;
+      border-left: 1px solid var(--glass-border);
+      background: rgba(250, 252, 255, 0.88);
+    }
+
+    [data-theme="dark"] .right-sidebar {
+      background: rgba(19, 25, 35, 0.8);
+    }
+
+    .detail-header,
+    .detail-section,
+    .action-buttons {
+      margin-bottom: 24px;
+    }
+
+    .detail-title {
+      font-size: 24px;
+      font-weight: 680;
+      letter-spacing: -0.02em;
+      margin-bottom: 18px;
+    }
+
+    .detail-section-title,
+    .form-label {
+      font-size: 10.5px;
+      font-weight: 650;
+      letter-spacing: 0.09em;
+      margin-bottom: 10px;
+    }
+
+    .detail-content,
+    .info-item,
+    .comment {
+      border-radius: 12px;
+      border: 1px solid var(--glass-border);
+      background: rgba(255, 255, 255, 0.68);
+      padding: 14px;
+    }
+
+    [data-theme="dark"] .detail-content,
+    [data-theme="dark"] .info-item,
+    [data-theme="dark"] .comment {
+      background: rgba(31, 38, 50, 0.72);
+    }
+
+    .info-grid {
+      gap: 14px;
+      margin-bottom: 26px;
+    }
+
+    .info-value {
+      font-size: 15px;
+      font-weight: 620;
+    }
+
+    .btn {
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-size: 12.5px;
+      font-weight: 620;
+      border: 1px solid var(--glass-border);
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--text-primary);
+    }
+
+    [data-theme="dark"] .btn {
+      background: rgba(31, 39, 52, 0.86);
+      color: var(--text-primary);
+      border-color: rgba(255, 255, 255, 0.14);
+    }
+
+    .btn-primary {
+      background: rgba(var(--accent-blue-rgb), 0.18) !important;
+      color: var(--accent-blue) !important;
+      border: 1px solid rgba(var(--accent-blue-rgb), 0.28) !important;
+    }
+
+    .btn-primary:hover {
+      background: rgba(var(--accent-blue-rgb), 0.24) !important;
+    }
+
+    .new-task-btn {
+      background: rgba(var(--accent-blue-rgb), 0.16);
+      color: var(--accent-blue);
+      border: 1px solid rgba(var(--accent-blue-rgb), 0.26);
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 640;
+      margin-top: 12px;
+    }
+
+    .new-task-btn:hover {
+      transform: none;
+      background: rgba(var(--accent-blue-rgb), 0.22);
+    }
+
+    .worklist-shell,
+    #agentsCenterContainer .worklist-shell,
+    #financeCenterContainer .worklist-shell,
+    #settingsContainer .worklist-shell {
+      border-radius: 18px;
+      border: 1px solid var(--glass-border);
+      background: rgba(255, 255, 255, 0.74);
+      box-shadow: 0 8px 24px rgba(16, 24, 40, 0.06);
+    }
+
+    [data-theme="dark"] .worklist-shell,
+    [data-theme="dark"] #agentsCenterContainer .worklist-shell,
+    [data-theme="dark"] #financeCenterContainer .worklist-shell,
+    [data-theme="dark"] #settingsContainer .worklist-shell {
+      background: rgba(24, 30, 42, 0.82);
+    }
+
+    .worklist-toolbar {
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    .lane-chip {
+      border-radius: 999px;
+      padding: 8px 12px;
+      border: 1px solid var(--glass-border);
+      background: rgba(255, 255, 255, 0.82);
+      font-size: 12px;
+      font-weight: 610;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .lane-chip.active {
+      background: rgba(var(--accent-blue-rgb), 0.18);
+      color: var(--accent-blue);
+      border-color: rgba(var(--accent-blue-rgb), 0.26);
+    }
+
+    .lane-chip span,
+    .lane-chip.active span {
+      background: rgba(15, 23, 35, 0.08);
+      color: inherit;
+      margin-left: 2px;
+      padding: 1px 7px;
+      border-radius: 999px;
+      line-height: 1.2;
+      font-size: 11px;
+    }
+
+    .worklist-meta {
+      padding: 10px 20px 14px;
+      font-size: 12px;
+    }
+
+    .worklist-header,
+    .worklist-row {
+      padding: 12px 20px;
+      gap: 12px;
+    }
+
+    .worklist-header {
+      font-size: 10.5px;
+      letter-spacing: 0.08em;
+      border-bottom: 1px solid var(--glass-border);
+      background: rgba(255, 255, 255, 0.86);
+    }
+
+    [data-theme="dark"] .worklist-header {
+      background: rgba(23, 29, 40, 0.92);
+    }
+
+    .worklist-row {
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    .worklist-row:hover {
+      background: rgba(var(--accent-blue-rgb), 0.07);
+    }
+
+    .worklist-row.active {
+      background: rgba(var(--accent-blue-rgb), 0.12);
+      border-left: 2px solid var(--accent-blue);
+      padding-left: 18px;
+    }
+
+    .work-col {
+      font-size: 12.5px;
+    }
+
+    .work-col.title {
+      font-weight: 620;
+    }
+
+    .metric-card,
+    .settings-metrics .metric-card,
+    .finance-metrics .metric-card {
+      border-radius: 14px;
+      padding: 16px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 2px 8px rgba(16, 24, 40, 0.04);
+    }
+
+    [data-theme="dark"] .metric-card,
+    [data-theme="dark"] .settings-metrics .metric-card,
+    [data-theme="dark"] .finance-metrics .metric-card {
+      background: rgba(31, 38, 52, 0.74);
+    }
+
+    .metric-value {
+      font-size: 24px;
+      font-weight: 680;
+      letter-spacing: -0.02em;
+    }
+
+    .metric-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-secondary);
+      margin-top: 6px;
+      font-weight: 620;
+    }
+
+    #settingsContainer .detail-section {
+      padding: 16px;
+      border-radius: 14px;
+      border: 1px solid var(--glass-border);
+      background: rgba(255, 255, 255, 0.72);
+    }
+
+    [data-theme="dark"] #settingsContainer .detail-section {
+      background: rgba(30, 37, 50, 0.78);
+    }
+
+    .status-badge {
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      font-weight: 650;
+      border: 1px solid transparent;
+    }
+
+    .status-badge.status-complete {
+      background: rgba(47, 143, 91, 0.12);
+      border-color: rgba(47, 143, 91, 0.24);
+      color: var(--status-green);
+    }
+
+    .status-badge.status-in-progress {
+      background: rgba(167, 115, 43, 0.14);
+      border-color: rgba(167, 115, 43, 0.24);
+      color: var(--status-yellow);
+    }
+
+    .status-badge.status-blocked {
+      background: rgba(173, 77, 70, 0.14);
+      border-color: rgba(173, 77, 70, 0.24);
+      color: var(--status-red);
+    }
+
+    .status-badge.status-other {
+      background: rgba(122, 133, 147, 0.14);
+      border-color: rgba(122, 133, 147, 0.24);
+      color: var(--status-gray);
+    }
+
+    .app-footer {
+      height: 44px;
+      background: rgba(249, 251, 254, 0.92);
+      border-top: 1px solid var(--glass-border);
+      padding: 0 18px;
+    }
+
+    [data-theme="dark"] .app-footer {
+      background: rgba(20, 26, 36, 0.9);
+    }
+
+    .footer-meta {
+      font-size: 10.5px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      gap: 10px;
+    }
+
+    .footer-actions .btn {
+      padding: 6px 10px !important;
+      font-size: 10.5px !important;
+      border-radius: 10px;
+    }
+
+    /* Calendar + inline-style harmonization */
+    #calendarView > div:first-child {
+      margin-bottom: 22px !important;
+      gap: 10px !important;
+      align-items: center !important;
+    }
+
+    #calendarView > div:first-child .btn {
+      border-radius: 10px !important;
+      border: 1px solid var(--glass-border) !important;
+      background: rgba(255, 255, 255, 0.85) !important;
+      color: var(--text-primary) !important;
+      font-size: 12px !important;
+      font-weight: 620 !important;
+      padding: 8px 14px !important;
+    }
+
+    #calendarView > div:first-child .btn:hover {
+      background: rgba(var(--accent-blue-rgb), 0.14) !important;
+      color: var(--accent-blue) !important;
+    }
+
+    #calendarView #calendarTitle {
+      font-size: 15px !important;
+      font-weight: 640 !important;
+      color: var(--text-primary) !important;
+      letter-spacing: -0.01em;
+    }
+
+    #calendarView #calendarViewSelect {
+      border-radius: 10px !important;
+      border: 1px solid var(--glass-border) !important;
+      background: rgba(255, 255, 255, 0.9) !important;
+      color: var(--text-primary) !important;
+      font-size: 12px !important;
+      padding: 8px 12px !important;
+    }
+
+    #calendarContainer {
+      border: 1px solid var(--glass-border);
+      border-radius: 14px !important;
+      background: rgba(255, 255, 255, 0.74);
+    }
+
+    [data-theme="dark"] #calendarContainer {
+      background: rgba(25, 32, 45, 0.8);
+    }
+
+    #projectsContainer,
+    #calendarContainer,
+    #agentsCenterContainer,
+    #financeCenterContainer,
+    #settingsContainer {
+      color: var(--text-primary);
+    }
+
+    /* Finance control + dark mode readability + header alignment fixes */
+    .header-actions .btn.btn-primary {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 0 !important;
+      text-align: center;
+      min-width: 124px;
+    }
+
+    .header-actions .btn.btn-primary > span {
+      display: none !important;
+    }
+
+    .agency-pill {
+      background: #1f5778 !important;
+      color: #ffffff !important;
+      border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    }
+
+    [data-theme="dark"] .agency-pill {
+      background: #7bb8df !important;
+      color: #0f1e2a !important;
+      border: 1px solid rgba(123, 184, 223, 0.42) !important;
+    }
+
+    [data-theme="dark"] .left-sidebar,
+    [data-theme="dark"] .sidebar-section,
+    [data-theme="dark"] .filter-btn,
+    [data-theme="dark"] .filter-btn *,
+    [data-theme="dark"] .sidebar-title,
+    [data-theme="dark"] #agencyName,
+    [data-theme="dark"] .agency-indicator,
+    [data-theme="dark"] .view-tab,
+    [data-theme="dark"] .work-col,
+    [data-theme="dark"] .worklist-meta,
+    [data-theme="dark"] .worklist-empty {
+      color: #e8eef8 !important;
+    }
+
+    [data-theme="dark"] .search-box,
+    [data-theme="dark"] .form-input,
+    [data-theme="dark"] .form-select,
+    [data-theme="dark"] .form-textarea,
+    [data-theme="dark"] .comment-input {
+      background: rgba(18, 24, 35, 0.9) !important;
+      border-color: rgba(226, 235, 248, 0.22) !important;
+      color: #f2f6fd !important;
+    }
+
+    [data-theme="dark"] .search-box::placeholder,
+    [data-theme="dark"] .form-input::placeholder,
+    [data-theme="dark"] .comment-input::placeholder,
+    [data-theme="dark"] .form-textarea::placeholder {
+      color: #98a8be !important;
+      opacity: 1;
+    }
+
+    [data-theme="dark"] .view-tab.active {
+      color: #d6ecff !important;
+      background: rgba(86, 151, 197, 0.28) !important;
+      border-color: rgba(111, 177, 224, 0.44) !important;
+    }
+
+    [data-theme="dark"] .worklist-header,
+    [data-theme="dark"] .worklist-row {
+      color: #dce6f4 !important;
+    }
+
+    /* Settings flatten pass: remove box-in-box feeling */
+    #settingsContainer.worklist-shell {
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+    }
+
+    #settingsContainer .settings-grid {
+      gap: 20px !important;
+    }
+
+    #settingsContainer .detail-section {
+      background: rgba(255, 255, 255, 0.62) !important;
+      border: 1px solid var(--glass-border) !important;
+      box-shadow: none !important;
+      border-radius: 14px !important;
+      padding: 16px !important;
+    }
+
+    [data-theme="dark"] #settingsContainer .detail-section {
+      background: rgba(24, 31, 44, 0.72) !important;
+    }
+
+    #settingsContainer .detail-content {
+      background: transparent !important;
+      border: none !important;
+      padding: 0 !important;
+      margin-top: 8px !important;
+    }
+
+    #settingsContainer .worklist-table {
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    #settingsContainer .worklist-header {
+      background: rgba(255, 255, 255, 0.74);
+    }
+
+    [data-theme="dark"] #settingsContainer .worklist-header {
+      background: rgba(20, 27, 38, 0.8);
+    }
+
+    /* Settings scrolling: single continuous scroll, no inner scroll traps */
+    #settingsView {
+      height: 100%;
+      min-height: 0;
+      overflow-y: auto !important;
+      overflow-x: hidden;
+      padding-bottom: 120px;
+      overscroll-behavior: contain;
+    }
+
+    #settingsContainer {
+      overflow: visible !important;
+      height: auto !important;
+      max-height: none !important;
+      padding-bottom: 48px;
+    }
+
+    #settingsContainer .worklist-body {
+      max-height: none !important;
+      overflow: visible !important;
+    }
+
     @media (max-width: 768px) {
+      .header {
+        padding: 14px 16px;
+      }
+
+      .center-content {
+        padding: 16px;
+      }
+
+      .left-sidebar {
+        width: 100%;
+      }
+
+      .right-sidebar {
+        padding: 20px;
+      }
+
+      .view-tabs {
+        gap: 8px;
+      }
+
+      .metric-value {
+        font-size: 20px;
+      }
+    }
+
+    /* Conversations view */
+    .conversation-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .conversation-filters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .conversation-summary {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .conversation-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+
+    .conversation-table th,
+    .conversation-table td {
+      text-align: left;
+      padding: 10px;
+      border-bottom: 1px solid var(--glass-border);
+      vertical-align: top;
+    }
+
+    .conversation-table th {
+      font-size: 11px;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    .conversation-pill {
+      display: inline-block;
+      border-radius: 999px;
+      padding: 3px 8px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      border: 1px solid var(--glass-border);
+      background: rgba(255, 255, 255, 0.66);
+    }
+
+    .conversation-pill.general {
+      background: rgba(155, 165, 180, 0.18);
+    }
+
+    @media (max-width: 1100px) {
       .main-content {
         flex-direction: column;
       }
 
       .left-sidebar {
         width: 100%;
+        max-height: 32vh;
         border-right: none;
         border-bottom: 1px solid var(--glass-border);
-        max-height: 40vh;
       }
 
       .center-content {
-        flex: 1;
-      }
-
-      .right-sidebar {
         width: 100%;
-        right: -100%;
       }
 
-      .header {
-        flex-wrap: wrap;
-        gap: 12px;
+      .view-tabs {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
       }
 
-      .header-logo {
-        height: 60px;
+      #settingsContainer .settings-grid {
+        grid-template-columns: 1fr !important;
       }
 
-      .header-text h1 {
-        font-size: 14px;
+      #settingsContainer .worklist-row {
+        grid-template-columns: 1fr !important;
+        row-gap: 8px;
       }
 
-      .header-actions {
-        flex-wrap: wrap;
-        gap: 8px;
+      .conversation-summary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 768px) {
+      .view-tabs {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      .datetime-display {
-        font-size: 11px;
-        padding: 6px 10px;
-      }
-
-      .datetime-time {
-        font-size: 16px;
-      }
-
-      .btn-primary {
-        font-size: 13px !important;
-        padding: 8px 16px !important;
-      }
-
-      .projects-grid {
+      .conversation-summary {
         grid-template-columns: 1fr;
       }
     }
 
-    /* Status Bucket Layout (New) */
-    .status-bucket {
-      margin-bottom: 24px;
+    /* Responsive hardening for settings/tables */
+    @media (max-width: 1100px) {
+      #settingsContainer .worklist-table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      #settingsContainer .worklist-header,
+      #settingsContainer .worklist-row {
+        min-width: 760px;
+      }
+
+      #settingsContainer .form-input,
+      #settingsContainer .form-select,
+      #settingsContainer .btn {
+        width: 100%;
+      }
+
+      #settingsContainer .detail-section {
+        padding: 14px !important;
+      }
     }
 
-    .status-bucket-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 18px;
-      background: var(--glass-bg);
-      backdrop-filter: blur(20px);
-      border: 1px solid var(--glass-border);
-      border-left: 4px solid var(--accent-blue);
-      border-radius: 12px;
-      margin-bottom: 12px;
+    @media (max-width: 768px) {
+      .header {
+        position: sticky;
+        top: 0;
+        z-index: 40;
+      }
+
+      .center-content {
+        overflow-x: hidden;
+      }
+
+      #settingsContainer .worklist-header,
+      #settingsContainer .worklist-row {
+        min-width: 680px;
+      }
+
+      .conversation-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
     }
 
-    .status-bucket-label {
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
+    /* Navigation hotfix */
+    #mainViewTabs {
+      display: flex !important;
+      flex-wrap: wrap;
+      align-items: stretch;
+      gap: 8px;
+      position: relative;
+      z-index: 5;
     }
 
-    .status-bucket-count {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text-secondary);
-      background: rgba(0, 0, 0, 0.05);
-      padding: 4px 10px;
-      border-radius: 12px;
+    #mainViewTabs .view-tab {
+      flex: 1 1 132px !important;
+      min-width: 132px;
+      width: auto !important;
+      position: relative;
+      z-index: 6;
+      pointer-events: auto;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
-    .status-bucket-content {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 16px;
-      min-height: 80px;
-      padding: 12px;
-      border-radius: 12px;
-      transition: background 0.2s ease;
+    @media (max-width: 1100px) {
+      #mainViewTabs .view-tab {
+        flex: 1 1 calc(25% - 8px) !important;
+        min-width: 120px;
+      }
     }
 
-    .status-bucket-content.drag-over {
-      background: rgba(59, 130, 246, 0.1);
-      border: 2px dashed var(--accent-blue);
+    @media (max-width: 768px) {
+      #mainViewTabs .view-tab {
+        flex: 1 1 calc(50% - 8px) !important;
+        min-width: 118px;
+      }
     }
 
-    .empty-bucket {
-      grid-column: 1 / -1;
-      text-align: center;
-      padding: 32px;
-      color: var(--text-secondary);
+    /* Project focus mode */
+    .main-content {
+      position: relative;
     }
 
-    .project-header-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 8px;
+    .main-content.project-focus .center-content {
+      transform: none !important;
+      transition: none !important;
     }
 
-    .project-category-badge {
-      font-size: 10px;
-      padding: 3px 8px;
-      background: rgba(0, 0, 0, 0.06);
-      border-radius: 6px;
-      font-weight: 600;
-      color: var(--text-secondary);
+    .main-content.project-focus .right-sidebar {
+      display: block !important;
+      position: absolute !important;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: clamp(340px, 42vw, 520px);
+      min-width: 340px;
+      max-width: calc(100% - 120px); /* keep part of middle column clickable */
+      z-index: 30;
+      box-shadow: -12px 0 32px rgba(20, 31, 47, 0.18);
+      pointer-events: auto;
     }
 
-    /* Drag and Drop States */
-    .project-card[draggable="true"] {
-      cursor: grab;
+    .main-content:not(.project-focus) .right-sidebar {
+      display: none !important;
     }
 
-    .project-card[draggable="true"]:active {
-      cursor: grabbing;
+    .main-content:not(.project-focus) .center-content {
+      width: 100%;
+      max-width: none;
+      transform: none !important;
     }
 
-    .project-card.dragging {
-      opacity: 0.4;
+    @media (max-width: 1400px) {
+      .main-content.project-focus .right-sidebar {
+        width: clamp(320px, 50vw, 520px);
+        min-width: 320px;
+        max-width: calc(100% - 96px);
+      }
     }
 
-    /* Status badge styles */
-    .status-badge {
-      display: inline-block;
-      padding: 4px 10px;
-      border-radius: 6px;
-      font-size: 11px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.3px;
+    @media (max-width: 900px) {
+      .main-content.project-focus .right-sidebar {
+        width: min(520px, calc(100% - 64px));
+        min-width: 280px;
+        max-width: calc(100% - 64px);
+      }
     }
 
-    .status-badge.status-complete {
-      background: rgba(52, 199, 89, 0.15);
-      color: var(--status-green);
-    }
-
-    .status-badge.status-in-progress {
-      background: rgba(255, 149, 0, 0.15);
-      color: var(--status-yellow);
-    }
-
-    .status-badge.status-blocked {
-      background: rgba(142, 142, 147, 0.15);
-      color: var(--status-gray);
-    }
-
-    .status-badge.status-other {
-      background: rgba(0, 122, 255, 0.15);
-      color: var(--accent-blue);
-    }
-  </style>
+</style>
 </head>
 <body>
+<!-- Design Partner Welcome Banner -->
+<div class="partner-banner" style="
+  background: linear-gradient(135deg, #5e88b1 0%, #6f86a3 100%);
+  color: white;
+  padding: 14px 24px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 0 3px 14px rgba(53, 83, 117, 0.18);
+  position: relative;
+  z-index: 1000;
+">
+  <div style="max-width: 1260px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 18px;">
+    <div style="text-align: left;">
+      <div style="font-size: 18px; font-weight: 600; margin-bottom: 3px;">Welcome, Design Partner</div>
+      <div class="partner-subtitle">You're previewing Mission Control - the future of agency operations</div>
+    </div>
+    <div style="display: flex; gap: 12px; align-items: center;">
+      <a href="#feedback" style="
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        padding: 8px 16px;
+        border-radius: 20px;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        transition: all 0.2s ease;
+      " onmouseover="this.style.background='rgba(255, 255, 255, 0.3)';" 
+         onmouseout="this.style.background='rgba(255, 255, 255, 0.2)';">
+         Give Feedback
+      </a>
+      <div style="font-size: 12px; opacity: 0.8; padding: 4px 12px; background: rgba(0, 0, 0, 0.2); border-radius: 12px;">
+        Early Access
+      </div>
+    </div>
+  </div>
+</div>
+<input id="logoFileInput" type="file" accept="image/*" style="display:none;" onchange="onLogoFileSelected(event)">
+
   <div class="dashboard-container">
     <!-- Header -->
     <div class="header">
       <div class="header-brand">
-        <div class="logo-container">
-          <img src="d1010-logo.svg" alt="Digital1010" class="header-logo">
-        </div>
         <div class="header-text">
           <h1>Operations Dashboard</h1>
+          <div class="header-subtitle">Mission Control Workspace</div>
+          <div class="agency-indicator" id="agencyIndicator">
+            <span class="agency-pill">Agency</span>
+            <span id="agencyName">Loading...</span>
+          </div>
+        </div>
+  
+      </div>
+      <div class="header-center">
+        <div class="header-logo-center">
+          <img id="topBrandLogo" src="/public/d1010-logo.svg" alt="Brand logo" style="max-width: 220px; max-height: 68px; width: auto; height: auto; object-fit: contain;">
+          <div id="topBrandLogoFallback" style="display:none; font-size: 12px; font-weight: 700; letter-spacing: 0.45px;">DIGITAL1010</div>
         </div>
       </div>
       <div class="header-actions">
@@ -984,10 +2014,10 @@
           <div class="datetime-time" id="headerTime">--:--</div>
         </div>
         <button onclick="openNewTaskModal()" class="btn btn-primary" style="padding: 12px 24px; font-size: 15px; font-weight: 600; display: flex; align-items: center; gap: 8px;">
-          <span style="font-size: 18px;">➕</span> New Ticket
+          <span style="font-size: 18px;"></span> New Ticket
         </button>
         <button onclick="toggleTheme()" class="theme-toggle" title="Toggle light/dark mode">
-          <span id="themeIcon">🌙</span>
+          <span id="themeIcon"></span>
         </button>
       </div>
     </div>
@@ -1002,22 +2032,12 @@
         </div>
 
         <div class="sidebar-section">
-          <div class="sidebar-title">Sort By</div>
-          <div class="filter-group">
-            <button class="filter-btn active" data-sort="newest">📅 Newest First</button>
-            <button class="filter-btn" data-sort="oldest">📆 Oldest First</button>
-            <button class="filter-btn" data-sort="priority">🎯 Priority</button>
-            <button class="filter-btn" data-sort="alpha">🔤 A-Z</button>
-          </div>
-        </div>
-
-        <div class="sidebar-section">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
             <div class="sidebar-title" style="margin: 0;">Categories</div>
             <button onclick="openManageCategoriesModal()" style="background: none; border: none; color: var(--accent-blue); font-size: 12px; cursor: pointer; padding: 4px 8px;">✎ Manage</button>
           </div>
           <div class="filter-group" id="categoryFilters">
-            <button class="filter-btn active" data-filter="all">🌟 All Projects</button>
+            <button class="filter-btn active" data-filter="all"> All Projects</button>
             <!-- Will be populated by JavaScript -->
           </div>
         </div>
@@ -1033,11 +2053,12 @@
         </div>
 
         <div class="sidebar-section">
-          <div class="sidebar-title">Status</div>
-          <div class="filter-group">
-            <button class="filter-btn" data-status="in-progress">🔵 In Progress</button>
-            <button class="filter-btn" data-status="complete">✅ Complete</button>
-            <button class="filter-btn" data-status="blocked">🚫 Blocked</button>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+            <div class="sidebar-title" style="margin: 0;"> File Hub</div>
+            <button onclick="openManageFileHubModal()" style="background: none; border: none; color: var(--accent-blue); font-size: 12px; cursor: pointer; padding: 4px 8px;">✎ Manage</button>
+          </div>
+          <div id="fileHubLinks" class="filter-group">
+            <!-- Populated by JS -->
           </div>
         </div>
 
@@ -1046,35 +2067,167 @@
         </div>
 
         <div class="sidebar-section">
-          <div class="sidebar-title">📡 Activity</div>
+          <div class="sidebar-title"> Activity</div>
           <div id="activityFeed" style="font-size: 12px; max-height: 200px; overflow-y: auto;">
             <!-- Activity feed populated by JS -->
           </div>
         </div>
 
         <div class="sidebar-section">
-          <div class="sidebar-title">🤖 Agents</div>
+          <div class="sidebar-title"> Agents</div>
+          <button class="filter-btn" style="margin-bottom: 8px;" onclick="openAgentsWorkspace()">Open Agent Command Center</button>
           <div id="agentsGrid">
             <!-- Agents populated by JS -->
           </div>
         </div>
 
-        <div class="sidebar-section">
-          <div class="sidebar-title">📝 Daily Logs</div>
-          <div id="dailyLogs" style="font-size: 12px; max-height: 200px; overflow-y: auto;">
-            <!-- Daily logs populated by JS -->
+      </div>
+
+      <!-- Center - Project Tiles with Tabs -->
+      <div class="center-content">
+        <!-- Tabs for Projects/Calendar View -->
+        <div class="view-tabs" id="mainViewTabs" style="grid-template-columns: repeat(9, minmax(0, 1fr));">
+          <button class="view-tab" data-view="briefing" onclick="switchView('briefing')">
+             Briefing
+          </button>
+          <button class="view-tab active" data-view="projects" onclick="switchView('projects')">
+             Projects
+          </button>
+          <button class="view-tab" data-view="calendar" onclick="switchView('calendar')">
+             Calendar
+          </button>
+          <button class="view-tab" data-view="agents" onclick="switchView('agents')">
+             Agents
+          </button>
+          <button class="view-tab" data-view="conversations" onclick="switchView('conversations')">
+             Conversations
+          </button>
+          <button class="view-tab" data-view="intake" onclick="switchView('intake')">
+             Intake
+          </button>
+          <button class="view-tab" data-view="finance" onclick="switchView('finance')">
+             Finance
+          </button>
+          <button class="view-tab" data-view="pl" onclick="switchView('pl')">
+             P&L
+          </button>
+          <button class="view-tab" data-view="settings" onclick="switchView('settings')">
+             Settings
+          </button>
+        </div>
+
+        <!-- Briefing View -->
+        <div id="briefingView" class="view-content" style="display:none;"></div>
+
+        <!-- Client Portal View -->
+        <div id="client-portalView" class="view-content" style="display:none;"></div>
+
+        <!-- Projects View (Default) -->
+        <div id="projectsView" class="view-content active">
+          <div id="projectsContainer">
+            <!-- Projects will be rendered here -->
+          </div>
+        </div>
+
+        <!-- Calendar View -->
+        <div id="calendarView" class="view-content" style="display: none;">
+          <div style="margin-bottom: 20px; display: flex; gap: 12px; align-items: center;">
+            <button class="btn" onclick="calendarPrev()" style="padding: 8px 16px; background: rgba(0, 0, 0, 0.05); border: none; border-radius: 8px; cursor: pointer;">Prev</button>
+            <button class="btn" onclick="calendarToday()" style="padding: 8px 16px; background: var(--accent-blue); color: white; border: none; border-radius: 8px; cursor: pointer;">Today</button>
+            <button class="btn" onclick="calendarNext()" style="padding: 8px 16px; background: rgba(0, 0, 0, 0.05); border: none; border-radius: 8px; cursor: pointer;">Next</button>
+            <span id="calendarTitle" style="flex: 1; text-align: center; font-weight: 600; font-size: 16px;"></span>
+            <select id="calendarViewSelect" onchange="changeCalendarView(this.value)" style="padding: 8px 16px; background: white; border: 1px solid rgba(0, 0, 0, 0.1); border-radius: 8px; font-size: 14px;">
+              <option value="month">Month</option>
+              <option value="week">Week</option>
+              <option value="day">Day</option>
+            </select>
+          </div>
+          <div id="calendarLaneNav" class="lane-chips" style="margin-bottom: 14px;"></div>
+          <div id="calendarContainer" style="height: 600px; border-radius: 12px; overflow: hidden;"></div>
+          
+          <!-- Calendar Legend -->
+          <div style="margin-top: 20px; display: flex; gap: 16px; flex-wrap: wrap;">
+            <div style="display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-secondary);">
+              <div style="width: 12px; height: 12px; border-radius: 3px; background: #ef4444;"></div>
+              <span>P0 - Critical</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-secondary);">
+              <div style="width: 12px; height: 12px; border-radius: 3px; background: #f59e0b;"></div>
+              <span>P1 - High</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-secondary);">
+              <div style="width: 12px; height: 12px; border-radius: 3px; background: #3b82f6;"></div>
+              <span>P2 - Medium</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-secondary);">
+              <div style="width: 12px; height: 12px; border-radius: 3px; background: #10b981;"></div>
+              <span>Completed</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Agents Command Center View -->
+        <div id="agentsView" class="view-content" style="display: none;">
+          <div id="agentsCenterContainer">
+            <!-- Agents command center rendered by JS -->
+          </div>
+        </div>
+
+        <div id="conversationsView" class="view-content" style="display: none;">
+          <div id="conversationsContainer" class="worklist-shell">
+            <!-- Conversations rendered by JS -->
+          </div>
+        </div>
+
+        <!-- Intake / Peg Queue View -->
+        <div id="intakeView" class="view-content" style="display: none;">
+          <div id="intakeContainer" class="worklist-shell">
+            <!-- Intake queue rendered by JS -->
+          </div>
+        </div>
+
+        <!-- Finance View -->
+        <div id="financeView" class="view-content" style="display: none;">
+          <div id="financeCenterContainer" class="worklist-shell">
+            <!-- Finance rendered by JS -->
+          </div>
+        </div>
+
+        <!-- P&L View -->
+        <div id="plView" class="view-content" style="display: none;">
+          <div id="plCenterContainer" class="worklist-shell">
+            <!-- P&L rendered by JS -->
+          </div>
+        </div>
+
+
+        <div id="settingsView" class="view-content" style="display: none;">
+          <div id="settingsContainer" class="worklist-shell">
+            <!-- Settings rendered by JS -->
           </div>
         </div>
       </div>
 
-      <!-- Center - Project Tiles -->
-      <div class="center-content" id="projectsContainer">
-        <!-- Projects will be rendered here -->
-      </div>
-
       <!-- Right Sidebar - Detail View -->
       <div class="right-sidebar empty" id="detailPanel">
-        <div>👈 Select a project to view details</div>
+        <div>Select a project to view details</div>
+      </div>
+    </div>
+    <div class="app-footer">
+      <div class="footer-meta">
+        <span id="footerVersion">Mission Control v1.0.0</span>
+        <span>•</span>
+        <span id="footerAgency">Agency: default</span>
+        <span>•</span>
+        <span id="footerSecurity">Security: baseline</span>
+        <span>•</span>
+        <span id="footerAuth">Session: open</span>
+      </div>
+      <div class="footer-actions">
+        <button onclick="openCommandPalette()" class="btn" style="padding: 6px 10px; font-size: 11px; display:flex; align-items:center; gap:4px;">Search <kbd style="font-size:9px;background:rgba(0,0,0,0.08);padding:1px 4px;border-radius:3px;">⌘K</kbd></button>
+        <button onclick="switchView('settings')" class="btn" style="padding: 6px 10px; font-size: 11px;">Settings</button>
+        <button onclick="forceRefreshDashboard()" class="btn" style="padding: 6px 10px; font-size: 11px;">Refresh</button>
+        <button id="footerLogoutBtn" onclick="logoutSession()" class="btn" style="padding: 6px 10px; font-size: 11px; display:none;">Logout</button>
       </div>
     </div>
   </div>
@@ -1130,6 +2283,45 @@
     </div>
   </div>
 
+  <!-- Manage File Hub Modal -->
+  <div class="modal-overlay" id="manageFileHubModal" onclick="if(event.target === this) closeManageFileHubModal()">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title">Manage File Hub</div>
+        <button class="modal-close" onclick="closeManageFileHubModal()">×</button>
+      </div>
+
+      <div style="margin-bottom: 24px;">
+        <div style="font-size: 13px; font-weight: 600; margin-bottom: 12px;">Connect Asset Source</div>
+        <form id="addFileHubForm" onsubmit="addFileHubLink(event)">
+          <div class="form-group">
+            <input type="text" class="form-input" id="newFileHubLabel" placeholder="Label (e.g., Google Drive - Creative)">
+          </div>
+          <div class="form-group">
+            <select class="form-select" id="newFileHubType">
+              <option value="external">External Drive</option>
+              <option value="google">Google Drive</option>
+              <option value="microsoft">Microsoft OneDrive</option>
+              <option value="dropbox">Dropbox</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-input" id="newFileHubPath" placeholder="Path (e.g., /Volumes/AI_Drive/ or /Users/ottomac/Library/CloudStorage/...)" required>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">+ Connect Asset</button>
+        </form>
+      </div>
+
+      <div style="border-top: 1px solid rgba(0, 0, 0, 0.1); padding-top: 20px;">
+        <div style="font-size: 13px; font-weight: 600; margin-bottom: 12px;">Connected Sources</div>
+        <div id="fileHubConnectionsList" style="max-height: 300px; overflow-y: auto;">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Manage Clients Modal -->
   <div class="modal-overlay" id="manageClientsModal" onclick="if(event.target === this) closeManageClientsModal()">
     <div class="modal-content">
@@ -1172,7 +2364,7 @@
             <input type="text" class="form-input" id="newCategoryName" placeholder="Category name (e.g., Sales)" required>
           </div>
           <div class="form-group">
-            <input type="text" class="form-input" id="newCategoryEmoji" placeholder="Emoji (e.g., 💰)" maxlength="2" required>
+            <input type="text" class="form-input" id="newCategoryEmoji" placeholder="Emoji (optional, e.g., 🖥️)">
           </div>
           <button type="submit" class="btn btn-primary" style="width: 100%;">+ Add Category</button>
         </form>
@@ -1187,6 +2379,164 @@
     </div>
   </div>
 
-  <script src="app.js"></script>
+  <script src="app.js?v=1773667647"></script>
+<!-- Design Partner Feedback Form -->
+<div id="feedback" style="
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow);
+  padding: 30px;
+  margin: 40px auto;
+  max-width: 800px;
+  display: none;
+">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+    <h3 style="font-size: 20px; font-weight: 600;"> Design Partner Feedback</h3>
+    <button onclick="document.getElementById('feedback').style.display='none'" style="
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      font-size: 24px;
+      cursor: pointer;
+      padding: 0;
+    ">×</button>
+  </div>
+  
+  <p style="color: var(--text-secondary); margin-bottom: 24px;">
+    Your feedback shapes Mission Control. What would make this dashboard indispensable for your agency?
+  </p>
+  
+  <form id="feedbackForm" style="display: grid; gap: 20px;">
+    <div>
+      <label style="display: block; margin-bottom: 8px; font-weight: 500;">What's your biggest agency operations pain point?</label>
+      <textarea name="pain_point" style="
+        width: 100%;
+        padding: 12px;
+        border-radius: 12px;
+        border: 1px solid var(--glass-border);
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--text-primary);
+        font-family: inherit;
+        resize: vertical;
+        min-height: 100px;
+      " placeholder="E.g., client reporting takes 10+ hours per month..."></textarea>
+    </div>
+    
+    <div>
+      <label style="display: block; margin-bottom: 8px; font-weight: 500;">What feature would be most valuable to you?</label>
+      <select name="feature_priority" style="
+        width: 100%;
+        padding: 12px;
+        border-radius: 12px;
+        border: 1px solid var(--glass-border);
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--text-primary);
+        font-family: inherit;
+      ">
+        <option value="">Select the most important feature...</option>
+        <option value="client_reporting">Automated Client Reporting</option>
+        <option value="project_management">AI Project Management</option>
+        <option value="team_coordination">Team Coordination & Delegation</option>
+        <option value="financial_tracking">Profitability & Financial Tracking</option>
+        <option value="content_automation">Content Creation Automation</option>
+      </select>
+    </div>
+    
+    <div>
+      <label style="display: block; margin-bottom: 8px; font-weight: 500;">What would you pay monthly for this solution?</label>
+      <div style="display: flex; gap: 12px;">
+        <label style="display: flex; align-items: center; gap: 8px;">
+          <input type="radio" name="price_point" value="99">
+          $99/mo
+        </label>
+        <label style="display: flex; align-items: center; gap: 8px;">
+          <input type="radio" name="price_point" value="249">
+          $249/mo
+        </label>
+        <label style="display: flex; align-items: center; gap: 8px;">
+          <input type="radio" name="price_point" value="499">
+          $499/mo
+        </label>
+        <label style="display: flex; align-items: center; gap: 8px;">
+          <input type="radio" name="price_point" value="999">
+          $999/mo
+        </label>
+      </div>
+    </div>
+    
+    <div>
+      <label style="display: block; margin-bottom: 8px; font-weight: 500;">Email for follow-up (optional)</label>
+      <input type="email" name="email" style="
+        width: 100%;
+        padding: 12px;
+        border-radius: 12px;
+        border: 1px solid var(--glass-border);
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--text-primary);
+        font-family: inherit;
+      " placeholder="you@youragency.com">
+    </div>
+    
+    <button type="submit" style="
+      background: linear-gradient(135deg, #007aff 0%, #5856d6 100%);
+      color: white;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 16px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    " onmouseover="this.style.transform='translateY(-2px)';" 
+       onmouseout="this.style.transform='translateY(0)';">
+      Submit Feedback
+    </button>
+  </form>
+  
+  <div id="feedbackThankYou" style="display: none; text-align: center; padding: 40px;">
+    <div style="font-size: 48px; margin-bottom: 16px;"></div>
+    <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 12px;">Thank You!</h3>
+    <p style="color: var(--text-secondary);">
+      Your feedback has been submitted. We'll review it and may reach out for a follow-up conversation.
+    </p>
+  </div>
+</div>
+
+<script>
+// Feedback form handling
+document.addEventListener('DOMContentLoaded', function() {
+  const feedbackForm = document.getElementById('feedbackForm');
+  const feedbackThankYou = document.getElementById('feedbackThankYou');
+  
+  // Make feedback link work
+  document.querySelector('a[href="#feedback"]').addEventListener('click', function(e) {
+    e.preventDefault();
+    document.getElementById('feedback').style.display = 'block';
+    document.getElementById('feedback').scrollIntoView({ behavior: 'smooth' });
+  });
+  
+  // Handle form submission
+  feedbackForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Collect form data
+    const formData = new FormData(feedbackForm);
+    const data = Object.fromEntries(formData);
+    
+    // Log to console (in real app, send to server)
+    console.log('Design Partner Feedback:', data);
+    
+    // Show thank you message
+    feedbackForm.style.display = 'none';
+    feedbackThankYou.style.display = 'block';
+    
+    // Optional: Send to server
+    // fetch('/api/feedback', { method: 'POST', body: JSON.stringify(data) })
+  });
+});
+</script>
+
 </body>
 </html>

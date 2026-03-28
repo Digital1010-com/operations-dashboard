@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Projects Visibility</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .project { border: 1px solid #ccc; padding: 10px; margin: 10px 0; }
+        .found { background: #d4edda; }
+        .missing { background: #f8d7da; }
+        .loading { color: #666; font-style: italic; }
+    </style>
+</head>
+<body>
+    <h1>Test Projects Visibility</h1>
+    <p>Checking if specific projects are loaded from API...</p>
+    
+    <div id="results" class="loading">Loading...</div>
+    
+    <script>
+        async function checkProjects() {
+            const targetIds = ['D1010-OPS-198096', 'D1010-DEV-298967'];
+            const resultsDiv = document.getElementById('results');
+            
+            try {
+                const response = await fetch('/api/data');
+                if (!response.ok) {
+                    throw new Error(`API error: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                const projects = data.projects || [];
+                
+                let html = `<h2>Total Projects in API: ${projects.length}</h2>`;
+                
+                targetIds.forEach(targetId => {
+                    const project = projects.find(p => p.id === targetId);
+                    if (project) {
+                        html += `
+                            <div class="project found">
+                                <h3>✅ FOUND: ${project.id}</h3>
+                                <p><strong>Name:</strong> ${project.name || 'No name'}</p>
+                                <p><strong>Owner:</strong> ${project.owner || 'Not set'}</p>
+                                <p><strong>Status:</strong> ${project.status || 'Not set'}</p>
+                                <p><strong>Client:</strong> ${project.clientName || 'Not set'}</p>
+                                <p><strong>Category:</strong> ${project.category || 'Not set'}</p>
+                            </div>
+                        `;
+                    } else {
+                        html += `
+                            <div class="project missing">
+                                <h3>❌ MISSING: ${targetId}</h3>
+                                <p>Project not found in API response</p>
+                            </div>
+                        `;
+                    }
+                });
+                
+                // Show first 5 projects to see what's visible
+                html += `<h3>First 5 Projects in API:</h3>`;
+                projects.slice(0, 5).forEach(p => {
+                    html += `
+                        <div class="project">
+                            <p><strong>${p.id}:</strong> ${p.name || 'No name'}</p>
+                            <p>Status: ${p.status || 'Not set'}, Category: ${p.category || 'Not set'}</p>
+                        </div>
+                    `;
+                });
+                
+                resultsDiv.innerHTML = html;
+                resultsDiv.className = '';
+                
+            } catch (error) {
+                resultsDiv.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
+                resultsDiv.className = '';
+            }
+        }
+        
+        // Load projects on page load
+        checkProjects();
+    </script>
+</body>
+</html>

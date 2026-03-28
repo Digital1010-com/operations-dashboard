@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign In — Mission Control</title>
+  <style>
+    :root {
+      --bg: #f3f6fa;
+      --panel: #ffffff;
+      --text: #121826;
+      --muted: #5b6473;
+      --accent: #2f6ea4;
+      --accent-hover: #245d8e;
+      --border: #d8e0ea;
+      --error: #c62828;
+      --success: #18794e;
+      --input-bg: #f8fafc;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f1117;
+        --panel: #1a1d27;
+        --text: #e8ecf4;
+        --muted: #8892a4;
+        --accent: #4a8fd4;
+        --accent-hover: #5ba0e6;
+        --border: #2a3040;
+        --input-bg: #141720;
+      }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "SF Pro Text", "Inter", "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Layout ── */
+    .login-container {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 100vh;
+    }
+    @media (max-width: 900px) {
+      .login-container { grid-template-columns: 1fr; }
+      .brand-panel { display: none; }
+    }
+
+    /* ── Brand Panel (left side) ── */
+    .brand-panel {
+      background: linear-gradient(160deg, #1e3a5f 0%, #0f1f33 100%);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 64px;
+      position: relative;
+      overflow: hidden;
+    }
+    .brand-panel::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      right: -30%;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(74, 143, 212, 0.15) 0%, transparent 70%);
+    }
+    .brand-panel::after {
+      content: '';
+      position: absolute;
+      bottom: -20%;
+      left: -10%;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(74, 143, 212, 0.08) 0%, transparent 70%);
+    }
+    .brand-content {
+      position: relative;
+      z-index: 1;
+      max-width: 440px;
+    }
+    .brand-logo {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 8px;
+    }
+    .brand-logo span { color: #4a8fd4; }
+    .brand-tagline {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 48px;
+      letter-spacing: 0.02em;
+    }
+    .brand-headline {
+      font-size: 36px;
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+    .brand-description {
+      font-size: 16px;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.65);
+      margin-bottom: 40px;
+    }
+    .brand-stats {
+      display: flex;
+      gap: 32px;
+    }
+    .stat { text-align: left; }
+    .stat-value {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .stat-label {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.45);
+      margin-top: 2px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* ── Form Panel (right side) ── */
+    .form-panel {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 48px 32px;
+    }
+    .form-shell {
+      width: min(420px, 100%);
+    }
+    .form-header {
+      margin-bottom: 32px;
+    }
+    .form-header h1 {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+    .form-header p {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    /* Social buttons */
+    .social-buttons {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .social-btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 11px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      background: var(--panel);
+      color: var(--text);
+      transition: all 0.15s;
+      text-decoration: none;
+    }
+    .social-btn:hover {
+      border-color: var(--accent);
+      box-shadow: 0 2px 12px rgba(47, 110, 164, 0.1);
+    }
+    .social-btn svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+      color: var(--muted);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* Form fields */
+    .form-group {
+      margin-bottom: 16px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .form-group input {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 14px;
+      background: var(--input-bg);
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .form-group input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(47, 110, 164, 0.12);
+    }
+    .form-group input::placeholder {
+      color: var(--muted);
+      opacity: 0.6;
+    }
+
+    .form-options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      font-size: 13px;
+    }
+    .remember-me {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      color: var(--muted);
+    }
+    .remember-me input {
+      accent-color: var(--accent);
+      width: 14px;
+      height: 14px;
+    }
+    .forgot-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .forgot-link:hover { text-decoration: underline; }
+
+    .btn-primary {
+      width: 100%;
+      border: 0;
+      border-radius: 10px;
+      padding: 13px 18px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.1s;
+    }
+    .btn-primary:hover { background: var(--accent-hover); }
+    .btn-primary:active { transform: scale(0.98); }
+    .btn-primary[disabled] { opacity: 0.6; cursor: wait; }
+
+    .error-msg {
+      margin-top: 12px;
+      color: var(--error);
+      font-size: 13px;
+      text-align: center;
+      min-height: 18px;
+    }
+    .success-msg {
+      margin-top: 12px;
+      color: var(--success);
+      font-size: 13px;
+      text-align: center;
+      min-height: 18px;
+    }
+
+    .form-footer {
+      margin-top: 28px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .form-footer a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .form-footer a:hover { text-decoration: underline; }
+
+    /* ── Client login toggle ── */
+    .login-type-toggle {
+      display: flex;
+      background: var(--input-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 3px;
+      margin-bottom: 28px;
+    }
+    .toggle-btn {
+      flex: 1;
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      border: 0;
+      border-radius: 8px;
+      cursor: pointer;
+      background: transparent;
+      color: var(--muted);
+      transition: all 0.2s;
+    }
+    .toggle-btn.active {
+      background: var(--panel);
+      color: var(--text);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    }
+
+    /* ── Password strength indicator ── */
+    .password-wrapper {
+      position: relative;
+    }
+    .password-toggle {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: 0;
+      cursor: pointer;
+      color: var(--muted);
+      font-size: 13px;
+      padding: 4px;
+    }
+    .password-toggle:hover { color: var(--text); }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+
+    <!-- Brand Panel -->
+    <div class="brand-panel">
+      <div class="brand-content">
+        <div class="brand-logo">Mission <span>Control</span></div>
+        <div class="brand-tagline">by Digital1010</div>
+        <h2 class="brand-headline">Your operations,<br>on autopilot.</h2>
+        <p class="brand-description">
+          AI-powered project intake, smart routing, and real-time visibility across your entire agency.
+          Every email classified. Every task tracked. Every client informed.
+        </p>
+        <div class="brand-stats">
+          <div class="stat">
+            <div class="stat-value" id="statProjects">--</div>
+            <div class="stat-label">Active Projects</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value" id="statTasks">--</div>
+            <div class="stat-label">Tasks Managed</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value" id="statClients">--</div>
+            <div class="stat-label">Clients Served</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form Panel -->
+    <div class="form-panel">
+      <div class="form-shell">
+        <div class="form-header">
+          <h1>Welcome back</h1>
+          <p>Sign in to your workspace</p>
+        </div>
+
+        <!-- Team / Client toggle -->
+        <div class="login-type-toggle">
+          <button class="toggle-btn active" data-type="team" onclick="switchLoginType('team')">Team</button>
+          <button class="toggle-btn" data-type="client" onclick="switchLoginType('client')">Client Portal</button>
+        </div>
+
+        <!-- Social sign-in (team only) -->
+        <div class="social-buttons" id="socialButtons">
+          <a href="/api/auth/google" class="social-btn">
+            <svg viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18A10.96 10.96 0 0 0 1 12c0 1.77.42 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            Google
+          </a>
+          <a href="/api/auth/linkedin" class="social-btn">
+            <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" fill="#0A66C2"/></svg>
+            LinkedIn
+          </a>
+        </div>
+
+        <div class="divider" id="dividerRow">or continue with email</div>
+
+        <form id="loginForm">
+          <div class="form-group">
+            <label for="email">Email or username</label>
+            <input id="email" type="text" required placeholder="you@company.com" autocomplete="username" />
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <div class="password-wrapper">
+              <input id="password" type="password" required placeholder="Enter your password" autocomplete="current-password" />
+              <button type="button" class="password-toggle" onclick="togglePassword()" id="pwToggle">Show</button>
+            </div>
+          </div>
+          <div class="form-options">
+            <label class="remember-me">
+              <input type="checkbox" id="rememberMe" checked />
+              Remember me
+            </label>
+            <a href="#" class="forgot-link" onclick="showForgotPassword(event)">Forgot password?</a>
+          </div>
+          <button type="submit" class="btn-primary" id="submitBtn">Sign in</button>
+          <div class="error-msg" id="errorMsg"></div>
+          <div class="success-msg" id="successMsg"></div>
+        </form>
+
+        <!-- Forgot password (hidden by default) -->
+        <form id="forgotForm" style="display:none;">
+          <div class="form-group">
+            <label for="resetEmail">Email address</label>
+            <input id="resetEmail" type="email" required placeholder="you@company.com" autocomplete="email" />
+          </div>
+          <button type="submit" class="btn-primary" id="resetBtn">Send reset link</button>
+          <div class="error-msg" id="resetError"></div>
+          <div class="success-msg" id="resetSuccess"></div>
+          <div style="text-align:center;margin-top:16px;">
+            <a href="#" class="forgot-link" onclick="showLoginForm(event)">Back to sign in</a>
+          </div>
+        </form>
+
+        <div class="form-footer">
+          Don't have an account? <a href="/signup">Create workspace</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ── Login type toggle ──
+    let loginType = 'team';
+
+    function switchLoginType(type) {
+      loginType = type;
+      document.querySelectorAll('.toggle-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.type === type);
+      });
+      const social = document.getElementById('socialButtons');
+      const divider = document.getElementById('dividerRow');
+      if (type === 'client') {
+        social.style.display = 'none';
+        divider.style.display = 'none';
+        document.querySelector('.form-header h1').textContent = 'Client Portal';
+        document.querySelector('.form-header p').textContent = 'View your projects and submit requests';
+      } else {
+        social.style.display = 'flex';
+        divider.style.display = 'flex';
+        document.querySelector('.form-header h1').textContent = 'Welcome back';
+        document.querySelector('.form-header p').textContent = 'Sign in to your workspace';
+      }
+    }
+
+    // ── Password visibility toggle ──
+    function togglePassword() {
+      const pw = document.getElementById('password');
+      const toggle = document.getElementById('pwToggle');
+      if (pw.type === 'password') {
+        pw.type = 'text';
+        toggle.textContent = 'Hide';
+      } else {
+        pw.type = 'password';
+        toggle.textContent = 'Show';
+      }
+    }
+
+    // ── Forgot password / login form toggle ──
+    function showForgotPassword(e) {
+      e.preventDefault();
+      document.getElementById('loginForm').style.display = 'none';
+      document.getElementById('forgotForm').style.display = 'block';
+      document.querySelector('.form-header h1').textContent = 'Reset password';
+      document.querySelector('.form-header p').textContent = 'Enter your email and we\'ll send a reset link';
+      document.getElementById('socialButtons').style.display = 'none';
+      document.getElementById('dividerRow').style.display = 'none';
+    }
+
+    function showLoginForm(e) {
+      e.preventDefault();
+      document.getElementById('loginForm').style.display = 'block';
+      document.getElementById('forgotForm').style.display = 'none';
+      switchLoginType(loginType);
+    }
+
+    // ── Error display from OAuth redirect ──
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const err = params.get('error');
+      if (err) {
+        const messages = {
+          invalid_state: 'Session expired. Please try again.',
+          missing_code: 'Authorization was not completed.',
+          token_exchange_failed: 'Could not verify your account.',
+          no_email: 'We need your email to sign in.',
+          google_signin_failed: 'Google sign-in failed.',
+          linkedin_signin_failed: 'LinkedIn sign-in failed.',
+          user_cancelled_authorize: 'Sign-in was cancelled.',
+          session_expired: 'Your session has expired. Please sign in again.',
+          invalid_credentials: 'Invalid email or password.',
+        };
+        document.getElementById('errorMsg').textContent = messages[err] || err.replace(/_/g, ' ');
+        params.delete('error');
+        const next = params.toString() ? `?${params}` : window.location.pathname;
+        window.history.replaceState({}, '', next);
+      }
+    })();
+
+    // ── Login form submit ──
+    const loginForm = document.getElementById('loginForm');
+    const errorMsg = document.getElementById('errorMsg');
+    const successMsg = document.getElementById('successMsg');
+    const submitBtn = document.getElementById('submitBtn');
+
+    loginForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      errorMsg.textContent = '';
+      successMsg.textContent = '';
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Signing in...';
+
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const rememberMe = document.getElementById('rememberMe').checked;
+
+      try {
+        const response = await fetch('/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            username: email,
+            password,
+            rememberMe,
+            loginType,
+          }),
+        });
+        const body = await response.json().catch(() => ({}));
+
+        if (!response.ok) {
+          throw new Error(body.error || 'Sign in failed');
+        }
+
+        // Store session
+        if (body.token) {
+          localStorage.setItem('opsDashboardSessionToken', body.token);
+        }
+        if (body.expiresAt) {
+          localStorage.setItem('opsDashboardSessionExpiresAt', body.expiresAt);
+        }
+        if (body.agencyId) {
+          localStorage.setItem('agencyId', body.agencyId);
+        }
+        localStorage.setItem('opsDashboardLastUsername', email);
+
+        successMsg.textContent = 'Signed in. Redirecting...';
+
+        // Client portal goes to a different view
+        const redirect = loginType === 'client' ? '/?view=client-portal' : (body.redirectUrl || '/');
+        setTimeout(() => { window.location.assign(redirect); }, 400);
+      } catch (err) {
+        errorMsg.textContent = err.message || 'Sign in failed';
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Sign in';
+      }
+    });
+
+    // ── Forgot password submit ──
+    const forgotForm = document.getElementById('forgotForm');
+    forgotForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const resetError = document.getElementById('resetError');
+      const resetSuccess = document.getElementById('resetSuccess');
+      const resetBtn = document.getElementById('resetBtn');
+      resetError.textContent = '';
+      resetSuccess.textContent = '';
+      resetBtn.disabled = true;
+
+      const email = document.getElementById('resetEmail').value.trim();
+      try {
+        const response = await fetch('/api/auth/forgot-password', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email }),
+        });
+        const body = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(body.error || 'Failed to send reset link');
+        resetSuccess.textContent = 'If an account exists with that email, a reset link has been sent.';
+      } catch (err) {
+        // Always show success message to prevent email enumeration
+        resetSuccess.textContent = 'If an account exists with that email, a reset link has been sent.';
+      } finally {
+        resetBtn.disabled = false;
+      }
+    });
+
+    // ── Auto-redirect if already logged in ──
+    (function() {
+      const token = localStorage.getItem('opsDashboardSessionToken');
+      const expiresAt = localStorage.getItem('opsDashboardSessionExpiresAt');
+      if (token && expiresAt && new Date(expiresAt).getTime() > Date.now()) {
+        window.location.assign('/');
+      }
+    })();
+
+    // ── Prefill last username ──
+    (function() {
+      const lastUser = localStorage.getItem('opsDashboardLastUsername');
+      if (lastUser) {
+        document.getElementById('email').value = lastUser;
+        document.getElementById('password').focus();
+      } else {
+        document.getElementById('email').focus();
+      }
+    })();
+  </script>
+</body>
+</html>

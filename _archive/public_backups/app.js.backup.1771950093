@@ -1,0 +1,1814 @@
+let projects = [];
+let selectedProjectId = null;
+let currentFilter = 'all';
+let currentStatusFilter = null;
+let currentClientFilter = null;
+let currentSort = 'newest';
+let searchTerm = '';
+
+let data = {};
+
+// Load data
+async function loadData() {
+  try {
+    const response = await fetch('/api/data');
+    data = await response.json();
+    projects = data.projects || [];
+    
+    // Ensure categories exist
+    if (!data.categories) {
+      data.categories = [
+        { name: 'Marketing', emoji: '📢' },
+        { name: 'Creative', emoji: '🎨' },
+        { name: 'Operations', emoji: '⚙️' },
+        { name: 'Development', emoji: '💻' }
+      ];
+    }
+    
+    populateCategoryFilters();
+    populateClientFilters();
+    renderProjects();
+    updateStats();
+    renderActivityFeed();
+    renderAgents();
+    renderDailyLogs();
+    
+    // Refresh calendar if it's active
+    if (calendar && currentView === 'calendar') {
+      calendar.refetchEvents();
+      updateCalendarTitle();
+    }
+  } catch (error) {
+    console.error('Failed to load data:', error);
+  }
+}
+
+// Populate category filters
+function populateCategoryFilters() {
+  const categories = (data.categories || [
+    { name: 'Marketing', emoji: '📢' },
+    { name: 'Creative', emoji: '🎨' },
+    { name: 'Operations', emoji: '⚙️' },
+    { name: 'Development', emoji: '💻' }
+  ]).sort((a, b) => a.name.localeCompare(b.name));
+  
+  const container = document.getElementById('categoryFilters');
+  
+  let html = '<button class="filter-btn active" data-filter="all">🌟 All Projects</button>';
+  
+  html += categories.map(cat => 
+    `<button class="filter-btn" data-filter="${cat.name}">${cat.emoji} ${cat.name}</button>`
+  ).join('');
+  
+  container.innerHTML = html;
+  
+  // Add click handlers
+  container.querySelectorAll('.filter-btn[data-filter]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      container.querySelectorAll('.filter-btn[data-filter]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentFilter = btn.dataset.filter;
+      renderProjects();
+    });
+  });
+  
+  // Also populate task form category dropdown
+  const taskCategorySelect = document.getElementById('taskCategory');
+  if (taskCategorySelect) {
+    taskCategorySelect.innerHTML = categories.map(cat => 
+      `<option value="${cat.name}">${cat.emoji} ${cat.name}</option>`
+    ).join('');
+  }
+}
+
+// Populate client filters
+function populateClientFilters() {
+  const clients = data.clients || [...new Set(projects
+    .map(p => p.clientName)
+    .filter(Boolean)
+    .sort())];
+  
+  const container = document.getElementById('clientFilters');
+  
+  if (clients.length === 0) {
+    container.innerHTML = '<div style="font-size: 12px; color: var(--text-secondary); padding: 8px;">No clients found</div>';
+    return;
+  }
+  
+  container.innerHTML = clients.map(client => 
+    `<button class="filter-btn" data-client="${client}">🏢 ${client}</button>`
+  ).join('');
+  
+  // Add click handlers
+  container.querySelectorAll('.filter-btn[data-client]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (btn.classList.contains('active')) {
+        btn.classList.remove('active');
+        currentClientFilter = null;
+      } else {
+        container.querySelectorAll('.filter-btn[data-client]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentClientFilter = btn.dataset.client;
+      }
+      renderProjects();
+    });
+  });
+  
+  // Also populate task form client dropdown
+  const taskClientSelect = document.getElementById('taskClient');
+  if (taskClientSelect) {
+    taskClientSelect.innerHTML = '<option value="">Select Client</option>' + 
+      clients.map(client => `<option value="${client}">${client}</option>`).join('');
+  }
+}
+
+// Update header stats
+function updateStats() {
+  // Stats removed from UI - keeping function for compatibility
+}
+
+// Sort projects
+function sortProjects(projectsList, sortBy) {
+  const sorted = [...projectsList];
+  
+  switch(sortBy) {
+    case 'newest':
+      // Sort by ID (contains date) descending
+      return sorted.sort((a, b) => b.id.localeCompare(a.id));
+    
+    case 'oldest':
+      // Sort by ID (contains date) ascending
+      return sorted.sort((a, b) => a.id.localeCompare(b.id));
+    
+    case 'priority':
+      // Sort by priority (P0 > P1 > P2)
+      const priorityOrder = { 'P0': 0, 'P1': 1, 'P2': 2 };
+      return sorted.sort((a, b) => {
+        const aPriority = priorityOrder[a.priority] ?? 999;
+        const bPriority = priorityOrder[b.priority] ?? 999;
+        return aPriority - bPriority;
+      });
+    
+    case 'alpha':
+      // Sort by name alphabetically
+      return sorted.sort((a, b) => a.name.localeCompare(b.name));
+    
+    default:
+      return sorted;
+  }
+}
+
+// Render projects
+function renderProjects() {
+  const container = document.getElementById('projectsContainer');
+  
+  // Filter projects
+  let filtered = projects;
+  
+  if (currentFilter !== 'all') {
+    filtered = filtered.filter(p => p.category === currentFilter);
+  }
+  
+  if (currentStatusFilter) {
+    filtered = filtered.filter(p => p.status === currentStatusFilter);
+  }
+  
+  if (currentClientFilter) {
+    filtered = filtered.filter(p => p.clientName === currentClientFilter);
+  }
+  
+  if (searchTerm) {
+    const term = searchTerm.toLowerCase();
+    filtered = filtered.filter(p => 
+      p.name.toLowerCase().includes(term) ||
+      p.clientName?.toLowerCase().includes(term) ||
+      p.owner.toLowerCase().includes(term) ||
+      p.id.toLowerCase().includes(term)
+    );
+  }
+  
+  // Sort projects
+  filtered = sortProjects(filtered, currentSort);
+  
+  // Group by status first (new organization)
+  const statuses = {
+    'upcoming': { label: '📅 UPCOMING', emoji: '📅', projects: [], color: 'var(--accent-purple)' },
+    'new': { label: '🆕 NEW', emoji: '🆕', projects: [], color: 'var(--accent-blue)' },
+    'in-progress': { label: '⚙️ IN PROGRESS', emoji: '⚙️', projects: [], color: 'var(--status-yellow)' },
+    'blocked': { label: '🚫 BLOCKED', emoji: '🚫', projects: [], color: 'var(--status-gray)' },
+    'complete': { label: '✅ COMPLETE', emoji: '✅', projects: [], color: 'var(--status-green)' },
+    'urgent': { label: '🔴 URGENT', emoji: '🔴', projects: [], color: 'var(--status-red)' }
+  };
+  
+  filtered.forEach(project => {
+    const status = project.status || 'new';
+    if (statuses[status]) {
+      statuses[status].projects.push(project);
+    } else {
+      statuses['new'].projects.push(project);
+    }
+  });
+  
+  // Render by status buckets
+  let html = '';
+  
+  for (const [statusKey, statusGroup] of Object.entries(statuses)) {
+    html += `
+      <div class="status-bucket" data-status="${statusKey}">
+        <div class="status-bucket-header" style="border-left-color: ${statusGroup.color};">
+          <div class="status-bucket-label">${statusGroup.label}</div>
+          <div class="status-bucket-count">${statusGroup.projects.length}</div>
+        </div>
+        <div class="status-bucket-content" data-status="${statusKey}">
+    `;
+    
+    if (statusGroup.projects.length === 0) {
+      html += `
+        <div class="empty-bucket">
+          <div style="font-size: 32px; margin-bottom: 8px; opacity: 0.3;">${statusGroup.emoji}</div>
+          <div style="font-size: 12px; color: var(--text-secondary);">No projects</div>
+        </div>
+      `;
+    } else {
+      statusGroup.projects.forEach(project => {
+        const isActive = project.id === selectedProjectId;
+        const timeline = formatTimeline(project);
+        const categoryEmoji = getCategoryEmoji(project.category);
+        
+        html += `
+          <div class="project-card ${isActive ? 'active' : ''}" 
+               draggable="true"
+               data-project-id="${project.id}"
+               ondragstart="handleDragStart(event)"
+               ondragend="handleDragEnd(event)"
+               onclick="selectProject('${project.id}')">
+            <div class="project-header-row">
+              <div class="project-id">${project.id}</div>
+              ${project.category ? `<div class="project-category-badge">${categoryEmoji} ${project.category}</div>` : ''}
+            </div>
+            <div class="project-name">${project.name}</div>
+            ${timeline ? `<div class="project-timeline">${timeline}</div>` : ''}
+            ${project.clientName ? `<div class="project-client">🏢 ${project.clientName}</div>` : ''}
+            <div class="project-meta">
+              <span>👤 ${project.owner}</span>
+              <span>📊 ${project.progress || 0}%</span>
+              ${project.priority ? `<span>🎯 ${project.priority}</span>` : ''}
+            </div>
+            ${project.revenue !== undefined || project.profit !== undefined ? `
+              <div class="project-financial">
+                ${project.revenue !== undefined ? `<span>💵 $${project.revenue.toFixed(0)}</span>` : ''}
+                ${project.profit !== undefined ? `<span style="color: ${project.profit >= 0 ? 'var(--status-green)' : 'var(--status-red)'};">📊 $${project.profit.toFixed(0)}</span>` : ''}
+                ${project.margin !== undefined ? `<span style="color: ${project.margin >= 50 ? 'var(--status-green)' : project.margin >= 30 ? 'var(--status-yellow)' : 'var(--status-red)'};">${project.margin}%</span>` : ''}
+              </div>
+            ` : ''}
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: ${project.progress || 0}%;"></div>
+            </div>
+          </div>
+        `;
+      });
+    }
+    
+    html += `
+        </div>
+      </div>
+    `;
+  }
+  
+  if (filtered.length === 0) {
+    html = '<div style="padding: 40px; text-align: center; color: var(--text-secondary);">No projects found</div>';
+  }
+  
+  container.innerHTML = html;
+  
+  // Setup drag-and-drop event listeners on status buckets
+  setupDropZones();
+}
+
+// Get category emoji helper
+function getCategoryEmoji(category) {
+  const categoryMap = {
+    'Marketing': '📢',
+    'Creative': '🎨',
+    'Operations': '⚙️',
+    'Development': '💻'
+  };
+  return categoryMap[category] || '📁';
+}
+
+// Drag and drop handlers
+let draggedProjectId = null;
+let isDragging = false;
+
+function handleDragStart(event) {
+  // Get the project card element (might be called on child)
+  const card = event.target.closest('.project-card');
+  if (!card) return;
+  
+  isDragging = true;
+  draggedProjectId = card.dataset.projectId;
+  card.style.opacity = '0.4';
+  event.dataTransfer.effectAllowed = 'move';
+  event.dataTransfer.setData('text/plain', draggedProjectId);
+}
+
+function handleDragEnd(event) {
+  const card = event.target.closest('.project-card');
+  if (card) {
+    card.style.opacity = '1';
+  }
+  
+  // Delay to prevent click from firing
+  setTimeout(() => {
+    isDragging = false;
+    draggedProjectId = null;
+  }, 100);
+  
+  // Clean up all drag-over classes
+  document.querySelectorAll('.drag-over').forEach(el => {
+    el.classList.remove('drag-over');
+  });
+}
+
+function setupDropZones() {
+  const dropZones = document.querySelectorAll('.status-bucket-content');
+  
+  dropZones.forEach(zone => {
+    // Remove old listeners to prevent duplicates
+    zone.removeEventListener('dragover', handleDragOver);
+    zone.removeEventListener('drop', handleDrop);
+    zone.removeEventListener('dragenter', handleDragEnter);
+    zone.removeEventListener('dragleave', handleDragLeave);
+    
+    // Add new listeners
+    zone.addEventListener('dragover', handleDragOver);
+    zone.addEventListener('drop', handleDrop);
+    zone.addEventListener('dragenter', handleDragEnter);
+    zone.addEventListener('dragleave', handleDragLeave);
+  });
+}
+
+function handleDragOver(event) {
+  event.preventDefault();
+  event.dataTransfer.dropEffect = 'move';
+  return false;
+}
+
+function handleDragEnter(event) {
+  const dropZone = event.target.closest('.status-bucket-content');
+  if (dropZone) {
+    dropZone.classList.add('drag-over');
+  }
+}
+
+function handleDragLeave(event) {
+  const dropZone = event.target.closest('.status-bucket-content');
+  if (dropZone && !dropZone.contains(event.relatedTarget)) {
+    dropZone.classList.remove('drag-over');
+  }
+}
+
+async function handleDrop(event) {
+  event.preventDefault();
+  event.stopPropagation();
+  
+  const dropZone = event.target.closest('.status-bucket-content');
+  if (!dropZone) return false;
+  
+  dropZone.classList.remove('drag-over');
+  
+  const newStatus = dropZone.dataset.status;
+  const project = projects.find(p => p.id === draggedProjectId);
+  
+  if (project && project.status !== newStatus) {
+    // Update project status
+    project.status = newStatus;
+    project.lastUpdated = new Date().toISOString();
+    
+    // Save to backend
+    try {
+      await fetch('/api/data', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      
+      // Add activity log
+      if (!data.activityFeed) data.activityFeed = [];
+      data.activityFeed.unshift({
+        id: `activity-${Date.now()}`,
+        emoji: '🔄',
+        text: `${project.name} moved to ${getStatusLabel(newStatus)}`,
+        timestamp: new Date().toISOString()
+      });
+      
+      // Re-render
+      renderProjects();
+      renderActivityFeed();
+      
+    } catch (error) {
+      console.error('Failed to update project status:', error);
+      alert('Failed to update project status');
+    }
+  }
+  
+  return false;
+}
+
+function getStatusLabel(status) {
+  const labels = {
+    'upcoming': 'UPCOMING',
+    'new': 'NEW',
+    'in-progress': 'IN PROGRESS',
+    'blocked': 'BLOCKED',
+    'complete': 'COMPLETE',
+    'urgent': 'URGENT'
+  };
+  return labels[status] || status;
+}
+
+// Select project and show detail
+function selectProject(projectId) {
+  // Don't select if we're dragging
+  if (isDragging) return;
+  
+  selectedProjectId = projectId;
+  const project = projects.find(p => p.id === projectId);
+  
+  if (!project) return;
+  
+  const detailPanel = document.getElementById('detailPanel');
+  detailPanel.classList.remove('empty');
+  detailPanel.classList.add('active'); // For mobile slide-in
+  
+  let html = `
+    <div class="detail-header">
+      <div class="detail-id">${project.id}</div>
+      ${project.clientName ? `<div class="project-client" style="margin-bottom: 8px;">🏢 ${project.clientName}</div>` : ''}
+      <div class="detail-title">${project.name}</div>
+    </div>
+    
+    <div class="info-grid">
+      <div class="info-item">
+        <div class="info-label">Owner</div>
+        <div class="info-value">${project.owner}</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">Priority</div>
+        <div class="info-value">${project.priority || 'N/A'}</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">Status</div>
+        <div class="info-value">${getStatusBadge(project)}</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">Progress</div>
+        <div class="info-value">${project.progress || 0}%</div>
+      </div>
+    </div>
+  `;
+  
+  if (project.notes) {
+    html += `
+      <div class="detail-section">
+        <div class="detail-section-title">📝 Notes</div>
+        <div class="detail-content">${project.notes}</div>
+      </div>
+    `;
+  }
+  
+  if (project.rationale) {
+    html += `
+      <div class="detail-section">
+        <div class="detail-section-title">💡 Rationale</div>
+        <div class="detail-content">${project.rationale}</div>
+      </div>
+    `;
+  }
+  
+  if (project.nextActions?.length) {
+    html += `
+      <div class="detail-section">
+        <div class="detail-section-title">📋 Next Actions</div>
+        <div class="detail-content">
+          <ul style="margin-left: 20px;">
+            ${project.nextActions.map(action => `<li>${action}</li>`).join('')}
+          </ul>
+        </div>
+      </div>
+    `;
+  }
+  
+  if (project.deliverables?.length) {
+    html += `
+      <div class="detail-section">
+        <div class="detail-section-title">📦 Deliverables</div>
+        <div class="detail-content">
+          ${project.deliverables.map(d => `
+            <div style="margin-bottom: 8px;">
+              <a href="#" onclick="openFile('${d.url}'); return false;" style="color: var(--accent-blue); text-decoration: none;">
+                📄 ${d.name}
+              </a>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }
+  
+  // Comments
+  const comments = project.comments || [];
+  const currentUser = getCurrentUser();
+  html += `
+    <div class="detail-section">
+      <div class="detail-section-title">💬 Comments (${comments.length})</div>
+      ${comments.map(comment => `
+        <div class="comment">
+          <div class="comment-header">
+            <span class="comment-author">${comment.author || 'Unknown'}</span>
+            <span class="comment-time">${formatTime(comment.timestamp)}</span>
+            ${comment.author === currentUser ? `<button class="btn-delete-comment" onclick="deleteComment('${project.id}', '${comment.id}')" title="Delete comment">🗑️</button>` : ''}
+          </div>
+          <div>${comment.text}</div>
+        </div>
+      `).join('')}
+      <div class="comment-form">
+        <input type="text" class="comment-input" id="commentInput" placeholder="Add a comment...">
+        <button class="btn btn-primary" onclick="addComment()">Send</button>
+      </div>
+    </div>
+  `;
+  
+  // Timeline Section
+  let startDate = project.startDate || project.createdAt;
+  if (!startDate && project.id) {
+    const match = project.id.match(/^(\d{4}-\d{2}-\d{2})/);
+    if (match) startDate = match[1];
+  }
+  if (!startDate) startDate = project.lastUpdated;
+  
+  if (startDate) {
+    html += `
+      <div class="detail-section">
+        <div class="detail-section-title">⏱️ Timeline</div>
+        <div class="detail-content">
+    `;
+    
+    const start = new Date(startDate);
+    html += `<div style="margin-bottom: 8px;">📥 <strong>Started:</strong> ${start.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit' })}</div>`;
+    
+    if (project.deliveredDate) {
+      const delivered = new Date(project.deliveredDate);
+      const workDays = Math.floor((delivered - start) / (1000 * 60 * 60 * 24));
+      html += `<div style="margin-bottom: 8px;">📤 <strong>Delivered:</strong> ${delivered.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit' })} <em style="color: var(--text-secondary);">(${workDays}d work time)</em></div>`;
+      
+      if (project.actualHours) {
+        html += `<div style="margin-bottom: 8px;">🕐 <strong>Actual Hours:</strong> ${project.actualHours}h</div>`;
+      }
+    }
+    
+    if (project.completedDate) {
+      const completed = new Date(project.completedDate);
+      if (project.deliveredDate) {
+        const approvalDays = Math.floor((completed - new Date(project.deliveredDate)) / (1000 * 60 * 60 * 24));
+        html += `<div style="margin-bottom: 8px;">✅ <strong>Completed:</strong> ${completed.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit' })} <em style="color: var(--text-secondary);">(${approvalDays}d approval wait)</em></div>`;
+      } else {
+        html += `<div style="margin-bottom: 8px;">✅ <strong>Completed:</strong> ${completed.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit' })}</div>`;
+      }
+      
+      const totalDays = Math.floor((completed - start) / (1000 * 60 * 60 * 24));
+      html += `<div style="margin-top: 12px; padding: 10px; background: rgba(var(--accent-blue-rgb), 0.1); border-radius: 8px;"><strong>Total Duration:</strong> ${totalDays} days</div>`;
+    }
+    
+    html += `
+        </div>
+      </div>
+    `;
+  }
+  
+  // Financial Section
+  if (project.revenue !== undefined || project.cost !== undefined || project.actualHours) {
+    html += `
+      <div class="detail-section">
+        <div class="detail-section-title">💰 Financial</div>
+        <div class="detail-content">
+    `;
+    
+    if (project.revenue !== undefined) {
+      html += `<div style="margin-bottom: 8px;">💵 <strong>Revenue:</strong> $${project.revenue.toFixed(2)}</div>`;
+    }
+    
+    if (project.cost !== undefined && project.actualHours) {
+      html += `<div style="margin-bottom: 8px;">⚙️ <strong>Cost:</strong> $${project.cost.toFixed(2)} <em style="color: var(--text-secondary);">(${project.actualHours}h × $${project.hourlyRate || 150}/hr)</em></div>`;
+    }
+    
+    if (project.profit !== undefined) {
+      const profitColor = project.profit >= 0 ? 'var(--status-green)' : 'var(--status-red)';
+      html += `<div style="margin-bottom: 8px;">📊 <strong>Profit:</strong> <span style="color: ${profitColor}; font-weight: 600;">$${project.profit.toFixed(2)}</span></div>`;
+    }
+    
+    if (project.margin !== undefined && project.revenue > 0) {
+      const marginColor = project.margin >= 50 ? 'var(--status-green)' : 
+                         project.margin >= 30 ? 'var(--status-yellow)' : 
+                         'var(--status-red)';
+      html += `<div style="margin-top: 12px; padding: 10px; background: rgba(var(--accent-purple-rgb), 0.1); border-radius: 8px;">
+        <strong>Profit Margin:</strong> <span style="color: ${marginColor}; font-weight: 600; font-size: 18px;">${project.margin}%</span>
+      </div>`;
+    }
+    
+    html += `
+        </div>
+      </div>
+    `;
+  }
+  
+  // Action buttons
+  html += `
+    <div class="action-buttons">
+  `;
+  
+  if (!project.deliveredDate && project.status !== 'complete') {
+    html += `<button class="btn" style="background: var(--accent-blue); color: white;" onclick="markAsDelivered()">📤 Mark as Delivered</button>`;
+  }
+  
+  if (project.deliveredDate && !project.completedDate) {
+    html += `<button class="btn" style="background: var(--status-green); color: white;" onclick="completeProject()">✓ Complete</button>`;
+  }
+  
+  html += `
+      <button class="btn" style="background: var(--status-yellow); color: white;" onclick="requestChanges()">↻ Changes</button>
+      <button class="btn" style="background: var(--status-red); color: white;" onclick="blockProject()">🚫 Block</button>
+    </div>
+  `;
+  
+  detailPanel.innerHTML = html;
+  renderProjects(); // Re-render to update active state
+}
+
+// Status badge helper
+function getStatusBadge(project) {
+  // Check if delivered but not complete
+  if (project.deliveredDate && !project.completedDate) {
+    return '<span class="status-badge" style="background: var(--accent-blue); color: white;">📤 Delivered (awaiting approval)</span>';
+  }
+  
+  const statusMap = {
+    'complete': '<span class="status-badge status-complete">Complete</span>',
+    'in-progress': '<span class="status-badge status-in-progress">In Progress</span>',
+    'blocked': '<span class="status-badge status-blocked">Blocked</span>'
+  };
+  return statusMap[project.status] || '<span class="status-badge status-other">Other</span>';
+}
+
+// Format project timeline
+function formatTimeline(project) {
+  let startDate = project.startDate || project.createdAt;
+  
+  // Try to extract date from ID (format: YYYY-MM-DD-*)
+  if (!startDate && project.id) {
+    const match = project.id.match(/^(\d{4}-\d{2}-\d{2})/);
+    if (match) {
+      startDate = match[1];
+    }
+  }
+  
+  // Fall back to lastUpdated
+  if (!startDate) {
+    startDate = project.lastUpdated;
+  }
+  
+  if (!startDate) return '';
+  
+  const start = new Date(startDate);
+  
+  // If delivered, show delivery timeline
+  if (project.deliveredDate) {
+    const delivered = new Date(project.deliveredDate);
+    const workDays = Math.floor((delivered - start) / (1000 * 60 * 60 * 24));
+    const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const deliveredStr = `${monthNames[delivered.getMonth()]} ${delivered.getDate()}`;
+    
+    if (project.completedDate) {
+      return `Delivered ${deliveredStr} • ${workDays}d work • ✅`;
+    } else {
+      return `Delivered ${deliveredStr} • ${workDays}d work • 📤`;
+    }
+  }
+  
+  // Otherwise show work in progress
+  const now = new Date();
+  const diffMs = now - start;
+  const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+  
+  const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  const startStr = `${monthNames[start.getMonth()]} ${start.getDate()}`;
+  
+  const durationStr = diffDays === 0 ? 'today' : `${diffDays}d`;
+  
+  const icon = project.status === 'complete' ? '✅' : 
+               project.status === 'blocked' ? '🚫' : '⏱️';
+  
+  return `Started ${startStr} • ${durationStr} • ${icon}`;
+}
+
+// Format timestamp
+function formatTime(timestamp) {
+  if (!timestamp) return '';
+  const date = new Date(timestamp);
+  const now = new Date();
+  const diff = now - date;
+  const minutes = Math.floor(diff / 60000);
+  
+  if (minutes < 1) return 'just now';
+  if (minutes < 60) return `${minutes}m ago`;
+  const hours = Math.floor(minutes / 60);
+  if (hours < 24) return `${hours}h ago`;
+  const days = Math.floor(hours / 24);
+  return `${days}d ago`;
+}
+
+// Get current user (detect from context or default to 'Otto')
+function getCurrentUser() {
+  // Check if user is set in localStorage
+  let user = localStorage.getItem('dashboardUser');
+  
+  if (!user) {
+    // Prompt user to set their name on first use
+    user = prompt('Enter your name for comments:', 'Michael');
+    if (user) {
+      localStorage.setItem('dashboardUser', user);
+    } else {
+      user = 'Otto'; // Fallback
+    }
+  }
+  
+  return user;
+}
+
+// Delete comment
+async function deleteComment(projectId, commentId) {
+  const currentUser = getCurrentUser();
+  
+  if (!confirm('Delete this comment?')) {
+    return;
+  }
+  
+  try {
+    const response = await fetch(`/api/projects/${projectId}/comments/${commentId}?author=${encodeURIComponent(currentUser)}`, {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ author: currentUser })
+    });
+    
+    if (!response.ok) {
+      const error = await response.json();
+      alert(error.error || 'Failed to delete comment');
+      return;
+    }
+    
+    await loadData();
+    selectProject(projectId); // Refresh detail view
+  } catch (error) {
+    console.error('Failed to delete comment:', error);
+    alert('Failed to delete comment');
+  }
+}
+
+// Add comment
+async function addComment() {
+  const input = document.getElementById('commentInput');
+  const text = input.value.trim();
+  
+  if (!text || !selectedProjectId) return;
+  
+  const comment = {
+    author: getCurrentUser(),
+    text,
+    timestamp: new Date().toISOString()
+  };
+  
+  try {
+    await fetch(`/api/projects/${selectedProjectId}/comments`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(comment)
+    });
+    
+    input.value = '';
+    await loadData();
+    selectProject(selectedProjectId); // Refresh detail view
+  } catch (error) {
+    console.error('Failed to add comment:', error);
+  }
+}
+
+// Open file
+async function openFile(url) {
+  if (!url) return;
+  
+  try {
+    await fetch('/api/open-file', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ path: url.replace('file://', '') })
+    });
+  } catch (error) {
+    console.error('Failed to open file:', error);
+  }
+}
+
+// Project actions
+async function markAsDelivered() {
+  if (!selectedProjectId) return;
+  
+  // Get current project data
+  const project = data.projects.find(p => p.id === selectedProjectId);
+  if (!project) return;
+  
+  // Check if financial data is entered
+  if (!project.actualHours || project.actualHours <= 0) {
+    showNotification('Please enter hours in the project card before marking as delivered', 'error');
+    return;
+  }
+  
+  if (!project.hourlyRate || project.hourlyRate <= 0) {
+    showNotification('Please enter hourly rate in the project card before marking as delivered', 'error');
+    return;
+  }
+  
+  // Calculate financials if not already calculated
+  const actualHours = project.actualHours || 0;
+  const hourlyRate = project.hourlyRate || 150;
+  const revenue = project.revenue || (actualHours * hourlyRate);
+  const cost = project.cost || (actualHours * hourlyRate);
+  const profit = revenue - cost;
+  const margin = revenue > 0 ? (profit / revenue) * 100 : 0;
+  
+  try {
+    await fetch(`/api/projects/${selectedProjectId}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        deliveredDate: new Date().toISOString(),
+        actualHours: actualHours,
+        revenue: revenue,
+        hourlyRate: hourlyRate,
+        cost: cost,
+        profit: profit,
+        margin: margin,
+        lastUpdated: new Date().toISOString()
+      })
+    });
+    
+    await loadData();
+    selectProject(selectedProjectId);
+    showNotification('Project marked as delivered! Financial data saved from inline editing.', 'success');
+  } catch (error) {
+    console.error('Failed to mark as delivered:', error);
+    showNotification('Failed to mark as delivered', 'error');
+  }
+}
+
+async function completeProject() {
+  if (!selectedProjectId) return;
+  
+  // Set both status and completedDate
+  try {
+    await fetch(`/api/projects/${selectedProjectId}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        status: 'complete',
+        completedDate: new Date().toISOString(),
+        lastUpdated: new Date().toISOString()
+      })
+    });
+    
+    await loadData();
+    selectProject(selectedProjectId);
+  } catch (error) {
+    console.error('Failed to complete project:', error);
+  }
+}
+
+async function blockProject() {
+  if (!selectedProjectId) return;
+  await updateProjectStatus('blocked');
+}
+
+async function requestChanges() {
+  if (!selectedProjectId) return;
+  
+  // Clear delivered date if changes requested (back to work)
+  try {
+    await fetch(`/api/projects/${selectedProjectId}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        deliveredDate: null,
+        actualHours: null,
+        lastUpdated: new Date().toISOString()
+      })
+    });
+  } catch (error) {
+    console.error('Failed to clear delivery:', error);
+  }
+  
+  const comment = {
+    author: 'Otto',
+    text: 'Changes requested. Please review and update.',
+    timestamp: new Date().toISOString(),
+    type: 'change-request'
+  };
+  
+  await fetch(`/api/projects/${selectedProjectId}/comments`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(comment)
+  });
+  
+  await loadData();
+  selectProject(selectedProjectId);
+}
+
+async function updateProjectStatus(status) {
+  try {
+    await fetch(`/api/projects/${selectedProjectId}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ status, lastUpdated: new Date().toISOString() })
+    });
+    
+    await loadData();
+    selectProject(selectedProjectId);
+  } catch (error) {
+    console.error('Failed to update project:', error);
+  }
+}
+
+// Theme toggle
+function toggleTheme() {
+  const html = document.documentElement;
+  const currentTheme = html.getAttribute('data-theme');
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  
+  html.setAttribute('data-theme', newTheme);
+  localStorage.setItem('theme', newTheme);
+  
+  // Update icon
+  document.getElementById('themeIcon').textContent = newTheme === 'dark' ? '☀️' : '🌙';
+}
+
+// Load saved theme
+function loadTheme() {
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  document.getElementById('themeIcon').textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+}
+
+// Filters
+document.addEventListener('DOMContentLoaded', () => {
+  loadTheme();
+  // Sort buttons
+  document.querySelectorAll('.filter-btn[data-sort]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn[data-sort]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentSort = btn.dataset.sort;
+      renderProjects();
+    });
+  });
+  
+  // Category filters
+  document.querySelectorAll('.filter-btn[data-filter]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn[data-filter]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentFilter = btn.dataset.filter;
+      renderProjects();
+    });
+  });
+  
+  // Status filters
+  document.querySelectorAll('.filter-btn[data-status]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (btn.classList.contains('active')) {
+        btn.classList.remove('active');
+        currentStatusFilter = null;
+      } else {
+        document.querySelectorAll('.filter-btn[data-status]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentStatusFilter = btn.dataset.status;
+      }
+      renderProjects();
+    });
+  });
+  
+  // Search
+  document.getElementById('searchBox').addEventListener('input', (e) => {
+    searchTerm = e.target.value;
+    renderProjects();
+  });
+  
+  loadData();
+});
+
+// New task modal
+function openNewTaskModal() {
+  document.getElementById('newTaskModal').classList.add('active');
+}
+
+function closeNewTaskModal() {
+  document.getElementById('newTaskModal').classList.remove('active');
+  document.getElementById('newTaskForm').reset();
+}
+
+async function createNewTask(event) {
+  event.preventDefault();
+  
+  const name = document.getElementById('taskName').value;
+  const clientName = document.getElementById('taskClient').value;
+  const category = document.getElementById('taskCategory').value;
+  const owner = document.getElementById('taskOwner').value;
+  const priority = document.getElementById('taskPriority').value;
+  const description = document.getElementById('taskDescription').value;
+  
+  const taskId = `${new Date().toISOString().split('T')[0]}-${name.toLowerCase().replace(/[^a-z0-9]+/g, '-').substring(0, 40)}`;
+  
+  const newProject = {
+    id: taskId,
+    name,
+    clientName,
+    category,
+    owner,
+    priority,
+    status: 'in-progress',
+    progress: 0,
+    statusColor: 'blue',
+    notes: description,
+    createdBy: 'Manual',
+    deliverables: [],
+    comments: []
+  };
+  
+  try {
+    const response = await fetch('/api/projects', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newProject)
+    });
+    
+    if (response.ok) {
+      closeNewTaskModal();
+      await loadData();
+      selectProject(taskId);
+    }
+  } catch (error) {
+    console.error('Failed to create task:', error);
+    alert('Failed to create task. Please try again.');
+  }
+}
+
+// Close detail panel on mobile overlay click
+document.addEventListener('click', (e) => {
+  if (window.innerWidth <= 1400) {
+    const detailPanel = document.getElementById('detailPanel');
+    if (detailPanel.classList.contains('active') && !detailPanel.contains(e.target) && !e.target.closest('.project-card')) {
+      detailPanel.classList.remove('active');
+    }
+  }
+});
+
+// Render activity feed
+function renderActivityFeed() {
+  console.log('renderActivityFeed called');
+  const activities = (data.activityFeed || []).slice(0, 10);
+  const container = document.getElementById('activityFeed');
+  console.log('Activity container found:', !!container, 'Activities count:', activities.length);
+  
+  if (!container) {
+    console.error('Activity feed container not found!');
+    return;
+  }
+  
+  if (activities.length === 0) {
+    container.innerHTML = '<div style="padding: 8px; color: var(--text-secondary); font-size: 11px;">No recent activity</div>';
+    return;
+  }
+  
+  container.innerHTML = activities.map(activity => `
+    <div class="activity-item">
+      <div class="activity-emoji">${getActivityEmoji(activity.type)}</div>
+      <div class="activity-content">
+        <div><strong>${activity.agent}</strong> ${activity.action} <strong>${truncate(activity.target, 30)}</strong></div>
+        <div class="activity-time">${formatTime(activity.timestamp)}</div>
+      </div>
+    </div>
+  `).join('');
+  console.log('Activity feed rendered successfully');
+}
+
+// Get activity emoji
+function getActivityEmoji(type) {
+  const emojiMap = {
+    'build': '🔨',
+    'comment': '💬',
+    'complete': '✅',
+    'start': '🚀',
+    'update': '📝'
+  };
+  return emojiMap[type] || '⚡';
+}
+
+// Render agents
+function renderAgents() {
+  console.log('renderAgents called');
+  const agents = data.agents || [];
+  const container = document.getElementById('agentsGrid');
+  console.log('Agents container found:', !!container, 'Agents count:', agents.length);
+  
+  if (!container) {
+    console.error('Agents container not found!');
+    return;
+  }
+  
+  if (agents.length === 0) {
+    container.innerHTML = '<div style="padding: 8px; color: var(--text-secondary); font-size: 11px;">No agents active</div>';
+    return;
+  }
+  
+  container.innerHTML = agents.map(agent => `
+    <div class="agent-card">
+      <div class="agent-emoji">${agent.emoji}</div>
+      <div class="agent-info">
+        <div class="agent-name">${agent.name}</div>
+        <div class="agent-status">${agent.status === 'active' ? `🟢 ${agent.currentTask || 'Idle'}` : '🔴 ' + agent.status}</div>
+        <div style="font-size: 11px; color: var(--text-secondary); margin-top: 2px;">
+          ${agent.tasksCompleted || 0}/${agent.tasksAssigned || 0} tasks complete
+        </div>
+      </div>
+    </div>
+  `).join('');
+  console.log('Agents rendered successfully');
+}
+
+// Render daily logs
+async function renderDailyLogs() {
+  console.log('renderDailyLogs called');
+  const container = document.getElementById('dailyLogs');
+  console.log('Daily logs container found:', !!container);
+  
+  if (!container) {
+    console.error('Daily logs container not found!');
+    return;
+  }
+  
+  try {
+    const response = await fetch('/api/logs?days=7');
+    const data = await response.json();
+    const logs = data.logs || [];
+    console.log('Logs fetched:', logs.length);
+    
+    if (!logs || logs.length === 0) {
+      container.innerHTML = '<div style="padding: 8px; color: var(--text-secondary); font-size: 11px;">No recent logs</div>';
+      return;
+    }
+    
+    container.innerHTML = logs.map(log => `
+      <div class="activity-item" style="cursor: pointer;" onclick="openLog('${log.date}')">
+        <div class="activity-emoji">📅</div>
+        <div class="activity-content">
+          <div><strong>${log.date}</strong></div>
+          <div class="activity-time">${log.summary || (log.size ? Math.round(log.size / 100) + ' lines' : 'Empty')}</div>
+        </div>
+      </div>
+    `).join('');
+    console.log('Daily logs rendered successfully');
+  } catch (error) {
+    console.error('Failed to load logs:', error);
+    container.innerHTML = '<div style="padding: 8px; color: var(--text-secondary); font-size: 11px;">Failed to load logs</div>';
+  }
+}
+
+// Open log file
+async function openLog(date) {
+  const filePath = `/Volumes/AI_Drive/AI_WORKING/memory/${date}.md`;
+  
+  try {
+    const response = await fetch('/api/open-file', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ path: filePath })
+    });
+    
+    if (!response.ok) {
+      throw new Error('Failed to open file');
+    }
+  } catch (error) {
+    console.error('Failed to open log:', error);
+    alert('Failed to open log file');
+  }
+}
+
+// Truncate text helper
+function truncate(text, maxLength) {
+  if (!text) return '';
+  if (text.length <= maxLength) return text;
+  return text.substring(0, maxLength) + '...';
+}
+
+// Manage Clients Modal
+function openManageClientsModal() {
+  document.getElementById('manageClientsModal').classList.add('active');
+  renderClientsList();
+}
+
+function closeManageClientsModal() {
+  document.getElementById('manageClientsModal').classList.remove('active');
+  document.getElementById('addClientForm').reset();
+}
+
+function renderClientsList() {
+  const clients = data.clients || [...new Set(projects
+    .map(p => p.clientName)
+    .filter(Boolean)
+    .sort())];
+  
+  const container = document.getElementById('clientsList');
+  
+  if (clients.length === 0) {
+    container.innerHTML = '<div style="padding: 12px; color: var(--text-secondary); text-align: center;">No clients yet</div>';
+    return;
+  }
+  
+  container.innerHTML = clients.map(client => `
+    <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px; background: rgba(255, 255, 255, 0.5); border-radius: 8px; margin-bottom: 6px;">
+      <span style="font-size: 13px;">🏢 ${client}</span>
+      <button onclick="removeClient('${client.replace(/'/g, "\\'")}');" class="btn" style="background: var(--status-red); color: white; padding: 6px 12px; font-size: 11px;">Remove</button>
+    </div>
+  `).join('');
+}
+
+async function addClient(event) {
+  event.preventDefault();
+  
+  const clientName = document.getElementById('newClientName').value.trim();
+  
+  if (!clientName) return;
+  
+  const clients = data.clients || [...new Set(projects
+    .map(p => p.clientName)
+    .filter(Boolean))];
+  
+  if (clients.includes(clientName)) {
+    alert('Client already exists');
+    return;
+  }
+  
+  try {
+    const response = await fetch('/api/clients', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: clientName })
+    });
+    
+    if (response.ok) {
+      document.getElementById('newClientName').value = '';
+      await loadData();
+      renderClientsList();
+    } else {
+      alert('Failed to add client');
+    }
+  } catch (error) {
+    console.error('Failed to add client:', error);
+    alert('Failed to add client');
+  }
+}
+
+async function removeClient(clientName) {
+  const projectsWithClient = projects.filter(p => p.clientName === clientName).length;
+  
+  if (projectsWithClient > 0) {
+    if (!confirm(`This client has ${projectsWithClient} project(s). Remove anyway? Projects will not be deleted.`)) {
+      return;
+    }
+  } else {
+    if (!confirm(`Remove "${clientName}"?`)) {
+      return;
+    }
+  }
+  
+  try {
+    const response = await fetch(`/api/clients/${encodeURIComponent(clientName)}`, {
+      method: 'DELETE'
+    });
+    
+    if (response.ok) {
+      await loadData();
+      renderClientsList();
+    } else {
+      alert('Failed to remove client');
+    }
+  } catch (error) {
+    console.error('Failed to remove client:', error);
+    alert('Failed to remove client');
+  }
+}
+
+// Manage Categories Modal
+function openManageCategoriesModal() {
+  document.getElementById('manageCategoriesModal').classList.add('active');
+  renderCategoriesList();
+}
+
+function closeManageCategoriesModal() {
+  document.getElementById('manageCategoriesModal').classList.remove('active');
+  document.getElementById('addCategoryForm').reset();
+}
+
+function renderCategoriesList() {
+  const categories = (data.categories || [
+    { name: 'Marketing', emoji: '📢' },
+    { name: 'Creative', emoji: '🎨' },
+    { name: 'Operations', emoji: '⚙️' },
+    { name: 'Development', emoji: '💻' }
+  ]).sort((a, b) => a.name.localeCompare(b.name));
+  
+  const container = document.getElementById('categoriesList');
+  
+  if (categories.length === 0) {
+    container.innerHTML = '<div style="padding: 12px; color: var(--text-secondary); text-align: center;">No categories yet</div>';
+    return;
+  }
+  
+  container.innerHTML = categories.map(cat => `
+    <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px; background: rgba(255, 255, 255, 0.5); border-radius: 8px; margin-bottom: 6px;">
+      <span style="font-size: 13px;">${cat.emoji} ${cat.name}</span>
+      <button onclick="removeCategory('${cat.name.replace(/'/g, "\\'")}');" class="btn" style="background: var(--status-red); color: white; padding: 6px 12px; font-size: 11px;">Remove</button>
+    </div>
+  `).join('');
+}
+
+async function addCategory(event) {
+  event.preventDefault();
+  
+  const name = document.getElementById('newCategoryName').value.trim();
+  const emoji = document.getElementById('newCategoryEmoji').value.trim();
+  
+  if (!name || !emoji) return;
+  
+  const categories = data.categories || [];
+  
+  if (categories.find(c => c.name === name)) {
+    alert('Category already exists');
+    return;
+  }
+  
+  try {
+    const response = await fetch('/api/categories', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, emoji })
+    });
+    
+    if (response.ok) {
+      document.getElementById('newCategoryName').value = '';
+      document.getElementById('newCategoryEmoji').value = '';
+      await loadData();
+      renderCategoriesList();
+    } else {
+      alert('Failed to add category');
+    }
+  } catch (error) {
+    console.error('Failed to add category:', error);
+    alert('Failed to add category');
+  }
+}
+
+async function removeCategory(categoryName) {
+  const projectsInCategory = projects.filter(p => p.category === categoryName).length;
+  
+  if (projectsInCategory > 0) {
+    if (!confirm(`This category has ${projectsInCategory} project(s). Remove anyway? Projects will not be deleted.`)) {
+      return;
+    }
+  } else {
+    if (!confirm(`Remove category "${categoryName}"?`)) {
+      return;
+    }
+  }
+  
+  try {
+    const response = await fetch(`/api/categories/${encodeURIComponent(categoryName)}`, {
+      method: 'DELETE'
+    });
+    
+    if (response.ok) {
+      await loadData();
+      renderCategoriesList();
+    } else {
+      alert('Failed to remove category');
+    }
+  } catch (error) {
+    console.error('Failed to remove category:', error);
+    alert('Failed to remove category');
+  }
+}
+
+// Update header date/time
+function updateHeaderDateTime() {
+  const now = new Date();
+  
+  // Format date: "WEDNESDAY, FEBRUARY 12"
+  const dateOptions = { weekday: 'long', month: 'long', day: 'numeric' };
+  const dateStr = now.toLocaleDateString('en-US', dateOptions).toUpperCase();
+  
+  // Format time: "1:30 PM"
+  const timeOptions = { hour: 'numeric', minute: '2-digit' };
+  const timeStr = now.toLocaleTimeString('en-US', timeOptions);
+  
+  const dateEl = document.getElementById('headerDate');
+  const timeEl = document.getElementById('headerTime');
+  
+  if (dateEl) dateEl.textContent = dateStr;
+  if (timeEl) timeEl.textContent = timeStr;
+}
+
+// Update time every second
+setInterval(updateHeaderDateTime, 1000);
+updateHeaderDateTime(); // Initial call
+
+// Calendar View Functions
+let calendar = null;
+let currentView = 'projects';
+
+// Switch between Projects and Calendar view
+function switchView(view) {
+  console.log(`switchView called: ${view}`);
+  currentView = view;
+  
+  // Update tabs
+  document.querySelectorAll('.view-tab').forEach(tab => {
+    tab.classList.remove('active');
+    tab.style.background = 'rgba(0, 0, 0, 0.05)';
+    tab.style.color = 'var(--text-primary)';
+  });
+  
+  const activeTab = document.querySelector(`.view-tab[data-view="${view}"]`);
+  if (activeTab) {
+    activeTab.classList.add('active');
+    activeTab.style.background = 'var(--accent-blue)';
+    activeTab.style.color = 'white';
+  }
+  
+  // Update content
+  document.querySelectorAll('.view-content').forEach(content => {
+    content.style.display = 'none';
+  });
+  
+  const activeContent = document.getElementById(`${view}View`);
+  if (activeContent) {
+    activeContent.style.display = 'block';
+  }
+  
+  // Initialize calendar if switching to calendar view
+  if (view === 'calendar' && !calendar) {
+    setTimeout(initCalendar, 100); // Small delay to ensure DOM is ready
+  }
+  
+  // Refresh calendar if already initialized
+  if (view === 'calendar' && calendar) {
+    calendar.refetchEvents();
+    updateCalendarTitle();
+  }
+}
+
+// Initialize FullCalendar
+function initCalendar() {
+  console.log('initCalendar called');
+  const calendarEl = document.getElementById('calendarContainer');
+  if (!calendarEl) {
+    console.error('Calendar container not found!');
+    return;
+  }
+  
+  console.log('Calendar container found, checking FullCalendar...');
+  
+  // Load FullCalendar if not already loaded
+  if (typeof FullCalendar === 'undefined') {
+    console.log('FullCalendar not loaded, loading now...');
+    loadFullCalendar();
+    return;
+  }
+  
+  console.log('FullCalendar is loaded, creating calendar...');
+  
+  calendar = new FullCalendar.Calendar(calendarEl, {
+    initialView: 'dayGridMonth',
+    headerToolbar: false, // Using custom controls
+    themeSystem: 'standard',
+    events: generateCalendarEvents(),
+    eventClick: function(info) {
+      showCalendarEventDetails(info.event);
+    },
+    eventDidMount: function(info) {
+      // Add tooltip with all project details
+      const project = data.projects.find(p => p.id === info.event.id);
+      if (project) {
+        const startDate = project.startDate ? new Date(project.startDate).toLocaleDateString() : 'Not set';
+        const dueDate = project.dueDate ? new Date(project.dueDate).toLocaleDateString() : 'Not set';
+        const duration = project.startDate && project.dueDate 
+          ? Math.ceil((new Date(project.dueDate) - new Date(project.startDate)) / (1000 * 60 * 60 * 24)) + ' days'
+          : 'Not set';
+        
+        info.el.title = `${project.name}\n` +
+                       `Priority: ${project.priority}\n` +
+                       `Status: ${project.status}\n` +
+                       `Progress: ${project.progress}%\n` +
+                       `Owner: ${project.owner}\n` +
+                       `Start: ${startDate}\n` +
+                       `Due: ${dueDate}\n` +
+                       `Duration: ${duration}`;
+      }
+      
+      // Style for better visibility
+      info.el.style.fontSize = '12px';
+      info.el.style.padding = '4px 8px';
+      info.el.style.borderRadius = '6px';
+      info.el.style.margin = '2px 0';
+      info.el.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
+    },
+    height: 'auto',
+    contentHeight: 'auto',
+    dayMaxEvents: 3, // Limit events per day to prevent clutter
+    dayMaxEventRows: true, // Allow more events with "+X more"
+    eventTimeFormat: { // 24-hour time
+      hour: '2-digit',
+      minute: '2-digit',
+      meridiem: false
+    },
+    businessHours: {
+      daysOfWeek: [1, 2, 3, 4, 5], // Monday - Friday
+      startTime: '09:00',
+      endTime: '18:00'
+    },
+    nowIndicator: true,
+    editable: true,
+    eventDrop: function(info) {
+      updateProjectDueDate(info.event.id, info.event.start);
+    },
+    // No eventResize since we're using single-day events
+    eventDisplay: 'block',
+    eventOrder: function(eventA, eventB) {
+      // Custom sorting: P0 first, then P1, then P2, then others
+      const priorityOrder = { 'P0': 0, 'P1': 1, 'P2': 2 };
+      const aPriority = eventA.extendedProps.priority || 'P9';
+      const bPriority = eventB.extendedProps.priority || 'P9';
+      
+      const aOrder = priorityOrder[aPriority] !== undefined ? priorityOrder[aPriority] : 99;
+      const bOrder = priorityOrder[bPriority] !== undefined ? priorityOrder[bPriority] : 99;
+      
+      return aOrder - bOrder;
+    },
+    eventOrderStrict: true
+  });
+
+  calendar.render();
+  updateCalendarTitle();
+}
+
+// Load FullCalendar dynamically
+function loadFullCalendar() {
+  // Check if already loaded
+  if (document.querySelector('link[href*="fullcalendar"]')) {
+    initCalendar();
+    return;
+  }
+  
+  // Load CSS
+  const link = document.createElement('link');
+  link.href = 'https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css';
+  link.rel = 'stylesheet';
+  document.head.appendChild(link);
+  
+  // Load JS
+  const script = document.createElement('script');
+  script.src = 'https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js';
+  script.onload = initCalendar;
+  document.head.appendChild(script);
+}
+
+// Generate calendar events from projects
+function generateCalendarEvents() {
+  if (!data || !data.projects) return [];
+  
+  const events = [];
+  
+  data.projects.forEach(project => {
+    // Only show projects with due dates (not start dates)
+    if (!project.dueDate) return;
+    
+    const dueDate = new Date(project.dueDate);
+    
+    // Determine event color based on priority and status
+    let backgroundColor = '#3b82f6'; // Default blue
+    let borderColor = '#3b82f6';
+    let display = 'auto'; // Default display
+    
+    if (project.priority === 'P0') {
+      backgroundColor = '#ef4444'; // Red for P0
+      borderColor = '#dc2626';
+    } else if (project.priority === 'P1') {
+      backgroundColor = '#f59e0b'; // Yellow for P1
+      borderColor = '#d97706';
+    } else if (project.status.includes('complete') || project.progress === 100) {
+      backgroundColor = '#10b981'; // Green for complete
+      borderColor = '#059669';
+      display = 'background'; // Show as background for completed
+    } else if (project.priority === 'P2') {
+      backgroundColor = '#3b82f6'; // Blue for P2
+      borderColor = '#2563eb';
+    }
+    
+    // Create event title with priority indicator
+    let title = project.name;
+    if (project.priority === 'P0') title = '🔴 ' + title;
+    else if (project.priority === 'P1') title = '🟡 ' + title;
+    else if (project.priority === 'P2') title = '🔵 ' + title;
+    
+    // Truncate long titles
+    if (title.length > 40) {
+      title = title.substring(0, 37) + '...';
+    }
+    
+    events.push({
+      id: project.id,
+      title: title,
+      start: dueDate, // Single day event on due date
+      allDay: true,
+      backgroundColor: backgroundColor,
+      borderColor: borderColor,
+      textColor: '#ffffff', // White text for better contrast
+      display: display,
+      extendedProps: {
+        client: project.clientName,
+        owner: project.owner,
+        status: project.status,
+        progress: project.progress,
+        priority: project.priority,
+        notes: project.notes,
+        actualHours: project.actualHours,
+        hourlyRate: project.hourlyRate,
+        revenue: project.revenue,
+        cost: project.cost,
+        profit: project.profit,
+        margin: project.margin,
+        startDate: project.startDate,
+        dueDate: project.dueDate
+      }
+    });
+  });
+  
+  return events;
+}
+
+// Update project due date when event is moved
+async function updateProjectDueDate(projectId, newDate) {
+  try {
+    const response = await fetch(`/api/projects/${projectId}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        dueDate: newDate.toISOString(),
+        updatedBy: 'Calendar'
+      })
+    });
+    
+    if (response.ok) {
+      showNotification('Due date updated', 'success');
+      await loadData(); // Reload projects
+    } else {
+      throw new Error('Failed to update due date');
+    }
+  } catch (error) {
+    console.error('Error updating due date:', error);
+    showNotification('Error updating due date', 'error');
+    if (calendar) calendar.refetchEvents(); // Revert calendar display
+  }
+}
+
+// Show calendar event details
+function showCalendarEventDetails(event) {
+  const props = event.extendedProps;
+  
+  // For now, just open the project modal
+  selectProject(event.id);
+  
+  // Could also show a custom modal with calendar-specific details
+  showNotification(`Opening project: ${event.title}`, 'info');
+}
+
+// Calendar navigation
+function calendarPrev() {
+  if (calendar) {
+    calendar.prev();
+    updateCalendarTitle();
+  }
+}
+
+function calendarNext() {
+  if (calendar) {
+    calendar.next();
+    updateCalendarTitle();
+  }
+}
+
+function calendarToday() {
+  if (calendar) {
+    calendar.today();
+    updateCalendarTitle();
+  }
+}
+
+function changeCalendarView(view) {
+  if (calendar) {
+    let fcView = 'dayGridMonth';
+    if (view === 'week') fcView = 'timeGridWeek';
+    if (view === 'day') fcView = 'timeGridDay';
+    
+    calendar.changeView(fcView);
+    updateCalendarTitle();
+  }
+}
+
+// Update calendar title
+function updateCalendarTitle() {
+  if (!calendar) return;
+  
+  const titleEl = document.getElementById('calendarTitle');
+  if (titleEl) {
+    const view = calendar.view;
+    const date = view.currentStart;
+    
+    let title = '';
+    if (view.type === 'dayGridMonth') {
+      title = date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+    } else if (view.type === 'timeGridWeek') {
+      const end = new Date(date);
+      end.setDate(end.getDate() + 6);
+      title = `${date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} - ${end.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}`;
+    } else if (view.type === 'timeGridDay') {
+      title = date.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+    }
+    
+    titleEl.textContent = title;
+  }
+}
+
+// Show notification
+function showNotification(message, type = 'info') {
+  // Remove existing notifications
+  document.querySelectorAll('.notification').forEach(n => n.remove());
+  
+  const notification = document.createElement('div');
+  notification.className = `notification ${type}`;
+  notification.textContent = message;
+  notification.style.cssText = `
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 12px 20px;
+    background: ${type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : '#3b82f6'};
+    color: white;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    z-index: 10000;
+    animation: slideIn 0.3s ease;
+  `;
+  
+  document.body.appendChild(notification);
+  
+  // Remove after 3 seconds
+  setTimeout(() => {
+    notification.style.animation = 'slideOut 0.3s ease';
+    setTimeout(() => notification.remove(), 300);
+  }, 3000);
+}
+
+// Add CSS animations for notifications
+if (!document.querySelector('#notification-styles')) {
+  const style = document.createElement('style');
+  style.id = 'notification-styles';
+  style.textContent = `
+    @keyframes slideIn {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    @keyframes slideOut {
+      from { transform: translateX(0); opacity: 1; }
+      to { transform: translateX(100%); opacity: 0; }
+    }
+  `;
+  document.head.appendChild(style);
+}

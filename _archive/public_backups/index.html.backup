@@ -1,0 +1,1439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Operations Dashboard · Digital1010</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --glass-bg: rgba(255, 255, 255, 0.7);
+      --glass-border: rgba(255, 255, 255, 0.3);
+      --shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+      --text-primary: #1d1d1f;
+      --text-secondary: #6e6e73;
+      --accent-blue: #007aff;
+      --accent-blue-rgb: 0, 122, 255;
+      --accent-purple: #5856d6;
+      --accent-purple-rgb: 88, 86, 214;
+      --status-green: #34c759;
+      --status-yellow: #ff9500;
+      --status-red: #ff3b30;
+      --status-gray: #8e8e93;
+      --bg-gradient-start: #f5f7fa;
+      --bg-gradient-end: #e8eef5;
+    }
+
+    [data-theme="dark"] {
+      --glass-bg: rgba(30, 30, 35, 0.8);
+      --glass-border: rgba(255, 255, 255, 0.1);
+      --shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      --text-primary: #f5f5f7;
+      --text-secondary: #a1a1a6;
+      --bg-gradient-start: #1c1c1e;
+      --bg-gradient-end: #2c2c2e;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+      color: var(--text-primary);
+      line-height: 1.6;
+      height: 100vh;
+      overflow: hidden;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .dashboard-container {
+      display: flex;
+      height: 100vh;
+      flex-direction: column;
+    }
+
+    /* Header */
+    .header {
+      background: var(--glass-bg);
+      backdrop-filter: blur(30px);
+      border-bottom: 1px solid var(--glass-border);
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .header-brand {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .header-logo {
+      height: 120px;
+      width: auto;
+      display: block;
+    }
+
+    .header-text h1 {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin: 0;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .datetime-display {
+      text-align: right;
+      padding: 8px 16px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 10px;
+      backdrop-filter: blur(10px);
+    }
+
+    .datetime-date {
+      font-size: 11px;
+      color: var(--text-secondary);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 2px;
+    }
+
+    .datetime-time {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-primary);
+      font-family: 'SF Mono', 'Monaco', monospace;
+      letter-spacing: -0.5px;
+    }
+
+    .theme-toggle {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      padding: 10px 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 20px;
+      backdrop-filter: blur(10px);
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--accent-blue);
+      transform: scale(1.05);
+    }
+
+    /* Main 3-column layout */
+    .main-content {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    /* Left sidebar - Navigation */
+    .left-sidebar {
+      width: 280px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      border-right: 1px solid var(--glass-border);
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      flex-shrink: 0;
+    }
+
+    .left-sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .left-sidebar::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.05);
+    }
+
+    .left-sidebar::-webkit-scrollbar-thumb {
+      background: var(--accent-blue);
+      border-radius: 3px;
+    }
+
+    .sidebar-section {
+      padding: 20px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    #clientsSection {
+      flex-shrink: 0;
+      max-height: 300px;
+    }
+
+    #clientFilters {
+      max-height: 240px;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+
+    #clientFilters::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    #clientFilters::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.05);
+      border-radius: 2px;
+    }
+
+    #clientFilters::-webkit-scrollbar-thumb {
+      background: var(--accent-blue);
+      border-radius: 2px;
+    }
+
+    .activity-item {
+      display: flex;
+      gap: 8px;
+      padding: 8px;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 8px;
+      margin-bottom: 6px;
+    }
+
+    .activity-emoji {
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .activity-content {
+      flex: 1;
+      font-size: 11px;
+      line-height: 1.4;
+    }
+
+    .activity-time {
+      color: var(--text-secondary);
+      font-size: 10px;
+      margin-top: 2px;
+    }
+
+    .agent-card {
+      display: flex;
+      gap: 10px;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 8px;
+      margin-bottom: 8px;
+    }
+
+    .agent-emoji {
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .agent-info {
+      flex: 1;
+      font-size: 11px;
+    }
+
+    .agent-name {
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .agent-status {
+      font-size: 11px;
+      color: var(--text-secondary);
+    }
+
+    #activityFeed::-webkit-scrollbar,
+    #agentsGrid::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    #activityFeed::-webkit-scrollbar-track,
+    #agentsGrid::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.05);
+      border-radius: 2px;
+    }
+
+    #activityFeed::-webkit-scrollbar-thumb,
+    #agentsGrid::-webkit-scrollbar-thumb {
+      background: var(--accent-blue);
+      border-radius: 2px;
+    }
+
+    .sidebar-title {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+    }
+
+    .search-box {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.8);
+      font-size: 14px;
+      outline: none;
+    }
+
+    .search-box:focus {
+      border-color: var(--accent-blue);
+    }
+
+    .filter-group {
+      margin-bottom: 16px;
+    }
+
+    .filter-btn {
+      display: block;
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.5);
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: left;
+      margin-bottom: 6px;
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--accent-blue);
+      color: white;
+      border-color: var(--accent-blue);
+    }
+
+    .new-task-btn {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+      margin-top: 16px;
+    }
+
+    .new-task-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Center - Project tiles */
+    .center-content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 24px;
+    }
+
+    .category-section {
+      margin-bottom: 32px;
+    }
+
+    .category-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      padding: 12px 16px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+    }
+
+    .category-icon {
+      font-size: 24px;
+    }
+
+    .category-title {
+      font-size: 18px;
+      font-weight: 700;
+      flex: 1;
+    }
+
+    .category-count {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    .status-group {
+      margin-bottom: 20px;
+    }
+
+    .status-header {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+      padding-left: 8px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .project-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 16px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .project-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    .project-card.active {
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 0 2px rgba(0, 122, 255, 0.2);
+    }
+
+    .project-id {
+      font-size: 10px;
+      color: var(--text-secondary);
+      font-family: 'Monaco', monospace;
+      margin-bottom: 8px;
+    }
+
+    .project-client {
+      font-size: 11px;
+      color: var(--accent-purple);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+    .project-name {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    .project-timeline {
+      font-size: 11px;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .project-meta {
+      display: flex;
+      gap: 12px;
+      font-size: 12px;
+      color: var(--text-secondary);
+      flex-wrap: wrap;
+    }
+
+    .project-financial {
+      display: flex;
+      gap: 12px;
+      font-size: 11px;
+      font-weight: 600;
+      margin-top: 8px;
+      margin-bottom: 4px;
+      flex-wrap: wrap;
+    }
+
+    .progress-bar {
+      height: 4px;
+      background: rgba(0, 0, 0, 0.1);
+      border-radius: 2px;
+      margin-top: 10px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+      transition: width 0.3s ease;
+    }
+
+    /* Right sidebar - Detail view */
+    .right-sidebar {
+      width: 520px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      border-left: 1px solid var(--glass-border);
+      overflow-y: auto;
+      padding: 24px;
+      flex-shrink: 0;
+    }
+
+    .right-sidebar.empty {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+      font-size: 14px;
+    }
+
+    .detail-header {
+      margin-bottom: 24px;
+    }
+
+    .detail-id {
+      font-size: 10px;
+      color: var(--text-secondary);
+      font-family: 'Monaco', monospace;
+      margin-bottom: 8px;
+    }
+
+    .detail-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .info-item {
+      background: rgba(255, 255, 255, 0.5);
+      padding: 12px;
+      border-radius: 10px;
+    }
+
+    .info-label {
+      font-size: 11px;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+
+    .info-value {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .detail-section {
+      margin-bottom: 20px;
+    }
+
+    .detail-section-title {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-secondary);
+      margin-bottom: 10px;
+    }
+
+    .detail-content {
+      background: rgba(255, 255, 255, 0.3);
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .comment {
+      background: rgba(255, 255, 255, 0.5);
+      padding: 12px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      font-size: 13px;
+    }
+
+    .comment-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+      font-size: 11px;
+      gap: 8px;
+    }
+
+    .comment-author {
+      font-weight: 600;
+    }
+
+    .comment-time {
+      color: var(--text-secondary);
+      flex: 1;
+    }
+
+    .btn-delete-comment {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      padding: 2px 6px;
+      opacity: 0.5;
+      transition: opacity 0.2s ease;
+    }
+
+    .btn-delete-comment:hover {
+      opacity: 1;
+    }
+
+    .comment-form {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .comment-input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.8);
+      font-size: 13px;
+      outline: none;
+    }
+
+    .btn {
+      padding: 10px 16px;
+      border: none;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent-blue);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #0051d5;
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 8px;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .action-buttons .btn {
+      flex: 1;
+      font-size: 12px;
+    }
+
+    /* New Task Modal */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(10px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: var(--glass-bg);
+      backdrop-filter: blur(30px);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 24px;
+      max-width: 500px;
+      width: 90%;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .modal-title {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      font-size: 28px;
+      cursor: pointer;
+      color: var(--text-secondary);
+      line-height: 1;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-secondary);
+      margin-bottom: 6px;
+    }
+
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.8);
+      font-size: 14px;
+      outline: none;
+      font-family: inherit;
+      color: var(--text-primary);
+    }
+
+    [data-theme="dark"] .form-input,
+    [data-theme="dark"] .form-select,
+    [data-theme="dark"] .form-textarea {
+      background: rgba(50, 50, 55, 0.8);
+      border-color: rgba(255, 255, 255, 0.1);
+      color: var(--text-primary);
+    }
+
+    [data-theme="dark"] .search-box {
+      background: rgba(50, 50, 55, 0.8);
+      border-color: rgba(255, 255, 255, 0.1);
+      color: var(--text-primary);
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: var(--accent-blue);
+    }
+
+    /* Status badges */
+    .status-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .status-complete { background: var(--status-green); color: white; }
+    .status-in-progress { background: var(--accent-blue); color: white; }
+    .status-blocked { background: var(--status-red); color: white; }
+    .status-other { background: var(--status-gray); color: white; }
+
+    /* Mobile responsive */
+    @media (max-width: 1400px) {
+      .right-sidebar {
+        position: fixed;
+        right: -520px;
+        top: 0;
+        height: 100vh;
+        z-index: 100;
+        transition: right 0.3s ease;
+        box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .right-sidebar.active {
+        right: 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .main-content {
+        flex-direction: column;
+      }
+
+      .left-sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--glass-border);
+        max-height: 40vh;
+      }
+
+      .center-content {
+        flex: 1;
+      }
+
+      .right-sidebar {
+        width: 100%;
+        right: -100%;
+      }
+
+      .header {
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .header-logo {
+        height: 60px;
+      }
+
+      .header-text h1 {
+        font-size: 14px;
+      }
+
+      .header-actions {
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .datetime-display {
+        font-size: 11px;
+        padding: 6px 10px;
+      }
+
+      .datetime-time {
+        font-size: 16px;
+      }
+
+      .btn-primary {
+        font-size: 13px !important;
+        padding: 8px 16px !important;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Status Bucket Layout (New) */
+    .status-bucket {
+      margin-bottom: 24px;
+    }
+
+    .status-bucket-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      border-left: 4px solid var(--accent-blue);
+      border-radius: 12px;
+      margin-bottom: 12px;
+    }
+
+    .status-bucket-label {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .status-bucket-count {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      background: rgba(0, 0, 0, 0.05);
+      padding: 4px 10px;
+      border-radius: 12px;
+    }
+
+    .status-bucket-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+      min-height: 80px;
+      padding: 12px;
+      border-radius: 12px;
+      transition: background 0.2s ease;
+    }
+
+    .status-bucket-content.drag-over {
+      background: rgba(59, 130, 246, 0.1);
+      border: 2px dashed var(--accent-blue);
+    }
+
+    .empty-bucket {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 32px;
+      color: var(--text-secondary);
+    }
+
+    .project-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .project-category-badge {
+      font-size: 10px;
+      padding: 3px 8px;
+      background: rgba(0, 0, 0, 0.06);
+      border-radius: 6px;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    /* Drag and Drop States */
+    .project-card[draggable="true"] {
+      cursor: grab;
+    }
+
+    .project-card[draggable="true"]:active {
+      cursor: grabbing;
+    }
+
+    .project-card.dragging {
+      opacity: 0.4;
+    }
+
+    /* Status badge styles */
+    .status-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .status-badge.status-complete {
+      background: rgba(52, 199, 89, 0.15);
+      color: var(--status-green);
+    }
+
+    .status-badge.status-in-progress {
+      background: rgba(255, 149, 0, 0.15);
+      color: var(--status-yellow);
+    }
+
+    .status-badge.status-blocked {
+      background: rgba(142, 142, 147, 0.15);
+      color: var(--status-gray);
+    }
+
+    .status-badge.status-other {
+      background: rgba(0, 122, 255, 0.15);
+      color: var(--accent-blue);
+    }
+  </style>
+</head>
+<body>
+<!-- Design Partner Welcome Banner -->
+<div class="partner-banner" style="
+  background: linear-gradient(135deg, #007aff 0%, #5856d6 100%);
+  color: white;
+  padding: 16px 24px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 122, 255, 0.3);
+  position: relative;
+  z-index: 1000;
+">
+  <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
+    <div style="text-align: left;">
+      <div style="font-size: 18px; font-weight: 600; margin-bottom: 4px;">👋 Welcome, Design Partner!</div>
+      <div style="font-size: 14px; opacity: 0.9;">You're previewing Mission Control - the future of agency operations</div>
+    </div>
+    <div style="display: flex; gap: 12px; align-items: center;">
+      <a href="#feedback" style="
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        padding: 8px 16px;
+        border-radius: 20px;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        transition: all 0.2s ease;
+      " onmouseover="this.style.background='rgba(255, 255, 255, 0.3)';" 
+         onmouseout="this.style.background='rgba(255, 255, 255, 0.2)';">
+        💬 Give Feedback
+      </a>
+      <div style="font-size: 12px; opacity: 0.8; padding: 4px 12px; background: rgba(0, 0, 0, 0.2); border-radius: 12px;">
+        Early Access
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="dashboard-container">
+    <!-- Header -->
+    <div class="header">
+      <div class="header-brand">
+        <div class="logo-container">
+          <img src="d1010-logo.svg" alt="Digital1010" class="header-logo">
+        </div>
+        <div class="header-text">
+          <h1>Operations Dashboard</h1>
+        </div>
+      </div>
+      <div class="header-actions">
+        <div class="datetime-display">
+          <div class="datetime-date" id="headerDate">Loading...</div>
+          <div class="datetime-time" id="headerTime">--:--</div>
+        </div>
+        <button onclick="openNewTaskModal()" class="btn btn-primary" style="padding: 12px 24px; font-size: 15px; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 18px;">➕</span> New Ticket
+        </button>
+        <button onclick="toggleTheme()" class="theme-toggle" title="Toggle light/dark mode">
+          <span id="themeIcon">🌙</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Main 3-column layout -->
+    <div class="main-content">
+      <!-- Left Sidebar - Navigation -->
+      <div class="left-sidebar">
+        <div class="sidebar-section">
+          <div class="sidebar-title">Search</div>
+          <input type="text" class="search-box" id="searchBox" placeholder="Search projects...">
+        </div>
+
+        <div class="sidebar-section">
+          <div class="sidebar-title">Sort By</div>
+          <div class="filter-group">
+            <button class="filter-btn active" data-sort="newest">📅 Newest First</button>
+            <button class="filter-btn" data-sort="oldest">📆 Oldest First</button>
+            <button class="filter-btn" data-sort="priority">🎯 Priority</button>
+            <button class="filter-btn" data-sort="alpha">🔤 A-Z</button>
+          </div>
+        </div>
+
+        <div class="sidebar-section">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+            <div class="sidebar-title" style="margin: 0;">Categories</div>
+            <button onclick="openManageCategoriesModal()" style="background: none; border: none; color: var(--accent-blue); font-size: 12px; cursor: pointer; padding: 4px 8px;">✎ Manage</button>
+          </div>
+          <div class="filter-group" id="categoryFilters">
+            <button class="filter-btn active" data-filter="all">🌟 All Projects</button>
+            <!-- Will be populated by JavaScript -->
+          </div>
+        </div>
+
+        <div class="sidebar-section" id="clientsSection">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+            <div class="sidebar-title" style="margin: 0;">Clients</div>
+            <button onclick="openManageClientsModal()" style="background: none; border: none; color: var(--accent-blue); font-size: 12px; cursor: pointer; padding: 4px 8px;">✎ Manage</button>
+          </div>
+          <div class="filter-group" id="clientFilters">
+            <!-- Will be populated by JavaScript -->
+          </div>
+        </div>
+
+        <div class="sidebar-section">
+          <div class="sidebar-title">Status</div>
+          <div class="filter-group">
+            <button class="filter-btn" data-status="in-progress">🔵 In Progress</button>
+            <button class="filter-btn" data-status="complete">✅ Complete</button>
+            <button class="filter-btn" data-status="blocked">🚫 Blocked</button>
+          </div>
+        </div>
+
+        <div class="sidebar-section">
+          <button class="new-task-btn" onclick="openNewTaskModal()">+ New Task</button>
+        </div>
+
+        <div class="sidebar-section">
+          <div class="sidebar-title">📡 Activity</div>
+          <div id="activityFeed" style="font-size: 12px; max-height: 200px; overflow-y: auto;">
+            <!-- Activity feed populated by JS -->
+          </div>
+        </div>
+
+        <div class="sidebar-section">
+          <div class="sidebar-title">🤖 Agents</div>
+          <div id="agentsGrid">
+            <!-- Agents populated by JS -->
+          </div>
+        </div>
+
+        <div class="sidebar-section">
+          <div class="sidebar-title">📝 Daily Logs</div>
+          <div id="dailyLogs" style="font-size: 12px; max-height: 200px; overflow-y: auto;">
+            <!-- Daily logs populated by JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Center - Project Tiles with Tabs -->
+      <div class="center-content">
+        <!-- Tabs for Projects/Calendar View -->
+        <div class="view-tabs" style="display: flex; gap: 8px; margin-bottom: 20px; border-bottom: 2px solid rgba(0, 0, 0, 0.05); padding-bottom: 12px;">
+          <button class="view-tab active" data-view="projects" onclick="switchView('projects')" style="flex: 1; padding: 12px; background: var(--accent-blue); color: white; border: none; border-radius: 10px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s ease;">
+            🎯 Projects View
+          </button>
+          <button class="view-tab" data-view="calendar" onclick="switchView('calendar')" style="flex: 1; padding: 12px; background: rgba(0, 0, 0, 0.05); color: var(--text-primary); border: none; border-radius: 10px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s ease;">
+            📅 Calendar View
+          </button>
+        </div>
+
+        <!-- Projects View (Default) -->
+        <div id="projectsView" class="view-content active">
+          <div id="projectsContainer">
+            <!-- Projects will be rendered here -->
+          </div>
+        </div>
+
+        <!-- Calendar View -->
+        <div id="calendarView" class="view-content" style="display: none;">
+          <div style="margin-bottom: 20px; display: flex; gap: 12px; align-items: center;">
+            <button class="btn" onclick="calendarPrev()" style="padding: 8px 16px; background: rgba(0, 0, 0, 0.05); border: none; border-radius: 8px; cursor: pointer;">← Prev</button>
+            <button class="btn" onclick="calendarToday()" style="padding: 8px 16px; background: var(--accent-blue); color: white; border: none; border-radius: 8px; cursor: pointer;">Today</button>
+            <button class="btn" onclick="calendarNext()" style="padding: 8px 16px; background: rgba(0, 0, 0, 0.05); border: none; border-radius: 8px; cursor: pointer;">Next →</button>
+            <span id="calendarTitle" style="flex: 1; text-align: center; font-weight: 600; font-size: 16px;"></span>
+            <select id="calendarViewSelect" onchange="changeCalendarView(this.value)" style="padding: 8px 16px; background: white; border: 1px solid rgba(0, 0, 0, 0.1); border-radius: 8px; font-size: 14px;">
+              <option value="month">Month</option>
+              <option value="week">Week</option>
+              <option value="day">Day</option>
+            </select>
+          </div>
+          <div id="calendarContainer" style="height: 600px; border-radius: 12px; overflow: hidden;"></div>
+          
+          <!-- Calendar Legend -->
+          <div style="margin-top: 20px; display: flex; gap: 16px; flex-wrap: wrap;">
+            <div style="display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-secondary);">
+              <div style="width: 12px; height: 12px; border-radius: 3px; background: #ef4444;"></div>
+              <span>P0 - Critical</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-secondary);">
+              <div style="width: 12px; height: 12px; border-radius: 3px; background: #f59e0b;"></div>
+              <span>P1 - High</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-secondary);">
+              <div style="width: 12px; height: 12px; border-radius: 3px; background: #3b82f6;"></div>
+              <span>P2 - Medium</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-secondary);">
+              <div style="width: 12px; height: 12px; border-radius: 3px; background: #10b981;"></div>
+              <span>Completed</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Sidebar - Detail View -->
+      <div class="right-sidebar empty" id="detailPanel">
+        <div>👈 Select a project to view details</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- New Task Modal -->
+  <div class="modal-overlay" id="newTaskModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title">Create New Task</div>
+        <button class="modal-close" onclick="closeNewTaskModal()">×</button>
+      </div>
+      <form id="newTaskForm" onsubmit="createNewTask(event)">
+        <div class="form-group">
+          <label class="form-label">Task Name</label>
+          <input type="text" class="form-input" id="taskName" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Client</label>
+          <select class="form-select" id="taskClient" required>
+            <option value="">Select Client</option>
+            <!-- Populated by JS -->
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Category</label>
+          <select class="form-select" id="taskCategory" required>
+            <!-- Populated by JS -->
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Owner</label>
+          <select class="form-select" id="taskOwner" required>
+            <option value="Otto">Otto</option>
+            <option value="Saad">Saad</option>
+            <option value="Mo">Mo</option>
+            <option value="Michael">Michael</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Priority</label>
+          <select class="form-select" id="taskPriority" required>
+            <option value="P0">P0 - Critical</option>
+            <option value="P1" selected>P1 - High</option>
+            <option value="P2">P2 - Normal</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Description</label>
+          <textarea class="form-textarea" id="taskDescription"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Create Task</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Manage Clients Modal -->
+  <div class="modal-overlay" id="manageClientsModal" onclick="if(event.target === this) closeManageClientsModal()">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title">Manage Clients</div>
+        <button class="modal-close" onclick="closeManageClientsModal()">×</button>
+      </div>
+
+      <div style="margin-bottom: 24px;">
+        <div style="font-size: 13px; font-weight: 600; margin-bottom: 12px;">Add New Client</div>
+        <form id="addClientForm" onsubmit="addClient(event)">
+          <div class="form-group">
+            <input type="text" class="form-input" id="newClientName" placeholder="Client name (e.g., The Facilities Group)" required>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">+ Add Client</button>
+        </form>
+      </div>
+
+      <div style="border-top: 1px solid rgba(0, 0, 0, 0.1); padding-top: 20px;">
+        <div style="font-size: 13px; font-weight: 600; margin-bottom: 12px;">Current Clients</div>
+        <div id="clientsList" style="max-height: 300px; overflow-y: auto;">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Manage Categories Modal -->
+  <div class="modal-overlay" id="manageCategoriesModal" onclick="if(event.target === this) closeManageCategoriesModal()">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title">Manage Categories</div>
+        <button class="modal-close" onclick="closeManageCategoriesModal()">×</button>
+      </div>
+
+      <div style="margin-bottom: 24px;">
+        <div style="font-size: 13px; font-weight: 600; margin-bottom: 12px;">Add New Category</div>
+        <form id="addCategoryForm" onsubmit="addCategory(event)">
+          <div class="form-group">
+            <input type="text" class="form-input" id="newCategoryName" placeholder="Category name (e.g., Sales)" required>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-input" id="newCategoryEmoji" placeholder="Emoji (e.g., 💰)" maxlength="2" required>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">+ Add Category</button>
+        </form>
+      </div>
+
+      <div style="border-top: 1px solid rgba(0, 0, 0, 0.1); padding-top: 20px;">
+        <div style="font-size: 13px; font-weight: 600; margin-bottom: 12px;">Current Categories</div>
+        <div id="categoriesList" style="max-height: 300px; overflow-y: auto;">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+<!-- Design Partner Feedback Form -->
+<div id="feedback" style="
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow);
+  padding: 30px;
+  margin: 40px auto;
+  max-width: 800px;
+  display: none;
+">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+    <h3 style="font-size: 20px; font-weight: 600;">💬 Design Partner Feedback</h3>
+    <button onclick="document.getElementById('feedback').style.display='none'" style="
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      font-size: 24px;
+      cursor: pointer;
+      padding: 0;
+    ">×</button>
+  </div>
+  
+  <p style="color: var(--text-secondary); margin-bottom: 24px;">
+    Your feedback shapes Mission Control. What would make this dashboard indispensable for your agency?
+  </p>
+  
+  <form id="feedbackForm" style="display: grid; gap: 20px;">
+    <div>
+      <label style="display: block; margin-bottom: 8px; font-weight: 500;">What's your biggest agency operations pain point?</label>
+      <textarea name="pain_point" style="
+        width: 100%;
+        padding: 12px;
+        border-radius: 12px;
+        border: 1px solid var(--glass-border);
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--text-primary);
+        font-family: inherit;
+        resize: vertical;
+        min-height: 100px;
+      " placeholder="E.g., client reporting takes 10+ hours per month..."></textarea>
+    </div>
+    
+    <div>
+      <label style="display: block; margin-bottom: 8px; font-weight: 500;">What feature would be most valuable to you?</label>
+      <select name="feature_priority" style="
+        width: 100%;
+        padding: 12px;
+        border-radius: 12px;
+        border: 1px solid var(--glass-border);
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--text-primary);
+        font-family: inherit;
+      ">
+        <option value="">Select the most important feature...</option>
+        <option value="client_reporting">Automated Client Reporting</option>
+        <option value="project_management">AI Project Management</option>
+        <option value="team_coordination">Team Coordination & Delegation</option>
+        <option value="financial_tracking">Profitability & Financial Tracking</option>
+        <option value="content_automation">Content Creation Automation</option>
+      </select>
+    </div>
+    
+    <div>
+      <label style="display: block; margin-bottom: 8px; font-weight: 500;">What would you pay monthly for this solution?</label>
+      <div style="display: flex; gap: 12px;">
+        <label style="display: flex; align-items: center; gap: 8px;">
+          <input type="radio" name="price_point" value="99">
+          $99/mo
+        </label>
+        <label style="display: flex; align-items: center; gap: 8px;">
+          <input type="radio" name="price_point" value="249">
+          $249/mo
+        </label>
+        <label style="display: flex; align-items: center; gap: 8px;">
+          <input type="radio" name="price_point" value="499">
+          $499/mo
+        </label>
+        <label style="display: flex; align-items: center; gap: 8px;">
+          <input type="radio" name="price_point" value="999">
+          $999/mo
+        </label>
+      </div>
+    </div>
+    
+    <div>
+      <label style="display: block; margin-bottom: 8px; font-weight: 500;">Email for follow-up (optional)</label>
+      <input type="email" name="email" style="
+        width: 100%;
+        padding: 12px;
+        border-radius: 12px;
+        border: 1px solid var(--glass-border);
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--text-primary);
+        font-family: inherit;
+      " placeholder="you@youragency.com">
+    </div>
+    
+    <button type="submit" style="
+      background: linear-gradient(135deg, #007aff 0%, #5856d6 100%);
+      color: white;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 16px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    " onmouseover="this.style.transform='translateY(-2px)';" 
+       onmouseout="this.style.transform='translateY(0)';">
+      Submit Feedback
+    </button>
+  </form>
+  
+  <div id="feedbackThankYou" style="display: none; text-align: center; padding: 40px;">
+    <div style="font-size: 48px; margin-bottom: 16px;">🎉</div>
+    <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 12px;">Thank You!</h3>
+    <p style="color: var(--text-secondary);">
+      Your feedback has been submitted. We'll review it and may reach out for a follow-up conversation.
+    </p>
+  </div>
+</div>
+
+<script>
+// Feedback form handling
+document.addEventListener('DOMContentLoaded', function() {
+  const feedbackForm = document.getElementById('feedbackForm');
+  const feedbackThankYou = document.getElementById('feedbackThankYou');
+  
+  // Make feedback link work
+  document.querySelector('a[href="#feedback"]').addEventListener('click', function(e) {
+    e.preventDefault();
+    document.getElementById('feedback').style.display = 'block';
+    document.getElementById('feedback').scrollIntoView({ behavior: 'smooth' });
+  });
+  
+  // Handle form submission
+  feedbackForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Collect form data
+    const formData = new FormData(feedbackForm);
+    const data = Object.fromEntries(formData);
+    
+    // Log to console (in real app, send to server)
+    console.log('Design Partner Feedback:', data);
+    
+    // Show thank you message
+    feedbackForm.style.display = 'none';
+    feedbackThankYou.style.display = 'block';
+    
+    // Optional: Send to server
+    // fetch('/api/feedback', { method: 'POST', body: JSON.stringify(data) })
+  });
+});
+</script>
+
+</body>
+</html>

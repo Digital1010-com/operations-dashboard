@@ -1,0 +1,33 @@
+{
+  "agencyId": "partner1",
+  "agencyName": "Acme Marketing Agency",
+  "contactEmail": "",
+  "onboardingDate": "2026-02-25",
+  "projects": [
+    {
+      "id": "1",
+      "name": "Welcome to Mission Control",
+      "clientName": "Acme Marketing Agency",
+      "category": "Onboarding",
+      "status": "in-progress",
+      "description": "Initial setup and configuration for Acme Marketing Agency",
+      "createdDate": "2026-02-25",
+      "dueDate": "2026-03-04"
+    }
+  ],
+  "clients": ["Acme Marketing Agency"],
+  "settings": {
+    "theme": "light",
+    "notifications": true,
+    "weeklyReports": true
+  },
+  "createdAt": "2026-02-25T19:41:08Z",
+  "updatedAt": "2026-02-25T19:41:08Z",
+  "accessLog": [
+    {
+      "timestamp": "2026-02-25T19:41:08Z",
+      "action": "agency_created",
+      "details": "Provisioned by create_agency.sh"
+    }
+  ]
+}

@@ -5,7 +5,17 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "node server.js"
+    "dev": "node server.js",
+    "test:smoke": "bash scripts/smoke-v1.sh",
+    "start:pm2": "pm2 start ecosystem.config.js --env production",
+    "restart:pm2": "pm2 restart operations-dashboard",
+    "stop:pm2": "pm2 stop operations-dashboard",
+    "test:smoke:intake": "bash scripts/smoke-intake-v2.sh",
+    "intake:slack": "bash scripts/intake-slack-project.sh",
+    "intake:gmail": "bash scripts/intake-gmail-task.sh",
+    "intake:gmail:backfill": "bash scripts/backfill-gmail-2weeks.sh",
+    "intake:gmail:backfill:cron:run": "bash scripts/run-joan-backfill-cron.sh",
+    "intake:gmail:backfill:cron:install": "bash scripts/install-joan-backfill-cron.sh"
   },
   "dependencies": {
     "express": "^4.18.2",

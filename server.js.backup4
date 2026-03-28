@@ -1,0 +1,815 @@
+const express = require('express');
+const fs = require('fs');
+const path = require('path');
+const WebSocket = require('ws');
+
+const app = express();
+const PORT = 3200;
+
+app.use(express.json());
+app.use(express.static(__dirname));
+
+// Route for simple projects dashboard
+app.get('/simple-projects.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'simple-projects.html'));
+});
+
+
+const DATA_FILE = path.join(__dirname, 'data.json');
+const MEMORY_DIR = '/Volumes/AI_Drive/AI_WORKING/memory';
+
+// Read data
+function getData() {
+  return JSON.parse(fs.readFileSync(DATA_FILE, 'utf8'));
+}
+
+// Write data
+function saveData(data) {
+  fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2));
+  broadcastUpdate();
+}
+
+// API: Get all data
+
+
+// API: Get operations data (for dashboard.js)
+app.get('/api/operations', (req, res) => {
+  const data = getData();
+  const projects = data.projects || [];
+  
+  // Filter to show only active/in-progress projects for dashboard
+  const activeProjects = projects.filter(p => 
+    p.status === 'in-progress' || p.status === 'new' || p.status === 'upcoming'
+  );
+  
+  // Calculate metrics
+  const completedCount = projects.filter(p => p.status === 'complete').length;
+  const inProgressCount = projects.filter(p => p.status === 'in-progress').length;
+  const newCount = projects.filter(p => p.status === 'new').length;
+  
+  // Get unique clients
+  const clients = [...new Set(projects.map(p => p.clientName).filter(Boolean))];
+  
+  // Get today's activity (simplified)
+  const today = new Date().toISOString().split('T')[0];
+  const todayProjects = projects.filter(p => 
+    p.createdDate && p.createdDate.includes(today)
+  );
+  
+  res.json({
+    agentSessions: [], // Placeholder
+    criticalAlerts: [],
+    todayActivity: {
+      deliverables: {
+        shipped: completedCount,
+        inProgress: inProgressCount
+      },
+      tokenUsage: {
+        formatted: '0'
+      }
+    },
+    projects: activeProjects,
+    metrics: {
+      total: projects.length,
+      completed: completedCount,
+      inProgress: inProgressCount,
+      new: newCount,
+      clients: clients.length
+    }
+  });
+});
+
+// API: Get clients data (for mission-control.js)
+app.get('/api/clients', (req, res) => {
+  const data = getData();
+  const projects = data.projects || [];
+  
+  // Group projects by client
+  const clientsMap = {};
+  projects.forEach(p => {
+    const clientName = p.clientName || 'Unassigned';
+    if (!clientsMap[clientName]) {
+      clientsMap[clientName] = {
+        name: clientName,
+        projects: [],
+        completedCount: 0,
+        inProgressCount: 0,
+        projectTally: {}
+      };
+    }
+    
+    clientsMap[clientName].projects.push(p);
+    
+    if (p.status === 'complete') {
+      clientsMap[clientName].completedCount += 1;
+    } else if (p.status === 'in-progress') {
+      clientsMap[clientName].inProgressCount += 1;
+    }
+    
+    // Tally by category
+    const category = p.category || 'Uncategorized';
+    clientsMap[clientName].projectTally[category] = (clientsMap[clientName].projectTally[category] || 0) + 1;
+  });
+  
+  const clients = Object.values(clientsMap);
+  
+  res.json({
+    clients: clients,
+    totalClients: clients.length,
+    totalProjects: projects.length
+  });
+});
+
+// API: Search projects
+app.get('/api/projects/search', (req, res) => {
+  const { q } = req.query;
+  const data = getData();
+  const projects = data.projects || [];
+  
+  if (!q) {
+    return res.json({ projects: projects.slice(0, 50) }); // Return first 50 if no query
+  }
+  
+  const query = q.toLowerCase();
+  const results = projects.filter(p => {
+    // Search in name, client, description, notes
+    const name = (p.name || '').toLowerCase();
+    const client = (p.clientName || '').toLowerCase();
+    const description = (p.description || '').toLowerCase();
+    const notes = (p.notes || '').toLowerCase();
+    const id = (p.id || '').toLowerCase();
+    
+    return name.includes(query) || 
+           client.includes(query) || 
+           description.includes(query) || 
+           notes.includes(query) ||
+           id.includes(query);
+  });
+  
+  res.json({
+    query: q,
+    results: results,
+    count: results.length
+  });
+});
+app.get('/api/data', (req, res) => {
+  res.json(getData());
+});
+
+// API: Create new project (for Joan integration)
+app.post('/api/projects', (req, res) => {
+  const data = getData();
+  
+  const project = {
+    id: req.body.id || `JOB-${Date.now()}`,
+    name: req.body.name,
+    category: req.body.category || 'Operations',
+    status: req.body.status || 'in-progress',
+    priority: req.body.priority || 'P1',
+    owner: req.body.owner || 'Unassigned',
+    progress: req.body.progress || 0,
+    statusColor: req.body.statusColor || 'blue',
+    lastUpdated: new Date().toISOString(),
+    notes: req.body.notes || '',
+    blockers: req.body.blockers || [],
+    deliverables: req.body.deliverables || [],
+    comments: req.body.comments || [],
+    rationale: req.body.rationale || '',
+    risks: req.body.risks || [],
+    dependencies: req.body.dependencies || [],
+    nextActions: req.body.nextActions || [],
+    metrics: req.body.metrics || {},
+    sortOrder: (Math.max(...data.projects.map(p => p.sortOrder || 0), 0) + 10),
+    clientName: req.body.clientName || '',
+    clientEmail: req.body.clientEmail || '',
+    originalRequest: req.body.originalRequest || '',
+    // Financial tracking - Apple-level inline editing
+    actualHours: req.body.actualHours || 0,
+    hourlyRate: req.body.hourlyRate || 150,
+    cost: req.body.cost || 0,
+    revenue: req.body.revenue || 0,
+    profit: req.body.profit || 0,
+    margin: req.body.margin || 0,
+    budget: req.body.budget || 0,
+    // Calendar integration
+    startDate: req.body.startDate || new Date().toISOString(),
+    dueDate: req.body.dueDate || null,
+    estimatedHours: req.body.estimatedHours || 0,
+    // Activity tracking
+    activityLog: req.body.activityLog || []
+  };
+  
+  data.projects.push(project);
+  
+  // Add to activity feed
+  data.activityFeed.unshift({
+    id: `act-${Date.now()}`,
+    timestamp: new Date().toISOString(),
+    agent: req.body.createdBy || 'Joan',
+    action: 'created',
+    target: project.name,
+    type: 'start'
+  });
+  
+  saveData(data);
+  res.json(project);
+});
+
+// API: Add comment
+app.post('/api/projects/:id/comments', (req, res) => {
+  const data = getData();
+  const project = data.projects.find(p => p.id === req.params.id);
+  
+  if (!project) {
+    return res.status(404).json({ error: 'Project not found' });
+  }
+
+  const comment = {
+    id: `cmt-${Date.now()}`,
+    author: req.body.author || 'Unknown',
+    timestamp: new Date().toISOString(),
+    type: req.body.type || 'update',
+    text: req.body.text,
+    status: req.body.status || 'open',
+    responses: []
+  };
+
+  // Initialize comments array if it doesn't exist
+  if (!project.comments) {
+    project.comments = [];
+  }
+  
+  project.comments.push(comment);
+  project.lastUpdated = new Date().toISOString();
+  
+  // Add to activity feed
+  data.activityFeed.unshift({
+    id: `act-${Date.now()}`,
+    timestamp: comment.timestamp,
+    agent: comment.author,
+    action: 'commented',
+    target: project.name,
+    type: 'comment'
+  });
+
+  saveData(data);
+  res.json(comment);
+});
+
+// API: Delete comment
+app.delete('/api/projects/:id/comments/:commentId', (req, res) => {
+  const data = getData();
+  const project = data.projects.find(p => p.id === req.params.id);
+  
+  if (!project) {
+    return res.status(404).json({ error: 'Project not found' });
+  }
+
+  if (!project.comments) {
+    return res.status(404).json({ error: 'No comments found' });
+  }
+
+  const commentIndex = project.comments.findIndex(c => c.id === req.params.commentId);
+  
+  if (commentIndex === -1) {
+    return res.status(404).json({ error: 'Comment not found' });
+  }
+
+  const comment = project.comments[commentIndex];
+  const requestingUser = req.body.author || req.query.author;
+
+  // Authorization: only comment author can delete
+  if (comment.author !== requestingUser) {
+    return res.status(403).json({ error: 'Only the comment author can delete this comment' });
+  }
+
+  project.comments.splice(commentIndex, 1);
+  project.lastUpdated = new Date().toISOString();
+
+  saveData(data);
+  res.json({ success: true, deletedCommentId: req.params.commentId });
+});
+
+// API: Add comment response
+app.post('/api/projects/:id/comments/:commentId/responses', (req, res) => {
+  const data = getData();
+  const project = data.projects.find(p => p.id === req.params.id);
+  
+  if (!project) {
+    return res.status(404).json({ error: 'Project not found' });
+  }
+
+  const comment = project.comments.find(c => c.id === req.params.commentId);
+  
+  if (!comment) {
+    return res.status(404).json({ error: 'Comment not found' });
+  }
+
+  const response = {
+    author: req.body.author || 'Unknown',
+    timestamp: new Date().toISOString(),
+    text: req.body.text,
+    status: req.body.status || 'open'
+  };
+
+  comment.responses.push(response);
+  project.lastUpdated = new Date().toISOString();
+
+  saveData(data);
+  res.json(response);
+});
+
+// API: Update project
+app.patch('/api/projects/:id', (req, res) => {
+  const data = getData();
+  const project = data.projects.find(p => p.id === req.params.id);
+  
+  if (!project) {
+    return res.status(404).json({ error: 'Project not found' });
+  }
+
+  Object.assign(project, req.body);
+  project.lastUpdated = new Date().toISOString();
+
+  saveData(data);
+  res.json(project);
+});
+
+// API: Reorder project (move up/down in priority)
+app.post('/api/projects/:id/reorder', (req, res) => {
+  const data = getData();
+  const { direction } = req.body; // 'up' or 'down'
+  const project = data.projects.find(p => p.id === req.params.id);
+  
+  if (!project) {
+    return res.status(404).json({ error: 'Project not found' });
+  }
+
+  // Find projects in same category
+  const categoryProjects = data.projects
+    .filter(p => p.category === project.category)
+    .sort((a, b) => (a.sortOrder || 0) - (b.sortOrder || 0));
+
+  const currentIndex = categoryProjects.findIndex(p => p.id === project.id);
+  
+  if (direction === 'up' && currentIndex > 0) {
+    // Swap with previous
+    const temp = categoryProjects[currentIndex - 1].sortOrder;
+    categoryProjects[currentIndex - 1].sortOrder = project.sortOrder;
+    project.sortOrder = temp;
+  } else if (direction === 'down' && currentIndex < categoryProjects.length - 1) {
+    // Swap with next
+    const temp = categoryProjects[currentIndex + 1].sortOrder;
+    categoryProjects[currentIndex + 1].sortOrder = project.sortOrder;
+    project.sortOrder = temp;
+  }
+
+  saveData(data);
+  res.json({ success: true });
+});
+
+// API: Update project financials (inline editing)
+app.patch('/api/projects/:id/financial', (req, res) => {
+  const data = getData();
+  const project = data.projects.find(p => p.id === req.params.id);
+  
+  if (!project) {
+    return res.status(404).json({ error: 'Project not found' });
+  }
+
+  const { actualHours, hourlyRate, cost } = req.body;
+  
+  // Auto-calculate financials
+  const revenue = actualHours * hourlyRate;
+  const profit = revenue - cost;
+  const margin = revenue > 0 ? (profit / revenue) * 100 : 0;
+  
+  // Update project with financial data
+  project.actualHours = actualHours;
+  project.hourlyRate = hourlyRate;
+  project.revenue = revenue;
+  project.cost = cost;
+  project.profit = profit;
+  project.margin = margin;
+  project.lastUpdated = new Date().toISOString();
+  
+  // Add to activity feed
+  data.activityFeed.unshift({
+    id: `act-${Date.now()}`,
+    timestamp: new Date().toISOString(),
+    agent: req.body.updatedBy || 'Dashboard',
+    action: 'updated',
+    target: `financials for ${project.name}`,
+    type: 'financial',
+    details: {
+      hours: actualHours,
+      rate: hourlyRate,
+      revenue: revenue,
+      profit: profit,
+      margin: margin
+    }
+  });
+  
+  saveData(data);
+  res.json({ 
+    success: true, 
+    project: {
+      id: project.id,
+      name: project.name,
+      actualHours,
+      hourlyRate,
+      revenue,
+      cost,
+      profit,
+      margin
+    }
+  });
+});
+
+// API: Get daily logs
+app.get('/api/logs', (req, res) => {
+  try {
+    const days = parseInt(req.query.days) || 7;
+    const logs = [];
+    
+    // Get last N days of logs
+    const files = fs.readdirSync(MEMORY_DIR)
+      .filter(f => f.match(/^\d{4}-\d{2}-\d{2}\.md$/))
+      .sort()
+      .reverse()
+      .slice(0, days);
+    
+    files.forEach(file => {
+      const content = fs.readFileSync(path.join(MEMORY_DIR, file), 'utf8');
+      const date = file.replace('.md', '');
+      
+      // Extract summary (first line after # Daily Log)
+      const summaryMatch = content.match(/\*\*Summary:\*\* (.+)/);
+      const summary = summaryMatch ? summaryMatch[1] : '';
+      
+      logs.push({
+        date,
+        file,
+        summary,
+        content,
+        size: content.length
+      });
+    });
+    
+    res.json({ logs });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// API: Search logs for project mentions
+app.get('/api/logs/search', (req, res) => {
+  try {
+    const query = req.query.q;
+    if (!query) {
+      return res.status(400).json({ error: 'Query required' });
+    }
+    
+    const results = [];
+    const files = fs.readdirSync(MEMORY_DIR)
+      .filter(f => f.match(/^\d{4}-\d{2}-\d{2}\.md$/))
+      .sort()
+      .reverse();
+    
+    files.forEach(file => {
+      const content = fs.readFileSync(path.join(MEMORY_DIR, file), 'utf8');
+      const lines = content.split('\n');
+      
+      lines.forEach((line, idx) => {
+        if (line.toLowerCase().includes(query.toLowerCase())) {
+          const date = file.replace('.md', '');
+          results.push({
+            date,
+            line: idx + 1,
+            text: line.trim(),
+            context: lines.slice(Math.max(0, idx - 1), idx + 2).join('\n')
+          });
+        }
+      });
+    });
+    
+    res.json({ query, results: results.slice(0, 50) });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// API: Open file with system command
+app.post('/api/open-file', (req, res) => {
+  const { path: filePath } = req.body;
+  
+  if (!filePath) {
+    return res.status(400).json({ error: 'Path required' });
+  }
+  
+  // Security: only allow paths within AI_WORKING
+  if (!filePath.startsWith('/Volumes/AI_Drive/AI_WORKING') && 
+      !filePath.startsWith('/Users/ottomac/.openclaw')) {
+    return res.status(403).json({ error: 'Access denied' });
+  }
+  
+  const { exec } = require('child_process');
+  
+  // Use 'open' command on macOS to open file with default app
+  exec(`open "${filePath}"`, (error) => {
+    if (error) {
+      return res.status(500).json({ error: error.message, path: filePath });
+    }
+    res.json({ success: true, path: filePath });
+  });
+});
+
+// API: Add deliverable
+app.post('/api/projects/:id/deliverables', (req, res) => {
+  const data = getData();
+  const project = data.projects.find(p => p.id === req.params.id);
+  
+  if (!project) {
+    return res.status(404).json({ error: 'Project not found' });
+  }
+
+  const deliverable = {
+    id: `del-${Date.now()}`,
+    name: req.body.name,
+    url: req.body.url,
+    type: req.body.type || 'document',
+    timestamp: new Date().toISOString()
+  };
+
+  project.deliverables.push(deliverable);
+  project.lastUpdated = new Date().toISOString();
+
+  saveData(data);
+  res.json(deliverable);
+});
+
+// API: Add client
+app.post('/api/clients', (req, res) => {
+  const data = getData();
+  
+  if (!data.clients) {
+    data.clients = [];
+  }
+  
+  const clientName = req.body.name;
+  
+  if (!clientName) {
+    return res.status(400).json({ error: 'Client name required' });
+  }
+  
+  if (data.clients.includes(clientName)) {
+    return res.status(400).json({ error: 'Client already exists' });
+  }
+  
+  data.clients.push(clientName);
+  data.clients.sort();
+  
+  saveData(data);
+  res.json({ success: true, client: clientName });
+});
+
+// API: Remove client
+app.delete('/api/clients/:name', (req, res) => {
+  const data = getData();
+  
+  if (!data.clients) {
+    data.clients = [];
+  }
+  
+  const clientName = decodeURIComponent(req.params.name);
+  
+  data.clients = data.clients.filter(c => c !== clientName);
+  
+  saveData(data);
+  res.json({ success: true });
+});
+
+// API: Add category
+app.post('/api/categories', (req, res) => {
+  const data = getData();
+  
+  if (!data.categories) {
+    data.categories = [
+      { name: 'Marketing', emoji: '📢' },
+      { name: 'Creative', emoji: '🎨' },
+      { name: 'Operations', emoji: '⚙️' },
+      { name: 'Development', emoji: '💻' }
+    ];
+  }
+  
+  const { name, emoji } = req.body;
+  
+  if (!name || !emoji) {
+    return res.status(400).json({ error: 'Name and emoji required' });
+  }
+  
+  if (data.categories.find(c => c.name === name)) {
+    return res.status(400).json({ error: 'Category already exists' });
+  }
+  
+  data.categories.push({ name, emoji });
+  
+  saveData(data);
+  res.json({ success: true, category: { name, emoji } });
+});
+
+// API: Remove category
+app.delete('/api/categories/:name', (req, res) => {
+  const data = getData();
+  
+  if (!data.categories) {
+    data.categories = [];
+  }
+  
+  const categoryName = decodeURIComponent(req.params.name);
+  
+  data.categories = data.categories.filter(c => c.name !== categoryName);
+  
+  saveData(data);
+  res.json({ success: true });
+});
+
+// Files API - File Browser Integration
+app.get('/api/files/list', (req, res) => {
+  const requestedPath = req.query.path || '/';
+  
+  // Security: Only allow paths under /Volumes/AI_Drive/
+  let safePath;
+  try {
+    if (requestedPath === '/' || requestedPath === '') {
+      // Return root directories
+      return res.json({
+        path: '/',
+        items: [
+          { name: 'Client Archives', path: '/Volumes/AI_Drive/D1010-CORE/clients/', type: 'folder', icon: '📁' },
+          { name: 'AI Working Files', path: '/Volumes/AI_Drive/AI_WORKING/', type: 'folder', icon: '🤖' },
+          { name: 'Infrastructure', path: '/Volumes/AI_Drive/01-Infrastructure/', type: 'folder', icon: '⚙️' },
+          { name: 'Projects', path: '/Volumes/AI_Drive/AI_WORKING/projects/', type: 'folder', icon: '📋' },
+          { name: 'Scripts', path: '/Volumes/AI_Drive/AI_WORKING/scripts/', type: 'folder', icon: '📜' },
+          { name: 'Memory', path: '/Volumes/AI_Drive/AI_WORKING/memory/', type: 'folder', icon: '🧠' }
+        ]
+      });
+    }
+    
+    // Resolve and validate path
+    const resolvedPath = path.resolve(requestedPath);
+    if (!resolvedPath.startsWith('/Volumes/AI_Drive/')) {
+      return res.status(403).json({ error: 'Access denied' });
+    }
+    
+    safePath = resolvedPath;
+    
+    // Check if path exists
+    if (!fs.existsSync(safePath)) {
+      return res.status(404).json({ error: 'Path not found' });
+    }
+    
+    // Read directory
+    const items = [];
+    const entries = fs.readdirSync(safePath, { withFileTypes: true });
+    
+    entries.forEach(entry => {
+      // Skip hidden files
+      if (entry.name.startsWith('.')) return;
+      
+      const itemPath = path.join(safePath, entry.name);
+      const stats = fs.statSync(itemPath);
+      
+      items.push({
+        name: entry.name,
+        path: itemPath + (stats.isDirectory() ? '/' : ''),
+        type: stats.isDirectory() ? 'folder' : 'file',
+        size: stats.isFile() ? stats.size : null,
+        modified: stats.mtime.toISOString(),
+        icon: stats.isDirectory() ? '📁' : getFileIcon(entry.name)
+      });
+    });
+    
+    // Sort: folders first, then files, both alphabetically
+    items.sort((a, b) => {
+      if (a.type === 'folder' && b.type !== 'folder') return -1;
+      if (a.type !== 'folder' && b.type === 'folder') return 1;
+      return a.name.localeCompare(b.name);
+    });
+    
+    res.json({
+      path: safePath,
+      items: items
+    });
+    
+  } catch (error) {
+    console.error('Error reading directory:', error);
+    res.status(500).json({ error: 'Failed to read directory' });
+  }
+});
+
+app.get('/api/files/read', (req, res) => {
+  const filePath = req.query.path;
+  
+  if (!filePath) {
+    return res.status(400).json({ error: 'Path parameter required' });
+  }
+  
+  try {
+    // Security: Only allow paths under /Volumes/AI_Drive/
+    const resolvedPath = path.resolve(filePath);
+    if (!resolvedPath.startsWith('/Volumes/AI_Drive/')) {
+      return res.status(403).json({ error: 'Access denied' });
+    }
+    
+    // Check if file exists
+    if (!fs.existsSync(resolvedPath)) {
+      return res.status(404).json({ error: 'File not found' });
+    }
+    
+    // Check if it's a file (not a directory)
+    const stats = fs.statSync(resolvedPath);
+    if (!stats.isFile()) {
+      return res.status(400).json({ error: 'Path is not a file' });
+    }
+    
+    // Check file size (limit to 1MB for safety)
+    if (stats.size > 1024 * 1024) {
+      return res.status(413).json({ error: 'File too large (max 1MB)' });
+    }
+    
+    // Read file
+    const content = fs.readFileSync(resolvedPath, 'utf8');
+    const extension = path.extname(resolvedPath).toLowerCase();
+    
+    res.json({
+      path: resolvedPath,
+      name: path.basename(resolvedPath),
+      size: stats.size,
+      modified: stats.mtime.toISOString(),
+      content: content,
+      type: extension
+    });
+    
+  } catch (error) {
+    console.error('Error reading file:', error);
+    res.status(500).json({ error: 'Failed to read file' });
+  }
+});
+
+// Helper function to get file icon based on extension
+function getFileIcon(filename) {
+  const extension = path.extname(filename).toLowerCase();
+  
+  const iconMap = {
+    '.md': '📄',
+    '.js': '📜',
+    '.json': '📋',
+    '.html': '🌐',
+    '.css': '🎨',
+    '.py': '🐍',
+    '.txt': '📝',
+    '.pdf': '📕',
+    '.doc': '📘',
+    '.docx': '📘',
+    '.xls': '📊',
+    '.xlsx': '📊',
+    '.jpg': '🖼️',
+    '.jpeg': '🖼️',
+    '.png': '🖼️',
+    '.gif': '🖼️',
+    '.mp4': '🎥',
+    '.mov': '🎥',
+    '.zip': '📦',
+    '.tar': '📦',
+    '.gz': '📦'
+  };
+  
+  return iconMap[extension] || '📄';
+}
+
+// WebSocket for real-time updates
+const server = app.listen(PORT, '127.0.0.1', () => {
+  console.log(`Operations Dashboard running at http://127.0.0.1:${PORT}`);
+});
+
+const wss = new WebSocket.Server({ server });
+
+const clients = new Set();
+
+wss.on('connection', (ws) => {
+  clients.add(ws);
+  
+  ws.on('close', () => {
+    clients.delete(ws);
+  });
+});
+
+function broadcastUpdate() {
+  const data = getData();
+  clients.forEach(client => {
+    if (client.readyState === WebSocket.OPEN) {
+      client.send(JSON.stringify({ type: 'update', data }));
+    }
+  });
+}

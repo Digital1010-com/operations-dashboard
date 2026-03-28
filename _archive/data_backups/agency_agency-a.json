@@ -1,0 +1,72 @@
+{
+  "agencyId": "agency-a",
+  "projects": [
+    {
+      "id": "1",
+      "name": "agency-a Project 1",
+      "status": "in-progress",
+      "clientName": "agency-a Client"
+    },
+    {
+      "id": "D1010-OPS-100002",
+      "name": "Agency A isolated intake",
+      "description": "should stay in agency-a",
+      "category": "Operations",
+      "status": "new",
+      "priority": "P2",
+      "owner": "Otto",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-27T16:25:20.908Z",
+      "createdDate": "2026-02-27T16:25:20.908Z",
+      "notes": "should stay in agency-a",
+      "blockers": [],
+      "deliverables": [],
+      "documents": [],
+      "comments": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {},
+      "sortOrder": 10,
+      "clientName": "Agency A",
+      "clientEmail": "",
+      "originalRequest": "should stay in agency-a",
+      "activityLog": [],
+      "intakeMeta": {
+        "source": "slack",
+        "sourceId": "agA-001",
+        "idempotencyKey": "e2876351e37f24f6c9e456489bab72289367979a24cfe930d5c0ff2939139445",
+        "receivedAt": "2026-02-27T16:25:20.908Z",
+        "pegValidatedAt": "2026-02-27T16:25:20.908Z"
+      }
+    }
+  ],
+  "clients": [
+    "agency-a Client"
+  ],
+  "createdAt": "2026-02-25T19:34:47.124Z",
+  "intakeEvents": [
+    {
+      "id": "intake-1772209520908",
+      "ts": "2026-02-27T16:25:20.908Z",
+      "source": "slack",
+      "sourceId": "agA-001",
+      "idempotencyKey": "e2876351e37f24f6c9e456489bab72289367979a24cfe930d5c0ff2939139445",
+      "status": "accepted",
+      "projectId": "D1010-OPS-100002"
+    }
+  ],
+  "intakeIdempotency": {
+    "e2876351e37f24f6c9e456489bab72289367979a24cfe930d5c0ff2939139445": "D1010-OPS-100002"
+  },
+  "activityFeed": [
+    {
+      "id": "act-1772209520908",
+      "timestamp": "2026-02-27T16:25:20.908Z",
+      "agent": "Peg",
+      "action": "accepted intake",
+      "target": "Agency A isolated intake",
+      "type": "start"
+    }
+  ]
+}

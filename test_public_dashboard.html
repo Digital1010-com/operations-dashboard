@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Public Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .test { margin: 20px 0; padding: 15px; border: 1px solid #ccc; }
+        .success { background: #d4edda; }
+        .error { background: #f8d7da; }
+        button { margin: 5px; padding: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Public Dashboard Multi-Tenancy Test</h1>
+    
+    <div class="test">
+        <h3>Test Agency URLs:</h3>
+        <button onclick="window.location.href='/public/?agency=default'">Default Agency</button>
+        <button onclick="window.location.href='/public/?agency=test-a'">Test-A Agency</button>
+        <button onclick="window.location.href='/public/?agency=test-b'">Test-B Agency</button>
+        <button onclick="window.location.href='/public/?agency=partner1'">Partner1 Agency</button>
+    </div>
+    
+    <div class="test">
+        <h3>API Endpoints Test:</h3>
+        <div id="apiResults"></div>
+        <button onclick="testAPI('default')">Test Default Agency API</button>
+        <button onclick="testAPI('test-a')">Test Test-A Agency API</button>
+    </div>
+    
+    <div class="test">
+        <h3>Current Agency Detection:</h3>
+        <div id="currentAgency"></div>
+        <button onclick="checkAgency()">Check Agency Detection</button>
+    </div>
+    
+    <script>
+        function testAPI(agency) {
+            const results = document.getElementById('apiResults');
+            results.innerHTML = `<p>Testing ${agency}...</p>`;
+            
+            // Test multiple endpoints
+            const endpoints = ['/api/data', '/api/projects', '/api/clients', '/api/categories'];
+            let allTests = [];
+            
+            endpoints.forEach(async (endpoint) => {
+                try {
+                    const response = await fetch(`${endpoint}?agency=${agency}`);
+                    const data = await response.json();
+                    allTests.push({
+                        endpoint,
+                        success: true,
+                        agency: data.agency,
+                        count: data.projects?.length || data.clients?.length || data.categories?.length || 0
+                    });
+                } catch (error) {
+                    allTests.push({
+                        endpoint,
+                        success: false,
+                        error: error.message
+                    });
+                }
+                
+                // Update results
+                if (allTests.length === endpoints.length) {
+                    let html = '<h4>Results:</h4>';
+                    allTests.forEach(test => {
+                        if (test.success) {
+                            html += `<p class="success">✅ ${test.endpoint}: ${test.count} items (agency: ${test.agency})</p>`;
+                        } else {
+                            html += `<p class="error">❌ ${test.endpoint}: ${test.error}</p>`;
+                        }
+                    });
+                    results.innerHTML = html;
+                }
+            });
+        }
+        
+        function checkAgency() {
+            const display = document.getElementById('currentAgency');
+            
+            // Check URL parameter
+            const urlParams = new URLSearchParams(window.location.search);
+            const urlAgency = urlParams.get('agency');
+            
+            // Check localStorage
+            const storedAgency = localStorage.getItem('agencyId');
+            
+            display.innerHTML = `
+                <p>URL Agency Parameter: ${urlAgency || 'none'}</p>
+                <p>LocalStorage Agency: ${storedAgency || 'none'}</p>
+                <p>Current URL: ${window.location.href}</p>
+            `;
+        }
+        
+        // Run on load
+        checkAgency();
+    </script>
+</body>
+</html>

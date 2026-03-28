@@ -1,5 +1,33 @@
+# Dependencies
 node_modules/
+
+# Data files (contains sensitive info)
+data/
 data.json
+*.sqlite
+
+# Logs
 *.log
-.DS_Store
+*.log.*
+*.jsonl
+*.gz
+
+# Environment & Secrets
 .env
+.env.local
+.secure-env
+secrets_store.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temp
+tmp/
+temp/

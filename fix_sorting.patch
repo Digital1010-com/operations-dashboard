@@ -1,0 +1,16 @@
+--- server.js	2026-02-26 13:33:00
++++ server.js.fixed	2026-02-26 13:45:00
+@@ -58,6 +58,12 @@
+   const activeProjects = projects.filter(p => 
+     p.status === 'in-progress' || p.status === 'new' || p.status === 'upcoming'
+   );
++
++  // Sort by lastUpdated (newest first) so recent projects appear at top
++  activeProjects.sort((a, b) => {
++    const dateA = new Date(a.lastUpdated || a.createdDate || '1970-01-01');
++    const dateB = new Date(b.lastUpdated || b.createdDate || '1970-01-01');
++    return dateB - dateA; // Newest first
++  });
+   
+   // Calculate metrics
+   const completedCount = projects.filter(p => p.status === 'complete').length;

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug Dashboard - What's Actually Loaded</title>
+    <style>
+        body { font-family: monospace; margin: 20px; }
+        .project { border: 1px solid #ccc; padding: 10px; margin: 5px 0; font-size: 12px; }
+        .found { background: #d4edda; }
+        .missing { background: #f8d7da; }
+        .tfg { border: 2px solid blue; }
+        pre { background: #f5f5f5; padding: 10px; overflow: auto; }
+    </style>
+</head>
+<body>
+    <h1>Debug Dashboard - Raw Data Inspection</h1>
+    
+    <div>
+        <button onclick="loadData()">Load Data</button>
+        <button onclick="checkTFG()">Check TFG Projects</button>
+        <button onclick="checkAll()">Check All Projects</button>
+    </div>
+    
+    <div id="output"></div>
+    <div id="rawData" style="display: none;"></div>
+    
+    <script>
+        let allProjects = [];
+        
+        async function loadData() {
+            const output = document.getElementById('output');
+            output.innerHTML = 'Loading...';
+            
+            try {
+                const response = await fetch('/api/data');
+                const data = await response.json();
+                allProjects = data.projects || [];
+                
+                output.innerHTML = `<h3>✅ Loaded ${allProjects.length} projects</h3>`;
+                document.getElementById('rawData').innerHTML = '<pre>' + JSON.stringify(allProjects.slice(0, 5), null, 2) + '...</pre>';
+                
+            } catch (error) {
+                output.innerHTML = `<span style="color: red;">Error: ${error.message}</span>`;
+            }
+        }
+        
+        function checkTFG() {
+            const output = document.getElementById('output');
+            if (allProjects.length === 0) {
+                output.innerHTML = '<span style="color: orange;">Load data first!</span>';
+                return;
+            }
+            
+            const tfgIds = ['D1010-OPS-198096', 'D1010-DEV-298967'];
+            let html = '<h3>🔍 Checking TFG Projects:</h3>';
+            
+            tfgIds.forEach(id => {
+                const project = allProjects.find(p => p.id === id);
+                if (project) {
+                    html += `<div class="project found tfg">
+                        <h4>✅ FOUND: ${id}</h4>
+                        <pre>${JSON.stringify(project, null, 2)}</pre>
+                    </div>`;
+                } else {
+                    html += `<div class="project missing">
+                        <h4>❌ MISSING: ${id}</h4>
+                        <p>Not found in loaded data</p>
+                    </div>`;
+                }
+            });
+            
+            // Also check for any TFG in name/client
+            const tfgProjects = allProjects.filter(p => 
+                (p.name && p.name.includes('TFG')) || 
+                (p.clientName && p.clientName.includes('TFG'))
+            );
+            
+            html += `<h3>Other TFG-related projects (${tfgProjects.length}):</h3>`;
+            tfgProjects.forEach(p => {
+                html += `<div class="project">
+                    <strong>${p.id}</strong>: ${p.name}<br>
+                    Client: ${p.clientName}, Status: ${p.status}
+                </div>`;
+            });
+            
+            output.innerHTML = html;
+        }
+        
+        function checkAll() {
+            const output = document.getElementById('output');
+            if (allProjects.length === 0) {
+                output.innerHTML = '<span style="color: orange;">Load data first!</span>';
+                return;
+            }
+            
+            let html = `<h3>All Projects (${allProjects.length}):</h3>`;
+            html += '<table border="1" cellpadding="5" cellspacing="0">';
+            html += '<tr><th>#</th><th>ID</th><th>Name</th><th>Client</th><th>Status</th><th>Owner</th></tr>';
+            
+            allProjects.forEach((p, i) => {
+                const isTfg = p.id === 'D1010-OPS-198096' || p.id === 'D1010-DEV-298967';
+                const rowStyle = isTfg ? 'background: #e6f3ff;' : '';
+                html += `<tr style="${rowStyle}">
+                    <td>${i+1}</td>
+                    <td><strong>${p.id || 'No ID'}</strong></td>
+                    <td>${p.name || 'No name'}</td>
+                    <td>${p.clientName || 'None'}</td>
+                    <td>${p.status || 'None'}</td>
+                    <td>${p.owner || 'None'}</td>
+                </tr>`;
+            });
+            
+            html += '</table>';
+            output.innerHTML = html;
+        }
+        
+        // Load data on page load
+        loadData();
+    </script>
+</body>
+</html>

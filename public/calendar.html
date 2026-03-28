@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar - D1010 Operations Dashboard</title>
+    
+    <!-- FullCalendar CSS -->
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css' rel='stylesheet' />
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #111827;
+            color: #f3f4f6;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Navigation */
+        .nav {
+            background: #1f2937;
+            border-bottom: 1px solid #374151;
+            padding: 0 40px;
+        }
+
+        .nav-container {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-item {
+            padding: 20px 0;
+            font-size: 16px;
+            font-weight: 500;
+            color: #9ca3af;
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .nav-item:hover {
+            color: #f3f4f6;
+        }
+
+        .nav-item.active {
+            color: #3b82f6;
+            border-bottom-color: #3b82f6;
+        }
+
+        /* Calendar Container */
+        .calendar-container {
+            padding: 40px;
+            height: calc(100vh - 61px);
+            overflow-y: auto;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+
+        .calendar-title {
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        .calendar-controls {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .calendar-btn {
+            padding: 8px 16px;
+            background: #1f2937;
+            border: 1px solid #374151;
+            border-radius: 8px;
+            color: #f3f4f6;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .calendar-btn:hover {
+            background: #374151;
+        }
+
+        .calendar-btn.active {
+            background: #3b82f6;
+            border-color: #3b82f6;
+        }
+
+        .calendar-view {
+            background: #1f2937;
+            border-radius: 12px;
+            padding: 24px;
+            height: calc(100% - 100px);
+        }
+
+        /* FullCalendar Customization */
+        .fc {
+            height: 100%;
+        }
+
+        .fc-theme-standard .fc-scrollgrid {
+            border: 1px solid #374151;
+        }
+
+        .fc-theme-standard td, .fc-theme-standard th {
+            border: 1px solid #374151;
+        }
+
+        .fc .fc-col-header-cell-cushion {
+            color: #f3f4f6;
+            font-weight: 600;
+            padding: 12px;
+        }
+
+        .fc .fc-daygrid-day-number {
+            color: #9ca3af;
+        }
+
+        .fc .fc-daygrid-day.fc-day-today {
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .fc .fc-button {
+            background: #1f2937;
+            border: 1px solid #374151;
+            color: #f3f4f6;
+            font-weight: 500;
+        }
+
+        .fc .fc-button:hover {
+            background: #374151;
+        }
+
+        .fc .fc-button-primary:not(:disabled).fc-button-active {
+            background: #3b82f6;
+            border-color: #3b82f6;
+        }
+
+        /* Event Styling */
+        .fc-event {
+            border: none;
+            border-radius: 6px;
+            padding: 4px 8px;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        .fc-event.p0 {
+            background: rgba(239, 68, 68, 0.2);
+            border-left: 4px solid #ef4444;
+            color: #fca5a5;
+        }
+
+        .fc-event.p1 {
+            background: rgba(245, 158, 11, 0.2);
+            border-left: 4px solid #f59e0b;
+            color: #fcd34d;
+        }
+
+        .fc-event.p2 {
+            background: rgba(59, 130, 246, 0.2);
+            border-left: 4px solid #3b82f6;
+            color: #93c5fd;
+        }
+
+        .fc-event.complete {
+            background: rgba(16, 185, 129, 0.2);
+            border-left: 4px solid #10b981;
+            color: #a7f3d0;
+            opacity: 0.7;
+        }
+
+        /* Event Details Modal */
+        .event-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .event-modal.show {
+            display: flex;
+        }
+
+        .event-modal-content {
+            background: #1f2937;
+            border-radius: 12px;
+            padding: 32px;
+            width: 500px;
+            max-width: 90vw;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .event-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .event-modal-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .event-modal-close {
+            background: none;
+            border: none;
+            color: #9ca3af;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 0;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .event-modal-close:hover {
+            background: #374151;
+            color: #f3f4f6;
+        }
+
+        .event-detail {
+            margin-bottom: 16px;
+        }
+
+        .event-detail-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #6b7280;
+            margin-bottom: 4px;
+        }
+
+        .event-detail-value {
+            font-size: 16px;
+            color: #f3f4f6;
+        }
+
+        .event-financials {
+            background: rgba(59, 130, 246, 0.05);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 24px;
+        }
+
+        .event-financials-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #3b82f6;
+            margin-bottom: 12px;
+        }
+
+        .event-financials-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .financial-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+        }
+
+        .financial-item:last-child {
+            border-bottom: none;
+        }
+
+        .financial-label {
+            font-size: 14px;
+            color: #9ca3af;
+        }
+
+        .financial-value {
+            font-size: 14px;
+            font-weight: 600;
+            color: #10b981;
+        }
+
+        .financial-value.negative {
+            color: #ef4444;
+        }
+
+        /* Legend */
+        .calendar-legend {
+            display: flex;
+            gap: 16px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #9ca3af;
+        }
+
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+        }
+
+        .legend-color.p0 {
+            background: #ef4444;
+        }
+
+        .legend-color.p1 {
+            background: #f59e0b;
+        }
+
+        .legend-color.p2 {
+            background: #3b82f6;
+        }
+
+        .legend-color.complete {
+            background: #10b981;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="/" class="nav-item">Dashboard</a>
+            <a href="/mission-control.html" class="nav-item">Mission Control</a>
+            <a href="/calendar.html" class="nav-item active">Calendar</a>
+            <a href="/activity-feed.html" class="nav-item">Activity Feed</a>
+            <a href="/files.html" class="nav-item">Files</a>
+        </div>
+    </nav>
+
+    <!-- Calendar Container -->
+    <div class="calendar-container">
+        <div class="calendar-header">
+            <h1 class="calendar-title">Project Calendar</h1>
+            <div class="calendar-controls">
+                <button class="calendar-btn" onclick="changeView('dayGridMonth')">Month</button>
+                <button class="calendar-btn" onclick="changeView('timeGridWeek')">Week</button>
+                <button class="calendar-btn" onclick="changeView('timeGridDay')">Day</button>
+                <button class="calendar-btn" onclick="today()">Today</button>
+                <button class="calendar-btn" onclick="refreshCalendar()">Refresh</button>
+            </div>
+        </div>
+
+        <div class="calendar-view">
+            <div id="calendar"></div>
+        </div>
+
+        <!-- Legend -->
+        <div class="calendar-legend">
+            <div class="legend-item">
+                <div class="legend-color p0"></div>
+                <span>P0 - Critical</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color p1"></div>
+                <span>P1 - High</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color p2"></div>
+                <span>P2 - Medium</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color complete"></div>
+                <span>Completed</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Event Details Modal -->
+    <div class="event-modal" id="eventModal">
+        <div class="event-modal-content">
+            <div class="event-modal-header">
+                <h2 class="event-modal-title" id="eventTitle">Event Details</h2>
+                <button class="event-modal-close" onclick="closeEventModal()">&times;</button>
+            </div>
+            
+            <div class="event-detail">
+                <div class="event-detail-label">Project ID</div>
+                <div class="event-detail-value" id="eventProjectId">-</div>
+            </div>
+            
+            <div class="event-detail">
+                <div class="event-detail-label">Client</div>
+                <div class="event-detail-value" id="eventClient">-</div>
+            </div>
+            
+            <div class="event-detail">
+                <div class="event-detail-label">Owner</div>
+                <div class="event-detail-value" id="eventOwner">-</div>
+            </div>
+            
+            <div class="event-detail">
+                <div class="event-detail-label">Status</div>
+                <div class="event-detail-value" id="eventStatus">-</div>
+            </div>
+            
+            <div class="event-detail">
+                <div class="event-detail-label">Progress</div>
+                <div class="event-detail-value" id="eventProgress">-</div>
+            </div>
+            
+            <div class="event-detail">
+                <div class="event-detail-label">Due Date</div>
+                <div class="event-detail-value" id="eventDueDate">-</div>
+            </div>
+            
+            <div class="event-detail">
+                <div class="event-detail-label">Notes</div>
+                <div class="event-detail-value" id="eventNotes">-</div>
+            </div>
+            
+            <div class="event-financials" id="eventFinancials">
+                <div class="event-financials-title">Financial Summary</div>
+                <div class="event-financials-grid">
+                    <div class="financial-item">
+                        <span class="financial-label">Hours</span>
+                        <span class="financial-value" id="financialHours">0</span>
+                    </div>
+                    <div class="financial-item">
+                        <span class="financial-label">Rate</span>
+                        <span class="financial-value" id="financialRate">$0</span>
+                    </div>
+                    <div class="financial-item">
+                        <span class="financial-label">Revenue</span>
+                        <span class="financial-value" id="financialRevenue">$0</span>
+                    </div>
+                    <div class="financial-item">
+                        <span class="financial-label">Cost</span>
+                        <span class="financial-value" id="financialCost">$0</span>
+                    </div>
+                    <div class="financial-item">
+                        <span class="financial-label">Profit</span>
+                        <span class="financial-value" id="financialProfit">$0</span>
+                    </div>
+                    <div class="financial-item">
+                        <span class="financial-label">Margin</span>
+                        <span class="financial-value" id="financialMargin">0%</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 24px; display: flex; gap: 12px;">
+                <button class="calendar-btn" onclick="openProject()" style="flex: 1;">Open Project</button>
+                <button class="calendar-btn" onclick="closeEventModal()" style="flex: 1;">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FullCalendar JS -->
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js'></script>
+    
+    <!-- Calendar JavaScript -->
+    <script src="/calendar.js"></script>

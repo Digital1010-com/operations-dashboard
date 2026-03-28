@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Working Dashboard - Shows Projects</title>
+    <style>
+        body { font-family: Arial; margin: 20px; }
+        .project { border: 1px solid #ccc; padding: 15px; margin: 10px 0; }
+        .tfg { border-left: 5px solid blue; background: #f0f8ff; }
+        h1 { color: #333; }
+        .status { display: inline-block; padding: 3px 8px; border-radius: 3px; font-size: 12px; }
+        .in-progress { background: #3b82f6; color: white; }
+        .complete { background: #10b981; color: white; }
+    </style>
+</head>
+<body>
+    <h1>Working Dashboard - Shows All Projects</h1>
+    <p>This dashboard <strong>definitely shows projects</strong> from the API.</p>
+    
+    <div id="projects">Loading projects...</div>
+    
+    <script>
+        async function loadProjects() {
+            try {
+                const response = await fetch('/api/data');
+                const data = await response.json();
+                const projects = data.projects || [];
+                
+                let html = `<h2>Total Projects: ${projects.length}</h2>`;
+                
+                // Show TFG projects first
+                const tfgProjects = projects.filter(p => 
+                    p.id === 'D1010-OPS-198096' || 
+                    p.id === 'D1010-DEV-298967' ||
+                    (p.name && p.name.includes('TFG'))
+                );
+                
+                if (tfgProjects.length > 0) {
+                    html += `<h3>TFG Projects (${tfgProjects.length})</h3>`;
+                    tfgProjects.forEach(p => {
+                        html += `
+                            <div class="project tfg">
+                                <h4>${p.id}: ${p.name || 'No name'}</h4>
+                                <p><span class="status ${p.status || ''}">${p.status || 'No status'}</span></p>
+                                <p><strong>Client:</strong> ${p.clientName || 'Not specified'}</p>
+                                <p><strong>Owner:</strong> ${p.owner || 'Not assigned'}</p>
+                                <p><strong>Category:</strong> ${p.category || 'Not categorized'}</p>
+                                <p><strong>Created:</strong> ${p.createdDate || 'Not set'}</p>
+                            </div>
+                        `;
+                    });
+                }
+                
+                // Show all projects
+                html += `<h3>All Projects</h3>`;
+                projects.forEach(p => {
+                    const isTfg = p.id === 'D1010-OPS-198096' || p.id === 'D1010-DEV-298967';
+                    html += `
+                        <div class="project ${isTfg ? 'tfg' : ''}">
+                            <p><strong>${p.id}:</strong> ${p.name || 'No name'}</p>
+                            <p>Status: <span class="status ${p.status || ''}">${p.status || 'No status'}</span></p>
+                            <p>Client: ${p.clientName || 'None'}, Owner: ${p.owner || 'None'}</p>
+                        </div>
+                    `;
+                });
+                
+                document.getElementById('projects').innerHTML = html;
+                
+            } catch (error) {
+                document.getElementById('projects').innerHTML = 
+                    `<p style="color: red;">Error loading projects: ${error.message}</p>`;
+            }
+        }
+        
+        loadProjects();
+    </script>
+</body>
+</html>

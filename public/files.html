@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D1010 Files - Operations Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #111827;
+            color: #f3f4f6;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        .nav {
+            background: #1f2937;
+            border-bottom: 1px solid #374151;
+            padding: 0 40px;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-item {
+            padding: 20px 0;
+            font-size: 16px;
+            font-weight: 500;
+            color: #9ca3af;
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .nav-item:hover {
+            color: #f3f4f6;
+        }
+
+        .nav-item.active {
+            color: #3b82f6;
+            border-bottom-color: #3b82f6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: #fff;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: #9ca3af;
+            margin-bottom: 32px;
+        }
+
+        /* File Browser */
+        .file-browser {
+            background: #1f2937;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 32px;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #374151;
+        }
+
+        .breadcrumb-item {
+            color: #9ca3af;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .breadcrumb-item:hover {
+            color: #3b82f6;
+        }
+
+        .breadcrumb-separator {
+            color: #4b5563;
+        }
+
+        .folder-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .folder-item {
+            background: #111827;
+            border: 1px solid #374151;
+            border-radius: 8px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .folder-item:hover {
+            border-color: #3b82f6;
+            background: #1e40af20;
+        }
+
+        .folder-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+            color: #3b82f6;
+        }
+
+        .folder-name {
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: #fff;
+        }
+
+        .folder-info {
+            font-size: 12px;
+            color: #9ca3af;
+        }
+
+        .file-content {
+            background: #111827;
+            border: 1px solid #374151;
+            border-radius: 8px;
+            padding: 24px;
+            margin-top: 24px;
+            display: none;
+        }
+
+        .file-content.active {
+            display: block;
+        }
+
+        .file-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #374151;
+        }
+
+        .file-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .back-button {
+            background: #374151;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .back-button:hover {
+            background: #4b5563;
+        }
+
+        .file-body {
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 14px;
+            line-height: 1.8;
+            color: #d1d5db;
+            white-space: pre-wrap;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        /* Loading State */
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #9ca3af;
+        }
+
+        .loading-spinner {
+            border: 3px solid #374151;
+            border-top: 3px solid #3b82f6;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 16px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: #9ca3af;
+        }
+
+        /* Search */
+        .search-box {
+            margin-bottom: 24px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 16px;
+            background: #111827;
+            border: 1px solid #374151;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 14px;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #3b82f6;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .folder-list {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <div class="nav">
+        <div class="nav-container">
+            <a href="/" class="nav-item">Operations</a>
+            <a href="/mission-control.html" class="nav-item">Mission Control</a>
+            <a href="/calendar.html" class="nav-item">Calendar</a>
+            <a href="/activity-feed.html" class="nav-item">Activity Feed</a>
+            <a href="/files.html" class="nav-item active">Files</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>D1010 Files</h1>
+        <div class="subtitle">Browse client archives and project files</div>
+
+        <!-- Search Box -->
+        <div class="search-box">
+            <input type="text" class="search-input" placeholder="Search files and folders..." id="searchInput">
+        </div>
+
+        <!-- File Browser -->
+        <div class="file-browser">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb" id="breadcrumb">
+                <a href="#" class="breadcrumb-item" data-path="/">Root</a>
+            </div>
+
+            <!-- Folder List -->
+            <div class="folder-list" id="folderList">
+                <div class="loading">
+                    <div class="loading-spinner"></div>
+                    <div>Loading folders...</div>
+                </div>
+            </div>
+
+            <!-- File Content -->
+            <div class="file-content" id="fileContent">
+                <div class="file-header">
+                    <div class="file-title" id="fileName">File Name</div>
+                    <button class="back-button" id="backButton">← Back to Folders</button>
+                </div>
+                <div class="file-body" id="fileBody">
+                    File content will appear here...
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="file-browser">
+            <h2 style="font-size: 18px; font-weight: 600; margin-bottom: 20px; color: #9ca3af;">Quick Access</h2>
+            <div class="folder-list">
+                <div class="folder-item" data-path="/Volumes/AI_Drive/D1010-CORE/clients/">
+                    <div class="folder-icon">📁</div>
+                    <div class="folder-name">Client Archives</div>
+                    <div class="folder-info">All client project folders</div>
+                </div>
+                <div class="folder-item" data-path="/Volumes/AI_Drive/AI_WORKING/">
+                    <div class="folder-icon">🤖</div>
+                    <div class="folder-name">AI Working Files</div>
+                    <div class="folder-info">Scripts, memory, projects</div>
+                </div>
+                <div class="folder-item" data-path="/Volumes/AI_Drive/01-Infrastructure/">
+                    <div class="folder-icon">⚙️</div>
+                    <div class="folder-name">Infrastructure</div>
+                    <div class="folder-info">Config files, API keys</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Current path state
+        let currentPath = '/';
+        let currentFolders = [];
+
+        // DOM Elements
+        const breadcrumbEl = document.getElementById('breadcrumb');
+        const folderListEl = document.getElementById('folderList');
+        const fileContentEl = document.getElementById('fileContent');
+        const fileNameEl = document.getElementById('fileName');
+        const fileBodyEl = document.getElementById('fileBody');
+        const backButtonEl = document.getElementById('backButton');
+        const searchInputEl = document.getElementById('searchInput');
+
+        // API endpoint for file browsing
+        const API_BASE = '/api/files';
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadRootFolders();
+            setupEventListeners();
+        });
+
+        function setupEventListeners() {
+            // Back button
+            backButtonEl.addEventListener('click', () => {
+                fileContentEl.classList.remove('active');
+                loadFolders(currentPath);
+            });
+
+            // Search input
+            searchInputEl.addEventListener('input', (e) => {
+                const query = e.target.value.toLowerCase();
+                filterFolders(query);
+            });
+        }
+
+        async function loadRootFolders() {
+            try {
+                folderListEl.innerHTML = '<div class="loading"><div class="loading-spinner"></div><div>Loading folders...</div></div>';
+                
+                // For now, show hardcoded root folders
+                // In production, this would call an API
+                const rootFolders = [
+                    { name: 'Client Archives', path: '/Volumes/AI_Drive/D1010-CORE/clients/', type: 'folder', icon: '📁' },
+                    { name: 'AI Working Files', path: '/Volumes/AI_Drive/AI_WORKING/', type: 'folder', icon: '🤖' },
+                    { name: 'Infrastructure', path: '/Volumes/AI_Drive/01-Infrastructure/', type: 'folder', icon: '⚙️' },
+                    { name: 'Projects', path: '/Volumes/AI_Drive/AI_WORKING/projects/', type: 'folder', icon: '📋' },
+                    { name: 'Scripts', path: '/Volumes/AI_Drive/AI_WORKING/scripts/', type: 'folder', icon: '📜' },
+                    { name: 'Memory', path: '/Volumes/AI_Drive/AI_WORKING/memory/', type: 'folder', icon: '🧠' }
+                ];
+
+                currentFolders = rootFolders;
+                renderFolders(rootFolders);
+                updateBreadcrumb('/');
+            } catch (error) {
+                console.error('Error loading folders:', error);
+                folderListEl.innerHTML = '<div class="empty-state">Error loading folders. Please try again.</div>';
+            }
+        }
+
+        async function loadFolders(path) {
+            try {
+                folderListEl.innerHTML = '<div class="loading"><div class="loading-spinner"></div><div>Loading folders...</div></div>';
+                
+                // In production, this would call: fetch(`${API_BASE}/list?path=${encodeURIComponent(path)}`)
+                // For now, simulate with mock data based on path
+                let folders = [];
+                
+                if (path === '/Volumes/AI_Drive/D1010-CORE/clients/') {
+                    folders = [
+                        { name: '904-Family-Law', path: '/Volumes/AI_Drive/D1010-CORE/clients/904-Family-Law/', type: 'folder', icon: '👨‍⚖️' },
+                        { name: 'Acme-Corp', path: '/Volumes/AI_Drive/D1010-CORE/clients/Acme-Corp/', type: 'folder', icon: '🏢' },
+                        { name: 'EBS-Maintenance', path: '/Volumes/AI_Drive/D1010-CORE/clients/EBS-Maintenance/', type: 'folder', icon: '🔧' },
+                        { name: 'Nike', path: '/Volumes/AI_Drive/D1010-CORE/clients/Nike/', type: 'folder', icon: '👟' },
+                        { name: 'Purple-Heart-Pools', path: '/Volumes/AI_Drive/D1010-CORE/clients/Purple-Heart-Pools/', type: 'folder', icon: '🏊' },
+                        { name: 'TechStart-Inc', path: '/Volumes/AI_Drive/D1010-CORE/clients/TechStart-Inc/', type: 'folder', icon: '🚀' },
+                        { name: 'Tesla', path: '/Volumes/AI_Drive/D1010-CORE/clients/Tesla/', type: 'folder', icon: '⚡' },
+                        { name: 'The-Facilities-Group', path: '/Volumes/AI_Drive/D1010-CORE/clients/The-Facilities-Group/', type: 'folder', icon: '🏭' },
+                        { name: 'Univision', path: '/Volumes/AI_Drive/D1010-CORE/clients/Univision/', type: 'folder', icon: '📺' },
+                        { name: 'Univision-Computers', path: '/Volumes/AI_Drive/D1010-CORE/clients/Univision-Computers/', type: 'folder', icon: '💻' },
+                        { name: 'new-client', path: '/Volumes/AI_Drive/D1010-CORE/clients/new-client/', type: 'folder', icon: '🆕' }
+                    ];
+                } else if (path.includes('/Volumes/AI_Drive/D1010-CORE/clients/')) {
+                    // Simulate job folders for a client
+                    const clientName = path.split('/').filter(Boolean).pop();
+                    folders = [
+                        { name: 'D1010-DEV-001', path: path + 'D1010-DEV-001/', type: 'folder', icon: '📁' },
+                        { name: 'D1010-MKT-001', path: path + 'D1010-MKT-001/', type: 'folder', icon: '📁' },
+                        { name: 'README.md', path: path + 'README.md', type: 'file', icon: '📄' }
+                    ];
+                } else if (path === '/Volumes/AI_Drive/AI_WORKING/') {
+                    folders = [
+                        { name: 'projects', path: '/Volumes/AI_Drive/AI_WORKING/projects/', type: 'folder', icon: '📋' },
+                        { name: 'scripts', path: '/Volumes/AI_Drive/AI_WORKING/scripts/', type: 'folder', icon: '📜' },
+                        { name: 'memory', path: '/Volumes/AI_Drive/AI_WORKING/memory/', type: 'folder', icon: '🧠' },
+                        { name: 'AGENTS.md', path: '/Volumes/AI_Drive/AI_WORKING/AGENTS.md', type: 'file', icon: '📄' },
+                        { name: 'SOUL.md', path: '/Volumes/AI_Drive/AI_WORKING/SOUL.md', type: 'file', icon: '📄' },
+                        { name: 'TOOLS.md', path: '/Volumes/AI_Drive/AI_WORKING/TOOLS.md', type: 'file', icon: '📄' }
+                    ];
+                } else {
+                    folders = [
+                        { name: '..', path: getParentPath(path), type: 'folder', icon: '⬆️' },
+                        { name: 'sample-folder', path: path + 'sample-folder/', type: 'folder', icon: '📁' },
+                        { name: 'README.md', path: path + 'README.md', type: 'file', icon: '📄' }
+                    ];
+                }
+
+                currentPath = path;
+                currentFolders = folders;
+                renderFolders(folders);
+                updateBreadcrumb(path);
+            } catch (error) {
+                console.error('Error loading folders:', error);
+                folderListEl.innerHTML = '<div class="empty-state">Error loading folders. Please try again.</div>';
+            }
+        }
+
+        function renderFolders(folders) {
+            if (folders.length === 0) {
+                folderListEl.innerHTML = '<div class="empty-state">No folders or files found.</div>';
+                return;
+            }
+
+            folderListEl.innerHTML = folders.map(folder => `
+                <div class="folder-item" data-path="${folder.path}" data-type="${folder.type}" data-name="${folder.name}">

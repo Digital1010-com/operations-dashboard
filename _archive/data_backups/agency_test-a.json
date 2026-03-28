@@ -1,0 +1,19 @@
+{
+  "agencyId": "test-a",
+  "projects": [
+    {
+      "id": "1",
+      "name": "TEST-A Project 1",
+      "clientName": "TEST-A Client",
+      "category": "Testing",
+      "status": "in-progress",
+      "description": "Test project for test-a agency",
+      "createdDate": "2026-02-25"
+    }
+  ],
+  "clients": [
+    "TEST-A Client"
+  ],
+  "createdAt": "2026-02-25T19:40:38.533Z",
+  "updatedAt": "2026-02-25T19:40:38.533Z"
+}

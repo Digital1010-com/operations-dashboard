@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Projects Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .project { border: 1px solid #ccc; padding: 15px; margin: 10px 0; border-radius: 5px; }
+        .in-progress { border-left: 5px solid #3b82f6; }
+        .complete { border-left: 5px solid #10b981; }
+        .new { border-left: 5px solid #f59e0b; }
+        .search-box { margin: 20px 0; padding: 10px; width: 300px; }
+        .status-filter { margin: 10px 0; }
+        .filter-btn { margin: 0 5px; padding: 5px 10px; cursor: pointer; }
+        .active { background: #3b82f6; color: white; }
+    </style>
+</head>
+<body>
+    <h1>Simple Projects Dashboard</h1>
+    
+    <div>
+        <input type="text" id="searchBox" class="search-box" placeholder="Search projects..." onkeyup="filterProjects()">
+    </div>
+    
+    <div class="status-filter">
+        <strong>Filter by status:</strong>
+        <button class="filter-btn active" onclick="filterByStatus('all')">All</button>
+        <button class="filter-btn" onclick="filterByStatus('in-progress')">In Progress</button>
+        <button class="filter-btn" onclick="filterByStatus('complete')">Complete</button>
+        <button class="filter-btn" onclick="filterByStatus('new')">New</button>
+    </div>
+    
+    <div id="projectsContainer"></div>
+    <div id="loading">Loading projects...</div>
+    
+    <script>
+        let allProjects = [];
+        let currentFilter = 'all';
+        let currentSearch = '';
+        
+        async function loadProjects() {
+            try {
+                const response = await fetch('/api/data');
+                const data = await response.json();
+                allProjects = data.projects || [];
+                displayProjects(allProjects);
+                document.getElementById('loading').style.display = 'none';
+            } catch (error) {
+                document.getElementById('loading').innerHTML = 'Error loading projects: ' + error.message;
+            }
+        }
+        
+        function displayProjects(projects) {
+            const container = document.getElementById('projectsContainer');
+            if (projects.length === 0) {
+                container.innerHTML = '<p>No projects found.</p>';
+                return;
+            }
+            
+            container.innerHTML = projects.map(project => `
+                <div class="project ${project.status || ''}">
+                    <h3>${project.id || 'No ID'}: ${project.name || 'Unnamed Project'}</h3>
+                    <p><strong>Client:</strong> ${project.clientName || 'Not specified'}</p>
+                    <p><strong>Status:</strong> ${project.status || 'Not set'}</p>
+                    <p><strong>Owner:</strong> ${project.owner || 'Not assigned'}</p>
+                    <p><strong>Category:</strong> ${project.category || 'Not categorized'}</p>
+                    ${project.description ? `<p><strong>Description:</strong> ${project.description}</p>` : ''}
+                    ${project.notes ? `<p><strong>Notes:</strong> ${project.notes.substring(0, 100)}...</p>` : ''}
+                </div>
+            `).join('');
+        }
+        
+        function filterProjects() {
+            currentSearch = document.getElementById('searchBox').value.toLowerCase();
+            applyFilters();
+        }
+        
+        function filterByStatus(status) {
+            currentFilter = status;
+            
+            // Update button states
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            applyFilters();
+        }
+        
+        function applyFilters() {
+            let filtered = allProjects;
+            
+            // Apply status filter
+            if (currentFilter !== 'all') {
+                filtered = filtered.filter(p => p.status === currentFilter);
+            }
+            
+            // Apply search filter
+            if (currentSearch) {
+                filtered = filtered.filter(p => {
+                    const searchIn = [
+                        p.id || '',
+                        p.name || '',
+                        p.clientName || '',
+                        p.description || '',
+                        p.notes || '',
+                        p.owner || '',
+                        p.category || ''
+                    ].join(' ').toLowerCase();
+                    
+                    return searchIn.includes(currentSearch);
+                });
+            }
+            
+            displayProjects(filtered);
+        }
+        
+        // Load projects on page load
+        loadProjects();
+    </script>
+</body>
+</html>

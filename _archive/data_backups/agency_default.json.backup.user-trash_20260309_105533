@@ -1,0 +1,4571 @@
+{
+  "agencyId": "default",
+  "projects": [
+    {
+      "id": "1",
+      "name": "Mission Control MVP",
+      "clientName": "Digital1010",
+      "category": "Product Development",
+      "status": "new",
+      "description": "Core dashboard for agency operations automation",
+      "createdDate": "2026-02-25",
+      "startDate": "2026-02-25T00:00:00.000Z",
+      "lastUpdated": "2026-02-27T12:57:28.972Z",
+      "dueDate": "2026-03-04T00:00:00.000Z",
+      "owner": "Otto",
+      "progress": 0,
+      "comments": [],
+      "deliverables": [],
+      "blockers": [],
+      "nextActions": [],
+      "risks": [],
+      "dependencies": [],
+      "metrics": {}
+    },
+    {
+      "id": "D1010-OPS-198103",
+      "name": "RE: Business review",
+      "category": "Operations",
+      "status": "new",
+      "priority": "P2",
+      "owner": "Otto",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Processed by Joan (Enhanced)\nEmail from: Janice Areskog <jareskog@thefacilitiesgroup.com>\nSubject: RE: Business review",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "Fallback classification (AI failed)",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {},
+      "sortOrder": 1460,
+      "clientName": "TFG",
+      "clientEmail": "jareskog@thefacilitiesgroup.com",
+      "originalRequest": "RE: Business review",
+      "actualHours": 0,
+      "hourlyRate": 150,
+      "cost": 0,
+      "revenue": 0,
+      "profit": 0,
+      "margin": 0,
+      "budget": 0,
+      "startDate": "2026-02-26T18:43:06.002Z",
+      "dueDate": "2026-03-05T18:43:06.002Z",
+      "estimatedHours": 2,
+      "activityLog": [],
+      "createdDate": "2026-02-26"
+    },
+    {
+      "id": "D1010-OPS-198100",
+      "name": "FW: ITHD-24340 | FW: Pipedrive",
+      "category": "Operations",
+      "status": "new",
+      "priority": "P3",
+      "owner": "Otto",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Processed by Joan (Enhanced)\nEmail from: Janice Areskog <jareskog@thefacilitiesgroup.com>\nSubject: FW: ITHD-24340 | FW: Pipedrive",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "Keyword-based classification (CTO fix)",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {},
+      "sortOrder": 1420,
+      "clientName": "TFG",
+      "clientEmail": "jareskog@thefacilitiesgroup.com",
+      "originalRequest": "FW: ITHD-24340 | FW: Pipedrive",
+      "actualHours": 0,
+      "hourlyRate": 150,
+      "cost": 0,
+      "revenue": 0,
+      "profit": 0,
+      "margin": 0,
+      "budget": 0,
+      "startDate": "2026-02-25T17:43:27.428Z",
+      "dueDate": "2026-03-04T17:43:27.428Z",
+      "estimatedHours": 8,
+      "activityLog": [],
+      "createdDate": "2026-02-25"
+    },
+    {
+      "id": "D1010-OPS-198099",
+      "name": "RE: Pipedrive",
+      "category": "Operations",
+      "status": "new",
+      "priority": "P3",
+      "owner": "Otto",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Processed by Joan (Enhanced)\nEmail from: Janice Areskog <jareskog@thefacilitiesgroup.com>\nSubject: RE: Pipedrive",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "Keyword-based classification (CTO fix)",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {},
+      "sortOrder": 1410,
+      "clientName": "TFG",
+      "clientEmail": "jareskog@thefacilitiesgroup.com",
+      "originalRequest": "RE: Pipedrive",
+      "actualHours": 0,
+      "hourlyRate": 150,
+      "cost": 0,
+      "revenue": 0,
+      "profit": 0,
+      "margin": 0,
+      "budget": 0,
+      "startDate": "2026-02-25T17:13:21.077Z",
+      "dueDate": "2026-03-04T17:13:21.077Z",
+      "estimatedHours": 8,
+      "activityLog": [],
+      "createdDate": "2026-02-25"
+    },
+    {
+      "id": "D1010-DEV-298970",
+      "name": "Add Job Number for Website Redesign",
+      "status": "new",
+      "priority": "P2",
+      "owner": "Saad",
+      "progress": 0,
+      "category": "Development",
+      "clientName": null,
+      "startDate": "2026-02-24T20:46:15.997Z",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Create and assign a job number for the website redesign project.",
+      "comments": [
+        {
+          "id": "cmt-1771965975997",
+          "author": "System",
+          "timestamp": "2026-02-24T20:46:15.997Z",
+          "type": "creation",
+          "text": "Job created by Michael via command: \"Add Job Number for Website Redesign\"",
+          "status": "open",
+          "responses": []
+        }
+      ],
+      "deliverables": [],
+      "metadata": {
+        "createdViaCommand": true,
+        "requestedBy": "Michael",
+        "originalMessage": "Create and assign a job number for the website redesign project."
+      },
+      "estimatedHours": 0.5,
+      "createdDate": "2026-02-24",
+      "dueDate": "2026-03-03T20:46:15.997Z",
+      "blockers": [],
+      "nextActions": [],
+      "risks": [],
+      "dependencies": [],
+      "metrics": {}
+    },
+    {
+      "id": "D1010-DEV-298969",
+      "name": "Add Job Number for Website Redesign",
+      "status": "new",
+      "priority": "P2",
+      "owner": "Saad",
+      "progress": 0,
+      "category": "Development",
+      "clientName": null,
+      "startDate": "2026-02-24T19:41:52.501Z",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Add a job number or tracking identifier for the website redesign project.",
+      "comments": [
+        {
+          "id": "cmt-1771962112501",
+          "author": "System",
+          "timestamp": "2026-02-24T19:41:52.501Z",
+          "type": "creation",
+          "text": "Job created by Test User via command: \"Add Job Number for Website Redesign\"",
+          "status": "open",
+          "responses": []
+        }
+      ],
+      "deliverables": [],
+      "metadata": {
+        "createdViaCommand": true,
+        "requestedBy": "Test User",
+        "originalMessage": "Add a job number or tracking identifier for the website redesign project."
+      },
+      "createdDate": "2026-02-24",
+      "dueDate": "2026-03-03T19:41:52.501Z",
+      "blockers": [],
+      "nextActions": [],
+      "risks": [],
+      "dependencies": [],
+      "metrics": {}
+    },
+    {
+      "id": "D1010-DEV-298968",
+      "name": "Add Job Number for Website Redesign",
+      "status": "new",
+      "priority": "P2",
+      "owner": "Saad",
+      "progress": 0,
+      "category": "Development",
+      "clientName": null,
+      "startDate": "2026-02-24T18:17:00.406Z",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Add a job number or tracking identifier for the website redesign project.",
+      "comments": [
+        {
+          "id": "cmt-1771957020406",
+          "author": "System",
+          "timestamp": "2026-02-24T18:17:00.406Z",
+          "type": "creation",
+          "text": "Job created by Michael via command: \"Add Job Number for Website Redesign\"",
+          "status": "open",
+          "responses": []
+        }
+      ],
+      "deliverables": [],
+      "metadata": {
+        "createdViaCommand": true,
+        "requestedBy": "Michael",
+        "originalMessage": "Add a job number or tracking identifier for the website redesign project."
+      },
+      "createdDate": "2026-02-24",
+      "dueDate": "2026-03-03T18:17:00.406Z",
+      "blockers": [],
+      "nextActions": [],
+      "risks": [],
+      "dependencies": [],
+      "metrics": {}
+    },
+    {
+      "id": "D1010-DEV-298967",
+      "name": "Brand Landing Page - TFG",
+      "category": "Development",
+      "status": "new",
+      "priority": "P2",
+      "owner": "Zubair",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Manually processed - Email was READ\nFrom: Janice Areskog <jareskog@thefacilitiesgroup.com>\nSubject: Re: Brand landing page",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "Manual processing of missed email - Subject contains \"Brand landing page\" - keyword match (Manual processing)",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {},
+      "sortOrder": 1390,
+      "clientName": "TFG",
+      "clientEmail": "jareskog@thefacilitiesgroup.com",
+      "originalRequest": "Brand landing page work",
+      "actualHours": 0,
+      "hourlyRate": 150,
+      "cost": 0,
+      "revenue": 0,
+      "profit": 0,
+      "margin": 0,
+      "budget": 0,
+      "startDate": "2026-02-24T15:34:58.967Z",
+      "dueDate": "2026-03-03T15:34:58.967Z",
+      "estimatedHours": 12,
+      "activityLog": [],
+      "createdDate": "2026-02-24",
+      "updatedDate": "2026-02-24"
+    },
+    {
+      "id": "D1010-OPS-198096",
+      "name": "Pipedrive Request from TFG",
+      "category": "Operations",
+      "status": "new",
+      "priority": "P2",
+      "owner": "Arnel",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Manually processed by Joan Special Script\nEmail was READ (not UNREAD) so missed originally\nFrom: Janice Areskog <jareskog@thefacilitiesgroup.com>\nSubject: Pipedrive\nDate: Mon, 23 Feb 2026 19:31:25 +0000\n\n[Assignment Update 2026-02-24 10:36 AM]\nOwner changed from \"Otto\" to \"Arnel\" per Slack instruction: \"Pipedrive goes to Arnel\"",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "Manual processing of missed email - Subject contains \"Pipedrive\" - keyword match (Manual processing)",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {},
+      "sortOrder": 1380,
+      "clientName": "TFG",
+      "clientEmail": "jareskog@thefacilitiesgroup.com",
+      "originalRequest": "Pipedrive setup/configuration needed",
+      "actualHours": 0,
+      "hourlyRate": 150,
+      "cost": 0,
+      "revenue": 0,
+      "profit": 0,
+      "margin": 0,
+      "budget": 0,
+      "startDate": "2026-02-24T15:33:18.096Z",
+      "dueDate": "2026-03-03T15:33:18.096Z",
+      "estimatedHours": 8,
+      "activityLog": [],
+      "createdDate": "2026-02-24",
+      "updatedDate": "2026-02-24"
+    },
+    {
+      "id": "JOB-D1010-005",
+      "name": "5-Year Client Retention Economics Blog Post",
+      "status": "upcoming",
+      "priority": "P2",
+      "owner": "Otto",
+      "progress": 0,
+      "statusColor": "purple",
+      "lastUpdated": "2026-02-24T15:14:13.056Z",
+      "clientName": "Digital1010",
+      "deliverables": [],
+      "comments": [
+        {
+          "id": "cmt-1771946053056",
+          "author": "Michael",
+          "timestamp": "2026-02-24T15:14:13.056Z",
+          "type": "update",
+          "text": "please produce this content and add the link here once complete",
+          "status": "open",
+          "responses": []
+        }
+      ],
+      "category": "Marketing",
+      "notes": "The 5-Year Client: What Retention Economics Look Like in Premium B2B Services. 4,500-5,500 words. SaVida engagement economics (K LTV). Why premium agencies optimize for LTV, not new logos.",
+      "rationale": "Agency truth bomb. Long-term partnership positioning. Premium service model.",
+      "risks": [],
+      "nextActions": [
+        "Production: Tuesday Mar 18",
+        "Review via email: Wednesday Mar 19",
+        "Publish: Thursday Mar 20"
+      ],
+      "dependencies": [],
+      "metrics": {
+        "wordCount": "4,500-5,500",
+        "productionDate": "2026-03-18",
+        "publishDate": "2026-03-20",
+        "targetKeyword": "agency client retention lifetime value"
+      },
+      "sortOrder": 8,
+      "startDate": "2026-02-04T19:36:05.090Z",
+      "dueDate": "2026-03-06T19:36:05.090Z",
+      "createdDate": "2026-02-04",
+      "blockers": []
+    },
+    {
+      "id": "UNIV-M3-002",
+      "name": "Coeur d'Alene Implementation Checklist",
+      "status": "upcoming",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 0,
+      "statusColor": "purple",
+      "lastUpdated": "2026-02-24T15:13:23.683Z",
+      "clientName": "Univision Computers",
+      "deliverables": [],
+      "comments": [
+        {
+          "id": "cmt-1771869870430",
+          "author": "Otto",
+          "timestamp": "2026-02-23T18:04:30.430Z",
+          "type": "change-request",
+          "text": "Changes requested. Please review and update.",
+          "status": "open",
+          "responses": []
+        },
+        {
+          "id": "cmt-1771946003683",
+          "author": "Michael",
+          "timestamp": "2026-02-24T15:13:23.683Z",
+          "type": "update",
+          "text": "can you confirm this is complete - please audit the client page",
+          "status": "open",
+          "responses": []
+        }
+      ],
+      "category": "Operations",
+      "notes": "Technical implementation instructions for client. H1 tag, meta title/description, URL slug, internal links, schema verification.",
+      "rationale": "Ensures client can implement content correctly without back-and-forth.",
+      "risks": [],
+      "nextActions": [
+        "Thursday: Create checklist alongside content delivery"
+      ],
+      "dependencies": [
+        "UNIV-M3-001"
+      ],
+      "metrics": {
+        "deadline": "2026-02-20"
+      },
+      "sortOrder": 2,
+      "deliveredDate": null,
+      "actualHours": null,
+      "startDate": "2026-02-05T19:36:05.090Z",
+      "dueDate": "2026-02-19T19:36:05.090Z",
+      "createdDate": "2026-02-05",
+      "blockers": []
+    },
+    {
+      "id": "JOB-2026-004",
+      "name": "AI Orchestrator Dashboard Integration",
+      "category": "Product Development",
+      "status": "new",
+      "priority": "P0",
+      "owner": "Otto",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Integrate AI cost optimization and routing orchestration as key dashboard feature. Transform from project tracking to complete agency operating system with built-in AI cost management. Phase 1: Dashboard enhancements (Week 1). Phase 2: Core optimization (Week 2). Phase 3: Multi-client features (Week 3).",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [
+        {
+          "id": "cmt-1771898630497",
+          "author": "Otto",
+          "timestamp": "2026-02-24T02:03:50.497Z",
+          "type": "creation",
+          "text": "Job created per strategic direction: AI Orchestrator as key dashboard feature. Builds on JOB-2026-003 findings. Vision: Transform dashboard from project tracking to complete agency operating system with built-in AI cost optimization. 3-week timeline to MVP. Starting tomorrow with Phase 1A.",
+          "status": "open",
+          "responses": []
+        }
+      ],
+      "rationale": "AI costs are #1 new expense for agencies. Dashboard can provide unique value by managing both team work AND AI costs. Competitive advantage: no other agency dashboard offers built-in AI optimization. Internal validation first (save $250-850/month), then productize.",
+      "risks": [],
+      "dependencies": [
+        "JOB-2026-003"
+      ],
+      "nextActions": [
+        "Morning briefing with detailed plan",
+        "Begin Phase 1A: AI cost column addition",
+        "Set up development environment",
+        "Create GitHub branch"
+      ],
+      "metrics": {},
+      "sortOrder": 1310,
+      "clientName": "Digital1010",
+      "clientEmail": "",
+      "originalRequest": "",
+      "actualHours": 0,
+      "hourlyRate": 150,
+      "cost": 0,
+      "revenue": 0,
+      "profit": 0,
+      "margin": 0,
+      "budget": 0,
+      "startDate": "2026-02-24T02:03:44.3NZ",
+      "dueDate": "2026-03-16T23:59:59.999Z",
+      "estimatedHours": 70,
+      "activityLog": [],
+      "createdDate": "2026-02-24"
+    },
+    {
+      "id": "JOB-D1010-004",
+      "name": "HIPAA-Compliant Marketing Automation Guide",
+      "status": "in-progress",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 75,
+      "statusColor": "purple",
+      "lastUpdated": "2026-02-24T01:41:24.990Z",
+      "clientName": "Digital1010",
+      "deliverables": [],
+      "comments": [
+        {
+          "id": "cmt-1771897284990",
+          "author": "Otto",
+          "timestamp": "2026-02-24T01:41:24.990Z",
+          "type": "progress",
+          "text": "✅ Guide started. 5,800 words written with framework, technical implementation details, and compliance checklist. File saved to /Volumes/AI_Drive/AI_WORKING/guides/hipaa-marketing-automation.md. Needs case study expansion and final polish.",
+          "status": "open",
+          "responses": []
+        }
+      ],
+      "category": "Marketing",
+      "notes": "In progress: \"Marketing Automation for Healthcare: The HIPAA-Compliant Implementation Guide\" - 5,800 words written. Framework complete, needs case study details and final expansion to 6,500 words.",
+      "rationale": "Technical authority on healthcare marketing. Compliance positioning. CRM service offering.",
+      "risks": [],
+      "nextActions": [
+        "Production: Tuesday Mar 11",
+        "Review via email: Wednesday Mar 12",
+        "Publish: Thursday Mar 13"
+      ],
+      "dependencies": [],
+      "metrics": {
+        "wordCount": "5,500-6,500",
+        "productionDate": "2026-03-11",
+        "publishDate": "2026-03-13",
+        "targetKeyword": "HIPAA compliant marketing automation healthcare"
+      },
+      "sortOrder": 7,
+      "startDate": "2026-01-30T19:36:05.090Z",
+      "dueDate": "2026-02-13T19:36:05.090Z",
+      "createdDate": "2026-01-30",
+      "blockers": []
+    },
+    {
+      "id": "JOB-D1010-001",
+      "name": "Local AI Cost Reduction Blog Post",
+      "status": "complete",
+      "priority": "P0",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "yellow",
+      "lastUpdated": "2026-02-24T01:40:09.399Z",
+      "clientName": "Digital1010",
+      "deliverables": [
+        {
+          "id": "del-d1010-001-1",
+          "name": "LinkedIn Draft (Feb 12)",
+          "url": "file:///Volumes/AI_Drive/AI_WORKING/linkedin-post-local-ai-2026.md",
+          "type": "document",
+          "timestamp": "2026-02-12T23:20:00.000Z"
+        }
+      ],
+      "comments": [
+        {
+          "id": "cmt-1771897209400",
+          "author": "Otto",
+          "timestamp": "2026-02-24T01:40:09.400Z",
+          "type": "completion",
+          "text": "✅ Blog post completed. 4,850 words written with full SEO metadata, social media posts, and email newsletter content. File saved to /Volumes/AI_Drive/AI_WORKING/blog-posts/local-ai-cost-reduction.md",
+          "status": "resolved",
+          "responses": []
+        }
+      ],
+      "category": "Marketing",
+      "notes": "✅ COMPLETED: \"How We Cut AI API Costs 99% Without Sacrificing Quality\" - 4,850 words with full SEO, social media, and email content. Published February 23, 2026.",
+      "rationale": "Contrarian positioning (own vs. rent AI). Real D1010 numbers (/mo → /mo). Service offering (K setup). Practitioner content.",
+      "risks": [],
+      "nextActions": [
+        "Expand LinkedIn draft to full blog post (4,500-5,500 words)",
+        "Internal data: D1010 local AI vs. API cost comparison",
+        "External research: 15-20 citations (AI benchmarks, cost studies, HIPAA)",
+        "Create featured image (claude.ai prompt → Canva)",
+        "YOAST SEO: focus keyphrase, meta title/description, categories, tags, AEO FAQ",
+        "Schema markup: Article + Organization + BreadcrumbList JSON-LD",
+        "LinkedIn posts: Michael Personal (1,800 chars) + D1010 Company (1,400 chars)",
+        "Add to WordPress as draft",
+        "Schedule to HighLevel social calendar",
+        "Add to X/Twitter as draft",
+        "Email Michael for approval"
+      ],
+      "dependencies": [],
+      "metrics": {
+        "wordCount": "4,500-5,500",
+        "productionDate": "2026-02-18",
+        "reviewDate": "2026-02-19",
+        "publishDate": "2026-02-20",
+        "targetKeyword": "local AI implementation cost reduction",
+        "expectedTraffic": "500-2,000 visits (months 3-12)"
+      },
+      "sortOrder": 4,
+      "startDate": "2026-01-30T19:36:05.090Z",
+      "dueDate": "2026-02-06T19:36:05.090Z",
+      "hours": 0,
+      "createdDate": "2026-01-30",
+      "blockers": []
+    },
+    {
+      "id": "OPENROUTER-001",
+      "name": "OpenRouter Integration & Cost Optimization",
+      "status": "in-progress",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 40,
+      "category": "Development",
+      "clientName": "Digital1010",
+      "startDate": "2026-02-23T19:30:00.000Z",
+      "lastUpdated": "2026-02-24T01:19:46.944Z",
+      "notes": "Phase 1-2 complete: Core documentation review and internal routing inventory. Phase 3: Gap analysis and implementation planning. Goal: 60-85% cost savings through intelligent model routing.",
+      "comments": [
+        {
+          "id": "cmt-1771895986945",
+          "author": "System",
+          "timestamp": "2026-02-24T01:19:46.945Z",
+          "type": "creation",
+          "text": "Created based on development channel discussions (C0ADCBZK3H9)",
+          "status": "open",
+          "responses": []
+        }
+      ],
+      "deliverables": [
+        "Model routing architecture diagram",
+        "Cost optimization implementation plan",
+        "Dashboard integration for routing decisions",
+        "Automated model selection system"
+      ],
+      "metadata": {
+        "createdViaCommand": true,
+        "requestedBy": "Michael",
+        "originalMessage": "OpenRouter project from development channel"
+      },
+      "estimatedHours": 80,
+      "actualHours": 32,
+      "hourlyRate": 150,
+      "revenue": 4800,
+      "cost": 0,
+      "profit": 4800,
+      "margin": 100,
+      "budget": 6000,
+      "createdDate": "2026-02-23",
+      "dueDate": "2026-02-26T19:30:00.000Z",
+      "blockers": [],
+      "nextActions": [],
+      "risks": [],
+      "dependencies": [],
+      "metrics": {}
+    },
+    {
+      "id": "SYS-JOBS-001",
+      "name": "System Jobs Dashboard",
+      "status": "in-progress",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 75,
+      "category": "System",
+      "clientName": "Digital1010",
+      "startDate": "2026-02-23T20:15:00.000Z",
+      "lastUpdated": "2026-02-24T01:19:20.019Z",
+      "notes": "Centralized view of all system cron jobs and background processes. Shows real-time status of Job Command Monitor, Dashboard Comment Monitor, and other automated systems.",
+      "comments": [
+        {
+          "id": "cmt-1771895960020",
+          "author": "System",
+          "timestamp": "2026-02-24T01:19:20.020Z",
+          "type": "creation",
+          "text": "Created to address visibility gap: system jobs not showing in dashboard",
+          "status": "open",
+          "responses": []
+        }
+      ],
+      "deliverables": [
+        "Real-time cron job status display",
+        "Health monitoring dashboard",
+        "Alert integration with #console-ops",
+        "Historical performance tracking"
+      ],
+      "metadata": {
+        "createdViaCommand": true,
+        "requestedBy": "Michael",
+        "originalMessage": "Make sure all jobs are showing in ops dashboard"
+      },
+      "estimatedHours": 20,
+      "actualHours": 15,
+      "hourlyRate": 150,
+      "revenue": 2250,
+      "cost": 0,
+      "profit": 2250,
+      "margin": 100,
+      "budget": 3000,
+      "createdDate": "2026-02-23",
+      "dueDate": "2026-02-26T20:15:00.000Z",
+      "blockers": [],
+      "nextActions": [],
+      "risks": [],
+      "dependencies": [],
+      "metrics": {}
+    },
+    {
+      "id": "JOB-2026-003",
+      "name": "AI Routing Systems Competitive Analysis & Optimization",
+      "category": "Operations",
+      "status": "new",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Comprehensive competitive analysis of AI routing/optimization systems. Document current setup, analyze competitors, identify gaps, create improvement framework.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [
+        {
+          "id": "cmt-1771886628008",
+          "author": "Otto",
+          "timestamp": "2026-02-23T22:43:48.009Z",
+          "type": "creation",
+          "text": "Job created per request: Comprehensive competitive analysis of AI routing systems. Phase 1: Internal documentation. Phase 2: Competitive audit. Phase 3: Gap analysis. Phase 4: Improvement framework. Due: March 9, 2026.",
+          "status": "open",
+          "responses": []
+        }
+      ],
+      "rationale": "Potential 60-85% API cost savings ($250-850/month) with proper routing optimization. Strategic competitive advantage in AI agent efficiency.",
+      "risks": [],
+      "dependencies": [
+        "JOB-2026-002"
+      ],
+      "nextActions": [
+        "Begin internal documentation of routing systems",
+        "Create inventory spreadsheet",
+        "Schedule technical review if needed"
+      ],
+      "metrics": {},
+      "sortOrder": 1300,
+      "clientName": "Digital1010",
+      "clientEmail": "",
+      "originalRequest": "",
+      "actualHours": 0,
+      "hourlyRate": 150,
+      "cost": 0,
+      "revenue": 0,
+      "profit": 0,
+      "margin": 0,
+      "budget": 0,
+      "startDate": "2026-02-23T22:43:43.3NZ",
+      "dueDate": "2026-03-09T23:59:59.999Z",
+      "estimatedHours": 40,
+      "activityLog": [],
+      "createdDate": "2026-02-23"
+    },
+    {
+      "id": "D1010-DEV-019",
+      "name": "Add job number for website redesign",
+      "status": "new",
+      "priority": "P1",
+      "owner": "Saad",
+      "progress": 0,
+      "category": "Development",
+      "clientName": null,
+      "startDate": "2026-02-23T22:06:14.849Z",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Add a job number for the new website redesign project.",
+      "comments": [
+        {
+          "id": "cmt-1771884374851",
+          "author": "System",
+          "timestamp": "2026-02-23T22:06:14.851Z",
+          "type": "creation",
+          "text": "Job created by TestUser via command: \"Add job number for website redesign\"",
+          "status": "open",
+          "responses": []
+        }
+      ],
+      "deliverables": [],
+      "metadata": {
+        "createdViaCommand": true,
+        "requestedBy": "TestUser",
+        "originalMessage": "Add a job number for the new website redesign project."
+      },
+      "createdDate": "2026-02-23",
+      "dueDate": "2026-02-26T22:06:14.849Z",
+      "blockers": [],
+      "nextActions": [],
+      "risks": [],
+      "dependencies": [],
+      "metrics": {}
+    },
+    {
+      "id": "D1010-DEV-018",
+      "name": "Add job number for website redesign",
+      "status": "new",
+      "priority": "P2",
+      "owner": "Saad",
+      "progress": 0,
+      "category": "Development",
+      "clientName": null,
+      "startDate": "2026-02-23T21:50:48.028Z",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Create a job number for the new website redesign project.",
+      "comments": [
+        {
+          "id": "cmt-1771883448030",
+          "author": "System",
+          "timestamp": "2026-02-23T21:50:48.030Z",
+          "type": "creation",
+          "text": "Job created by TestUser via command: \"Add job number for website redesign\"",
+          "status": "open",
+          "responses": []
+        }
+      ],
+      "deliverables": [],
+      "metadata": {
+        "createdViaCommand": true,
+        "requestedBy": "TestUser",
+        "originalMessage": "Create a job number for the new website redesign project."
+      },
+      "estimatedHours": 0.5,
+      "createdDate": "2026-02-23",
+      "dueDate": "2026-03-02T21:50:48.028Z",
+      "blockers": [],
+      "nextActions": [],
+      "risks": [],
+      "dependencies": [],
+      "metrics": {}
+    },
+    {
+      "id": "D1010-DEV-017",
+      "name": "Add Job Number for Website Redesign",
+      "status": "new",
+      "priority": "P2",
+      "owner": "Saad",
+      "progress": 0,
+      "category": "Development",
+      "clientName": null,
+      "startDate": "2026-02-23T21:48:36.764Z",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Add a job number or tracking identifier for the website redesign project.",
+      "comments": [
+        {
+          "id": "cmt-1771883316765",
+          "author": "System",
+          "timestamp": "2026-02-23T21:48:36.765Z",
+          "type": "creation",
+          "text": "Job created by TestUser via command: \"Add Job Number for Website Redesign\"",
+          "status": "open",
+          "responses": []
+        }
+      ],
+      "deliverables": [],
+      "metadata": {
+        "createdViaCommand": true,
+        "requestedBy": "TestUser",
+        "originalMessage": "Add a job number or tracking identifier for the website redesign project."
+      },
+      "createdDate": "2026-02-23",
+      "dueDate": "2026-03-02T21:48:36.764Z",
+      "blockers": [],
+      "nextActions": [],
+      "risks": [],
+      "dependencies": [],
+      "metrics": {}
+    },
+    {
+      "id": "D1010-DEV-016",
+      "name": "Add Job Number for New Client Website",
+      "status": "new",
+      "priority": "P1",
+      "owner": "Saad",
+      "progress": 0,
+      "category": "Development",
+      "clientName": null,
+      "startDate": "2026-02-23T21:40:59.433Z",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Create a job number for a new client website development project.",
+      "comments": [
+        {
+          "id": "cmt-1771882859434",
+          "author": "System",
+          "timestamp": "2026-02-23T21:40:59.434Z",
+          "type": "creation",
+          "text": "Job created by Michael via command: \"Add Job Number for New Client Website\"",
+          "status": "open",
+          "responses": []
+        }
+      ],
+      "deliverables": [],
+      "metadata": {
+        "createdViaCommand": true,
+        "requestedBy": "Michael",
+        "originalMessage": "Create a job number for a new client website development project."
+      },
+      "createdDate": "2026-02-23",
+      "dueDate": "2026-02-26T21:40:59.433Z",
+      "blockers": [],
+      "nextActions": [],
+      "risks": [],
+      "dependencies": [],
+      "metrics": {}
+    },
+    {
+      "id": "D1010-DEV-011",
+      "name": "Add job number for website redesign",
+      "status": "new",
+      "priority": "P1",
+      "owner": "Saad",
+      "progress": 0,
+      "category": "Development",
+      "clientName": null,
+      "startDate": "2026-02-23T21:05:34.551Z",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Add a job number for the new website redesign project.",
+      "comments": [
+        {
+          "id": "cmt-1771880734552",
+          "author": "System",
+          "timestamp": "2026-02-23T21:05:34.552Z",
+          "type": "creation",
+          "text": "Job created by TestUser via command: \"Add job number for website redesign\"",
+          "status": "open",
+          "responses": []
+        }
+      ],
+      "deliverables": [],
+      "metadata": {
+        "createdViaCommand": true,
+        "requestedBy": "TestUser",
+        "originalMessage": "Add a job number for the new website redesign project."
+      },
+      "createdDate": "2026-02-23",
+      "dueDate": "2026-02-26T21:05:34.551Z",
+      "blockers": [],
+      "nextActions": [],
+      "risks": [],
+      "dependencies": [],
+      "metrics": {}
+    },
+    {
+      "id": "D1010-DEV-008",
+      "name": "Add Job Number for TechStart Website Redesign",
+      "status": "new",
+      "priority": "P2",
+      "owner": "Saad",
+      "progress": 0,
+      "category": "Development",
+      "clientName": "TechStart Inc",
+      "startDate": "2026-02-23T20:56:10.756Z",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Create a job number for the new website redesign project.",
+      "comments": [
+        {
+          "id": "cmt-1771880170757",
+          "author": "System",
+          "timestamp": "2026-02-23T20:56:10.757Z",
+          "type": "creation",
+          "text": "Job created by Michael via command: \"Add Job Number for TechStart Website Redesign\"",
+          "status": "open",
+          "responses": []
+        }
+      ],
+      "deliverables": [],
+      "metadata": {
+        "createdViaCommand": true,
+        "requestedBy": "Michael",
+        "originalMessage": "Create a job number for the new website redesign project."
+      },
+      "createdDate": "2026-02-23",
+      "dueDate": "2026-03-02T20:56:10.756Z",
+      "blockers": [],
+      "nextActions": [],
+      "risks": [],
+      "dependencies": [],
+      "metrics": {}
+    },
+    {
+      "id": "D1010-OPS-007",
+      "name": "Add Job Number for New Client Website",
+      "status": "new",
+      "priority": "P2",
+      "owner": "Saad",
+      "progress": 0,
+      "category": "Operations",
+      "clientName": "new client",
+      "startDate": "2026-02-23T20:51:17.217Z",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Create and assign a job number for the new client website project.",
+      "comments": [
+        {
+          "id": "cmt-1771879877217",
+          "author": "System",
+          "timestamp": "2026-02-23T20:51:17.217Z",
+          "type": "creation",
+          "text": "Job created by Michael via command: \"Add Job Number for New Client Website\"",
+          "status": "open",
+          "responses": []
+        }
+      ],
+      "deliverables": [],
+      "metadata": {
+        "createdViaCommand": true,
+        "requestedBy": "Michael",
+        "originalMessage": "Create and assign a job number for the new client website project."
+      },
+      "estimatedHours": 0.5,
+      "createdDate": "2026-02-23",
+      "dueDate": "2026-03-02T20:51:17.217Z",
+      "blockers": [],
+      "nextActions": [],
+      "risks": [],
+      "dependencies": [],
+      "metrics": {}
+    },
+    {
+      "id": "D1010-DEV-007",
+      "name": "Add Job Number for New Client Website",
+      "status": "new",
+      "priority": "P2",
+      "owner": "Saad",
+      "progress": 0,
+      "category": "Development",
+      "clientName": "new client",
+      "startDate": "2026-02-23T20:49:14.231Z",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Add a job number for a new client website project.",
+      "comments": [
+        {
+          "id": "cmt-1771879754232",
+          "author": "System",
+          "timestamp": "2026-02-23T20:49:14.232Z",
+          "type": "creation",
+          "text": "Job created by TestUser via command: \"Add Job Number for New Client Website\"",
+          "status": "open",
+          "responses": []
+        }
+      ],
+      "deliverables": [],
+      "metadata": {
+        "createdViaCommand": true,
+        "requestedBy": "TestUser",
+        "originalMessage": "Add a job number for a new client website project."
+      },
+      "estimatedHours": 0.5,
+      "createdDate": "2026-02-23",
+      "dueDate": "2026-03-02T20:49:14.231Z",
+      "blockers": [],
+      "nextActions": [],
+      "risks": [],
+      "dependencies": [],
+      "metrics": {}
+    },
+    {
+      "id": "D1010-DEV-006",
+      "name": "Tesla Website Redesign Job Number",
+      "status": "new",
+      "priority": "P1",
+      "owner": "Saad",
+      "progress": 0,
+      "category": "Development",
+      "clientName": "Tesla",
+      "startDate": "2026-02-23T20:41:02.408Z",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Add a job number for the new website redesign project for Tesla.",
+      "comments": [
+        {
+          "id": "cmt-1771879262410",
+          "author": "System",
+          "timestamp": "2026-02-23T20:41:02.410Z",
+          "type": "creation",
+          "text": "Job created by TestUser via command: \"Tesla Website Redesign Job Number\"",
+          "status": "open",
+          "responses": []
+        }
+      ],
+      "deliverables": [],
+      "metadata": {
+        "createdViaCommand": true,
+        "requestedBy": "TestUser",
+        "originalMessage": "Add a job number for the new website redesign project for Tesla."
+      },
+      "createdDate": "2026-02-23",
+      "dueDate": "2026-02-26T20:41:02.408Z",
+      "blockers": [],
+      "nextActions": [],
+      "risks": [],
+      "dependencies": [],
+      "metrics": {}
+    },
+    {
+      "id": "D1010-OPS-006",
+      "name": "Add Job Number for Nike Social Campaign",
+      "status": "new",
+      "priority": "P2",
+      "owner": "Otto",
+      "progress": 0,
+      "category": "Operations",
+      "clientName": "Nike",
+      "startDate": "2026-02-23T20:36:44.302Z",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Add a job number for the social media campaign for Nike.",
+      "comments": [
+        {
+          "id": "cmt-1771879004304",
+          "author": "System",
+          "timestamp": "2026-02-23T20:36:44.304Z",
+          "type": "creation",
+          "text": "Job created by TestUser via command: \"Add Job Number for Nike Social Campaign\"",
+          "status": "open",
+          "responses": []
+        }
+      ],
+      "deliverables": [],
+      "metadata": {
+        "createdViaCommand": true,
+        "requestedBy": "TestUser",
+        "originalMessage": "Add a job number for the social media campaign for Nike."
+      },
+      "createdDate": "2026-02-23",
+      "dueDate": "2026-03-02T20:36:44.302Z",
+      "blockers": [],
+      "nextActions": [],
+      "risks": [],
+      "dependencies": [],
+      "metrics": {}
+    },
+    {
+      "id": "D1010-DEV-005",
+      "name": "Add Job Number for Acme Corp Website Redesign",
+      "status": "new",
+      "priority": "P2",
+      "owner": "Saad",
+      "progress": 0,
+      "category": "Development",
+      "clientName": "Acme Corp",
+      "startDate": "2026-02-23T20:33:35.828Z",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Create a job number for the new website redesign project for Acme Corp.",
+      "comments": [
+        {
+          "id": "cmt-1771878815829",
+          "author": "System",
+          "timestamp": "2026-02-23T20:33:35.829Z",
+          "type": "creation",
+          "text": "Job created by TestUser via command: \"Add Job Number for Acme Corp Website Redesign\"",
+          "status": "open",
+          "responses": []
+        }
+      ],
+      "deliverables": [],
+      "metadata": {
+        "createdViaCommand": true,
+        "requestedBy": "TestUser",
+        "originalMessage": "Create a job number for the new website redesign project for Acme Corp."
+      },
+      "createdDate": "2026-02-23",
+      "dueDate": "2026-03-02T20:33:35.828Z",
+      "blockers": [],
+      "nextActions": [],
+      "risks": [],
+      "dependencies": [],
+      "metrics": {}
+    },
+    {
+      "id": "D1010-CRV-001",
+      "name": "Landing Page Redesign for TechStart Inc",
+      "status": "new",
+      "priority": "P1",
+      "owner": "Saad",
+      "progress": 0,
+      "category": "Creative",
+      "clientName": "TechStart Inc",
+      "startDate": "2026-02-23T20:26:02.709Z",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Redesign the new landing page.",
+      "comments": [
+        {
+          "id": "cmt-1771878362710",
+          "author": "System",
+          "timestamp": "2026-02-23T20:26:02.710Z",
+          "type": "creation",
+          "text": "Job created by Michael via command: \"Landing Page Redesign for TechStart Inc\"",
+          "status": "open",
+          "responses": []
+        }
+      ],
+      "deliverables": [],
+      "metadata": {
+        "createdViaCommand": true,
+        "requestedBy": "Michael",
+        "originalMessage": "Redesign the new landing page."
+      },
+      "createdDate": "2026-02-23",
+      "dueDate": "2026-02-26T20:26:02.709Z",
+      "blockers": [],
+      "nextActions": [],
+      "risks": [],
+      "dependencies": [],
+      "metrics": {}
+    },
+    {
+      "id": "D1010-DEV-004",
+      "name": "Add Job Number for Tesla Website Project",
+      "status": "new",
+      "priority": "P1",
+      "owner": "Saad",
+      "progress": 0,
+      "category": "Development",
+      "clientName": "Tesla",
+      "startDate": "2026-02-23T20:20:59.051Z",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Create a job number for the new website development project.",
+      "comments": [
+        {
+          "id": "cmt-1771878059052",
+          "author": "System",
+          "timestamp": "2026-02-23T20:20:59.052Z",
+          "type": "creation",
+          "text": "Job created by TestUser via command: \"Add Job Number for Tesla Website Project\"",
+          "status": "open",
+          "responses": []
+        }
+      ],
+      "deliverables": [],
+      "metadata": {
+        "createdViaCommand": true,
+        "requestedBy": "TestUser",
+        "originalMessage": "Create a job number for the new website development project."
+      },
+      "createdDate": "2026-02-23",
+      "dueDate": "2026-02-26T20:20:59.051Z",
+      "blockers": [],
+      "nextActions": [],
+      "risks": [],
+      "dependencies": [],
+      "metrics": {}
+    },
+    {
+      "id": "D1010-DEV-003",
+      "name": "Acme Corp Website Redesign Job Number",
+      "status": "new",
+      "priority": "P1",
+      "owner": "Saad",
+      "progress": 0,
+      "category": "Development",
+      "clientName": "Acme Corp",
+      "startDate": "2026-02-23T20:18:08.027Z",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Add a job number for the new website redesign project for Acme Corp.",
+      "comments": [
+        {
+          "id": "cmt-1771877888028",
+          "author": "System",
+          "timestamp": "2026-02-23T20:18:08.028Z",
+          "type": "creation",
+          "text": "Job created by Michael via command: \"Acme Corp Website Redesign Job Number\"",
+          "status": "open",
+          "responses": []
+        }
+      ],
+      "deliverables": [],
+      "metadata": {
+        "createdViaCommand": true,
+        "requestedBy": "Michael",
+        "originalMessage": "Add a job number for the new website redesign project for Acme Corp."
+      },
+      "createdDate": "2026-02-23",
+      "dueDate": "2026-02-26T20:18:08.027Z",
+      "blockers": [],
+      "nextActions": [],
+      "risks": [],
+      "dependencies": [],
+      "metrics": {}
+    },
+    {
+      "id": "D1010-OPS-002",
+      "name": "Add job number for Nike social campaign",
+      "status": "new",
+      "priority": "P2",
+      "owner": "Otto",
+      "progress": 0,
+      "category": "Operations",
+      "clientName": "Nike",
+      "startDate": "2026-02-23T20:11:26.656Z",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Add a job number for the social media campaign for Nike.",
+      "comments": [
+        {
+          "id": "cmt-1771877486657",
+          "author": "System",
+          "timestamp": "2026-02-23T20:11:26.657Z",
+          "type": "creation",
+          "text": "Job created by TestUser via command: \"Add job number for Nike social campaign\"",
+          "status": "open",
+          "responses": []
+        }
+      ],
+      "deliverables": [],
+      "metadata": {
+        "createdViaCommand": true,
+        "requestedBy": "TestUser",
+        "originalMessage": "Add a job number for the social media campaign for Nike."
+      },
+      "estimatedHours": 1,
+      "createdDate": "2026-02-23",
+      "dueDate": "2026-03-02T20:11:26.656Z",
+      "blockers": [],
+      "nextActions": [],
+      "risks": [],
+      "dependencies": [],
+      "metrics": {}
+    },
+    {
+      "id": "D1010-DEV-002",
+      "name": "Add job number for Acme Corp website redesign",
+      "status": "new",
+      "priority": "P2",
+      "owner": "Saad",
+      "progress": 0,
+      "category": "Development",
+      "clientName": "Acme Corp",
+      "startDate": "2026-02-23T20:04:55.758Z",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Add a job number for the website redesign project for Acme Corp.",
+      "comments": [
+        {
+          "id": "cmt-1771877095760",
+          "author": "System",
+          "timestamp": "2026-02-23T20:04:55.760Z",
+          "type": "creation",
+          "text": "Job created by TestUser via command: \"Add job number for Acme Corp website redesign\"",
+          "status": "open",
+          "responses": []
+        }
+      ],
+      "deliverables": [],
+      "metadata": {
+        "createdViaCommand": true,
+        "requestedBy": "TestUser",
+        "originalMessage": "Add a job number for the website redesign project for Acme Corp."
+      },
+      "createdDate": "2026-02-23",
+      "dueDate": "2026-03-02T20:04:55.758Z",
+      "blockers": [],
+      "nextActions": [],
+      "risks": [],
+      "dependencies": [],
+      "metrics": {}
+    },
+    {
+      "id": "BACKLOG-MKT-715103",
+      "name": "Univisioncomputers - Coeur d'Alene Implementation - Changes Requested",
+      "status": "complete",
+      "priority": "P2",
+      "owner": "Otto",
+      "progress": 0,
+      "category": "Marketing",
+      "clientName": "janice@univisioncomputers.com",
+      "startDate": "2026-02-23T19:58:35.103Z",
+      "dueDate": "2026-03-09T18:58:35.104Z",
+      "lastUpdated": "2026-02-23T19:58:35.104Z",
+      "notes": "Hi Michael,\n      \nFollowing up on the Coeur d'Alene implementation. We need these changes:\n1. Updated contact form with validation\n2. Mobile responsiveness fixes\n3. SEO meta tags update\n\nCan you add this as a separate task?\n[Auto-completed 2026-02-24: Jan/Dec project cleanup]",
+      "comments": [
+        {
+          "id": "cmt-1771876715104-3",
+          "author": "Joan",
+          "timestamp": "2026-02-23T19:58:35.104Z",
+          "type": "backlog-cleanup",
+          "text": "Processed from email. Originally 1.5 days old.\n\nSource: Email from janice@univisioncomputers.com",
+          "status": "open",
+          "responses": []
+        }
+      ],
+      "metadata": {
+        "createdBy": "Joan",
+        "source": "backlog-email",
+        "originalAge": "1.5 days",
+        "cleanupDate": "2026-02-23T19:58:35.104Z"
+      },
+      "hours": 0,
+      "createdDate": "2026-02-23",
+      "deliverables": [],
+      "blockers": [],
+      "nextActions": [],
+      "risks": [],
+      "dependencies": [],
+      "metrics": {}
+    },
+    {
+      "id": "BACKLOG-CRV-714096",
+      "name": "Driftdream - Drift & Dream Visual Upgrade - Urgent",
+      "status": "new",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 0,
+      "category": "Creative",
+      "clientName": "client@driftdream.com",
+      "startDate": "2026-02-23T19:58:34.096Z",
+      "dueDate": "2026-03-02T19:58:34.096Z",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Michael, we need the visual upgrade completed ASAP. \nThe design team is waiting and we have a launch deadline next week.\nBudget: $3,500\nTimeline: 1 week\nPriority: High",
+      "comments": [
+        {
+          "id": "cmt-1771876714096-2",
+          "author": "Joan",
+          "timestamp": "2026-02-23T19:58:34.096Z",
+          "type": "backlog-cleanup",
+          "text": "Processed from email. Originally 10 days old.\n\nSource: Email from client@driftdream.com",
+          "status": "open",
+          "responses": []
+        }
+      ],
+      "metadata": {
+        "createdBy": "Joan",
+        "source": "backlog-email",
+        "originalAge": "10 days",
+        "cleanupDate": "2026-02-23T19:58:34.096Z"
+      },
+      "createdDate": "2026-02-23",
+      "deliverables": [],
+      "blockers": [],
+      "nextActions": [],
+      "risks": [],
+      "dependencies": [],
+      "metrics": {}
+    },
+    {
+      "id": "BACKLOG-OPS-713089",
+      "name": "Unknown - ✅ Joan deployed to production at 1:07 PM today (ev...",
+      "status": "new",
+      "priority": "P2",
+      "owner": "Otto",
+      "progress": 0,
+      "category": "Operations",
+      "clientName": "Unknown",
+      "startDate": "2026-02-23T19:58:33.090Z",
+      "dueDate": "2026-03-02T19:58:33.090Z",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "✅ Joan deployed to production at 1:07 PM today (every 15 min monitoring). HARO emails will be flagged immediately to #joan-ops. Michael's writing style reference is in /Volumes/AI_Drive/AI_WORKING/communication-frameworks/. Joan will draft responses matching that style for your approval.",
+      "comments": [
+        {
+          "id": "cmt-1771876713090-1",
+          "author": "Joan",
+          "timestamp": "2026-02-23T19:58:33.090Z",
+          "type": "backlog-cleanup",
+          "text": "Processed from dashboard-comment. Originally 10 days old.\n\nSource: Project D1010-HARO-001",
+          "status": "open",
+          "responses": []
+        }
+      ],
+      "metadata": {
+        "createdBy": "Joan",
+        "source": "backlog-dashboard-comment",
+        "originalAge": "10 days",
+        "cleanupDate": "2026-02-23T19:58:33.090Z"
+      },
+      "createdDate": "2026-02-23",
+      "deliverables": [],
+      "blockers": [],
+      "nextActions": [],
+      "risks": [],
+      "dependencies": [],
+      "metrics": {}
+    },
+    {
+      "id": "UNIV-M3-004",
+      "name": "TechStart Inc - Landing Page for Product Launch",
+      "status": "new",
+      "priority": "P1",
+      "owner": "Saad",
+      "progress": 0,
+      "category": "Development",
+      "clientName": "TechStart Inc",
+      "startDate": "2026-02-23T19:51:12.123Z",
+      "dueDate": "2026-02-27T19:51:12.123Z",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Hi Michael,\n\nWe need a new landing page for our product launch. \nBudget: $5,000\nDeadline: This Friday\nRequirements: Mobile responsive, contact form, analytics\n\nCan you handle this?\n\nBest,\nSarah\nTechStart Inc",
+      "estimatedHours": 20,
+      "revenue": 5000,
+      "comments": [
+        {
+          "id": "cmt-1771876272123",
+          "author": "Joan",
+          "timestamp": "2026-02-23T19:51:12.123Z",
+          "type": "creation",
+          "text": "Project created from email: \"Urgent: Landing Page Needed by Friday\"\n\nClient: marketing@techstart.com\nDeadline: This Friday\nBudget: $5000",
+          "status": "open",
+          "responses": []
+        }
+      ],
+      "deliverables": [
+        "Landing page design",
+        "Mobile responsive",
+        "Contact form",
+        "Analytics setup"
+      ],
+      "metadata": {
+        "createdBy": "Joan",
+        "source": "email",
+        "emailFrom": "marketing@techstart.com",
+        "originalSubject": "Urgent: Landing Page Needed by Friday"
+      },
+      "createdDate": "2026-02-23",
+      "blockers": [],
+      "nextActions": [],
+      "risks": [],
+      "dependencies": [],
+      "metrics": {}
+    },
+    {
+      "id": "D1010-DEV-001",
+      "name": "Landing Page Redesign - TechStart Inc",
+      "status": "new",
+      "priority": "P1",
+      "owner": "Saad",
+      "progress": 0,
+      "category": "Development",
+      "clientName": "TechStart Inc",
+      "startDate": "2026-02-23T19:47:32.815Z",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "New landing page redesign needed in 2 weeks",
+      "comments": [
+        {
+          "id": "cmt-1771876052816",
+          "author": "System",
+          "timestamp": "2026-02-23T19:47:32.816Z",
+          "type": "creation",
+          "text": "Job created by Michael via command: \"add a job number for new landing page redesign\"",
+          "status": "open",
+          "responses": []
+        }
+      ],
+      "deliverables": [],
+      "metadata": {
+        "createdViaCommand": true,
+        "requestedBy": "Michael",
+        "originalMessage": "add a job number for new landing page redesign for TechStart Inc, need it in 2 weeks"
+      },
+      "createdDate": "2026-02-23",
+      "dueDate": "2026-02-26T19:47:32.815Z",
+      "blockers": [],
+      "nextActions": [],
+      "risks": [],
+      "dependencies": [],
+      "metrics": {}
+    },
+    {
+      "id": "SLACK-975566",
+      "name": "Product Launch Landing Page",
+      "category": "Web Development",
+      "status": "new",
+      "priority": "P1",
+      "owner": "Unassigned",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Generated from Slack conversation about product launch landing page",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {},
+      "sortOrder": 1290,
+      "clientName": "",
+      "clientEmail": "",
+      "originalRequest": "",
+      "actualHours": 0,
+      "hourlyRate": 150,
+      "cost": 0,
+      "revenue": 0,
+      "profit": 0,
+      "margin": 0,
+      "budget": 5000,
+      "startDate": "2026-02-23T19:46:15.589Z",
+      "dueDate": "2026-02-26T19:46:15.589Z",
+      "estimatedHours": 0,
+      "activityLog": [],
+      "createdDate": "2026-02-23"
+    },
+    {
+      "id": "UNIV-M3-001",
+      "name": "Coeur d'Alene Location Page Rewrite",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 0,
+      "statusColor": "purple",
+      "lastUpdated": "2026-02-23T19:37:36.080Z",
+      "clientName": "Univision Computers",
+      "deliverables": [],
+      "comments": [],
+      "category": "Marketing",
+      "notes": "Idaho Cluster - Coeur d'Alene location page rewrite (2,000-2,500 words). Production: Claude.ai → Download → Drive. Includes keyword research, competitor analysis, local SEO optimization.",
+      "rationale": "Month 3 kickoff. Unified messaging across North Idaho territory (Post Falls + Coeur d'Alene). Cross-linking opportunity.",
+      "risks": [],
+      "nextActions": [
+        "Monday: Research Coeur d'Alene market (demographics, competitors, keywords)",
+        "Tuesday: Draft content in Claude.ai",
+        "Wednesday: Review & polish",
+        "Thursday: Deliver to Drive + notify Jared"
+      ],
+      "dependencies": [],
+      "metrics": {
+        "wordCount": "2,000-2,500",
+        "deadline": "2026-02-20",
+        "deliveryMethod": "Google Drive"
+      },
+      "sortOrder": 1,
+      "actualHours": 2,
+      "hourlyRate": 150,
+      "revenue": 300,
+      "cost": 100,
+      "profit": 200,
+      "margin": 66.66666666666666,
+      "startDate": "2026-02-02T19:36:05.090Z",
+      "dueDate": "2026-02-16T19:36:05.090Z",
+      "deliveredDate": "2026-02-23T19:37:31.136Z",
+      "completedDate": "2026-02-23T19:37:36.074Z",
+      "hours": 0,
+      "createdDate": "2026-02-02",
+      "blockers": []
+    },
+    {
+      "id": "UNIV-M3-003",
+      "name": "Week 6 Deliverables Summary",
+      "status": "complete",
+      "priority": "P2",
+      "owner": "Otto",
+      "progress": 0,
+      "statusColor": "purple",
+      "lastUpdated": "2026-02-23T19:36:05.100Z",
+      "clientName": "Univision Computers",
+      "deliverables": [],
+      "comments": [],
+      "category": "Operations",
+      "notes": "Client-facing summary document. Coeur d'Alene content delivered, implementation checklist provided, Month 3 context, next week preview.",
+      "rationale": "Weekly wrap-up keeps client informed of progress and next steps.",
+      "risks": [],
+      "nextActions": [
+        "Friday: Create summary after Thursday delivery"
+      ],
+      "dependencies": [
+        "UNIV-M3-001",
+        "UNIV-M3-002"
+      ],
+      "metrics": {
+        "deadline": "2026-02-21"
+      },
+      "sortOrder": 3,
+      "deliveredDate": "2026-02-20T15:46:34.198Z",
+      "actualHours": 2,
+      "revenue": 300,
+      "hourlyRate": 50,
+      "cost": 100,
+      "profit": 200,
+      "margin": 66.7,
+      "completedDate": "2026-02-20T15:54:43.022Z",
+      "startDate": "2026-02-22T19:36:05.090Z",
+      "dueDate": "2026-03-24T18:36:05.090Z",
+      "hours": 0,
+      "createdDate": "2026-02-22",
+      "blockers": []
+    },
+    {
+      "id": "JOB-D1010-002",
+      "name": "SaVida Multi-Location Attribution Case Study",
+      "status": "upcoming",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 0,
+      "statusColor": "purple",
+      "lastUpdated": "2026-02-23T19:36:05.100Z",
+      "clientName": "Digital1010",
+      "deliverables": [],
+      "comments": [],
+      "category": "Marketing",
+      "notes": "The Attribution Problem Nobody Talks About: Multi-Location Healthcare Case Study. 5,500-6,500 words. SaVida 54-location case study (276.9% traffic, 95% #1 rankings, 100% attribution). Revenue Attribution Engine service tie-in.",
+      "rationale": "Non-replicable content using real client data. Demonstrates healthcare expertise. PE-backed positioning.",
+      "risks": [
+        {
+          "severity": "low",
+          "description": "Need SaVida approval for specific metrics",
+          "mitigation": "Michael approved real stats usage. Won't disclose D1010 pricing (K/month)."
+        }
+      ],
+      "nextActions": [
+        "Production: Tuesday Feb 25",
+        "Review via email: Wednesday Feb 26",
+        "Publish: Thursday Feb 27"
+      ],
+      "dependencies": [],
+      "metrics": {
+        "wordCount": "5,500-6,500",
+        "productionDate": "2026-02-25",
+        "publishDate": "2026-02-27",
+        "targetKeyword": "multi-location healthcare patient attribution"
+      },
+      "sortOrder": 5,
+      "startDate": "2026-02-14T19:36:05.090Z",
+      "dueDate": "2026-02-28T19:36:05.090Z",
+      "createdDate": "2026-02-14",
+      "blockers": []
+    },
+    {
+      "id": "JOB-D1010-003",
+      "name": "Agency vs Strategic Partner Blog Post",
+      "status": "upcoming",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 0,
+      "statusColor": "purple",
+      "lastUpdated": "2026-02-23T19:36:05.100Z",
+      "clientName": "Digital1010",
+      "deliverables": [],
+      "comments": [],
+      "category": "Marketing",
+      "notes": "Why Your Agency Relationship Isn't Working (And What Strategic Partners Do Differently). 4,500-5,500 words. Vendor vs. partner positioning. 5-year SaVida engagement economics (K LTV).",
+      "rationale": "Core D1010 differentiator. Agency truth bomb content. Strategic positioning.",
+      "risks": [],
+      "nextActions": [
+        "Production: Tuesday Mar 4",
+        "Review via email: Wednesday Mar 5",
+        "Publish: Thursday Mar 6"
+      ],
+      "dependencies": [],
+      "metrics": {
+        "wordCount": "4,500-5,500",
+        "productionDate": "2026-03-04",
+        "publishDate": "2026-03-06",
+        "targetKeyword": "agency strategic partnership vs vendor"
+      },
+      "sortOrder": 6,
+      "startDate": "2026-02-07T19:36:05.090Z",
+      "dueDate": "2026-02-21T19:36:05.090Z",
+      "createdDate": "2026-02-07",
+      "blockers": []
+    },
+    {
+      "id": "MC-VERIFIER-001",
+      "name": "Verifier - Quality Validation Agent",
+      "status": "new",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 0,
+      "statusColor": "gray",
+      "category": "Mission Control",
+      "lastUpdated": "2026-02-15T03:15:06.956Z",
+      "notes": "**Tier 3 Execution Agent** - Reviews outputs against requirements and standards before delivery. Critical for autonomous work quality assurance.",
+      "deliverables": [],
+      "rationale": "Quality gate for all execution agent output. Ensures work meets standards before Console review.",
+      "nextActions": [
+        "Build Verifier agent",
+        "Define verification standards",
+        "Create verification checklists",
+        "Set up quality loop protocols"
+      ],
+      "metrics": {
+        "targetScope": "All Otto/Hello/Atlas output",
+        "targetLoop": "Max 3 revision cycles"
+      },
+      "comments": [
+        {
+          "id": "cmt-1771010275974",
+          "author": "Michael",
+          "timestamp": "2026-02-13T19:17:55.974Z",
+          "type": "update",
+          "text": "there should be documentation for this agent please review the details in the ai_drive under masters",
+          "status": "open",
+          "responses": [
+            {
+              "author": "Otto",
+              "timestamp": "2026-02-15T03:15:06.956Z",
+              "text": "✅ Verifier documentation found in `/Volumes/AI_Drive/PROJECTS/mission-control/`:\n\n**Core Documentation:**\n- **AGENTS.md** - Defines Verifier as Tier 3 Execution Agent for quality validation\n- **ERROR_PROTOCOL.md** - Verifier integrity rules and quality loop procedures (max 3 revision cycles)\n- **INTAKE_SCHEMA.md** - Communication formats with other agents\n- **README.md** - Workflow integration details\n\n**Key Responsibilities:**\n- Reviews outputs against requirements and standards before delivery\n- Initiates quality loops (Verifier → Content/Otto → Verifier)\n- Must not lower standards under pressure\n- Reports to Console, receives QA tasks from Peg\n\nAll Verifier specs are documented and ready for implementation.",
+              "status": "open"
+            }
+          ]
+        }
+      ],
+      "startDate": "2026-02-15T03:15:06.956Z",
+      "createdDate": "2026-02-15",
+      "dueDate": "2026-02-18T03:15:06.956Z",
+      "blockers": [],
+      "risks": [],
+      "dependencies": []
+    },
+    {
+      "id": "D1010-JOAN-001",
+      "name": "Joan Agent Deployment",
+      "status": "in-progress",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 30,
+      "statusColor": "red",
+      "lastUpdated": "2026-02-27T14:15:39.027Z",
+      "notes": "Joan agent deployed with Gmail API integration. Monitors 23 client domains every 30 minutes. Peg and Console scripts ready but not integrated.",
+      "deliverables": [
+        {
+          "id": "del-1770912338291-0",
+          "name": "Joan Email Monitor Script",
+          "url": "file:///Volumes/AI_Drive/AI_WORKING/scripts/joan.js",
+          "type": "code",
+          "timestamp": "2026-02-12T16:05:38.291Z"
+        },
+        {
+          "id": "del-1770912338291-1",
+          "name": "Peg Intake Script",
+          "url": "file:///Volumes/AI_Drive/AI_WORKING/scripts/peg.js",
+          "type": "code",
+          "timestamp": "2026-02-12T16:05:38.291Z"
+        },
+        {
+          "id": "del-1770912338291-2",
+          "name": "Console Approval Script",
+          "url": "file:///Volumes/AI_Drive/AI_WORKING/scripts/console.js",
+          "type": "code",
+          "timestamp": "2026-02-12T16:05:38.291Z"
+        }
+      ],
+      "comments": [
+        {
+          "id": "cmt-1770998514614",
+          "author": "Michael",
+          "timestamp": "2026-02-13T16:01:54.614Z",
+          "type": "update",
+          "text": "is this compelete?",
+          "status": "open",
+          "responses": [
+            {
+              "author": "Otto",
+              "timestamp": "2026-02-13T19:43:11.088Z",
+              "text": "✅ Yes, complete. Deployed at 1:07 PM via LaunchAgent. Running every 15 minutes. Logs: /Volumes/AI_Drive/AI_WORKING/logs/joan.log. First test run processed 10 emails successfully. TFG change order tracking + sheet integration operational.",
+              "status": "open"
+            }
+          ]
+        },
+        {
+          "id": "cmt-1771011727018",
+          "author": "Otto",
+          "timestamp": "2026-02-13T19:42:07.018Z",
+          "type": "update",
+          "text": "✅ Yes, complete. Deployed at 1:07 PM via LaunchAgent. Running every 15 minutes. Logs: /Volumes/AI_Drive/AI_WORKING/logs/joan.log. First test run processed 10 emails successfully. TFG change order tracking + sheet integration operational.",
+          "status": "open",
+          "responses": []
+        }
+      ],
+      "category": "Development",
+      "rationale": "Email monitoring is critical for client retention. Manual monitoring doesn't scale with 23 clients.",
+      "risks": [
+        {
+          "severity": "high",
+          "description": "Gmail token expires frequently, requires manual refresh",
+          "mitigation": "Investigating OAuth refresh flow, may need service account"
+        }
+      ],
+      "nextActions": [
+        "Fix Gmail token expiration issue",
+        "Integrate Peg intake handler",
+        "Deploy Console approval workflow"
+      ],
+      "dependencies": [
+        "GML-2026-02-11-02"
+      ],
+      "metrics": {
+        "clientsMonitored": 23,
+        "checkFrequency": "30 min",
+        "avgEmailsPerDay": "~15"
+      },
+      "sortOrder": 160,
+      "startDate": "2026-02-13T19:43:11.088Z",
+      "createdDate": "2026-02-13",
+      "dueDate": "2026-02-16T19:43:11.088Z",
+      "blockers": []
+    },
+    {
+      "id": "D1010-HARO-001",
+      "name": "HARO Strategy / Monitoring",
+      "status": "new",
+      "priority": "P2",
+      "owner": "Joan",
+      "progress": 0,
+      "statusColor": "red",
+      "lastUpdated": "2026-02-13T19:43:05.531Z",
+      "blockers": [
+        "Joan not deployed"
+      ],
+      "deliverables": [],
+      "comments": [
+        {
+          "id": "cmt-1770913970867",
+          "author": "Michael",
+          "timestamp": "2026-02-12T16:32:50.867Z",
+          "type": "update",
+          "text": "Please deploy Joan and have her monitor and send Otto her choice for production, these requests are generally time sensitive. Please be sure to review Michaels writing style it should be in the AI drive.",
+          "status": "open",
+          "responses": [
+            {
+              "author": "Otto",
+              "timestamp": "2026-02-13T19:43:05.531Z",
+              "text": "✅ Joan deployed to production at 1:07 PM today (every 15 min monitoring). HARO emails will be flagged immediately to #joan-ops. Michael's writing style reference is in /Volumes/AI_Drive/AI_WORKING/communication-frameworks/. Joan will draft responses matching that style for your approval.",
+              "status": "open"
+            }
+          ]
+        },
+        {
+          "id": "cmt-1771011721354",
+          "author": "Otto",
+          "timestamp": "2026-02-13T19:42:01.355Z",
+          "type": "update",
+          "text": "✅ Joan deployed to production at 1:07 PM today (every 15 min monitoring). HARO emails will be flagged immediately to #joan-ops. Michael's writing style reference is in /Volumes/AI_Drive/AI_WORKING/communication-frameworks/. Joan will draft responses matching that style for your approval.",
+          "status": "open",
+          "responses": []
+        }
+      ],
+      "category": "Marketing",
+      "notes": "HARO monitoring strategy designed but blocked - requires Joan email monitoring which is now operational",
+      "sortOrder": 100,
+      "startDate": "2026-02-13T19:43:05.531Z",
+      "createdDate": "2026-02-13",
+      "dueDate": "2026-02-20T19:43:05.531Z",
+      "nextActions": [],
+      "risks": [],
+      "dependencies": [],
+      "metrics": {}
+    },
+    {
+      "id": "D1010-YT-002",
+      "name": "Drift & Dream Visual Upgrade",
+      "status": "in-progress",
+      "priority": "P0",
+      "owner": "Otto",
+      "progress": 60,
+      "statusColor": "blue",
+      "category": "Creative",
+      "lastUpdated": "2026-02-13T18:22:00.000Z",
+      "notes": "✅ Real footage downloaded (5 clips from Mixkit). 3 videos rendering now: Ocean, Rain, Fireplace with HD nature visuals + 10-hour audio. Render speed: 10.7x realtime. ETA: 2:15 PM EST (~55 min).",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-yt002-1",
+          "name": "Visual Upgrade Plan",
+          "url": "file:///Volumes/AI_Drive/AI_WORKING/projects/drift-and-dream/VISUAL_UPGRADE_PLAN.md",
+          "type": "document",
+          "timestamp": "2026-02-13T00:32:01.990Z"
+        }
+      ],
+      "dependencies": [
+        "D1010-YT-001"
+      ],
+      "nextActions": [
+        "⚠️ DECISION: Choose Option 1 (manual), 2 (solid colors), or 3 (premium API)",
+        "Download clips if Option 1",
+        "Render with real footage"
+      ],
+      "rationale": "Real footage = 4-6x better engagement (2-3h watch time vs 30-45 min), higher CPM ($2-5 vs $1-2). Top channels all use real footage.",
+      "risks": [
+        {
+          "severity": "medium",
+          "description": "Solid colors result in lower engagement and slower growth",
+          "mitigation": "Option 1: Manual download (15 min) then auto-render"
+        }
+      ],
+      "metrics": {
+        "expectedImprovement": "4-6x watch time",
+        "expectedCPM": "$2-5 (vs $1-2 current)"
+      },
+      "sortOrder": 1260,
+      "comments": [
+        {
+          "id": "cmt-1770997465637",
+          "author": "Otto",
+          "timestamp": "2026-02-13T15:44:25.637Z",
+          "type": "update",
+          "text": "you can create or download real footage you have autonomy to get it done and let me know when it is ready for upload",
+          "status": "open",
+          "responses": []
+        },
+        {
+          "id": "cmt-1770997601993",
+          "author": "Otto",
+          "timestamp": "2026-02-13T15:46:41.993Z",
+          "type": "response",
+          "text": "✅ Understood. Proceeding with Option 1: Manual download of real nature footage from Pexels, then automated rendering pipeline. Will download 5-10 clips covering: ocean waves, forest scenes, rain/storms, mountain landscapes, night sky. Target: 4 upgraded videos ready by tonight.",
+          "status": "open",
+          "responses": []
+        }
+      ],
+      "startDate": "2026-02-13T18:22:00.000Z",
+      "createdDate": "2026-02-13",
+      "dueDate": "2026-02-14T18:22:00.000Z"
+    },
+    {
+      "id": "D1010-YT-003",
+      "name": "Drift & Dream Fast Renders (Tonight)",
+      "status": "in-progress",
+      "priority": "P0",
+      "owner": "Otto",
+      "progress": 80,
+      "statusColor": "blue",
+      "category": "Creative",
+      "lastUpdated": "2026-02-27T14:15:39.027Z",
+      "notes": "⏳ RENDERING NOW: 4 videos rendering with ultrafast preset. ETA 7:15 PM EST. Solid colors + audio.",
+      "deliverables": [
+        {
+          "id": "del-yt003-1",
+          "name": "Render Status Monitor",
+          "url": "file:///tmp/render-completion.log",
+          "type": "document",
+          "timestamp": "2026-02-13T00:32:01.990Z"
+        }
+      ],
+      "dependencies": [
+        "D1010-YT-001"
+      ],
+      "nextActions": [
+        "Monitor completion (~7:15 PM)",
+        "Notify Michael when done",
+        "Videos ready for upload"
+      ],
+      "rationale": "Michael requested renders complete tonight. Solid colors allow fast completion while visual upgrade is decided.",
+      "risks": [],
+      "metrics": {
+        "videosRendering": 4,
+        "speed": "15x realtime",
+        "eta": "7:15 PM EST"
+      },
+      "sortOrder": 1270,
+      "startDate": "2026-02-13T00:32:01.990Z",
+      "createdDate": "2026-02-13",
+      "dueDate": "2026-02-14T00:32:01.990Z",
+      "comments": [],
+      "blockers": []
+    },
+    {
+      "id": "MC-PULSE-001",
+      "name": "Pulse - System Health Monitoring Agent",
+      "status": "in-progress",
+      "priority": "P0",
+      "owner": "Otto",
+      "progress": 60,
+      "statusColor": "blue",
+      "category": "Mission Control",
+      "lastUpdated": "2026-02-12T23:33:31.684Z",
+      "notes": "**Tier 3 Execution Agent** - Monitors agent health, cost tracking, operational thresholds. Currently scattered across multiple health check crons. Needs consolidation into single agent.",
+      "deliverables": [],
+      "rationale": "Centralize system health monitoring. Track agent status, API costs, operational thresholds in one place.",
+      "nextActions": [
+        "Consolidate health check crons",
+        "Create unified Pulse agent",
+        "Define monitoring thresholds",
+        "Set up alerting rules"
+      ],
+      "risks": [
+        {
+          "severity": "moderate",
+          "description": "Health monitoring scattered, hard to maintain",
+          "mitigation": "Consolidate into single Pulse agent"
+        }
+      ],
+      "metrics": {
+        "currentCrons": "3 health check crons",
+        "targetSchedule": "Single agent, multiple monitors"
+      },
+      "startDate": "2026-02-12T23:33:31.684Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-13T23:33:31.684Z",
+      "comments": [],
+      "blockers": [],
+      "dependencies": []
+    },
+    {
+      "id": "MC-DOC-001",
+      "name": "Documentation Agent - System Memory",
+      "status": "in-progress",
+      "priority": "P2",
+      "owner": "Otto",
+      "progress": 40,
+      "statusColor": "blue",
+      "category": "Mission Control",
+      "lastUpdated": "2026-02-12T23:33:31.684Z",
+      "notes": "**Tier 4 Support Agent** - Writes to /memory/ directories, maintains audit trails, preserves institutional knowledge. Currently ad-hoc, needs formalization.",
+      "deliverables": [],
+      "rationale": "Formalize system memory management. Ensure consistent memory writes and institutional knowledge preservation.",
+      "nextActions": [
+        "Formalize Documentation Agent",
+        "Define memory write protocols",
+        "Create memory consistency checker",
+        "Set up automated daily log generation"
+      ],
+      "metrics": {
+        "memoryLocations": "/memory/daily/, /memory/clients/, /memory/projects/",
+        "targetScope": "All system memory writes"
+      },
+      "startDate": "2026-02-12T23:33:31.684Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-19T23:33:31.684Z",
+      "comments": [],
+      "blockers": [],
+      "risks": [],
+      "dependencies": []
+    },
+    {
+      "id": "MC-ANTFARM-001",
+      "name": "Antfarm Workflow Integration",
+      "status": "in-progress",
+      "priority": "P3",
+      "owner": "Otto",
+      "progress": 30,
+      "statusColor": "blue",
+      "category": "Mission Control",
+      "lastUpdated": "2026-02-12T23:33:31.684Z",
+      "notes": "Multi-agent workflows for feature development, bug fixes, security audits, and intel scanning. Workflows defined but not integrated with dashboard or Console approval flow.",
+      "deliverables": [
+        {
+          "id": "antfarm-1",
+          "name": "Feature Dev Workflow",
+          "url": "file:///Volumes/AI_Drive/PROJECTS/antfarm/workflows/feature-dev/",
+          "type": "directory",
+          "timestamp": "2026-02-12T23:33:31.684Z"
+        },
+        {
+          "id": "antfarm-2",
+          "name": "Bug Fix Workflow",
+          "url": "file:///Volumes/AI_Drive/PROJECTS/antfarm/workflows/bug-fix/",
+          "type": "directory",
+          "timestamp": "2026-02-12T23:33:31.684Z"
+        },
+        {
+          "id": "antfarm-3",
+          "name": "Security Audit Workflow",
+          "url": "file:///Volumes/AI_Drive/PROJECTS/antfarm/workflows/security-audit/",
+          "type": "directory",
+          "timestamp": "2026-02-12T23:33:31.684Z"
+        },
+        {
+          "id": "antfarm-4",
+          "name": "Intel Scan Workflow",
+          "url": "file:///Volumes/AI_Drive/PROJECTS/antfarm/workflows/intel-scan/",
+          "type": "directory",
+          "timestamp": "2026-02-12T23:33:31.684Z"
+        }
+      ],
+      "rationale": "Enable multi-agent coordination for complex workflows. Parallel execution, dependency management, quality gates.",
+      "nextActions": [
+        "Integrate workflows with dashboard",
+        "Create workflow trigger system",
+        "Test multi-agent coordination",
+        "Add Console approval gates"
+      ],
+      "metrics": {
+        "workflows": "4 defined",
+        "agents": "15+ workflow-specific"
+      },
+      "startDate": "2026-02-12T23:33:31.684Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-19T23:33:31.684Z",
+      "comments": [],
+      "blockers": [],
+      "risks": [],
+      "dependencies": []
+    },
+    {
+      "id": "MC-HELLO-001",
+      "name": "Hello - CRM Operations Agent",
+      "status": "new",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 0,
+      "statusColor": "gray",
+      "category": "Mission Control",
+      "lastUpdated": "2026-02-12T23:33:31.684Z",
+      "notes": "**Tier 3 Execution Agent** - CRM operations including lead management, pipeline updates, automated follow-ups. Defined in AGENTS.md but not yet built.",
+      "deliverables": [],
+      "rationale": "Automate CRM operations within approved envelope. Reduce manual lead management work.",
+      "nextActions": [
+        "Build Hello agent script",
+        "Integrate with HighLevel API",
+        "Define autonomous action limits",
+        "Create approval gates for complex actions"
+      ],
+      "metrics": {
+        "targetIntegration": "HighLevel CRM API",
+        "targetScope": "Lead management, pipeline updates"
+      },
+      "startDate": "2026-02-12T23:33:31.684Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-15T23:33:31.684Z",
+      "comments": [],
+      "blockers": [],
+      "risks": [],
+      "dependencies": []
+    },
+    {
+      "id": "MC-ATLAS-001",
+      "name": "Atlas - Measurement & Reporting Agent",
+      "status": "new",
+      "priority": "P2",
+      "owner": "Otto",
+      "progress": 0,
+      "statusColor": "gray",
+      "category": "Mission Control",
+      "lastUpdated": "2026-02-12T23:33:31.684Z",
+      "notes": "**Tier 3 Execution Agent** - Produces audits, tracks outcomes, detects measurement anomalies. Systematizes analytics and reporting.",
+      "deliverables": [],
+      "rationale": "Automate measurement and reporting. Track all campaign outcomes, detect anomalies, surface insights.",
+      "nextActions": [
+        "Build Atlas agent",
+        "Connect to GA4 API",
+        "Connect to GSC API",
+        "Connect to Google Ads API",
+        "Define reporting templates"
+      ],
+      "metrics": {
+        "targetAPIs": "GA4, GSC, Google Ads",
+        "targetReports": "Client outcomes, campaign performance"
+      },
+      "startDate": "2026-02-12T23:33:31.684Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-19T23:33:31.684Z",
+      "comments": [],
+      "blockers": [],
+      "risks": [],
+      "dependencies": []
+    },
+    {
+      "id": "MC-PEG-001",
+      "name": "Peg - Task Validation & Routing Agent",
+      "status": "blocked",
+      "priority": "P0",
+      "owner": "Otto",
+      "progress": 40,
+      "statusColor": "red",
+      "category": "Mission Control",
+      "lastUpdated": "2026-02-12T23:33:31.684Z",
+      "notes": "**Tier 2 Gate Agent** - Validates task completeness from Joan, assigns sequence numbers, routes to Console for approval. Script exists but not deployed as cron job.",
+      "deliverables": [
+        {
+          "id": "peg-1",
+          "name": "Peg Script",
+          "url": "file:///Volumes/AI_Drive/AI_WORKING/scripts/peg.js",
+          "type": "code",
+          "timestamp": "2026-02-12T23:33:31.684Z"
+        }
+      ],
+      "rationale": "Complete Joan→Peg→Console gate flow. Ensures task completeness before Console approval.",
+      "nextActions": [
+        "Deploy Peg as cron job",
+        "Test Joan→Peg integration",
+        "Create Peg→Console approval workflow",
+        "Document handoff protocols"
+      ],
+      "dependencies": [
+        "MC-JOAN-001"
+      ],
+      "risks": [
+        {
+          "severity": "high",
+          "description": "Gate layer incomplete without Peg",
+          "mitigation": "Priority P0 build this week"
+        }
+      ],
+      "metrics": {
+        "targetCronSchedule": "Every 15 min",
+        "targetDelivery": "#console"
+      },
+      "startDate": "2026-02-12T23:33:31.684Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-13T23:33:31.684Z",
+      "comments": [],
+      "blockers": []
+    },
+    {
+      "id": "JOB-1770936650650",
+      "name": "Drift & Dream - Batch 2 Videos",
+      "category": "Creative",
+      "status": "new",
+      "priority": "P2",
+      "owner": "Otto",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-12T22:50:50.650Z",
+      "notes": "Next 5 videos scheduled: White Noise, Forest Rain, Thunderstorm, Beach Waves, Pink Noise. Production starts after API cost review (Feb 13).",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {},
+      "sortOrder": 1250,
+      "clientName": "",
+      "clientEmail": "",
+      "originalRequest": "",
+      "startDate": "2026-02-12T22:50:50.650Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-19T22:50:50.650Z"
+    },
+    {
+      "id": "D1010-AI-002",
+      "name": "Local AI Models - Cost Analysis & Service Offering",
+      "status": "in-progress",
+      "priority": "P0",
+      "owner": "Otto",
+      "progress": 70,
+      "statusColor": "blue",
+      "category": "Marketing",
+      "lastUpdated": "2026-02-12T22:50:28.385Z",
+      "notes": "Documented 99% cost savings ($500/mo → $5/mo) with local models. Created blog post outline (8,000 words), X thread, LinkedIn post, and service offering package.",
+      "deliverables": [
+        {
+          "id": "del-local-1",
+          "name": "Cost Analysis (ACTION_ITEMS_EXECUTION.md)",
+          "url": "file:///Volumes/AI_Drive/AI_WORKING/ACTION_ITEMS_EXECUTION.md",
+          "type": "document",
+          "timestamp": "2026-02-12T22:50:28.385Z"
+        },
+        {
+          "id": "del-local-2",
+          "name": "LinkedIn Post",
+          "url": "file:///Volumes/AI_Drive/AI_WORKING/linkedin-post-local-ai-2026.md",
+          "type": "document",
+          "timestamp": "2026-02-12T22:50:28.385Z"
+        },
+        {
+          "id": "del-local-3",
+          "name": "Blog Post Outline (8,000 words)",
+          "url": "file:///Volumes/AI_Drive/AI_WORKING/ACTION_ITEMS_EXECUTION.md#action-item-3",
+          "type": "document",
+          "timestamp": "2026-02-12T22:50:28.385Z"
+        }
+      ],
+      "rationale": "Alex Finn building movement around local AI. We can package enterprise version while demand is hot.",
+      "nextActions": [
+        "Write full 8,000-word blog post",
+        "Post LinkedIn content",
+        "Create X thread",
+        "Build service offering page",
+        "Test LM Studio with real tasks"
+      ],
+      "metrics": {
+        "revenueTarget": "$120K Year 1 (5 clients × $12K + recurring)",
+        "internalSavings": "$4,800/year"
+      },
+      "startDate": "2026-02-12T22:50:28.385Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-13T22:50:28.385Z",
+      "comments": [],
+      "blockers": [],
+      "risks": [],
+      "dependencies": []
+    },
+    {
+      "id": "D1010-TL-001",
+      "name": "Thought Leadership Content",
+      "status": "in-progress",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 90,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-27T14:15:39.027Z",
+      "deliverables": [
+        {
+          "id": "del-1770920600000-0",
+          "name": "LinkedIn Posts - HighLevel Ready (Week 1)",
+          "url": "file:///Volumes/AI_Drive/AI_WORKING/projects/linkedin-posts-highlevel-ready.md",
+          "type": "document",
+          "timestamp": "2026-02-12T18:22:00.000Z"
+        },
+        {
+          "id": "del-1770920600000-1",
+          "name": "30-Day Content Calendar",
+          "url": "file:///Volumes/AI_Drive/AI_WORKING/projects/client-analysis/linkedin-content-calendar-2026-02-09.md",
+          "type": "document",
+          "timestamp": "2026-02-12T18:22:00.000Z"
+        },
+        {
+          "id": "del-1770920600000-2",
+          "name": "Week 1 Drafts (Full)",
+          "url": "file:///Volumes/AI_Drive/AI_WORKING/projects/linkedin-drafts-feb17.md",
+          "type": "document",
+          "timestamp": "2026-02-12T18:22:00.000Z"
+        }
+      ],
+      "comments": [],
+      "category": "Marketing",
+      "notes": "Week 1 posts ready for HighLevel upload. 3 posts drafted for Feb 17-21. Awaiting Michael approval and CRM scheduling.",
+      "sortOrder": 60,
+      "nextActions": [
+        "Michael: Review and approve posts",
+        "Upload to HighLevel CRM Social Planner",
+        "Schedule posts for Feb 17, 19, 21",
+        "Create carousel graphics in Canva"
+      ],
+      "startDate": "2026-02-12T18:22:00.000Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-15T18:22:00.000Z",
+      "blockers": [],
+      "risks": [],
+      "dependencies": [],
+      "metrics": {}
+    },
+    {
+      "id": "ANT-2026-02-11-03",
+      "name": "Antfarm Workflow for YouTube",
+      "status": "in-progress",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 50,
+      "statusColor": "gray",
+      "lastUpdated": "2026-02-27T14:15:39.027Z",
+      "notes": "Antfarm workflow skill available for YouTube automation. No specific workflow created yet - skill provides framework for multi-agent video production workflows.",
+      "deliverables": [],
+      "comments": [
+        {
+          "id": "cmt-1770921800000",
+          "author": "Otto",
+          "timestamp": "2026-02-12T18:38:00.000Z",
+          "type": "update",
+          "text": "Fixed deliverable link. Antfarm skill is available but no YouTube-specific workflow has been created yet. Can create workflow once branding/audio pipeline is established.",
+          "status": "resolved",
+          "responses": []
+        }
+      ],
+      "category": "Creative",
+      "sortOrder": 170,
+      "nextActions": [
+        "Create antfarm workflow once Drift & Dream production pipeline is proven",
+        "Define agent roles: content creation, video assembly, upload, SEO optimization"
+      ],
+      "startDate": "2026-02-12T18:10:57.751Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-15T18:10:57.751Z",
+      "blockers": [],
+      "risks": [],
+      "dependencies": [],
+      "metrics": {}
+    },
+    {
+      "id": "2026-02-12-update-contact-form-on-rna-website",
+      "name": "Update contact form on RNA website",
+      "category": "Development",
+      "status": "new",
+      "priority": "P0",
+      "owner": "Saad",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Contact form on RNA Facilities Management website needs to be updated to include new service options dropdown and remove outdated phone number field.",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034458-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/The-Facilities-Group/2026-02-12-update-contact-form-on-rna-website",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.458Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from janice@thefacilitiesgroup.com. Work type: Website Development. Urgency: 4/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "4/5",
+        "workType": "Website Development"
+      },
+      "sortOrder": 1230,
+      "clientName": "The Facilities Group",
+      "clientEmail": "janice@thefacilitiesgroup.com",
+      "originalRequest": "\n\nHi team,\n\nWe need to make a quick update to the contact form on the RNA website (rnafacilitiesmanagement.com). \n\nChanges needed:\n- Add dropdown for \"Service Needed\" with options: Cleaning, Maintenance, Emergency Repair\n- Remove the \"Alternate Phone\" field (we don't use it anymore)\n- Update submit button text to \"Request Service\"\n\nThis is fairly urgent as we're getting questions from potential clients about what services we offer.\n\nThanks,\nJanice Areskog\nThe Facilities Group\n",
+      "startDate": "2026-02-12T16:50:34.458Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-13T16:50:34.458Z"
+    },
+    {
+      "id": "2026-02-12-blocking-d1010-user-account-for-arnel",
+      "name": "Blocking D1010 User account for Arnel",
+      "category": "Operations",
+      "status": "new",
+      "priority": "P2",
+      "owner": "Mo",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Client request: Blocking D1010 User account for Arnel",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034454-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/The-Facilities-Group/2026-02-12-blocking-d1010-user-account-for-arnel",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.454Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from William Jones <wjones@thefacilitiesgroup.com>. Work type: Support. Urgency: 2/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "2/5",
+        "workType": "Support"
+      },
+      "sortOrder": 1220,
+      "clientName": "The Facilities Group",
+      "clientEmail": "William Jones <wjones@thefacilitiesgroup.com>",
+      "originalRequest": "",
+      "startDate": "2026-02-12T16:50:34.455Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-19T16:50:34.455Z"
+    },
+    {
+      "id": "2026-02-12-re-brand-landing-page",
+      "name": "Brand landing page",
+      "category": "Development",
+      "status": "new",
+      "priority": "P0",
+      "owner": "Saad",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Client request: RE: Brand landing page",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034449-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/The-Facilities-Group/2026-02-12-re-brand-landing-page",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.449Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Janice Areskog <jareskog@thefacilitiesgroup.com>. Work type: Website Development. Urgency: 4/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "4/5",
+        "workType": "Website Development"
+      },
+      "sortOrder": 1210,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": "",
+      "startDate": "2026-02-12T16:50:34.450Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-13T16:50:34.450Z"
+    },
+    {
+      "id": "2026-02-12-purple-heart-pools-some-plugins-were-aut",
+      "name": "[Purple Heart Pools] Some plugins were automatically updated",
+      "category": "Development",
+      "status": "new",
+      "priority": "P2",
+      "owner": "Saad",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Client request: [Purple Heart Pools] Some plugins were automatically updated",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034445-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/Purple-Heart-Pools/2026-02-12-purple-heart-pools-some-plugins-were-aut",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.445Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from WordPress <wordpress@purpleheartpools.com>. Work type: Website Development. Urgency: 2/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "2/5",
+        "workType": "Website Development"
+      },
+      "sortOrder": 1200,
+      "clientName": "Purple Heart Pools",
+      "clientEmail": "WordPress <wordpress@purpleheartpools.com>",
+      "originalRequest": "",
+      "startDate": "2026-02-12T16:50:34.446Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-19T16:50:34.446Z"
+    },
+    {
+      "id": "2026-02-12-purpleheartpools-com-login-authenticatio",
+      "name": "[purpleheartpools.com] Login Authentication Code",
+      "category": "Development",
+      "status": "new",
+      "priority": "P2",
+      "owner": "Saad",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Client request: [purpleheartpools.com] Login Authentication Code",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034432-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/Purple-Heart-Pools/2026-02-12-purpleheartpools-com-login-authenticatio",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.432Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from WordPress <wordpress@purpleheartpools.com>. Work type: Website Development. Urgency: 2/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "2/5",
+        "workType": "Website Development"
+      },
+      "sortOrder": 1170,
+      "clientName": "Purple Heart Pools",
+      "clientEmail": "WordPress <wordpress@purpleheartpools.com>",
+      "originalRequest": "",
+      "startDate": "2026-02-12T16:50:34.433Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-19T16:50:34.433Z"
+    },
+    {
+      "id": "2026-02-12-re-rna-web-form-update",
+      "name": "RNA web form update",
+      "category": "Development",
+      "status": "new",
+      "priority": "P1",
+      "owner": "Saad",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Client request: RE: RNA web form update",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034423-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/The-Facilities-Group/2026-02-12-re-rna-web-form-update",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.423Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Janice Areskog <jareskog@thefacilitiesgroup.com>. Work type: Website Development. Urgency: 3/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "3/5",
+        "workType": "Website Development"
+      },
+      "sortOrder": 1150,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": "",
+      "startDate": "2026-02-12T16:50:34.424Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-15T16:50:34.424Z"
+    },
+    {
+      "id": "2026-02-12-re-tfg-sites-wordpress-core-version-6-9-",
+      "name": "TFG Sites WordPress core version (6.9.1) Update",
+      "category": "Development",
+      "status": "new",
+      "priority": "P2",
+      "owner": "Saad",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Client request: RE: TFG Sites WordPress core version (6.9.1) Update",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034418-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/The-Facilities-Group/2026-02-12-re-tfg-sites-wordpress-core-version-6-9-",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.418Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Chris Harbach <charbach@thefacilitiesgroup.com>. Work type: Website Development. Urgency: 2/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "2/5",
+        "workType": "Website Development"
+      },
+      "sortOrder": 1140,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Chris Harbach <charbach@thefacilitiesgroup.com>",
+      "originalRequest": "",
+      "startDate": "2026-02-12T16:50:34.420Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-19T16:50:34.420Z"
+    },
+    {
+      "id": "2026-02-12-fw-website-update",
+      "name": "Website Update",
+      "category": "Development",
+      "status": "new",
+      "priority": "P1",
+      "owner": "Saad",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Client request: FW: Website Update",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034414-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/The-Facilities-Group/2026-02-12-fw-website-update",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.414Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Janice Areskog <jareskog@thefacilitiesgroup.com>. Work type: Website Development. Urgency: 3/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "3/5",
+        "workType": "Website Development"
+      },
+      "sortOrder": 1130,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": "",
+      "startDate": "2026-02-12T16:50:34.415Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-15T16:50:34.415Z"
+    },
+    {
+      "id": "2026-02-12-re-vicki-sanetra-lead-shea-barret-united",
+      "name": "Vicki Sanetra Lead - Shea Barret - UnitedHQ",
+      "category": "Operations",
+      "status": "new",
+      "priority": "P1",
+      "owner": "Mo",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Client request: RE: Vicki Sanetra Lead - Shea Barret - UnitedHQ",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034409-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/The-Facilities-Group/2026-02-12-re-vicki-sanetra-lead-shea-barret-united",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.409Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Janice Areskog <jareskog@thefacilitiesgroup.com>. Work type: Support. Urgency: 3/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "3/5",
+        "workType": "Support"
+      },
+      "sortOrder": 1120,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": "",
+      "startDate": "2026-02-12T16:50:34.410Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-15T16:50:34.410Z"
+    },
+    {
+      "id": "2026-02-12-fw-pipedrive-access",
+      "name": "Pipedrive access",
+      "category": "Operations",
+      "status": "new",
+      "priority": "P1",
+      "owner": "Mo",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Client request: FW: Pipedrive access",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034399-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/The-Facilities-Group/2026-02-12-fw-pipedrive-access",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.399Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Janice Areskog <jareskog@thefacilitiesgroup.com>. Work type: Support. Urgency: 3/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "3/5",
+        "workType": "Support"
+      },
+      "sortOrder": 1100,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": "",
+      "startDate": "2026-02-12T16:50:34.400Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-15T16:50:34.400Z"
+    },
+    {
+      "id": "2026-02-12-re-folder-shared-with-you-univision-comp",
+      "name": "Folder shared with you: \"Univision Computers\"",
+      "category": "Development",
+      "status": "new",
+      "priority": "P2",
+      "owner": "Saad",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Client request: Re: Folder shared with you: \"Univision Computers\"",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034382-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/Univision-Computers/2026-02-12-re-folder-shared-with-you-univision-comp",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.382Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Christopher Sumner <christophers@univisioncomputers.com>. Work type: Website Development. Urgency: 2/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "2/5",
+        "workType": "Website Development"
+      },
+      "sortOrder": 1060,
+      "clientName": "Univision Computers",
+      "clientEmail": "Christopher Sumner <christophers@univisioncomputers.com>",
+      "originalRequest": "",
+      "startDate": "2026-02-12T16:50:34.383Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-19T16:50:34.383Z"
+    },
+    {
+      "id": "2026-02-12-re-campaign-results",
+      "name": "Campaign results",
+      "category": "Marketing",
+      "status": "new",
+      "priority": "P0",
+      "owner": "Otto",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Client request: RE: Campaign results",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034378-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/The-Facilities-Group/2026-02-12-re-campaign-results",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.378Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Janice Areskog <jareskog@thefacilitiesgroup.com>. Work type: Ads. Urgency: 4/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "4/5",
+        "workType": "Ads"
+      },
+      "sortOrder": 1050,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": "",
+      "startDate": "2026-02-12T16:50:34.379Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-13T16:50:34.379Z"
+    },
+    {
+      "id": "2026-02-12-fw-mail-delivery-failed-returning-messag",
+      "name": "Mail delivery failed: returning message to sender",
+      "category": "Development",
+      "status": "new",
+      "priority": "P2",
+      "owner": "Saad",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Client request: FW: Mail delivery failed: returning message to sender",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034360-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/904-Family-Law/2026-02-12-fw-mail-delivery-failed-returning-messag",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.360Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Ian Hurley <ian@904familylaw.com>. Work type: Website Development. Urgency: 2/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "2/5",
+        "workType": "Website Development"
+      },
+      "sortOrder": 1000,
+      "clientName": "904 Family Law",
+      "clientEmail": "Ian Hurley <ian@904familylaw.com>",
+      "originalRequest": "",
+      "startDate": "2026-02-12T16:50:34.360Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-19T16:50:34.360Z"
+    },
+    {
+      "id": "2026-02-12-re-summit-service-group-website-contact-",
+      "name": "Summit Service Group Website Contact Updates",
+      "category": "Development",
+      "status": "new",
+      "priority": "P1",
+      "owner": "Saad",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Client request: RE: Summit Service Group Website Contact Updates",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034356-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/The-Facilities-Group/2026-02-12-re-summit-service-group-website-contact-",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.356Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Chris Harbach <charbach@thefacilitiesgroup.com>. Work type: Website Development. Urgency: 3/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "3/5",
+        "workType": "Website Development"
+      },
+      "sortOrder": 990,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Chris Harbach <charbach@thefacilitiesgroup.com>",
+      "originalRequest": "",
+      "startDate": "2026-02-12T16:50:34.357Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-15T16:50:34.357Z"
+    },
+    {
+      "id": "2026-02-12-re-fw-victoria-arinze-mentioned-you-in-a",
+      "name": "FW: Victoria Arinze mentioned you in a Pipedrive note",
+      "category": "Operations",
+      "status": "new",
+      "priority": "P1",
+      "owner": "Mo",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Client request: RE: FW: Victoria Arinze mentioned you in a Pipedrive note",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034353-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/The-Facilities-Group/2026-02-12-re-fw-victoria-arinze-mentioned-you-in-a",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.353Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Janice Areskog <jareskog@thefacilitiesgroup.com>. Work type: Support. Urgency: 3/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "3/5",
+        "workType": "Support"
+      },
+      "sortOrder": 980,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": "",
+      "startDate": "2026-02-12T16:50:34.354Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-15T16:50:34.354Z"
+    },
+    {
+      "id": "2026-02-12-re-child-theme-and-editing",
+      "name": "Child Theme and Editing",
+      "category": "Development",
+      "status": "new",
+      "priority": "P0",
+      "owner": "Saad",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Client request: RE: Child Theme and Editing",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034350-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/Univision-Computers/2026-02-12-re-child-theme-and-editing",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.350Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Jared Jordan <jaredj@univisioncomputers.com>. Work type: Website Development. Urgency: 4/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "4/5",
+        "workType": "Website Development"
+      },
+      "sortOrder": 970,
+      "clientName": "Univision Computers",
+      "clientEmail": "Jared Jordan <jaredj@univisioncomputers.com>",
+      "originalRequest": "",
+      "startDate": "2026-02-12T16:50:34.351Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-13T16:50:34.351Z"
+    },
+    {
+      "id": "2026-02-12-fw-csi-s-business-address-update",
+      "name": "CSI's Business Address Update",
+      "category": "Marketing",
+      "status": "new",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Client request: FW: CSI's Business Address Update",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034343-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/The-Facilities-Group/2026-02-12-fw-csi-s-business-address-update",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.343Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Janice Areskog <jareskog@thefacilitiesgroup.com>. Work type: Ads. Urgency: 3/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "3/5",
+        "workType": "Ads"
+      },
+      "sortOrder": 950,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": "",
+      "startDate": "2026-02-12T16:50:34.345Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-15T16:50:34.345Z"
+    },
+    {
+      "id": "2026-02-12-re-lawsuit",
+      "name": "Lawsuit",
+      "category": "Operations",
+      "status": "new",
+      "priority": "P1",
+      "owner": "Mo",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Client request: RE: Lawsuit",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034337-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/The-Facilities-Group/2026-02-12-re-lawsuit",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.337Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Paul Gargagliano <pgargagliano@thefacilitiesgroup.com>. Work type: Support. Urgency: 3/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "3/5",
+        "workType": "Support"
+      },
+      "sortOrder": 930,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Paul Gargagliano <pgargagliano@thefacilitiesgroup.com>",
+      "originalRequest": "",
+      "startDate": "2026-02-12T16:50:34.338Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-15T16:50:34.338Z"
+    },
+    {
+      "id": "2026-02-12-notice-to-discontinue-seo-services",
+      "name": "Notice to Discontinue SEO Services",
+      "category": "Marketing",
+      "status": "new",
+      "priority": "P2",
+      "owner": "Otto",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Client request: Notice to Discontinue SEO Services",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034334-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/EBS-Maintenance/2026-02-12-notice-to-discontinue-seo-services",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.334Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Mohammad Issa <missa@ebsmaintenance.com>. Work type: SEO. Urgency: 2/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "2/5",
+        "workType": "SEO"
+      },
+      "sortOrder": 920,
+      "clientName": "EBS Maintenance",
+      "clientEmail": "Mohammad Issa <missa@ebsmaintenance.com>",
+      "originalRequest": "",
+      "startDate": "2026-02-12T16:50:34.335Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-19T16:50:34.335Z"
+    },
+    {
+      "id": "2026-02-12-signing",
+      "name": "Signing",
+      "category": "Development",
+      "status": "new",
+      "priority": "P1",
+      "owner": "Saad",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Client request: Signing",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034324-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/Univision-Computers/2026-02-12-signing",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.324Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Jared Jordan <jaredj@univisioncomputers.com>. Work type: Website Development. Urgency: 3/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "3/5",
+        "workType": "Website Development"
+      },
+      "sortOrder": 890,
+      "clientName": "Univision Computers",
+      "clientEmail": "Jared Jordan <jaredj@univisioncomputers.com>",
+      "originalRequest": "",
+      "startDate": "2026-02-12T16:50:34.324Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-15T16:50:34.324Z"
+    },
+    {
+      "id": "2026-02-12-fw-oss-website-change-needed",
+      "name": "OSS Website Change needed",
+      "category": "Development",
+      "status": "new",
+      "priority": "P2",
+      "owner": "Saad",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Client request: FW: OSS Website Change needed",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034321-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/The-Facilities-Group/2026-02-12-fw-oss-website-change-needed",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.321Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Janice Areskog <jareskog@thefacilitiesgroup.com>. Work type: Website Development. Urgency: 2/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "2/5",
+        "workType": "Website Development"
+      },
+      "sortOrder": 880,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": "",
+      "startDate": "2026-02-12T16:50:34.321Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-19T16:50:34.321Z"
+    },
+    {
+      "id": "2026-02-12-call-from-someone-in-miami",
+      "name": "Call from someone in Miami",
+      "category": "Marketing",
+      "status": "new",
+      "priority": "P2",
+      "owner": "Otto",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Client request: Call from someone in Miami",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034318-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/EBS-Maintenance/2026-02-12-call-from-someone-in-miami",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.318Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Mohammad Issa <missa@ebsmaintenance.com>. Work type: Ads. Urgency: 2/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "2/5",
+        "workType": "Ads"
+      },
+      "sortOrder": 870,
+      "clientName": "EBS Maintenance",
+      "clientEmail": "Mohammad Issa <missa@ebsmaintenance.com>",
+      "originalRequest": "",
+      "startDate": "2026-02-12T16:50:34.318Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-19T16:50:34.318Z"
+    },
+    {
+      "id": "2026-02-12-fw-seo-proposal-univisioncomputers-com",
+      "name": "SEO Proposal | univisioncomputers.com",
+      "category": "Development",
+      "status": "new",
+      "priority": "P2",
+      "owner": "Saad",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Client request: FW: SEO Proposal | univisioncomputers.com",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770915034308-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/Univision-Computers/2026-02-12-fw-seo-proposal-univisioncomputers-com",
+          "type": "document",
+          "timestamp": "2026-02-12T16:50:34.308Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Jared Jordan <jaredj@univisioncomputers.com>. Work type: Website Development. Urgency: 2/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "2/5",
+        "workType": "Website Development"
+      },
+      "sortOrder": 850,
+      "clientName": "Univision Computers",
+      "clientEmail": "Jared Jordan <jaredj@univisioncomputers.com>",
+      "originalRequest": "",
+      "startDate": "2026-02-12T16:50:34.311Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-19T16:50:34.311Z"
+    },
+    {
+      "id": "2026-02-12-re-google-business-logins",
+      "name": "Google business logins",
+      "category": "Operations",
+      "status": "new",
+      "priority": "P1",
+      "owner": "Mo",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Client request: RE: Google business logins",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770914995341-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/The-Facilities-Group/2026-02-12-re-google-business-logins",
+          "type": "document",
+          "timestamp": "2026-02-12T16:49:55.341Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Janice Areskog <jareskog@thefacilitiesgroup.com>. Work type: Support. Urgency: 3/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "3/5",
+        "workType": "Support"
+      },
+      "sortOrder": 830,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": "",
+      "startDate": "2026-02-12T16:49:55.342Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-15T16:49:55.342Z"
+    },
+    {
+      "id": "2026-02-12-re-blog-removal-summit-service-group-web",
+      "name": "Blog removal - Summit Service Group website",
+      "category": "Development",
+      "status": "new",
+      "priority": "P0",
+      "owner": "Saad",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Client request: RE: Blog removal - Summit Service Group website",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770914995338-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/The-Facilities-Group/2026-02-12-re-blog-removal-summit-service-group-web",
+          "type": "document",
+          "timestamp": "2026-02-12T16:49:55.338Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Janice Areskog <jareskog@thefacilitiesgroup.com>. Work type: Website Development. Urgency: 4/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "4/5",
+        "workType": "Website Development"
+      },
+      "sortOrder": 820,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": "",
+      "startDate": "2026-02-12T16:49:55.338Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-13T16:49:55.338Z"
+    },
+    {
+      "id": "2026-02-12-re-web-adjustment",
+      "name": "Web adjustment",
+      "category": "Marketing",
+      "status": "new",
+      "priority": "P0",
+      "owner": "Otto",
+      "progress": 0,
+      "statusColor": "blue",
+      "lastUpdated": "2026-02-27T12:57:28.973Z",
+      "notes": "Client request: Re: Web adjustment",
+      "blockers": [],
+      "deliverables": [
+        {
+          "id": "del-1770914995332-0",
+          "name": "Task Folder",
+          "url": "file:///Volumes/AI_Drive/D1010-CORE/clients/The-Facilities-Group/2026-02-12-re-web-adjustment",
+          "type": "document",
+          "timestamp": "2026-02-12T16:49:55.332Z"
+        }
+      ],
+      "comments": [],
+      "rationale": "Client request from Victoria Arinze <varinze@thefacilitiesgroup.com>. Work type: Ads. Urgency: 4/5.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Review client request",
+        "Estimate timeline",
+        "Begin work",
+        "Deliver and request approval"
+      ],
+      "metrics": {
+        "urgency": "4/5",
+        "workType": "Ads"
+      },
+      "sortOrder": 800,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Victoria Arinze <varinze@thefacilitiesgroup.com>",
+      "originalRequest": "",
+      "startDate": "2026-02-12T16:49:55.333Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-13T16:49:55.333Z"
+    },
+    {
+      "id": "2026-01-07-re-google-business-logins",
+      "name": "Google business logins",
+      "category": "Operations",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:53.080Z",
+      "notes": "Completed project. 1 revision during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 1,
+        "emails": 5,
+        "duration": "1 days"
+      },
+      "sortOrder": 600,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": "",
+      "hours": 0,
+      "startDate": "2026-02-12T16:41:53.080Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-15T16:41:53.080Z"
+    },
+    {
+      "id": "2026-01-06-re-web-adjustment",
+      "name": "Web adjustment",
+      "category": "Marketing",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:52.922Z",
+      "notes": "Completed project. 2 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 2,
+        "emails": 9,
+        "duration": "1 days"
+      },
+      "sortOrder": 590,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Victoria Arinze <varinze@thefacilitiesgroup.com>",
+      "originalRequest": "",
+      "hours": 0,
+      "startDate": "2026-02-12T16:41:52.922Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-15T16:41:52.922Z"
+    },
+    {
+      "id": "2026-01-08-fw-seo-proposal-univisioncomputers-com",
+      "name": "SEO Proposal | univisioncomputers.com",
+      "category": "Marketing",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:52.784Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 1,
+        "duration": "0 days"
+      },
+      "sortOrder": 580,
+      "clientName": "Univision Computers",
+      "clientEmail": "Jared Jordan <jaredj@univisioncomputers.com>",
+      "originalRequest": "\r\n\r\n\r\n\r\nJared Jordan | Marketing Coordinator\r\nBook an Appointment<https://univisioncomputers.com/discoverycall/>\r\njaredj@univisioncomputers.com<mailto:jaredj@univisioncomputers.com>  |  +14067218876\r\n118 1/2 N Woodland Blvd Ste 1 | Deland, FL 32720\r\nwww.univisioncomputers.com<http://www.univisioncomputers.com>\r\n        [cid:2024_crn_msp_500_vertical53x100_f82c48e8-e2e9-4f1a-a65f-7da78a00ab15.jpg] <https://univisioncomputers.com/#award>\r\n\r\n[cid:emailsigfinal589x106tm_53b84ffb-989f-48d0-a0de-b45f90f3e5f6.png]\r\n\r\nCONFIDENTIALITY: The information contained in this e-mail message may be privileged and confidential information intended only for the use of the individual or entity named above. If the reader of this message is not the intended recipient, you are hereby notified that any dissemination, distribution, or copying of this information is strictly prohibited. If you have received this communication in error, please notify us immediately by e-mail or telephone and permanently delete t",
+      "hours": 0,
+      "startDate": "2026-02-12T16:41:52.784Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-15T16:41:52.784Z"
+    },
+    {
+      "id": "2026-01-12-fw-oss-website-change-needed",
+      "name": "OSS Website Change needed",
+      "category": "Development",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:52.217Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 3,
+        "duration": "0 days"
+      },
+      "sortOrder": 560,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": "",
+      "hours": 0,
+      "startDate": "2026-02-12T16:41:52.217Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-15T16:41:52.217Z"
+    },
+    {
+      "id": "2026-01-12-call-from-someone-in-miami",
+      "name": "Call from someone in Miami",
+      "category": "Operations",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:52.092Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 2,
+        "duration": "0 days"
+      },
+      "sortOrder": 550,
+      "clientName": "EBS Maintenance",
+      "clientEmail": "Mohammad Issa <missa@ebsmaintenance.com>",
+      "originalRequest": "Hi Michael,\r\n\r\nI got a call from someone stating that our business was showing up in the\r\nMiami area. He was calling about services in that area. Please advise\r\n\r\n\r\nBest Regards,\r\n\r\n*Mohammad Issa*\r\nPresident/CEO\r\n\r\n 23322 Peralta Dr. #1\r\n Laguna Hills, CA 92653\r\n O: 949.375.3305\r\n M: 949.275.2179\r\n missa@ebsmaintenance.com\r\n www.ebsmaintenance.com\r\n",
+      "hours": 0,
+      "startDate": "2026-02-12T16:41:52.092Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-15T16:41:52.092Z"
+    },
+    {
+      "id": "2026-01-07-re-blog-removal-summit-service-group-web",
+      "name": "Blog removal - Summit Service Group website",
+      "category": "Development",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:51.982Z",
+      "notes": "Completed project. 3 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 3,
+        "emails": 8,
+        "duration": "6 days"
+      },
+      "sortOrder": 540,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": "",
+      "hours": 0,
+      "startDate": "2026-02-12T16:41:51.982Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-15T16:41:51.982Z"
+    },
+    {
+      "id": "2026-01-14-fw-janitech-about-us",
+      "name": "Janitech About Us",
+      "category": "Operations",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:51.372Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 4,
+        "duration": "0 days"
+      },
+      "sortOrder": 510,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": "",
+      "hours": 0,
+      "startDate": "2026-02-12T16:41:51.372Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-15T16:41:51.372Z"
+    },
+    {
+      "id": "2026-01-15-re-child-theme-and-editing",
+      "name": "Child Theme and Editing",
+      "category": "Operations",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:51.248Z",
+      "notes": "Completed project. 3 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 3,
+        "emails": 9,
+        "duration": "1 days"
+      },
+      "sortOrder": 500,
+      "clientName": "Univision Computers",
+      "clientEmail": "Jared Jordan <jaredj@univisioncomputers.com>",
+      "originalRequest": "https://youtu.be/A9k809WMfVk\r\n\r\nKinda how they have it setup. Its annoying but I doubt we will be able to get around the child theme.\r\n\r\n\r\nJared Jordan | Marketing Coordinator\r\nBook an Appointment<https://univisioncomputers.com/discoverycall/>\r\njaredj@univisioncomputers.com<mailto:jaredj@univisioncomputers.com>  |  +14067218876\r\n118 1/2 N Woodland Blvd Ste 1 | Deland, FL 32720\r\nwww.univisioncomputers.com<http://www.univisioncomputers.com>\r\n        [cid:2024_crn_msp_500_vertical53x100_f82c48e8-e2e9-4f1a-a65f-7da78a00ab15.jpg] <https://univisioncomputers.com/#award>\r\n\r\n[cid:emailsigfinal589x106tm_53b84ffb-989f-48d0-a0de-b45f90f3e5f6.png]\r\n\r\nCONFIDENTIALITY: The information contained in this e-mail message may be privileged and confidential information intended only for the use of the individual or entity named above. If the reader of this message is not the intended recipient, you are hereby notified that any dissemination, distribution, or copying of this information is strictly prohibi",
+      "hours": 0,
+      "startDate": "2026-02-12T16:41:51.248Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-15T16:41:51.248Z"
+    },
+    {
+      "id": "2026-01-15-declined-d1010-tfg-catch-up-call",
+      "name": "Declined: D1010/TFG - Catch Up Call",
+      "category": "Operations",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:51.067Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 1,
+        "duration": "0 days"
+      },
+      "sortOrder": 490,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": "",
+      "hours": 0,
+      "startDate": "2026-02-12T16:41:51.067Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-15T16:41:51.067Z"
+    },
+    {
+      "id": "2026-01-15-fw-csi-s-business-address-update",
+      "name": "CSI's Business Address Update",
+      "category": "Marketing",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:50.976Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 4,
+        "duration": "0 days"
+      },
+      "sortOrder": 480,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": "",
+      "hours": 0,
+      "startDate": "2026-02-12T16:41:50.976Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-15T16:41:50.976Z"
+    },
+    {
+      "id": "2026-01-15-re-summit-service-group-website-contact-",
+      "name": "Summit Service Group Website Contact Updates",
+      "category": "Development",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:50.374Z",
+      "notes": "Completed project. 1 revision during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 1,
+        "emails": 6,
+        "duration": "2 days"
+      },
+      "sortOrder": 460,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Chris Harbach <charbach@thefacilitiesgroup.com>",
+      "originalRequest": "",
+      "hours": 0,
+      "startDate": "2026-02-12T16:41:50.374Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-15T16:41:50.374Z"
+    },
+    {
+      "id": "2026-01-15-re-fw-victoria-arinze-mentioned-you-in-a",
+      "name": "FW: Victoria Arinze mentioned you in a Pipedrive note",
+      "category": "Operations",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:50.244Z",
+      "notes": "Completed project. 1 revision during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 1,
+        "emails": 6,
+        "duration": "6 days"
+      },
+      "sortOrder": 450,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": "",
+      "hours": 0,
+      "startDate": "2026-02-12T16:41:50.244Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-15T16:41:50.244Z"
+    },
+    {
+      "id": "2026-01-23-re-folder-shared-with-you-univision-comp",
+      "name": "Folder shared with you: \"Univision Computers\"",
+      "category": "Operations",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:49.657Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 1,
+        "duration": "0 days"
+      },
+      "sortOrder": 400,
+      "clientName": "Univision Computers",
+      "clientEmail": "Christopher Sumner <christophers@univisioncomputers.com>",
+      "originalRequest": "Thanks!!\r\n\r\n\r\n\r\n\r\nChristopher Sumner | Owner\r\nchristophers@univisioncomputers.com<mailto:christophers@univisioncomputers.com>\r\nOffice: 386-492-8876<tel:386-492-8876> | Direct: 386-368-8232<tel:386-492-8876>\r\n118 1/2 N Woodland Blvd Ste 1 | Deland, FL 32720\r\nwww.univisioncomputers.com<http://www.univisioncomputers.com>\r\n        [cid:2024_crn_msp_500_vertical53x100_ec326969-4e77-41a8-9079-0627b3562d9a.jpg] <https://univisioncomputers.com/#award>\r\n\r\n[cid:emailsigfinal589x106tm_4215de32-1f5a-4fbb-ac66-316d9d2b17e9.png]\r\n\r\nCONFIDENTIALITY: The information contained in this e-mail message may be privileged and confidential information intended only for the use of the individual or entity named above. If the reader of this message is not the intended recipient, you are hereby notified that any dissemination, distribution, or copying of this information is strictly prohibited. If you have received this communication in error, please notify us immediately by e-mail or telephone and permanently ",
+      "hours": 0,
+      "startDate": "2026-02-12T16:41:49.657Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-15T16:41:49.657Z"
+    },
+    {
+      "id": "2026-01-23-re-campaign-results",
+      "name": "Campaign results",
+      "category": "Marketing",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:49.295Z",
+      "notes": "Completed project. 2 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 2,
+        "emails": 7,
+        "duration": "5 days"
+      },
+      "sortOrder": 370,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": "",
+      "hours": 0,
+      "startDate": "2026-02-12T16:41:49.295Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-15T16:41:49.295Z"
+    },
+    {
+      "id": "2026-02-02-re-vicki-sanetra-lead-shea-barret-united",
+      "name": "Vicki Sanetra Lead - Shea Barret - UnitedHQ",
+      "category": "Marketing",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:49.131Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 4,
+        "duration": "0 days"
+      },
+      "sortOrder": 360,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": "",
+      "hours": 0,
+      "startDate": "2026-02-12T16:41:49.131Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-15T16:41:49.131Z"
+    },
+    {
+      "id": "2026-02-02-re-tse-vanity-link-request",
+      "name": "TSE \"Vanity Link\" Request",
+      "category": "Development",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:49.000Z",
+      "notes": "Completed project. 2 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 2,
+        "emails": 5,
+        "duration": "1 days"
+      },
+      "sortOrder": 350,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Chris Harbach <charbach@thefacilitiesgroup.com>",
+      "originalRequest": "",
+      "hours": 0,
+      "startDate": "2026-02-12T16:41:49.000Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-15T16:41:49.000Z"
+    },
+    {
+      "id": "2026-02-03-fw-website-update",
+      "name": "Website Update",
+      "category": "Development",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:48.839Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 4,
+        "duration": "0 days"
+      },
+      "sortOrder": 340,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": "",
+      "hours": 0,
+      "startDate": "2026-02-12T16:41:48.839Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-15T16:41:48.839Z"
+    },
+    {
+      "id": "2026-02-02-fw-pipedrive-access",
+      "name": "Pipedrive access",
+      "category": "Operations",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:48.703Z",
+      "notes": "Completed project. 3 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 3,
+        "emails": 6,
+        "duration": "2 days"
+      },
+      "sortOrder": 330,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": "",
+      "hours": 0,
+      "startDate": "2026-02-12T16:41:48.703Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-15T16:41:48.703Z"
+    },
+    {
+      "id": "2026-02-04-re-tfg-sites-wordpress-core-version-6-9-",
+      "name": "TFG Sites WordPress core version (6.9.1) Update",
+      "category": "Development",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:48.367Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 2,
+        "duration": "0 days"
+      },
+      "sortOrder": 320,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Chris Harbach <charbach@thefacilitiesgroup.com>",
+      "originalRequest": "",
+      "hours": 0,
+      "startDate": "2026-02-12T16:41:48.367Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-15T16:41:48.367Z"
+    },
+    {
+      "id": "2026-02-05-re-rna-web-form-update",
+      "name": "RNA web form update",
+      "category": "Development",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:48.130Z",
+      "notes": "Completed project. 2 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 2,
+        "emails": 5,
+        "duration": "1 days"
+      },
+      "sortOrder": 300,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": "",
+      "hours": 0,
+      "startDate": "2026-02-12T16:41:48.130Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-15T16:41:48.130Z"
+    },
+    {
+      "id": "2026-02-07--purpleheartpools-com-login-authenticati",
+      "name": "[purpleheartpools.com] Login Authentication Code",
+      "category": "Operations",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:47.996Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 1,
+        "duration": "0 days"
+      },
+      "sortOrder": 290,
+      "clientName": "Purple Heart Pools",
+      "clientEmail": "WordPress <wordpress@purpleheartpools.com>",
+      "originalRequest": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\r\n<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" lang=\"en-US\">\r\n<head>\r\n\t<meta charset=\"UTF-8\">\r\n\t<meta content=\"width=device-width, initial-scale=1\" name=\"viewport\">\r\n\t<meta name=\"x-apple-disable-message-reformatting\">\r\n\t<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" charset=UTF-8>\r\n\t<meta content=\"telephone=no\" name=\"format-detection\">\r\n\t<title>Continue Logging On</title><!--[if (mso 16)]>\r\n\t<style type=\"text/css\">\r\n\t\ta {\r\n\t\t\ttext-decoration: none;\r\n\t\t}\r\n\t</style>\r\n\t<![endif]--><!--[if gte mso 9]>\r\n\t<style>sup {\r\n\t\tfont-size: 100% !important;\r\n\t}</style><![endif]--><!--[if gte mso 9]>\r\n\t<xml>\r\n\t\t<o:OfficeDocumentSettings>\r\n\t\t\t<o:AllowPNG></o:AllowPNG>\r\n\t\t\t<o:PixelsPerInch>96</o:PixelsPerInch>\r\n\t\t</o:OfficeDocumentSettings>\r\n\t</xml>\r\n\t<![endif]-->\r\n\t<style type=\"text/css\">\r\n\t\t#outlook a {\r\n\t\t\tpadding: 0;\r\n\t\t}\r\n\r\n\t\t",
+      "hours": 0,
+      "startDate": "2026-02-12T16:41:47.996Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-15T16:41:47.996Z"
+    },
+    {
+      "id": "2026-02-10--purple-heart-pools-some-plugins-were-au",
+      "name": "[Purple Heart Pools] Some plugins were automatically updated",
+      "category": "Operations",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:47.793Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 1,
+        "duration": "0 days"
+      },
+      "sortOrder": 270,
+      "clientName": "Purple Heart Pools",
+      "clientEmail": "WordPress <wordpress@purpleheartpools.com>",
+      "originalRequest": "Howdy! Some plugins have automatically updated to their latest versions on your site at https://purpleheartpools.com. No further action is needed on your part.\r\n\r\n\r\nThese plugins are now up to date:\r\n- Site Kit by Google (from version 1.171.0 to 1.172.0) : https://wordpress.org/plugins/google-site-kit/\r\n\r\n\r\nIf you experience any issues or need support, the volunteers in the WordPress.org support forums may be able to help.\r\nhttps://wordpress.org/support/forums/\r\n\r\nThe WordPress Team\r\n\r\n",
+      "hours": 0,
+      "startDate": "2026-02-12T16:41:47.793Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-15T16:41:47.793Z"
+    },
+    {
+      "id": "2026-02-10-re-brand-landing-page",
+      "name": "Brand landing page",
+      "category": "Development",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:47.546Z",
+      "notes": "Completed project. 1 revision during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 1,
+        "emails": 7,
+        "duration": "1 days"
+      },
+      "sortOrder": 250,
+      "clientName": "The Facilities Group",
+      "clientEmail": "Janice Areskog <jareskog@thefacilitiesgroup.com>",
+      "originalRequest": "",
+      "hours": 0,
+      "startDate": "2026-02-12T16:41:47.546Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-15T16:41:47.546Z"
+    },
+    {
+      "id": "2026-02-11-blocking-d1010-user-account-for-arnel",
+      "name": "Blocking D1010 User account for Arnel",
+      "category": "Operations",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:41:47.400Z",
+      "notes": "Completed project. 0 revisions during execution.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [],
+      "rationale": "",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [],
+      "metrics": {
+        "revisions": 0,
+        "emails": 2,
+        "duration": "0 days"
+      },
+      "sortOrder": 240,
+      "clientName": "The Facilities Group",
+      "clientEmail": "William Jones <wjones@thefacilitiesgroup.com>",
+      "originalRequest": "",
+      "hours": 0,
+      "startDate": "2026-02-12T16:41:47.400Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-15T16:41:47.400Z"
+    },
+    {
+      "id": "2026-02-11-tfg-arnel-account-security",
+      "name": "Arnel Account Security Issue",
+      "category": "Operations",
+      "status": "complete",
+      "priority": "P0",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:40:28.667Z",
+      "notes": "Arnel TFG tenant account flagged for suspicious login activity. Security alert triggered - proxy/datacenter IP, unusual geolocation, recent abuse activity detected.",
+      "blockers": [],
+      "deliverables": [],
+      "comments": [
+        {
+          "id": "cmt-1770914428667",
+          "author": "Otto",
+          "timestamp": "2026-02-12T16:40:28.667Z",
+          "type": "resolution",
+          "text": "Resolved: Contacted Arnel, coordinated with TFG helpdesk, account unlocked and password reset completed.",
+          "status": "resolved",
+          "responses": []
+        }
+      ],
+      "rationale": "Critical security response. Account compromised or accessed from unauthorized location. Requires immediate password reset and helpdesk unlock.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Contact Arnel about security alert",
+        "Coordinate with TFG Helpdesk (1-833-483-4435)",
+        "Get account unlocked and password reset",
+        "Verify Arnels access is legitimate"
+      ],
+      "metrics": {
+        "severity": "High - Security Alert",
+        "responseTime": "Immediate",
+        "resolvedDate": "Feb 11, 2026"
+      },
+      "sortOrder": 230,
+      "clientName": "The Facilities Group",
+      "clientEmail": "wjones@thefacilitiesgroup.com",
+      "originalRequest": "From: William Jones (Sr. Director, Cyber Security)\nDate: Wed, 11 Feb 2026 19:14:10 +0000\n\nWe got an alert that Arnel's account for our tenant was used today and has triggered an alert for the following:\n\nThe source IP is associated with proxy and data center infrastructure, and both the user agent and geolocation are inconsistent with historical activity. Furthermore, the login originated from a country and user agent not previously observed, and the source IP has been linked to recent abuse activity.\n\nPlease have the user call into the TFG Helpdesk and get their account unlocked and Password reset.\n1-833-483-4435",
+      "hours": 0,
+      "startDate": "2026-02-12T16:40:28.667Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-13T16:40:28.667Z"
+    },
+    {
+      "id": "2026-02-10-tfg-summit-landing-page",
+      "name": "Summit Service Group Landing Page",
+      "category": "Development",
+      "status": "complete",
+      "priority": "P2",
+      "owner": "Saad",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-12T16:39:58.526Z",
+      "notes": "Brand integration landing page for Summit Service Group + TFC acquisition. Style to match EBM merger page.",
+      "blockers": [],
+      "deliverables": [
+        {
+          "name": "Landing Page Copy",
+          "url": "file:///Volumes/D1010 Archives/D1010/Clients/Active/TFG/Projects/Summit-Integration-2026-02/Summit Integration with TFC.docx",
+          "type": "document"
+        },
+        {
+          "name": "Reference Page (EBM Merger)",
+          "url": "https://thefacilitiesgroup.com/ebm-csi-merger/",
+          "type": "web-app"
+        },
+        {
+          "name": "Project Folder",
+          "url": "file:///Volumes/D1010 Archives/D1010/Clients/Active/TFG/Projects/Summit-Integration-2026-02/",
+          "type": "document"
+        },
+        {
+          "id": "del-1770914221019",
+          "name": "Completed Landing Page",
+          "url": "https://thefacilitiesgroup.com/summit-tfc-integration/",
+          "type": "web-app",
+          "timestamp": "2026-02-12T16:37:01.019Z"
+        },
+        {
+          "id": "del-1770914384984",
+          "name": "Job Start Email to Saad",
+          "url": "file:///Volumes/AI_Drive/AI_WORKING/agents/joan/send_saad_formatted.js",
+          "type": "document",
+          "timestamp": "2026-02-12T16:39:44.984Z"
+        }
+      ],
+      "comments": [
+        {
+          "id": "cmt-1770914215169",
+          "author": "Saad",
+          "timestamp": "2026-02-12T16:36:55.169Z",
+          "type": "completion",
+          "text": "Landing page complete. Domain redirect configured, old page deleted, Our Brands updated.",
+          "status": "resolved",
+          "responses": []
+        }
+      ],
+      "rationale": "TFG acquired Summit Service Group and TFC. Need consolidated brand presence with landing page, domain redirect, and cleanup of old pages.",
+      "risks": [],
+      "dependencies": [],
+      "nextActions": [
+        "Build landing page matching EBM merger style",
+        "Configure summitservicegroup.com redirect",
+        "Delete old Summit location page",
+        "Remove Summit from Our Brands page and map",
+        "Submit to Michael for final review"
+      ],
+      "metrics": {
+        "clientRelationship": "Active, stable",
+        "recentWin": "71% CPL reduction (Feb 2026)",
+        "assignedDate": "Feb 10, 2026"
+      },
+      "sortOrder": 220,
+      "clientName": "The Facilities Group",
+      "clientEmail": "jareskog@thefacilitiesgroup.com",
+      "originalRequest": "From: Janice Areskog\nDate: Tue, 10 Feb 2026 16:09:20 +0000\n\nHi Michael, we have another brand integration, can you please build a landing page similar to this one: EBM & CSI Merger for Summit and TFC? Copy is attached.\n\nOnce approved we need summitservicegroup.com to redirect to the landing page.\n\nAlso, please delete this page Summit Service Group and remove Summit from Our Brands page and the map.",
+      "hours": 0,
+      "startDate": "2026-02-12T16:39:58.526Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-19T16:39:58.526Z"
+    },
+    {
+      "id": "D1010-INT-001",
+      "name": "Intel System",
+      "status": "complete",
+      "priority": "P0",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "green",
+      "lastUpdated": "2026-02-27T14:15:39.027Z",
+      "deliverables": [
+        {
+          "id": "del-1770912338291-0",
+          "name": "Intel System Spec",
+          "url": "file:///Volumes/AI_Drive/AI_WORKING/INTEL_SYSTEM_SPEC.md",
+          "type": "document",
+          "timestamp": "2026-02-12T16:05:38.291Z"
+        }
+      ],
+      "comments": [],
+      "category": "Operations",
+      "notes": "Intel system active with 3 daily cron jobs (7am, 12pm, 6pm) monitoring news, competitors, and industry trends",
+      "rationale": "Competitive intelligence and industry trends inform strategy. Automated monitoring saves manual research time.",
+      "risks": [],
+      "nextActions": [
+        "Monitor digest quality over next week",
+        "Add more data sources if needed"
+      ],
+      "dependencies": [],
+      "metrics": {
+        "scansPerDay": 3,
+        "sourcesMonitored": "News, competitors, industry trends"
+      },
+      "sortOrder": 70,
+      "startDate": "2026-02-12T15:28:00.000Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-13T15:28:00.000Z",
+      "blockers": []
+    },
+    {
+      "id": "D1010-MC-001",
+      "name": "Mission Control Deployment",
+      "status": "in-progress",
+      "priority": "P0",
+      "owner": "Otto",
+      "progress": 50,
+      "statusColor": "yellow",
+      "lastUpdated": "2026-02-27T14:15:39.027Z",
+      "notes": "Mission Control partially deployed. Otto operational, Joan deployed but Console/Peg integration pending.",
+      "deliverables": [],
+      "comments": [],
+      "category": "Operations",
+      "rationale": "Vegas trip (Feb 13-17) requires unattended system operation. Mission Control ensures stability.",
+      "risks": [
+        {
+          "severity": "moderate",
+          "description": "Only Otto deployed, Joan/Peg/Console integration incomplete",
+          "mitigation": "Prioritized critical systems (Otto, Intel). Full deployment post-Vegas."
+        }
+      ],
+      "nextActions": [
+        "Complete Joan/Peg/Console integration",
+        "Deploy remaining agents",
+        "Full stress test"
+      ],
+      "dependencies": [
+        "D1010-JOAN-001",
+        "GML-2026-02-11-02"
+      ],
+      "metrics": {
+        "agentsDeployed": "1/4",
+        "systemUptime": "100%",
+        "cronJobsActive": 6
+      },
+      "sortOrder": 80,
+      "startDate": "2026-02-12T15:28:00.000Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-13T15:28:00.000Z",
+      "blockers": []
+    },
+    {
+      "id": "GML-2026-02-11-02",
+      "name": "Gmail Access Refresh",
+      "status": "complete",
+      "priority": "P1",
+      "owner": "Otto",
+      "progress": 100,
+      "statusColor": "yellow",
+      "lastUpdated": "2026-02-27T14:15:39.027Z",
+      "notes": "Gmail API token refreshed but continues to expire every few days. OAuth flow working but requires manual refresh.",
+      "deliverables": [
+        {
+          "id": "del-1770912338291-0",
+          "name": "Gmail Token (expires frequently)",
+          "url": "file:///Volumes/AI_Drive/01-Infrastructure/Config/google/token_gmail.json",
+          "type": "code",
+          "timestamp": "2026-02-12T16:05:38.291Z"
+        }
+      ],
+      "comments": [],
+      "category": "Development",
+      "rationale": "Gmail API access required for Joan email monitoring. Token-based auth needed for automation.",
+      "risks": [
+        {
+          "severity": "high",
+          "description": "Token expires every few days, breaks Joan monitoring",
+          "mitigation": "Manual refresh as temporary fix. Need permanent OAuth solution."
+        }
+      ],
+      "nextActions": [
+        "Research OAuth refresh flow",
+        "Consider service account approach",
+        "Document token refresh procedure"
+      ],
+      "dependencies": [],
+      "metrics": {
+        "tokenLifespan": "3-5 days",
+        "manualRefreshesPerWeek": "~2"
+      },
+      "sortOrder": 150,
+      "startDate": "2026-02-12T15:28:00.000Z",
+      "createdDate": "2026-02-12",
+      "dueDate": "2026-02-15T15:28:00.000Z",
+      "blockers": []
+    }
+  ],
+  "clients": [
+    "904 Family Law",
+    "Acme Corp",
+    "client@driftdream.com",
+    "Digital1010",
+    "EBS Maintenance",
+    "janice@univisioncomputers.com",
+    "new client",
+    "Nike",
+    "Purple Heart Pools",
+    "TechStart Inc",
+    "Tesla",
+    "TFG",
+    "The Facilities Group",
+    "Univision Computers",
+    "Unknown"
+  ],
+  "createdAt": "2026-02-25T19:40:38.532Z",
+  "updatedAt": "2026-03-09T14:54:58.696Z",
+  "assignments": [],
+  "notificationEvents": []
+}

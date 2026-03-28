@@ -241,6 +241,63 @@ function renderProjects() {
                       </div>
                       ${project.notes ? `<div style="font-size: 13px; color: var(--text-secondary); margin-bottom: 8px;">📝 ${project.notes}</div>` : ''}
                       ${project.blockers?.length ? `<div style="font-size: 13px; color: var(--status-red); margin-bottom: 8px;">🚫 ${project.blockers.join(', ')}</div>` : ''}
+                      
+                      <!-- Apple-Level Inline Financial Editing -->
+                      <div class="financial-section" style="margin-top: 12px; padding: 12px; background: rgba(59, 130, 246, 0.05); border-radius: 8px; border: 1px solid rgba(59, 130, 246, 0.2);" onclick="event.stopPropagation()">
+                        <div style="font-size: 11px; color: var(--accent-blue); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">💰 Financials</div>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px;">
+                          <div>
+                            <div style="font-size: 11px; color: var(--text-secondary); margin-bottom: 2px;">Hours</div>
+                            <input type="number" 
+                                   class="financial-input" 
+                                   value="${project.actualHours || 0}" 
+                                   style="width: 100%; padding: 4px 8px; border: 1px solid rgba(255, 255, 255, 0.1); background: rgba(0, 0, 0, 0.2); color: white; border-radius: 4px; font-size: 13px;"
+                                   onchange="updateFinancials('${project.id}', 'actualHours', this.value)">
+                          </div>
+                          <div>
+                            <div style="font-size: 11px; color: var(--text-secondary); margin-bottom: 2px;">Rate</div>
+                            <input type="number" 
+                                   class="financial-input" 
+                                   value="${project.hourlyRate || 150}" 
+                                   style="width: 100%; padding: 4px 8px; border: 1px solid rgba(255, 255, 255, 0.1); background: rgba(0, 0, 0, 0.2); color: white; border-radius: 4px; font-size: 13px;"
+                                   onchange="updateFinancials('${project.id}', 'hourlyRate', this.value)">
+                          </div>
+                        </div>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px;">
+                          <div>
+                            <div style="font-size: 11px; color: var(--text-secondary); margin-bottom: 2px;">Cost</div>
+                            <input type="number" 
+                                   class="financial-input" 
+                                   value="${project.cost || 0}" 
+                                   style="width: 100%; padding: 4px 8px; border: 1px solid rgba(255, 255, 255, 0.1); background: rgba(0, 0, 0, 0.2); color: white; border-radius: 4px; font-size: 13px;"
+                                   onchange="updateFinancials('${project.id}', 'cost', this.value)">
+                          </div>
+                          <div>
+                            <div style="font-size: 11px; color: var(--text-secondary); margin-bottom: 2px;">Revenue</div>
+                            <div style="padding: 4px 8px; background: rgba(16, 185, 129, 0.1); border-radius: 4px; font-size: 13px; font-weight: 600; color: #10b981;">
+                              $${project.revenue || 0}
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                          <div>
+                            <div style="font-size: 11px; color: var(--text-secondary); margin-bottom: 2px;">Profit</div>
+                            <div style="padding: 4px 8px; background: rgba(16, 185, 129, 0.2); border-radius: 4px; font-size: 13px; font-weight: 600; color: #10b981;">
+                              $${project.profit || 0}
+                            </div>
+                          </div>
+                          <div>
+                            <div style="font-size: 11px; color: var(--text-secondary); margin-bottom: 2px;">Margin</div>
+                            <div style="padding: 4px 8px; background: rgba(16, 185, 129, 0.2); border-radius: 4px; font-size: 13px; font-weight: 600; color: #10b981;">
+                              ${project.margin ? project.margin.toFixed(1) : 0}%
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
                       ${project.comments?.length ? `<div style="font-size: 12px; color: var(--accent-blue); margin-top: 8px;">💬 ${project.comments.length} comment${project.comments.length !== 1 ? 's' : ''}</div>` : ''}
                     </div>
                   `).join('')}
@@ -721,6 +778,99 @@ async function requestChanges() {
   await loadData();
   render();
   openProjectModal(currentProjectId);
+}
+
+// Update project financials (inline editing)
+async function updateFinancials(projectId, field, value) {
+  try {
+    // Get current project to calculate all fields
+    const project = data.projects.find(p => p.id === projectId);
+    if (!project) return;
+    
+    // Prepare update data
+    const updateData = {
+      actualHours: field === 'actualHours' ? parseFloat(value) : project.actualHours || 0,
+      hourlyRate: field === 'hourlyRate' ? parseFloat(value) : project.hourlyRate || 150,
+      cost: field === 'cost' ? parseFloat(value) : project.cost || 0,
+      updatedBy: 'Dashboard'
+    };
+    
+    // Send update to server
+    const response = await fetch(`/api/projects/${projectId}/financial`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(updateData)
+    });
+    
+    if (response.ok) {
+      const result = await response.json();
+      
+      // Update local data
+      const projectIndex = data.projects.findIndex(p => p.id === projectId);
+      if (projectIndex !== -1) {
+        data.projects[projectIndex] = { 
+          ...data.projects[projectIndex], 
+          ...result.project 
+        };
+      }
+      
+      // Re-render projects to show updated financials
+      renderProjects();
+      
+      // Show success notification
+      showNotification('Financials updated successfully', 'success');
+    } else {
+      throw new Error('Failed to update financials');
+    }
+  } catch (error) {
+    console.error('Error updating financials:', error);
+    showNotification('Error updating financials', 'error');
+  }
+}
+
+// Show notification
+function showNotification(message, type = 'info') {
+  const notification = document.createElement('div');
+  notification.className = `notification ${type}`;
+  notification.textContent = message;
+  notification.style.cssText = `
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 12px 20px;
+    background: ${type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : '#3b82f6'};
+    color: white;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    z-index: 10000;
+    animation: slideIn 0.3s ease;
+  `;
+  
+  document.body.appendChild(notification);
+  
+  // Remove after 3 seconds
+  setTimeout(() => {
+    notification.style.animation = 'slideOut 0.3s ease';
+    setTimeout(() => notification.remove(), 300);
+  }, 3000);
+}
+
+// Add CSS animations for notifications
+if (!document.querySelector('#notification-styles')) {
+  const style = document.createElement('style');
+  style.id = 'notification-styles';
+  style.textContent = `
+    @keyframes slideIn {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    @keyframes slideOut {
+      from { transform: translateX(0); opacity: 1; }
+      to { transform: translateX(100%); opacity: 0; }
+    }
+  `;
+  document.head.appendChild(style);
 }
 
 // Move project priority

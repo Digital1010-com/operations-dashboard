@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Product Dashboard</title>
+    <style>
+        body { font-family: Arial; margin: 20px; }
+        .test { border: 1px solid #ccc; padding: 15px; margin: 10px 0; }
+        .pass { background: #d4edda; }
+        .fail { background: #f8d7da; }
+        pre { background: #f5f5f5; padding: 10px; overflow: auto; }
+    </style>
+</head>
+<body>
+    <h1>Test: Product Dashboard</h1>
+    <p>Testing if the product dashboard (public/index.html) loads and shows projects correctly.</p>
+    
+    <div class="test">
+        <h3>Test 1: Load Product Dashboard</h3>
+        <iframe id="dashboardFrame" src="/public/" width="100%" height="400px"></iframe>
+        <p>Status: <span id="frameStatus">Loading...</span></p>
+    </div>
+    
+    <div class="test">
+        <h3>Test 2: Check API Data</h3>
+        <div id="apiTest">Testing API...</div>
+    </div>
+    
+    <div class="test">
+        <h3>Test 3: Check TFG Projects in Data</h3>
+        <div id="tfgTest">Checking TFG projects...</div>
+    </div>
+    
+    <div class="test">
+        <h3>Test 4: Direct Project Check</h3>
+        <div id="directTest">Checking directly...</div>
+    </div>
+    
+    <script>
+        async function runTests() {
+            // Test 2: Check API Data
+            try {
+                const response = await fetch('/api/data');
+                const data = await response.json();
+                const projects = data.projects || [];
+                
+                document.getElementById('apiTest').innerHTML = `
+                    <div class="pass">
+                        ✅ API loaded successfully<br>
+                        Total projects: ${projects.length}
+                    </div>
+                    <pre>${JSON.stringify(projects.slice(0, 3), null, 2)}...</pre>
+                `;
+                
+                // Test 3: Check TFG Projects
+                const tfgProjects = projects.filter(p => 
+                    p.id === 'D1010-OPS-198096' || 
+                    p.id === 'D1010-DEV-298967'
+                );
+                
+                if (tfgProjects.length === 2) {
+                    document.getElementById('tfgTest').innerHTML = `
+                        <div class="pass">
+                            ✅ Found both TFG projects in API data
+                        </div>
+                        <ul>
+                            ${tfgProjects.map(p => `
+                                <li><strong>${p.id}:</strong> ${p.name}<br>
+                                Status: ${p.status}, Client: ${p.clientName}, Owner: ${p.owner}
+                                </li>
+                            `).join('')}
+                        </ul>
+                    `;
+                } else {
+                    document.getElementById('tfgTest').innerHTML = `
+                        <div class="fail">
+                            ❌ Missing TFG projects in API data<br>
+                            Found: ${tfgProjects.length} of 2
+                        </div>
+                    `;
+                }
+                
+                // Test 4: Direct check of what might be wrong
+                const tfg1 = projects.find(p => p.id === 'D1010-OPS-198096');
+                const tfg2 = projects.find(p => p.id === 'D1010-DEV-298967');
+                
+                let directHtml = '<h4>Project Analysis:</h4>';
+                
+                [tfg1, tfg2].forEach((p, i) => {
+                    if (p) {
+                        directHtml += `
+                            <div style="margin: 10px 0; padding: 10px; border: 1px solid #ddd;">
+                                <strong>${p.id}: ${p.name}</strong><br>
+                                Status: <code>${p.status}</code> (should show in "in-progress" bucket)<br>
+                                Category: <code>${p.category}</code> (filter: "all" should include this)<br>
+                                Client: <code>${p.clientName}</code><br>
+                                Owner: <code>${p.owner}</code><br>
+                                Has required fields: ${p.name && p.status && p.category ? '✅' : '❌'}
+                            </div>
+                        `;
+                    } else {
+                        directHtml += `<div class="fail">❌ Project ${i === 0 ? 'D1010-OPS-198096' : 'D1010-DEV-298967'} not found in data</div>`;
+                    }
+                });
+                
+                document.getElementById('directTest').innerHTML = directHtml;
+                
+            } catch (error) {
+                document.getElementById('apiTest').innerHTML = `
+                    <div class="fail">❌ API Error: ${error.message}</div>
+                `;
+            }
+            
+            // Update iframe status
+            const frame = document.getElementById('dashboardFrame');
+            frame.onload = function() {
+                document.getElementById('frameStatus').innerHTML = '✅ Loaded';
+                document.getElementById('frameStatus').style.color = 'green';
+            };
+            
+            frame.onerror = function() {
+                document.getElementById('frameStatus').innerHTML = '❌ Failed to load';
+                document.getElementById('frameStatus').style.color = 'red';
+            };
+        }
+        
+        runTests();
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+{
+  "projects": [],
+  "categories": [
+    {
+      "name": "Marketing",
+      "emoji": ""
+    },
+    {
+      "name": "Creative",
+      "emoji": ""
+    },
+    {
+      "name": "Operations",
+      "emoji": ""
+    },
+    {
+      "name": "Development",
+      "emoji": ""
+    }
+  ],
+  "clients": [],
+  "agents": [],
+  "activityFeed": [
+    {
+      "id": "act-1772482543591-32bc",
+      "timestamp": "2026-03-02T20:15:43.582Z",
+      "agent": "system",
+      "action": "workspace.created",
+      "target": "PL Signup 1772482543552",
+      "type": "system",
+      "details": {
+        "source": "public_signup"
+      }
+    }
+  ],
+  "teamMembers": [
+    {
+      "id": "member-1772482543591-97c9",
+      "name": "P and L Test",
+      "email": "pl-signup-1772482543552@example.com",
+      "role": "admin",
+      "access": "all-projects",
+      "active": true,
+      "addedAt": "2026-03-02T20:15:43.582Z"
+    }
+  ],
+  "subscriptionTier": "standard",
+  "extraSeats": 0,
+  "integrations": {
+    "calendar": false,
+    "gmail": false,
+    "googleDrive": false,
+    "microsoft": false,
+    "slack": false
+  },
+  "integrationAccounts": {},
+  "timezone": ""
+}

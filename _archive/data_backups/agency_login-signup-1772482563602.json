@@ -1,0 +1,58 @@
+{
+  "projects": [],
+  "categories": [
+    {
+      "name": "Marketing",
+      "emoji": ""
+    },
+    {
+      "name": "Creative",
+      "emoji": ""
+    },
+    {
+      "name": "Operations",
+      "emoji": ""
+    },
+    {
+      "name": "Development",
+      "emoji": ""
+    }
+  ],
+  "clients": [],
+  "agents": [],
+  "activityFeed": [
+    {
+      "id": "act-1772482563642-258b",
+      "timestamp": "2026-03-02T20:16:03.633Z",
+      "agent": "system",
+      "action": "workspace.created",
+      "target": "Login Signup 1772482563602",
+      "type": "system",
+      "details": {
+        "source": "public_signup"
+      }
+    }
+  ],
+  "teamMembers": [
+    {
+      "id": "member-1772482563642-46eb",
+      "name": "Login Flow",
+      "email": "login-signup-1772482563602@example.com",
+      "role": "admin",
+      "access": "all-projects",
+      "active": true,
+      "addedAt": "2026-03-02T20:16:03.633Z"
+    }
+  ],
+  "subscriptionTier": "standard",
+  "extraSeats": 0,
+  "integrations": {
+    "calendar": false,
+    "gmail": false,
+    "googleDrive": false,
+    "microsoft": false,
+    "slack": false
+  },
+  "integrationAccounts": {},
+  "timezone": ""
+}
