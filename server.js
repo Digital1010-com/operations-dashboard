@@ -984,8 +984,10 @@ const AUDIT_LOG_FILE = path.join(DATA_DIR, 'security_audit.log.jsonl');
 const OBSERVABILITY_LOG_FILE = path.join(DATA_DIR, 'observability.log.jsonl');
 const SYSTEM_STORE_FILE = path.join(DATA_DIR, 'system_store.json');
 const IDEMPOTENCY_DB_FILE = path.join(DATA_DIR, 'idempotency.sqlite');
-const MEMORY_DIR = '/Volumes/AI_Drive/AI_WORKING/memory';
-const FILE_BROWSER_ALLOWED_ROOTS = ['/Volumes', '/Users/ottomac/Library/CloudStorage'];
+const MEMORY_DIR = process.env.MEMORY_DIR || '/Volumes/AI_Drive/AI_WORKING/memory';
+const FILE_BROWSER_ALLOWED_ROOTS = String(process.env.NODE_ENV || '').toLowerCase() === 'production'
+  ? [path.join(__dirname, 'data')]
+  : ['/Volumes', '/Users/ottomac/Library/CloudStorage'];
 const OPEN_FILE_ALLOWED_EXTENSIONS = new Set([
   '.txt', '.md', '.json', '.csv', '.log',
   '.pdf', '.doc', '.docx', '.xls', '.xlsx', '.ppt', '.pptx',
@@ -993,7 +995,7 @@ const OPEN_FILE_ALLOWED_EXTENSIONS = new Set([
   '.mp4', '.mov', '.m4v', '.mp3', '.wav',
   '.html', '.css'
 ]);
-const ANTFARM_EVENTS_FILE = '/Users/ottomac/.openclaw/antfarm/events.jsonl';
+const ANTFARM_EVENTS_FILE = process.env.ANTFARM_EVENTS_FILE || '/Users/ottomac/.openclaw/antfarm/events.jsonl';
 const OAUTH_STATE_TTL_MS = 10 * 60 * 1000;
 const oauthStateStore = new Map();
 const requestContext = new AsyncLocalStorage();
@@ -3456,7 +3458,7 @@ function verifyIntakeWebhookSignature(req) {
 }
 
 function readOpenClawConfigSnapshot() {
-  const filePath = '/Users/ottomac/.openclaw/openclaw.json';
+  const filePath = process.env.OPENCLAW_CONFIG || '/Users/ottomac/.openclaw/openclaw.json';
   if (!fs.existsSync(filePath)) return { ok: false, error: 'openclaw_config_not_found', filePath };
   let parsed = {};
   try {
@@ -5103,7 +5105,8 @@ except Exception:
     text = ''
 print(json.dumps({'text': text[:12000]}))
 `;
-    const output = execFileSync('/opt/homebrew/bin/python3', ['-c', script, tempFile], { encoding: 'utf8' });
+    const pythonBin = process.env.PYTHON_BIN || (fs.existsSync('/opt/homebrew/bin/python3') ? '/opt/homebrew/bin/python3' : 'python3');
+    const output = execFileSync(pythonBin, ['-c', script, tempFile], { encoding: 'utf8' });
     const parsed = JSON.parse(String(output || '{}'));
     return String(parsed.text || '').trim();
   } catch (error) {
@@ -6097,7 +6100,7 @@ app.post('/api/openclaw/sync/pull', requireRole(['org_admin', 'manager']), (req,
 
 app.post('/api/openclaw/sync/push', requireRole(['org_admin', 'manager']), (req, res) => {
   const data = getData();
-  const syncFile = '/Users/ottomac/.openclaw/antfarm/mission-control-sync.jsonl';
+  const syncFile = process.env.OPENCLAW_SYNC_FILE || '/Users/ottomac/.openclaw/antfarm/mission-control-sync.jsonl';
   const events = Array.isArray(req.body?.events) ? req.body.events : [];
   const actor = String(getSessionFromRequest(req)?.username || req.body?.actor || 'mission-control').trim() || 'mission-control';
 
@@ -7562,9 +7565,10 @@ app.get('/api/logs', requireRole(['org_admin', 'manager']), (req, res) => {
   try {
     const days = parseInt(req.query.days) || 7;
     const logs = [];
-    const LOGS_DIR = '/Volumes/AI_Drive/AI_WORKING/logs';
-    
+    const LOGS_DIR = process.env.LOGS_DIR || '/Volumes/AI_Drive/AI_WORKING/logs';
+
     // Get last N days of logs
+    if (!fs.existsSync(MEMORY_DIR)) return res.json([]);
     const files = fs.readdirSync(MEMORY_DIR)
       .filter(f => f.match(/^\d{4}-\d{2}-\d{2}\.md$/))
       .sort()
@@ -7833,8 +7837,9 @@ app.post('/api/open-file', requireRole(['org_admin', 'manager']), (req, res) => 
   const resolvedPath = path.resolve(String(filePath));
 
   // Security: allow controlled workspace/storage roots
+  const openclawDir = process.env.OPENCLAW_DIR || '/Users/ottomac/.openclaw/';
   if (!isAllowedFileBrowserPath(resolvedPath) &&
-      !resolvedPath.startsWith('/Users/ottomac/.openclaw/')) {
+      !resolvedPath.startsWith(openclawDir)) {
     return res.status(403).json({ error: 'Access denied' });
   }
 
@@ -7866,6 +7871,10 @@ app.post('/api/open-file', requireRole(['org_admin', 'manager']), (req, res) => 
   }
 
   // Use execFile to avoid shell expansion/injection.
+  // macOS only — cloud deployments return 501
+  if (IS_PRODUCTION) {
+    return res.status(501).json({ error: 'File opening not available in cloud deployment', path: resolvedPath });
+  }
   execFile('open', ['--', resolvedPath], (error) => {
     if (error) {
       return res.status(500).json({ error: error.message, path: resolvedPath });
@@ -8206,7 +8215,7 @@ app.post('/api/file-hub-links', requireRole(['org_admin', 'manager']), (req, res
 
   const resolvedPath = path.resolve(rawPath);
   if (!isAllowedFileBrowserPath(resolvedPath)) {
-    return res.status(403).json({ error: 'Path must be under /Volumes or /Users/ottomac/Library/CloudStorage' });
+    return res.status(403).json({ error: 'Path not in allowed roots' });
   }
 
   const finalPath = rawPath.endsWith('/') ? rawPath : `${rawPath}/`;
@@ -9628,10 +9637,10 @@ app.get('/api/files/list', requireRole(['org_admin', 'manager']), (req, res) => 
   let safePath;
   try {
     if (requestedPath === '/' || requestedPath === '') {
-      // Return root directories
-      return res.json({
-        path: '/',
-        items: [
+      // Return root directories — cloud vs local
+      const items = IS_PRODUCTION
+        ? [{ name: 'App Data', path: path.join(__dirname, 'data') + '/', type: 'folder', icon: '📂' }]
+        : [
           { name: 'All External Drives', path: '/Volumes/', type: 'folder', icon: '🧷' },
           { name: 'AI_Drive Root', path: '/Volumes/AI_Drive/', type: 'folder', icon: '💾' },
           { name: 'D1010 Archives', path: '/Volumes/AI_Drive/ARCHIVE/', type: 'folder', icon: '🏛' },
@@ -9642,8 +9651,8 @@ app.get('/api/files/list', requireRole(['org_admin', 'manager']), (req, res) => 
           { name: 'Projects', path: '/Volumes/AI_Drive/AI_WORKING/projects/', type: 'folder', icon: '📋' },
           { name: 'Scripts', path: '/Volumes/AI_Drive/AI_WORKING/scripts/', type: 'folder', icon: '📜' },
           { name: 'Memory', path: '/Volumes/AI_Drive/AI_WORKING/memory/', type: 'folder', icon: '🧠' }
-        ]
-      });
+        ];
+      return res.json({ path: '/', items });
     }
     
     // Resolve and validate path

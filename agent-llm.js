@@ -10,7 +10,9 @@ const path = require('path');
 const crypto = require('crypto');
 
 // ─── Agent System Definitions (loaded once at startup) ─────────────────────────
-const AGENT_DEFINITIONS_DIR = '/Volumes/AI_Drive/03-D1010-OS/_MASTERS/agents';
+const AGENT_DEFINITIONS_DIR = process.env.AGENT_DEFINITIONS_DIR
+  || '/Volumes/AI_Drive/03-D1010-OS/_MASTERS/agents';
+const BUNDLED_AGENT_DIR = path.join(__dirname, 'agent-definitions');
 const agentDefinitionCache = new Map();
 
 function loadAgentDefinition(agentName) {
@@ -18,15 +20,19 @@ function loadAgentDefinition(agentName) {
   if (cached && cached.loadedAt > Date.now() - 300_000) return cached.content; // 5min cache
 
   const filename = `${agentName}-system-definition.md`;
-  const filePath = path.join(AGENT_DEFINITIONS_DIR, filename);
-  try {
-    const content = fs.readFileSync(filePath, 'utf8');
-    agentDefinitionCache.set(agentName, { content, loadedAt: Date.now() });
-    return content;
-  } catch (err) {
-    console.error(`[agent-llm] Failed to load definition for ${agentName}:`, err.message);
-    return null;
+  // Try external dir first, then bundled fallback
+  const dirs = [AGENT_DEFINITIONS_DIR, BUNDLED_AGENT_DIR];
+  for (const dir of dirs) {
+    const filePath = path.join(dir, filename);
+    try {
+      if (!fs.existsSync(filePath)) continue;
+      const content = fs.readFileSync(filePath, 'utf8');
+      agentDefinitionCache.set(agentName, { content, loadedAt: Date.now() });
+      return content;
+    } catch (_) {}
   }
+  console.error(`[agent-llm] No definition found for agent: ${agentName}`);
+  return null;
 }
 
 // ─── Token Usage Tracking ──────────────────────────────────────────────────────

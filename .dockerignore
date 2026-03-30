@@ -1,0 +1,17 @@
+node_modules/
+.git/
+.DS_Store
+*.sqlite
+*.log
+*.log.*
+*.jsonl
+*.gz
+.secure-env
+.env
+.env.local
+tmp/
+temp/
+scripts/
+launchd/
+logs/
+ecosystem.config.js

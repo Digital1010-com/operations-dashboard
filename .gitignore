@@ -1,22 +1,27 @@
 # Dependencies
 node_modules/
 
-# Data files (contains sensitive info)
-data/
-data.json
+# Secrets & credentials (NEVER commit)
+.env
+.env.local
+.secure-env
+data/secrets_store.json
+data/system_store.json
+
+# SQLite databases
 *.sqlite
 
-# Logs
+# Logs (large, regenerated)
 *.log
 *.log.*
 *.jsonl
 *.gz
 
-# Environment & Secrets
-.env
-.env.local
-.secure-env
-secrets_store.json
+# Agent usage logs
+data/agent-usage/
+
+# Onboarding temp data
+data/onboarding_*/
 
 # OS
 .DS_Store

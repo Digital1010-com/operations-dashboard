@@ -1,0 +1,47 @@
+name: operations-dashboard
+services:
+  - name: app
+    github:
+      repo: Digital1010-com/operations-dashboard
+      branch: main
+      deploy_on_push: true
+    build_command: npm install --production
+    run_command: node server.js
+    http_port: 3200
+    instance_count: 1
+    instance_size_slug: basic-xxs
+    envs:
+      - key: NODE_ENV
+        value: production
+      - key: AUTH_REQUIRED
+        value: "true"
+      - key: ENCRYPTION_REQUIRED
+        value: "true"
+      - key: AUTH_USERNAME
+        type: SECRET
+      - key: AUTH_PASSWORD
+        type: SECRET
+      - key: SECRET_ENCRYPTION_KEY
+        type: SECRET
+      - key: ANTHROPIC_API_KEY
+        type: SECRET
+      - key: OPENAI_API_KEY
+        type: SECRET
+      - key: OPENROUTER_API_KEY
+        type: SECRET
+      - key: GOOGLE_CLIENT_ID
+        type: SECRET
+      - key: GOOGLE_CLIENT_SECRET
+        type: SECRET
+      - key: SLACK_CLIENT_ID
+        type: SECRET
+      - key: SLACK_CLIENT_SECRET
+        type: SECRET
+      - key: SLACK_SIGNING_SECRET
+        type: SECRET
+      - key: ALERT_WEBHOOK_URL
+        type: SECRET
+      - key: OAUTH_BASE_URL
+        value: "https://app.digital1010.tech"
+    health_check:
+      http_path: /healthz
