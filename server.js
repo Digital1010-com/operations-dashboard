@@ -937,11 +937,16 @@ app.use((req, res, next) => {
   if (!session || session.expiresAt <= Date.now()) {
     return res.status(401).json({ error: 'Session expired' });
   }
-  if (session.agencyId && session.agencyId !== getAgencyIdFromContext() && !isSuperAdminSession(session)) {
-    appendSecurityAudit('auth.tenant_mismatch', req, { sessionAgency: session.agencyId, requestAgency: getAgencyIdFromContext() });
-    return res.status(403).json({ error: 'Tenant mismatch' });
-  }
   const store = requestContext.getStore();
+  // Lock agency context to session's agencyId — prevent query/header override
+  if (store && session.agencyId) {
+    const requestAgency = store.agencyId;
+    if (requestAgency !== normalizeAgencyId(session.agencyId) && !isSuperAdminSession(session)) {
+      appendSecurityAudit('auth.tenant_mismatch', req, { sessionAgency: session.agencyId, requestAgency });
+      return res.status(403).json({ error: 'Tenant mismatch' });
+    }
+    store.agencyId = normalizeAgencyId(session.agencyId);
+  }
   if (store) {
     store.authUser = session.username;
     store.authRole = getAuthRole(session);
@@ -5098,7 +5103,7 @@ async function listSlackChannelsForAgency({ agencyId, limit = 100 }) {
 
 
 // API: Get operations data (for dashboard.js)
-app.get('/api/operations', (req, res) => {
+app.get('/api/operations', requireRole(['org_admin', 'manager', 'member']), (req, res) => {
   const data = getData();
   const projects = data.projects || [];
   
@@ -5152,7 +5157,7 @@ app.get('/api/operations', (req, res) => {
 });
 
 // API: Get clients data (for mission-control.js)
-app.get('/api/clients', (req, res) => {
+app.get('/api/clients', requireRole(['org_admin', 'manager', 'member']), (req, res) => {
   const data = getData();
   const projects = data.projects || [];
   const registry = Array.isArray(data.clientRegistry) ? data.clientRegistry : [];
@@ -5233,7 +5238,7 @@ app.get('/api/clients', (req, res) => {
 });
 
 // API: Search projects
-app.get('/api/projects/search', (req, res) => {
+app.get('/api/projects/search', requireRole(['org_admin', 'manager', 'member']), (req, res) => {
   const { q } = req.query;
   const data = getData();
   const projects = data.projects || [];
@@ -7994,7 +7999,7 @@ app.delete('/api/categories/:name', requireRole(['org_admin', 'manager']), (req,
 });
 
 // API: Get owners
-app.get('/api/owners', (req, res) => {
+app.get('/api/owners', requireRole(['org_admin', 'manager', 'member']), (req, res) => {
   const data = getData();
   const projectOwners = Array.isArray(data.projects)
     ? data.projects.map(p => p.owner).filter(Boolean)
@@ -8028,7 +8033,7 @@ app.post('/api/owners', requireRole(['org_admin', 'manager']), (req, res) => {
 });
 
 // API: Get File Hub links
-app.get('/api/file-hub-links', (req, res) => {
+app.get('/api/file-hub-links', requireRole(['org_admin', 'manager', 'member']), (req, res) => {
   const data = getData();
   res.json({ links: data.fileHubLinks || [] });
 });
@@ -8099,7 +8104,7 @@ app.get('/api/branding', (req, res) => {
 });
 
 // ─── Onboarding Wizard API ─────────────────────────────────────────────────────
-app.get('/api/onboarding/status', (req, res) => {
+app.get('/api/onboarding/status', requireRole(['org_admin', 'manager', 'member']), (req, res) => {
   const data = getData();
   const status = data.onboardingStatus || { completed: true, steps: {} };
   res.json(status);
@@ -8136,7 +8141,7 @@ app.post('/api/onboarding/complete', requireRole(['org_admin', 'manager']), (req
 });
 
 // API: Get settings
-app.get('/api/settings', (req, res) => {
+app.get('/api/settings', requireRole(['org_admin', 'manager', 'member']), (req, res) => {
   const data = getData();
   ensureWorkspaceSettings(data);
   const seatAllocation = data.subscriptionTier === 'premium' ? 20 : 5;
@@ -8233,7 +8238,7 @@ app.patch('/api/settings', requireRole(['org_admin', 'manager']), (req, res) => 
   });
 });
 
-app.get('/api/security/status', (req, res) => {
+app.get('/api/security/status', requireRole(['org_admin', 'manager']), (req, res) => {
   const agency = getAgencyIdFromContext();
   const store = readSecretsStore();
   const byAgency = store.byAgency?.[agency] || {};
