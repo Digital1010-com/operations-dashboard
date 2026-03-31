@@ -1848,305 +1848,147 @@ function deleteOAuthTokenRecord(agencyId, integration) {
   return true;
 }
 
-function sqliteParameterLiteral(value) {
-  return JSON.stringify(String(value || ''));
-}
-
-function runSqliteQuery(sql, params = {}) {
-  const args = [IDEMPOTENCY_DB_FILE, '.parameter init', '.parameter clear'];
-  Object.entries(params || {}).forEach(([key, value]) => {
-    if (!/^[a-zA-Z0-9_]+$/.test(String(key || ''))) return;
-    args.push(`.parameter set @${key} ${sqliteParameterLiteral(value)}`);
-  });
-  args.push(sql);
-  // CLOUD FIX: sqlite3 binary not available in container
-  console.warn("SQLite idempotency temporarily disabled for cloud deployment");
-  return ""; // Skip sqlite operations for now
-  // return execFileSync("/usr/bin/sqlite3", args, { encoding: "utf8" });
-}
+// ─── In-Memory Stores (cloud-compatible, replaces SQLite) ─────────────────────
+const idempotencyStore = new Map(); // key: `${agencyId}::${idempotencyKey}` → { projectId, status, createdAt, updatedAt }
+const intakeQueue = [];             // Array of intake event objects (FIFO)
 
 function initIdempotencyDb() {
-  fs.mkdirSync(path.dirname(IDEMPOTENCY_DB_FILE), { recursive: true });
-  const sql = `
-    CREATE TABLE IF NOT EXISTS intake_idempotency (
-      agency_id TEXT NOT NULL,
-      idempotency_key TEXT NOT NULL,
-      project_id TEXT,
-      status TEXT NOT NULL DEFAULT 'pending',
-      created_at TEXT NOT NULL,
-      updated_at TEXT NOT NULL,
-      PRIMARY KEY (agency_id, idempotency_key)
-    );
-    CREATE INDEX IF NOT EXISTS idx_intake_idempotency_project_id ON intake_idempotency(project_id);
-  `;
-  runSqliteQuery(sql);
+  console.log('[idempotency] Using in-memory store (cloud mode)');
 }
 
-// ─── Session Persistence (SQLite-backed) ──────────────────────────────────────
+// ─── Session Persistence (in-memory) ─────────────────────────────────────────
 
 function initSessionDb() {
-  const sql = `
-    CREATE TABLE IF NOT EXISTS auth_sessions (
-      token TEXT PRIMARY KEY,
-      username TEXT NOT NULL,
-      role TEXT NOT NULL DEFAULT 'member',
-      agency_id TEXT NOT NULL DEFAULT 'default',
-      user_id TEXT,
-      created_at INTEGER NOT NULL,
-      expires_at INTEGER NOT NULL
-    );
-    CREATE INDEX IF NOT EXISTS idx_sessions_expires ON auth_sessions(expires_at);
-  `;
-  try {
-    runSqliteQuery(sql);
-    // Load existing valid sessions into memory
-    loadSessionsFromDb();
-  } catch (err) {
-    console.error('[sessions] Failed to init session DB:', err.message);
-  }
+  console.log('[sessions] Using in-memory store (cloud mode)');
 }
 
 function loadSessionsFromDb() {
-  try {
-    const now = Date.now();
-    const sql = `SELECT token, username, role, agency_id, user_id, created_at, expires_at FROM auth_sessions WHERE expires_at > ${now};`;
-    const output = runSqliteQuery(sql).trim();
-    if (!output) return;
-    let loaded = 0;
-    for (const line of output.split('\n')) {
-      const parts = line.split('|');
-      if (parts.length < 7) continue;
-      const [token, username, role, agencyId, userId, createdAt, expiresAt] = parts;
-      if (!token || !username) continue;
-      authSessions.set(token, {
-        username,
-        role: role || 'member',
-        agencyId: agencyId || 'default',
-        userId: userId || null,
-        createdAt: Number(createdAt) || Date.now(),
-        expiresAt: Number(expiresAt) || 0,
-      });
-      loaded++;
-    }
-    if (loaded > 0) console.log(`[sessions] Restored ${loaded} session(s) from database`);
-  } catch (err) {
-    console.error('[sessions] Failed to load sessions:', err.message);
+  // No-op: sessions are purely in-memory via authSessions Map
+  // This function is kept for compatibility with any callers
+  if (false) {
+    const parts = [];
+    const [token, username, role, agencyId, userId, createdAt, expiresAt] = parts;
+  // no-op: kept for structural compatibility
   }
 }
 
 function persistSession(token, session) {
-  try {
-    const sql = `INSERT OR REPLACE INTO auth_sessions (token, username, role, agency_id, user_id, created_at, expires_at) VALUES (@tok, @usr, @rol, @aid, @uid, @cat, @eat);`;
-    runSqliteQuery(sql, {
-      tok: token,
-      usr: String(session.username || ''),
-      rol: String(session.role || 'member'),
-      aid: String(session.agencyId || 'default'),
-      uid: String(session.userId || ''),
-      cat: String(session.createdAt || Date.now()),
-      eat: String(session.expiresAt || 0),
-    });
-  } catch (err) {
-    console.error('[sessions] Failed to persist session:', err.message);
-  }
+  // Sessions live in authSessions Map — no SQLite needed
 }
 
 function deleteSessionFromDb(token) {
-  try {
-    runSqliteQuery(`DELETE FROM auth_sessions WHERE token = @tok;`, { tok: token });
-  } catch (_) {}
+  // No-op: session removal handled by authSessions.delete()
 }
 
 function cleanupExpiredSessionsDb() {
-  try {
-    runSqliteQuery(`DELETE FROM auth_sessions WHERE expires_at <= ${Date.now()};`);
-  } catch (_) {}
+  // No-op: expired sessions cleaned from authSessions Map in-memory
 }
 
-function reserveIdempotencyKey(agencyId, idempotencyKey) {
-  const sql = `
-    BEGIN IMMEDIATE;
-    INSERT OR IGNORE INTO intake_idempotency (agency_id, idempotency_key, status, created_at, updated_at)
-    VALUES (@aid, @ik, 'pending', datetime('now'), datetime('now'));
-    SELECT changes();
-    COMMIT;
-  `;
-  const out = runSqliteQuery(sql, {
-    aid: normalizeAgencyId(agencyId),
-    ik: String(idempotencyKey || '')
-  }).trim();
-  const lines = out.split('\n').map(v => v.trim()).filter(Boolean);
-  const changes = Number(lines[lines.length - 1] || 0);
-  if (changes === 1) {
-    return { inserted: true, projectId: null, status: 'pending' };
-  }
+// ─── Idempotency (in-memory Map) ─────────────────────────────────────────────
 
-  const lookupSql = `
-    SELECT COALESCE(project_id, ''), COALESCE(status, 'pending')
-    FROM intake_idempotency
-    WHERE agency_id=@aid AND idempotency_key=@ik
-    LIMIT 1;
-  `;
-  const lookup = runSqliteQuery(lookupSql, {
-    aid: normalizeAgencyId(agencyId),
-    ik: String(idempotencyKey || '')
-  }).trim();
-  if (!lookup) return { inserted: false, projectId: null, status: 'pending' };
-  const [projectId, status] = lookup.split('|');
-  return { inserted: false, projectId: projectId || null, status: status || 'pending' };
+function reserveIdempotencyKey(agencyId, idempotencyKey) {
+  const key = `${normalizeAgencyId(agencyId)}::${String(idempotencyKey || '')}`;
+  if (idempotencyStore.has(key)) {
+    const existing = idempotencyStore.get(key);
+    return { inserted: false, projectId: existing.projectId || null, status: existing.status || 'pending' };
+  }
+  const now = new Date().toISOString();
+  idempotencyStore.set(key, { projectId: null, status: 'pending', createdAt: now, updatedAt: now });
+  return { inserted: true, projectId: null, status: 'pending' };
 }
 
 function finalizeIdempotencyKey(agencyId, idempotencyKey, projectId, status = 'created') {
-  const sql = `
-    UPDATE intake_idempotency
-    SET project_id=@pid, status=@st, updated_at=datetime('now')
-    WHERE agency_id=@aid AND idempotency_key=@ik;
-  `;
-  runSqliteQuery(sql, {
-    aid: normalizeAgencyId(agencyId),
-    ik: String(idempotencyKey || ''),
-    pid: String(projectId || ''),
-    st: String(status || 'created')
+  const key = `${normalizeAgencyId(agencyId)}::${String(idempotencyKey || '')}`;
+  const existing = idempotencyStore.get(key) || {};
+  idempotencyStore.set(key, {
+    ...existing,
+    projectId: String(projectId || ''),
+    status: String(status || 'created'),
+    updatedAt: new Date().toISOString()
   });
 }
 
+// ─── Intake Queue (in-memory Array) ──────────────────────────────────────────
 
 function initIntakeQueueDb() {
-  const sql = `
-    CREATE TABLE IF NOT EXISTS intake_queue (
-      id TEXT PRIMARY KEY,
-      agency_id TEXT NOT NULL,
-      event_type TEXT NOT NULL,
-      source TEXT NOT NULL,
-      idempotency_key TEXT,
-      payload_json TEXT NOT NULL,
-      status TEXT NOT NULL DEFAULT 'queued',
-      attempts INTEGER NOT NULL DEFAULT 0,
-      last_error TEXT,
-      created_at TEXT NOT NULL,
-      updated_at TEXT NOT NULL,
-      available_at TEXT NOT NULL,
-      processed_at TEXT
-    );
-    CREATE INDEX IF NOT EXISTS idx_intake_queue_status_available ON intake_queue(status, available_at);
-    CREATE INDEX IF NOT EXISTS idx_intake_queue_agency_status ON intake_queue(agency_id, status);
-  `;
-  runSqliteQuery(sql);
+  console.log('[intake-queue] Using in-memory queue (cloud mode)');
 }
 
 function enqueueIntakeEvent({ agencyId, eventType, source, payload, idempotencyKey }) {
   const id = 'iq-' + Date.now() + '-' + Math.random().toString(36).slice(2, 8);
   const now = new Date().toISOString();
-  const sql = `
-    INSERT INTO intake_queue (
-      id, agency_id, event_type, source, idempotency_key, payload_json,
-      status, attempts, last_error, created_at, updated_at, available_at, processed_at
-    ) VALUES (
-      @id, @aid, @etype, @src, @ikey, @payload,
-      'queued', 0, '', @now, @now, @now, NULL
-    );
-  `;
-  runSqliteQuery(sql, {
+  const event = {
     id,
-    aid: normalizeAgencyId(agencyId),
-    etype: String(eventType || '').trim(),
-    src: String(source || 'unknown').trim(),
-    ikey: String(idempotencyKey || '').trim(),
-    payload: JSON.stringify(payload || {}),
-    now
-  });
+    agencyId: normalizeAgencyId(agencyId),
+    eventType: String(eventType || '').trim(),
+    source: String(source || 'unknown').trim(),
+    idempotencyKey: String(idempotencyKey || '').trim(),
+    payload: payload || {},
+    status: 'queued',
+    attempts: 0,
+    lastError: '',
+    createdAt: now,
+    updatedAt: now,
+    availableAt: now,
+    processedAt: null
+  };
+  intakeQueue.push(event);
   return { id, status: 'queued', createdAt: now };
 }
 
 function getIntakeQueueStats(agencyId) {
-  const sql = `
-    SELECT status, COUNT(*)
-    FROM intake_queue
-    WHERE agency_id=@aid
-    GROUP BY status;
-  `;
-  const out = runSqliteQuery(sql, { aid: normalizeAgencyId(agencyId) }).trim();
+  const aid = normalizeAgencyId(agencyId);
   const stats = { queued: 0, processing: 0, done: 0, retry: 0, dead: 0 };
-  if (!out) return stats;
-  out.split('\n').map((line) => line.trim()).filter(Boolean).forEach((line) => {
-    const [status, countRaw] = line.split('|');
-    const key = String(status || '').trim();
-    const count = Number(countRaw || 0);
-    if (Object.prototype.hasOwnProperty.call(stats, key)) stats[key] = count;
-  });
+  for (const evt of intakeQueue) {
+    if (evt.agencyId === aid && Object.prototype.hasOwnProperty.call(stats, evt.status)) {
+      stats[evt.status]++;
+    }
+  }
   return stats;
 }
 
 function claimNextIntakeEvent() {
-  const selectSql = `
-    SELECT id, agency_id, event_type, source, idempotency_key, payload_json, attempts
-    FROM intake_queue
-    WHERE status IN ('queued', 'retry')
-      AND datetime(available_at) <= datetime('now')
-      AND attempts < @max_attempts
-    ORDER BY datetime(created_at) ASC
-    LIMIT 1;
-  `;
-  const row = runSqliteQuery(selectSql, { max_attempts: String(INTAKE_QUEUE_MAX_ATTEMPTS) }).trim();
-  if (!row) return null;
-  const [id, agencyId, eventType, source, idempotencyKey, payloadJson, attemptsRaw] = row.split('|');
-  if (!id) return null;
-
-  const lockSql = `
-    UPDATE intake_queue
-    SET status='processing', attempts=attempts + 1, updated_at=datetime('now')
-    WHERE id=@id AND status IN ('queued', 'retry');
-    SELECT changes();
-  `;
-  const lockedOut = runSqliteQuery(lockSql, { id }).trim();
-  const lines = lockedOut.split('\n').map((v) => v.trim()).filter(Boolean);
-  const changed = Number(lines[lines.length - 1] || 0);
-  if (changed !== 1) return null;
-
-  let payload = {};
-  try {
-    payload = JSON.parse(String(payloadJson || '{}'));
-  } catch (_) {
-    payload = {};
+  const now = new Date().toISOString();
+  for (const evt of intakeQueue) {
+    if ((evt.status === 'queued' || evt.status === 'retry') &&
+        evt.availableAt <= now &&
+        evt.attempts < INTAKE_QUEUE_MAX_ATTEMPTS) {
+      evt.status = 'processing';
+      evt.attempts++;
+      evt.updatedAt = new Date().toISOString();
+      return {
+        id: evt.id,
+        agencyId: evt.agencyId,
+        eventType: evt.eventType,
+        source: evt.source,
+        idempotencyKey: evt.idempotencyKey,
+        attempts: evt.attempts,
+        payload: evt.payload
+      };
+    }
   }
-
-  return {
-    id,
-    agencyId: normalizeAgencyId(agencyId),
-    eventType: String(eventType || ''),
-    source: String(source || ''),
-    idempotencyKey: String(idempotencyKey || ''),
-    attempts: Number(attemptsRaw || 0) + 1,
-    payload
-  };
+  return null;
 }
 
 function markIntakeEventDone(id) {
-  runSqliteQuery(`
-    UPDATE intake_queue
-    SET status='done', updated_at=datetime('now'), processed_at=datetime('now')
-    WHERE id=@id;
-  `, { id: String(id || '') });
+  const evt = intakeQueue.find(e => e.id === String(id || ''));
+  if (evt) {
+    evt.status = 'done';
+    evt.updatedAt = new Date().toISOString();
+    evt.processedAt = evt.updatedAt;
+  }
 }
 
 function markIntakeEventRetry(id, attempts, errorMessage) {
+  const evt = intakeQueue.find(e => e.id === String(id || ''));
+  if (!evt) return;
   const delaySeconds = Math.min(300, Math.pow(2, Math.max(0, Number(attempts || 1) - 1)) * 5);
   const nextStatus = Number(attempts || 0) >= INTAKE_QUEUE_MAX_ATTEMPTS ? 'dead' : 'retry';
-  const sql = `
-    UPDATE intake_queue
-    SET status=@st,
-        last_error=@err,
-        updated_at=datetime('now'),
-        available_at=datetime('now', @delay),
-        processed_at=CASE WHEN @st='dead' THEN datetime('now') ELSE processed_at END
-    WHERE id=@id;
-  `;
-  runSqliteQuery(sql, {
-    id: String(id || ''),
-    st: nextStatus,
-    err: String(errorMessage || 'unknown_error').slice(0, 500),
-    delay: '+' + String(delaySeconds) + ' seconds'
-  });
+  evt.status = nextStatus;
+  evt.lastError = String(errorMessage || 'unknown_error').slice(0, 500);
+  evt.updatedAt = new Date().toISOString();
+  evt.availableAt = new Date(Date.now() + delaySeconds * 1000).toISOString();
+  if (nextStatus === 'dead') evt.processedAt = evt.updatedAt;
 }
 
 function processSlackProjectIntakeInternal(data, agencyId, payload) {
@@ -5765,33 +5607,24 @@ app.get('/api/intake/queue', requireRole(['org_admin', 'manager']), (req, res) =
   const agencyId = getAgencyIdFromContext();
   const limit = Math.max(1, Math.min(500, Number(req.query.limit || 100)));
   const status = String(req.query.status || '').trim().toLowerCase();
-  let sql = "\n    SELECT id, agency_id, event_type, source, idempotency_key, status, attempts, last_error, created_at, updated_at, available_at, processed_at\n    FROM intake_queue\n    WHERE agency_id=@aid\n  ";
-  const params = { aid: agencyId, lim: String(limit) };
-  if (status) {
-    sql += ' AND status=@st';
-    params.st = status;
-  }
-  sql += ' ORDER BY datetime(created_at) DESC LIMIT @lim;';
-  const out = runSqliteQuery(sql, params).trim();
-  const rows = out
-    ? out.split('\n').map((line) => {
-      const [id, aid, eventType, source, idempotencyKey, rowStatus, attempts, lastError, createdAt, updatedAt, availableAt, processedAt] = line.split('|');
-      return {
-        id,
-        agencyId: aid,
-        eventType,
-        source,
-        idempotencyKey,
-        status: rowStatus,
-        attempts: Number(attempts || 0),
-        lastError: lastError || '',
-        createdAt,
-        updatedAt,
-        availableAt,
-        processedAt: processedAt || null
-      };
-    })
-    : [];
+  let rows = intakeQueue
+    .filter(evt => evt.agencyId === agencyId && (!status || evt.status === status))
+    .sort((a, b) => (b.createdAt || '').localeCompare(a.createdAt || ''))
+    .slice(0, limit)
+    .map(evt => ({
+      id: evt.id,
+      agencyId: evt.agencyId,
+      eventType: evt.eventType,
+      source: evt.source,
+      idempotencyKey: evt.idempotencyKey,
+      status: evt.status,
+      attempts: evt.attempts || 0,
+      lastError: evt.lastError || '',
+      createdAt: evt.createdAt,
+      updatedAt: evt.updatedAt,
+      availableAt: evt.availableAt,
+      processedAt: evt.processedAt || null
+    }));
   return res.json({ agency: agencyId, count: rows.length, rows });
 });
 
