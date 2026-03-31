@@ -626,6 +626,13 @@
 
     // ── Auto-redirect if already logged in ──
     (function() {
+      const params = new URLSearchParams(window.location.search);
+      // If we were redirected here from a 401, the old token is invalid — clear it
+      if (params.has('returnTo')) {
+        localStorage.removeItem('opsDashboardSessionToken');
+        localStorage.removeItem('opsDashboardSessionExpiresAt');
+        return;
+      }
       const token = localStorage.getItem('opsDashboardSessionToken');
       const expiresAt = localStorage.getItem('opsDashboardSessionExpiresAt');
       if (token && expiresAt && new Date(expiresAt).getTime() > Date.now()) {
