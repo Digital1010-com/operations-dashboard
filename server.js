@@ -9349,6 +9349,44 @@ app.post('/api/integrations/gmail/backfill-intake', requireRole(['org_admin', 'm
   }
 });
 
+// ─── External CRON endpoint ──────────────────────────────────────────────────
+// Secured by CRON_SECRET header — no session auth needed so external cron services can call it
+const CRON_SECRET = String(process.env.CRON_SECRET || '').trim();
+
+app.post('/api/cron/gmail-backfill', async (req, res) => {
+  const provided = String(req.headers['x-cron-secret'] || req.query.secret || '').trim();
+  if (!CRON_SECRET || !provided || provided !== CRON_SECRET) {
+    appendSecurityAudit('cron.unauthorized', req, { endpoint: 'gmail-backfill' });
+    return res.status(401).json({ error: 'Invalid or missing cron secret' });
+  }
+
+  // Inject admin session into request context so downstream handlers work
+  const agency = normalizeAgencyId(req.body?.agency || 'default');
+  const store = requestContext.getStore();
+  if (store) { store.agencyId = agency; store.authUser = 'cron-scheduler'; store.authRole = 'org_admin'; }
+  const cronSession = { username: 'cron-scheduler', role: 'admin', agencyId: agency, expiresAt: Date.now() + 600000 };
+  const cronToken = crypto.randomBytes(32).toString('hex');
+  authSessions.set(cronToken, cronSession);
+
+  try {
+    // Forward to the existing backfill handler via internal HTTP
+    const port = PORT;
+    const response = await fetch(`http://127.0.0.1:${port}/api/integrations/gmail/backfill-intake?agency=${agency}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${cronToken}` },
+      body: JSON.stringify({ days: Number(req.body?.days || 3), maxEmails: Number(req.body?.maxEmails || 50) })
+    });
+    const body = await response.json().catch(() => ({}));
+    appendSecurityAudit('cron.gmail_backfill_completed', req, { agency, status: response.status });
+    return res.status(response.status).json(body);
+  } catch (error) {
+    appendSecurityAudit('cron.gmail_backfill_failed', req, { agency, reason: String(error.message || 'unknown') });
+    return res.status(500).json({ error: String(error.message || 'Cron backfill failed') });
+  } finally {
+    authSessions.delete(cronToken);
+  }
+});
+
 // API: Team staffing snapshot
 app.get('/api/team/staffing', requireRole(['org_admin', 'manager', 'member']), (req, res) => {
   const data = getData();
