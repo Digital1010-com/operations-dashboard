@@ -275,9 +275,9 @@ async function callAgent(opts) {
 
   // Model ID mapping per provider
   const openRouterModelMap = {
-    'claude-sonnet-4-20250514': 'anthropic/claude-sonnet-4-20250514',
-    'claude-haiku-4-5-20251001': 'anthropic/claude-haiku-4-5-20251001',
-    'claude-opus-4-20250514': 'anthropic/claude-opus-4-20250514',
+    'claude-sonnet-4-20250514': 'anthropic/claude-sonnet-4',
+    'claude-haiku-4-5-20251001': 'anthropic/claude-haiku-4.5',
+    'claude-opus-4-20250514': 'anthropic/claude-opus-4',
   };
   const openAIFallbackMap = {
     'claude-sonnet-4-20250514': 'gpt-4o',
