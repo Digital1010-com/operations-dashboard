@@ -208,10 +208,14 @@ window.fetch = async function wrappedFetch(input, init = {}) {
   }
   const requestInput = typeof input === 'string' ? normalizedUrl : input;
   const response = await window.__rawFetch(requestInput, { ...init, headers });
-  if (isApiCall && response.status === 401 && !init.__authRetry) {
+  if (isApiCall && (response.status === 401 || response.status === 403) && !init.__authRetry) {
     if (isAuthEndpoint) return response;
     if (Date.now() - authLastSuccessAt < 8000) return response;
 
+    // On 403 tenant mismatch, clear stale agency and re-login
+    if (response.status === 403) {
+      localStorage.removeItem('agencyId');
+    }
     const ok = await promptForLoginAndStoreToken();
     if (!ok) return response;
     const retryHeaders = new Headers(init.headers || {});

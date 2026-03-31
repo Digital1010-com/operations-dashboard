@@ -341,6 +341,7 @@ app.post('/api/auth/login', (req, res) => {
       token,
       role,
       tenant: agencyId,
+      agencyId,
       expiresAt: new Date(expiresAtMs).toISOString()
     });
   }
@@ -372,6 +373,7 @@ app.post('/api/auth/login', (req, res) => {
     token,
     role,
     tenant: requestAgency,
+    agencyId: requestAgency,
     expiresAt: new Date(expiresAtMs).toISOString()
   });
 });
