@@ -43,5 +43,9 @@ services:
         type: SECRET
       - key: OAUTH_BASE_URL
         value: "https://app.digital1010.tech"
+      - key: DATABASE_URL
+        type: SECRET
+      - key: CRON_SECRET
+        type: SECRET
     health_check:
       http_path: /healthz

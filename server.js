@@ -8,6 +8,7 @@ const crypto = require('crypto');
 const { AsyncLocalStorage } = require('async_hooks');
 const { createConversationPipeline } = require('./conversation-pipeline');
 const { callAgent, parseEmailTaskPacket, getUsageSummary } = require('./agent-llm');
+const dataAccess = require('./data-access');
 
 function loadSecureEnvFile() {
   const secureEnvPath = path.join(__dirname, '.secure-env');
@@ -2654,20 +2655,16 @@ function getRuntimeProcesses(agentName) {
   }
 }
 
-// Read data
+// Read data — now backed by Supabase via data-access module
 function getData(agencyId = null) {
   const resolvedAgency = normalizeAgencyId(agencyId || getAgencyIdFromContext());
-  const filePath = getDataFilePath(resolvedAgency);
-  ensureDataFileExists(filePath);
-  return JSON.parse(fs.readFileSync(filePath, 'utf8'));
+  return dataAccess.getData(resolvedAgency);
 }
 
-// Write data
+// Write data — updates in-memory cache + async persist to Supabase
 function saveData(data, agencyId = null) {
   const resolvedAgency = normalizeAgencyId(agencyId || getAgencyIdFromContext());
-  const filePath = getDataFilePath(resolvedAgency);
-  fs.mkdirSync(path.dirname(filePath), { recursive: true });
-  fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+  dataAccess.saveData(data, resolvedAgency);
   broadcastUpdate();
   broadcastSseEvent('data.update', { agencyId: resolvedAgency, at: new Date().toISOString() }, resolvedAgency);
 }
@@ -9723,6 +9720,16 @@ function getFileIcon(filename) {
 
 // WebSocket for real-time updates
 validateSecurityConfiguration();
+
+// Initialize Supabase data layer before accepting requests
+(async () => {
+  try {
+    await dataAccess.initialize('default');
+    console.log('[startup] Supabase data layer initialized');
+  } catch (err) {
+    console.error('[startup] Supabase init failed, continuing with empty data:', err.message);
+  }
+})();
 
 const server = app.listen(PORT, '0.0.0.0', () => {
   console.log(`Operations Dashboard running at http://0.0.0.0:${PORT}`);

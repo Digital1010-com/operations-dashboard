@@ -8,6 +8,10 @@ node_modules/
 data/secrets_store.json
 data/system_store.json
 
+# Data files (now in Supabase Postgres)
+data.json
+data/agency_*.json
+
 # SQLite databases
 *.sqlite
 
